@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
 	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>

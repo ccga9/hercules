@@ -33,10 +33,14 @@
 			$usernom = htmlspecialchars(strip_tags($_POST['user']));
 			$passw = htmlspecialchars(strip_tags($_POST['passw']));
 
-			$quer = $conn->query('SELECT * WHERE nombre=' . $usernom);
+			$quer = $conn->query("SELECT * FROM usuarios WHERE nombre='" . $usernom . "'");
 
-			if ($row = $conn->fetch_assoc($conn->query('SELECT * WHERE nombre=' . $usernom))) {
-				echo $row['nombre'] . " " . $row['contrasenna'];
+			if ($row = $quer->fetch_assoc()) {
+
+				if ($row['contrasenna'] == hash("sha256", $passw)) {
+					$_SESSION['login'] = true;
+					$_SESSION['nombre'] = $usernom;
+				}
 			}
 			else {
 				session_destroy();
@@ -51,9 +55,7 @@
 
 	<?php	
 
-		require('./interf/cabecera.php');
-
-		require('./interf/sidebarIzq.php');
+		require('./includes/comun/cabecera.php');
 
 	?>
 
@@ -64,9 +66,7 @@
 
 	<?php	
 
-		require('./interf/sidebarDer.php');
-
-		require('./interf/pie.php');
+		require('./includes/comun/pie.php');
 	?>
 
 </body>
