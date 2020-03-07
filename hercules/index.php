@@ -10,7 +10,7 @@
 
 <div id="contenedor">
 
-	<?php	
+	<?php
 
 		session_start();
 
