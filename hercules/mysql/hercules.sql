@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-03-2020 a las 13:17:46
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Tiempo de generación: 08-03-2020 a las 17:06:42
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,34 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `hercules`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comida`
+--
+
+CREATE TABLE `comida` (
+  `Nombre` varchar(15) NOT NULL,
+  `Calorias consumidas` int(4) UNSIGNED NOT NULL,
+  `Carbohidratos` int(4) UNSIGNED NOT NULL,
+  `Proteínas` int(4) UNSIGNED NOT NULL,
+  `Grasas` int(4) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ejercicio`
+--
+
+CREATE TABLE `ejercicio` (
+  `Nombre` varchar(25) NOT NULL,
+  `Calorias gastadas` int(4) UNSIGNED NOT NULL,
+  `Tipo` varchar(10) NOT NULL,
+  `Descripcion` text NOT NULL,
+  `Multimedia` mediumblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -91,6 +119,18 @@ CREATE TABLE `usuarios` (
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comida`
+--
+ALTER TABLE `comida`
+  ADD PRIMARY KEY (`Nombre`);
+
+--
+-- Indices de la tabla `ejercicio`
+--
+ALTER TABLE `ejercicio`
+  ADD PRIMARY KEY (`Nombre`);
 
 --
 -- Indices de la tabla `entrenadores`
