@@ -12,34 +12,35 @@
 
 		session_start();
 
-		$users = array('user' => 'userpass', 'admin' => 'adminpass');
+		$usernom = htmlspecialchars(trim(strip_tags($_POST['user'])));
+		$passw = htmlspecialchars(trim(strip_tags($_POST['passw'])));
 
-		$username = htmlspecialchars(trim(strip_tags($_POST['user'])));
-		$password = htmlspecialchars(trim(strip_tags($_POST['passw'])));
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = "hercules";
 
-		if ($username != '' && $password != '') {
+		//Crear conexion base de datos
+		$conn = new mysqli($servername, $username, $password, $dbname);
+
+		//Comprobar conexion
+		if ($conn->connect_error){
+		    die("Database connection failed: " . mysqli_connect_error());
+		    session_destroy();
+		}
+		else {
+
+			$p = hash("sha256", $passw);
+
+			$q = "INSERT INTO `usuarios` (`nif`, `nombre`, `contrasenna`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`) VALUES ('" . $usernom . "', '', '" . $p . "', '', '', '', '', '', '', '', '', '')";
+
+			$ok = $conn->query($q);
 			
-			$ident = 0;
-			foreach($users as $key => $val){
-				if ($username == $key && $password == $val) {
-					$ident = 1;
-				}
-			}
-
-			if ($ident == 1) {
-
-				if ($username == 'admin' && $password == 'adminpass') {
-					$_SESSION['esAdmin'] = true;
-					$_SESSION['nombre'] = "Administrador";
-				}
-				else{
-					$_SESSION['nombre'] = "Usuario";
-				}
-
-				$_SESSION['login'] = true;
+			if ($ok) {
+				echo "Dado de alta correctamente. <br>";
 			}
 			else {
-				session_destroy();
+				echo "ERROR: Problemas al insertar.";
 			}
 		}
 	
@@ -49,9 +50,7 @@
 
 	<?php	
 
-		require('./interf/cabecera.php');
-
-		require('./interf/sidebarIzq.php');
+		require('./includes/comun/cabecera.php');
 
 	?>
 
@@ -62,9 +61,7 @@
 
 	<?php	
 
-		require('./interf/sidebarDer.php');
-
-		require('./interf/pie.php');
+		require('./includes/comun/pie.php');
 	?>
 
 </body>

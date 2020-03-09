@@ -12,9 +12,7 @@
 
 	<?php	
 
-		require('./interf/cabecera.php');
-
-		require('./interf/sidebarIzq.php');
+		include('./includes/comun/cabecera.php');
 
 	?>
 
@@ -23,7 +21,7 @@
 		
 		<fieldset>
 			<legend>Registrarte</legend>
-			Usuario:<br> 
+			DNI:<br> 
 			<input type="text" name="user"> <br>
 			Contraseña:<br> 
 			<input type="password" name="passw"> <br>
@@ -36,9 +34,7 @@
 
 	<?php	
 
-		require('./interf/sidebarDer.php');
-
-		require('./interf/pie.php');
+		include('./includes/comun/pie.php');
 
 	?>
 </div> <!-- Fin del contenedor -->

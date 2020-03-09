@@ -33,7 +33,7 @@
 			$usernom = htmlspecialchars(strip_tags($_POST['user']));
 			$passw = htmlspecialchars(strip_tags($_POST['passw']));
 
-			$quer = $conn->query("SELECT * FROM usuarios WHERE nombre='" . $usernom . "'");
+			$quer = $conn->query("SELECT * FROM usuarios WHERE nif='" . $usernom . "'");
 			//QUE TIPO DE USUARIO ES
 			$rol = $conn->query("SELECT tipoUsuario FROM usuarios WHERE nombre='" . $usernom . "'");
 
