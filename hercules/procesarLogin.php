@@ -34,12 +34,15 @@
 			$passw = htmlspecialchars(strip_tags($_POST['passw']));
 
 			$quer = $conn->query("SELECT * FROM usuarios WHERE nombre='" . $usernom . "'");
+			//QUE TIPO DE USUARIO ES
+			$rol = $conn->query("SELECT tipoUsuario FROM usuarios WHERE nombre='" . $usernom . "'");
 
 			if ($row = $quer->fetch_assoc()) {
 
 				if ($row['contrasenna'] == hash("sha256", $passw)) {
 					$_SESSION['login'] = true;
 					$_SESSION['nombre'] = $usernom;
+					$_SESSION['rol'] = $rol;
 				}
 			}
 			else {
