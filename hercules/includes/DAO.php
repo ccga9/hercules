@@ -23,8 +23,25 @@ class DAO {
     public function buscar(){
         return $this->usuarioDAO->buscarUsuario();
     }
+    //Falta probar
+    public function insertar($query){
+        $this->mysqli->query($query);
+    }
     
-      
+    //Falta probar
+    public function modificar($query){
+        $this->mysqli->query($query);
+    }
+    
+    //Falta probar
+    public function consultar($query){
+        return $this->mysqli->query($query);
+    }
+     
+    //Falta probar
+    public function eliminar($query){
+        return $this->mysqli->query($query);
+    }
 }
 
 ?>
