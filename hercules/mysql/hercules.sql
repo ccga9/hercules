@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-03-2020 a las 17:06:42
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 09-03-2020 a las 10:29:37
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `hercules`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `usuario` varchar(10) NOT NULL,
+  `entrenador` varchar(10) NOT NULL,
+  `fecha` date NOT NULL,
+  `texto` varchar(60) NOT NULL,
+  `valoracion` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -57,7 +71,7 @@ CREATE TABLE `ejercicio` (
 --
 
 CREATE TABLE `entrenadores` (
-  `idEntrenador` varchar(10) NOT NULL,
+  `nif` varchar(10) NOT NULL,
   `titulacion` varchar(30) NOT NULL,
   `especialidad` varchar(50) NOT NULL,
   `experiencia` varchar(30) NOT NULL
@@ -103,7 +117,7 @@ CREATE TABLE `usuarioentrenador` (
 CREATE TABLE `usuarios` (
   `nif` varchar(10) NOT NULL,
   `nombre` varchar(30) NOT NULL,
-  `contrasenna` varbinary(800) NOT NULL,
+  `contrasenna` varchar(64) NOT NULL,
   `foto` mediumblob NOT NULL,
   `email` varchar(30) NOT NULL,
   `sexo` varchar(2) NOT NULL,
@@ -121,22 +135,17 @@ CREATE TABLE `usuarios` (
 --
 
 --
--- Indices de la tabla `comida`
+-- Indices de la tabla `comentarios`
 --
-ALTER TABLE `comida`
-  ADD PRIMARY KEY (`Nombre`);
-
---
--- Indices de la tabla `ejercicio`
---
-ALTER TABLE `ejercicio`
-  ADD PRIMARY KEY (`Nombre`);
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`usuario`),
+  ADD KEY `entrenador` (`entrenador`);
 
 --
 -- Indices de la tabla `entrenadores`
 --
 ALTER TABLE `entrenadores`
-  ADD PRIMARY KEY (`idEntrenador`);
+  ADD PRIMARY KEY (`nif`);
 
 --
 -- Indices de la tabla `prueba`
@@ -163,10 +172,16 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarioentrenador` (`usuario`) ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `usuarioentrenador`
 --
 ALTER TABLE `usuarioentrenador`
-  ADD CONSTRAINT `usuarioentrenador_ibfk_1` FOREIGN KEY (`entrenador`) REFERENCES `entrenadores` (`idEntrenador`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuarioentrenador_ibfk_1` FOREIGN KEY (`entrenador`) REFERENCES `entrenadores` (`nif`) ON UPDATE CASCADE,
   ADD CONSTRAINT `usuarioentrenador_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`nif`) ON UPDATE CASCADE;
 COMMIT;
 
