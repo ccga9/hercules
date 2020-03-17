@@ -17,6 +17,9 @@ class TOUsuario {
     private $altura;
     private $preferencias;
     private $tipoUsuario;
+    private $titulacion;
+    private $especialidad;
+    private $experiencia;
     
 /**
  * Constructor del TOUsuario
@@ -35,6 +38,29 @@ class TOUsuario {
       $this->altura = $altura;
       $this->preferencias = $preferencias;
       $this->tipoUsuario = $tipoUsuario;
+    }
+    
+/**
+* Constructor del TOUsuario cuando es un usuario entrenador (parametro tipo de usuario true)
+*/
+    
+    private function __construct($nif, $nombre, $password, $foto, $email, $sexo, $fechaNac, $telefono, $ubicacion, $peso, $altura, $preferencias, $tipoUsuario, $titulacion, $especialidad, $experiencia){
+        $this->nif = $nif;
+        $this->nombre = $nombre;
+        $this->password = $password;
+        $this->foto = $foto;
+        $this->email = $email;
+        $this->sexo = $sexo;
+        $this->fechaNac = $fechaNac;
+        $this->telefono = $telefono;
+        $this->ubicacion = $ubicacion;
+        $this->peso = $peso;
+        $this->altura = $altura;
+        $this->preferencias = $preferencias;
+        $this->tipoUsuario = $tipoUsuario;
+        $this->titulacion = $titulacion;
+        $this->especialidad = $especialidad;
+        $this->experiencia = $experiencia;
     }
     
     /**
@@ -243,6 +269,54 @@ class TOUsuario {
     public function setTipoUsuario($tipoUsuario)
     {
         $this->tipoUsuario = $tipoUsuario;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getTitulacion()
+    {
+        return $this->titulacion;
+    }
+    
+    /**
+     * @param mixed $titulacion
+     */
+    public function setTitulacion($titulacion)
+    {
+        $this->titulacion = $titulacion;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getEspecialidad()
+    {
+        return $this->especialidad;
+    }
+    
+    /**
+     * @param mixed $especialidad
+     */
+    public function setEspecialidad($especialidad)
+    {
+        $this->especialidad = $especialidad;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getExperiencia()
+    {
+        return $this->experiencia;
+    }
+    
+    /**
+     * @param mixed $experiencia
+     */
+    public function setExperiencia($experiencia)
+    {
+        $this->experiencia = $experiencia;
     }
 
     
