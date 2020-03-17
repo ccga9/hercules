@@ -16,7 +16,7 @@ class DAO {
             $this->mysqli = new mysqli($servername, $username, $password, $dbname);
         }
         
-        $this->usuarioDAO - new usuarioDAO();
+        //$this->usuarioDAO - new usuarioDAO();
     }
     
     //Falta probar
