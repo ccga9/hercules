@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-03-2020 a las 20:22:59
+-- Tiempo de generación: 18-03-2020 a las 12:45:42
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -197,7 +197,7 @@ ALTER TABLE `prueba`
 -- Indices de la tabla `recomendaciones`
 --
 ALTER TABLE `recomendaciones`
-  ADD PRIMARY KEY (`entrenador`),
+  ADD PRIMARY KEY (`entrenador`,`fecha`),
   ADD KEY `usuario` (`usuario`);
 
 --
