@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2020 a las 12:45:42
+-- Tiempo de generación: 23-03-2020 a las 13:45:09
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -69,11 +69,10 @@ CREATE TABLE `comentarios` (
 --
 
 CREATE TABLE `comida` (
-  `Nombre` varchar(15) NOT NULL,
-  `Calorias consumidas` int(4) UNSIGNED NOT NULL,
-  `Carbohidratos` int(4) UNSIGNED NOT NULL,
-  `Proteínas` int(4) UNSIGNED NOT NULL,
-  `Grasas` int(4) UNSIGNED NOT NULL
+  `dia` date NOT NULL,
+  `tipo` varchar(15) CHARACTER SET utf8mb4 NOT NULL,
+  `usuario` varchar(10) CHARACTER SET utf8mb4 NOT NULL,
+  `comida` varchar(10) CHARACTER SET utf8mb4 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -182,6 +181,13 @@ ALTER TABLE `comentarios`
   ADD KEY `entrenador` (`entrenador`);
 
 --
+-- Indices de la tabla `comida`
+--
+ALTER TABLE `comida`
+  ADD PRIMARY KEY (`dia`,`tipo`),
+  ADD UNIQUE KEY `usuario` (`usuario`);
+
+--
 -- Indices de la tabla `entrenadores`
 --
 ALTER TABLE `entrenadores`
@@ -223,6 +229,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarioentrenador` (`usuario`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `comida`
+--
+ALTER TABLE `comida`
+  ADD CONSTRAINT `comida_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`nif`);
 
 --
 -- Filtros para la tabla `recomendaciones`
