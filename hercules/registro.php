@@ -1,11 +1,12 @@
 <?php  
-	require_once('includes/FormularioLogin.php');
+	require_once('includes/config.php');
+	require_once('includes/FormularioRegistro.php');
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="estilo.css"/>
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
 	<meta charset="utf-8">
 	<title>Hércules</title>
 </head>
@@ -21,12 +22,10 @@
 	?>
 
 	<div id="contenido">
-
 		<?php  
-			$act = new FormularioLogin();
+			$act = new FormularioRegistro();
 			$act->gestiona();
 		?>
-
 	</div>
 
 	<?php	

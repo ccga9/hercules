@@ -1,5 +1,5 @@
 <?php 
-	//require_once 'includes/config.php';
+	require_once 'includes/config.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,7 @@
 
 	<?php
 
-		require('includes/comun/cabecera.php');
+		require('./includes/comun/cabecera.php');
 
 	?>
 
@@ -26,7 +26,7 @@
 
 	<?php	
 
-		require('includes/comun/pie.php');
+		require('./includes/comun/pie.php');
 
 	?>
 </div> <!-- Fin del contenedor -->

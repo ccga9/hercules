@@ -20,11 +20,12 @@ class TOUsuario {
     private $titulacion;
     private $especialidad;
     private $experiencia;
+
     
 /**
- * Constructor del TOUsuario
+ * Constructor del UsuarioTO
  */
-    private function __construct($nif, $nombre, $password, $foto, $email, $sexo, $fechaNac, $telefono, $ubicacion, $peso, $altura, $preferencias, $tipoUsuario){
+    public function __construct($nif = null, $nombre = null, $password = null, $foto = null, $email = null, $sexo = null, $fechaNac = null, $telefono = null, $ubicacion = null, $peso = null, $altura = null, $preferencias = null, $tipoUsuario = null){
       $this->nif = $nif;
       $this->nombre = $nombre;
       $this->password = $password;
@@ -44,7 +45,7 @@ class TOUsuario {
 * Constructor del TOUsuario cuando es un usuario entrenador (parametro tipo de usuario true)
 */
     
-    private function __construct($nif, $nombre, $password, $foto, $email, $sexo, $fechaNac, $telefono, $ubicacion, $peso, $altura, $preferencias, $tipoUsuario, $titulacion, $especialidad, $experiencia){
+    /*private function __construct($nif, $nombre, $password, $foto, $email, $sexo, $fechaNac, $telefono, $ubicacion, $peso, $altura, $preferencias, $tipoUsuario, $titulacion, $especialidad, $experiencia){
         $this->nif = $nif;
         $this->nombre = $nombre;
         $this->password = $password;
@@ -61,7 +62,7 @@ class TOUsuario {
         $this->titulacion = $titulacion;
         $this->especialidad = $especialidad;
         $this->experiencia = $experiencia;
-    }
+    }*/
     
     /**
      * @return mixed

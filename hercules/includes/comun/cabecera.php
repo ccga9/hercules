@@ -12,7 +12,7 @@
 		else {
 			echo '<a href= login.php>Log in</a>';
 			echo '<br>';
-			echo '<a href= registrar.php>Regístrate</a>';
+			echo '<a href= registro.php>Regístrate</a>';
 			echo '<br>';
 		}
 
@@ -24,9 +24,9 @@
 
 		<ul>
 		  <li><a href= index.php>Inicio</a></li>
-		  <li><a href= index.php>Nuestra Comunidad</a></li>
-		  <li><a href= index.php>Mi Perfil</a></li>
-		  <li><a href= index.php>FAQs</a></li>
+		  <li><a href= comunidad.php>Nuestra Comunidad</a></li>
+		  <li><a href= miPerfil.php>Mi Perfil</a></li>
+		  <li><a href= faqs.php>FAQs</a></li>
 		</ul>
 
 	</div>

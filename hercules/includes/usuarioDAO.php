@@ -4,46 +4,75 @@
  * Operaciones CRUD
  */
 
-include_once('DAO.php');
-include_once('usuario.php');
+//include_once('DAO.php');
+include_once('aplicacion.php');
+include_once('TOUsuario.php');
 
-class UsuarioDAO extends DAO{
+class UsuarioDAO {
     
     public function __construct(){
         parent::__construct();
     }
     
-    public function cargarUsuario($nif){
+    public static function cargarUsuario($nif){
         $usuario = new TOUsuario($nif);
-        $query = "SELECT * FROM usuarios WHERE nif = $nif ";
-        $consulta = $this->ejecutarConsulta($query);
-        if (count($consulta) > 0) {
+        $query = "SELECT * FROM usuarios WHERE nif = '". $nif ."'";
+        $app = aplicacion::getInstance();
+        $conn = $app->conexionBD();
+
+        $res = $conn->query($query);
+       
+        if ($res && $res->num_rows > 0) {
+            $row = $res->fetch_assoc();
             $usuario = new TOUsuario();
-            $usuario->setNombre($consulta[0]["nombre"]);
-            $usuario->setPassword($consulta[0]["contrasenna"]);
-            $usuario->setEmail($consulta[0]["email"]);
-            $usuario->setSexo($consulta[0]["sexo"]);
-            $usuario->setFechaNac($consulta[0]["fechaNac"]);
-            $usuario->setTelefono($consulta[0]["telefono"]);
-            $usuario->setUbicacion($consulta[0]["ubicacion"]);
-            $usuario->setPeso($consulta[0]["peso"]);
-            $usuario->setAltura($consulta[0]["altura"]);
-            $usuario->setPreferencias($consulta[0]["preferencias"]);
-            $usuario->setTipoUsuario($consulta[0]["tipoUsuario"]);
-            $usuario->setTitulacion($consulta[0]["titulacion"]);
-            $usuario->setEspecialidad($consulta[0]["especialidad"]);
-            $usuario->setExperiencia($consulta[0]["experiencia"]);
+            $usuario->setNombre($row["nombre"]);
+            $usuario->setPassword($row["contrasenna"]);
+            $usuario->setEmail($row["email"]);
+            $usuario->setSexo($row["sexo"]);
+            $usuario->setFechaNac($row["fechaNac"]);
+            $usuario->setTelefono($row["telefono"]);
+            $usuario->setUbicacion($row["ubicacion"]);
+            $usuario->setPeso($row["peso"]);
+            $usuario->setAltura($row["altura"]);
+            $usuario->setPreferencias($row["preferencias"]);
+            $usuario->setTipoUsuario($row["tipoUsuario"]);
             return $usuario;
         } else{
             return null;
         }
     }
+
+    public static function registra($arr = array()){
+        $usuario = UsuarioDAO::cargarUsuario($arr['nif']);
+        if ($usuario == null) {
+            $usuario = new TOUsuario();
+            $usuario->setNombre($arr["nombre"]);
+            $usuario->setPassword($arr["contrasenna"]);
+            $usuario->setEmail($arr["email"]);
+            $usuario->setTipoUsuario($arr["tipoUsuario"]);
+            return  UsuarioDAO::insertar($usuario);
+        }
+        else {
+            return null;
+        }
+    }
     
-    public function insertar(TOUsuario $u){
+    public static function insertar(TOUsuario $u){
         
-        $query("INSERT into usuarios (nombre,contrasenna,email,sexo,fechaNac,telefono,ubicacion,peso,altura,preferencias,tipoUsuario,titulacion,especialidad,experiencia) values 
-(" . $u->nombre . "," . $u->contrasenna . "," . $u->$email . "," . $u->sexo . "," . $u->fechaNac . "," . $u->telefono . "," . $u->ubicacion . "," . $u->peso . "," .
-            $u->altura . "," . $u->preferencias . "," . $u->tipoUsuario . "," . $u->titulacion . "," . $u->especialidad . "," . $u->experiencia . ") ");
+        $query = 'INSERT into usuarios (nombre,contrasenna,email,sexo,fechaNac,telefono,ubicacion,peso,altura,preferencias,tipoUsuario) values' .
+"(" . $u->nombre . "," . $u->contrasenna . "," . $u->$email . "," . $u->sexo . "," . $u->fechaNac . "," . $u->telefono . "," . $u->ubicacion . "," . $u->peso . "," . $u->altura . "," . $u->preferencias . "," . $u->tipoUsuario . ")";
+
+        $app = aplicacion::getInstance();
+        $conn = $app->conexionBD();
+
+        $res = $conn->query($query);
+
+        if ($res) {
+            return $u;
+        }
+        else {
+            return null;
+        }
     }
     
     public function update(TOUsuario $u){

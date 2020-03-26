@@ -2,23 +2,25 @@
 //Este codigo esta duplicado con DAO de momento.
 //Es para preguntar el lunes donde deberia ir
 
-$servername = "localhost";
-$username = "hercules";
-$password = "iG8hC62acnPrvIeU";
-$dbname = "hercules";
+require_once __DIR__.'/Aplicacion.php';
 
-//Crear conexion base de datos
-$conn = new mysqli($servername, $username, $password, $dbname);
+/**
+ * Parámetros de conexión a la BD
+ */
+define('BD_HOST', 'localhost');
+define('BD_NAME', 'hercules');
+define('BD_USER', 'hercules');
+define('BD_PASS', 'iG8hC62acnPrvIeU');
 
-//Comprobar conexion
-if ($conn->connect_error){
-    die("Database connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
+ini_set('default_charset', 'UTF-8');
+setLocale(LC_ALL, 'es_ES.UTF.8');
+date_default_timezone_set('Europe/Madrid');
 
 session_start();
 
+$app = aplicacion::getInstance();
+$app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS));
 
-$conn->close(); //Esto puede ser que vaya en otra parte
+//$conn->close(); //Esto puede ser que vaya en otra parte
 
 ?>

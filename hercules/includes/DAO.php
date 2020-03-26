@@ -22,8 +22,6 @@ class DAO {
                 printf("<hr>Error loading character set utf8 (Err. nº %d): %s\n<hr/>",  $this->mysqli->errno, $this->mysqli->error);
                 exit();
             }
-            
-            ini_set('default_charset', 'UTF-8');
         }
         
     }
@@ -42,27 +40,27 @@ class DAO {
     }
     
     //Falta probar
-    public function buscar(){
-        return $this->usuarioDAO->buscarUsuario();
+    protected function buscar(){
+        return '';
     }
     //Falta probar
-    public function insertar($query){
-        $this->mysqli->query($query);
-    }
-    
-    //Falta probar
-    public function modificar($query){
-        $this->mysqli->query($query);
+    protected function insertar($query){
+       return '';
     }
     
     //Falta probar
-    public function consultar($query){
-        return $this->mysqli->query($query);
+    protected function modificar($query){
+        return '';
+    }
+    
+    //Falta probar
+    protected function consultar($query){
+        return '';
     }
      
     //Falta probar
-    public function eliminar($query){
-        return $this->mysqli->query($query);
+    protected function eliminar($query){
+        return '';
     }
 }
 
