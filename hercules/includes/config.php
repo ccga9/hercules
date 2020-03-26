@@ -16,6 +16,8 @@ if ($conn->connect_error){
 }
 echo "Connected successfully";
 
+session_start();
+
 
 $conn->close(); //Esto puede ser que vaya en otra parte
 

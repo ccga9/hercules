@@ -12,7 +12,7 @@
 
 	<?php	
 
-		require('./interf/cabecera.php');
+		include('./includes/comun/cabecera.php');
 
 	?>
 
@@ -34,7 +34,7 @@
 
 	<?php	
 
-		require('./interf/pie.php');
+		include('./includes/comun/pie.php');
 
 	?>
 </div> <!-- Fin del contenedor -->

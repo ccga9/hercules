@@ -1,3 +1,6 @@
+<?php 
+	require_once 'includes/config.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +15,7 @@
 
 	<?php
 
-		session_start();
-
-		include('./includes/comun/cabecera.php');
+		require('./includes/comun/cabecera.php');
 
 	?>
 
@@ -25,7 +26,7 @@
 
 	<?php	
 
-		include('./includes/comun/pie.php');
+		require('./includes/comun/pie.php');
 
 	?>
 </div> <!-- Fin del contenedor -->

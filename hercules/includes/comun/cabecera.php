@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>LA PAGINA</title>
-</head>
-<body>
+<div id="cabecera">
+	
+	<img src="includes/img/Hercules_logo.png" width="300" height="120" alt="Logo de Hercules: la web">
 
-	<div id="cabecera">
-		<h1>Hércules</h1>
-		<div class="saludo">
+	<div class="saludo">
 
 		<?php  
 
@@ -16,29 +10,25 @@
 			echo  "Has entrado como " . $_SESSION['nombre'] . ". ". '<a href= logout.php>' . "Logout" . '</a>';
 		}
 		else {
-
-			echo '<form action="procesarLogin.php" method="post">';
-		
-			echo '<fieldset>';
-				echo '<legend>Registrarte</legend>';
-				echo 'Usuario:<br>';
-				echo '<input type="text" name="user"> <br>';
-				echo 'Contraseña:<br>'; 
-				echo '<input type="password" name="passw"> <br>';
-
-				echo '<input type="submit" name="aceptar">';
-			echo '</fieldset>';
-
-			echo '</form> <br>';
-
-			echo '<a href= registrar.php>' . "O Regístrate" . '</a>';
+			echo '<a href= login.php>Log in</a>';
+			echo '<br>';
+			echo '<a href= registrar.php>Regístrate</a>';
+			echo '<br>';
 		}
 
 		?>
+		
+	</div>
 
-		</div>
+	<div class="menu">
+
+		<ul>
+		  <li><a href= index.php>Inicio</a></li>
+		  <li><a href= index.php>Nuestra Comunidad</a></li>
+		  <li><a href= index.php>Mi Perfil</a></li>
+		  <li><a href= index.php>FAQs</a></li>
+		</ul>
 
 	</div>
-	
-</body>
-</html>
+
+</div>
