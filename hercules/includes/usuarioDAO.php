@@ -4,24 +4,21 @@
  * Operaciones CRUD
  */
 
-//include_once('DAO.php');
+include_once('DAO.php');
 include_once('aplicacion.php');
 include_once('TOUsuario.php');
 
-class UsuarioDAO {
+class UsuarioDAO extends DAO {
     
     public function __construct(){
         parent::__construct();
     }
     
-    public static function cargarUsuario($nif){
+    public function cargarUsuario($nif){
         $usuario = new TOUsuario($nif);
         $query = "SELECT * FROM usuarios WHERE nif = '". $nif ."'";
-        $app = aplicacion::getInstance();
-        $conn = $app->conexionBD();
-
-        $res = $conn->query($query);
-       
+        
+        $res = $this->consultar($query);
         if ($res && $res->num_rows > 0) {
             $row = $res->fetch_assoc();
             $usuario = new TOUsuario();
@@ -42,32 +39,53 @@ class UsuarioDAO {
         }
     }
 
-    public static function registra($arr = array()){
-        $usuario = UsuarioDAO::cargarUsuario($arr['nif']);
+    public function login($arr = array()){
+        $usuario = $this->cargarUsuario($arr['nif']);
+        if ($usuario != null) {
+            if (password_verify ($arr["contrasenna"], $usuario->getPassword())) {
+                return $usuario;
+            }
+            else {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    public function registra($arr = array()){
+        $usuario = $this->cargarUsuario($arr['nif']);
         if ($usuario == null) {
             $usuario = new TOUsuario();
+            $usuario->setNif($arr["nif"]);
             $usuario->setNombre($arr["nombre"]);
-            $usuario->setPassword($arr["contrasenna"]);
+            $usuario->setPassword(password_hash($arr["contrasenna"], PASSWORD_DEFAULT));
             $usuario->setEmail($arr["email"]);
             $usuario->setTipoUsuario($arr["tipoUsuario"]);
-            return  UsuarioDAO::insertar($usuario);
+            return  $this->add($usuario);
         }
         else {
             return null;
         }
     }
     
-    public static function insertar(TOUsuario $u){
-        
-        $query = 'INSERT into usuarios (nombre,contrasenna,email,sexo,fechaNac,telefono,ubicacion,peso,altura,preferencias,tipoUsuario) values' .
-"(" . $u->nombre . "," . $u->contrasenna . "," . $u->$email . "," . $u->sexo . "," . $u->fechaNac . "," . $u->telefono . "," . $u->ubicacion . "," . $u->peso . "," . $u->altura . "," . $u->preferencias . "," . $u->tipoUsuario . ")";
+    public function add(TOUsuario $u){
 
-        $app = aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $query = 'INSERT INTO `usuarios` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`) VALUES '
+        . "('" . $u->getNif() . "', 
+        '" . $u->getNombre() . "',
+        '" . $u->getPassword() . "',
+        NULL,
+        '" . $u->getEmail() . "',
+        NULL,
+        NULL, 
+        NULL, 
+        NULL, 
+        NULL, 
+        NULL, 
+        NULL, 
+        '" . $u->getTipoUsuario() . "')";
 
-        $res = $conn->query($query);
-
-        if ($res) {
+        if ($this->insertar($query)) {
             return $u;
         }
         else {
@@ -85,7 +103,7 @@ class UsuarioDAO {
         $query("DELETE usuarios where nif = '" . $u->nif . "' ");
     }
     
-    public function getUsuario($nif){
+    /*public function getUsuario($nif){
         $filas = SelectArray("SELECT * from usuarios where nif = '$nif'");
         $fila = $filas[0];
         
@@ -104,7 +122,7 @@ class UsuarioDAO {
         $u->titulacion = $fila['titulacion'];
         $u->especialidad = $fila['especialidad'];
         $u->experiencia = $fila['experiencia'];
-    }
+    }*/
     
     /*public function insertarUsuario(){
      buscarUsuario();

@@ -1,3 +1,9 @@
+<?php  
+	require_once 'includes/config.php';
+	session_unset();
+	session_destroy();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +17,6 @@
 <div id="contenedor">
 
 	<?php	
-
-		session_start();
-		session_unset();
-		session_destroy();
 
 		require('./includes/comun/cabecera.php');
 
