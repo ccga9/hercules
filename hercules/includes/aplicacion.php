@@ -3,10 +3,10 @@
 class aplicacion {
     private static $instance = null;
     private $datos_bd;
-    private $iniciado = false;
+    private $iniciado;
     private $conn;
 
-    private function __construct(){}
+    private function __construct(){$this->iniciado = false;}
 
     public static function getInstance() {
         if (null === self::$instance) {

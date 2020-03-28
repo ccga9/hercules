@@ -1,11 +1,11 @@
 <?php
 class recomendacion
 {
-	private $entrenador //emisor
-	private $cliente //receptor (usuario)
-	private $fecha //date
-	private $recomendacion //texto
-	private $tipo //varchar
+	private $entrenador; //emisor
+	private $cliente; //receptor (usuario)
+	private $fecha; //date
+	private $recomendacion; //texto
+	private $tipo; //varchar
 
 	public function __construct()
 	{

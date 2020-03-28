@@ -1,10 +1,10 @@
 <?php
 class comida
 {
-	private $dia
-	private $tipo
-	private $usuario
-	private $comida
+	private $dia;
+	private $tipo;
+	private $usuario;
+	private $comida;
 
 	public function __construct()
 	{

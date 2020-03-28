@@ -85,9 +85,9 @@ class UsuarioDAO {
         $query("DELETE usuarios where nif = '" . $u->nif . "' ");
     }
     
-    /*public TOUsuario getUsuario($nif){
+    public function getUsuario($nif){
         $filas = SelectArray("SELECT * from usuarios where nif = '$nif'");
-        $filas = $filas[0];
+        $fila = $filas[0];
         
         $u = new TOUsuario();
         $u->nombre = $fila['nombre'];
@@ -104,7 +104,7 @@ class UsuarioDAO {
         $u->titulacion = $fila['titulacion'];
         $u->especialidad = $fila['especialidad'];
         $u->experiencia = $fila['experiencia'];
-    }*/
+    }
     
     /*public function insertarUsuario(){
      buscarUsuario();

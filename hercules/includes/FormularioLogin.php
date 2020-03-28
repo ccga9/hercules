@@ -68,7 +68,7 @@ class FormularioLogin extends Form {
 
 		if (count($erroresFormulario) === 0) {
 	
-			$us = usuario::buscaUsuario($nombreUsuario);
+			$us = usuarioDAO::buscaUsuario($nombreUsuario);
 			if ($us != false) {
 				if (!$us->compruebaPassword($password)) {
 					$erroresFormulario[] = "El usuario o el password no coinciden";
