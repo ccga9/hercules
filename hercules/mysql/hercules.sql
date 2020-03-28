@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-03-2020 a las 13:45:09
+-- Tiempo de generación: 28-03-2020 a las 20:36:36
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Versión de PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -156,18 +156,25 @@ CREATE TABLE `usuarioentrenador` (
 CREATE TABLE `usuarios` (
   `nif` varchar(10) NOT NULL,
   `nombre` varchar(30) NOT NULL,
-  `contrasenna` varchar(64) NOT NULL,
-  `foto` mediumblob NOT NULL,
+  `contrasenna` varchar(255) NOT NULL,
+  `foto` varchar(30) DEFAULT NULL,
   `email` varchar(30) NOT NULL,
-  `sexo` varchar(2) NOT NULL,
-  `fechaNac` date NOT NULL,
-  `telefono` varchar(15) NOT NULL,
-  `ubicacion` varchar(50) NOT NULL,
-  `peso` decimal(5,0) NOT NULL,
-  `altura` decimal(5,0) NOT NULL,
-  `preferencias` varchar(50) NOT NULL,
-  `tipoUsuario` tinyint(1) NOT NULL
+  `sexo` varchar(6) DEFAULT NULL,
+  `fechaNac` date DEFAULT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `ubicacion` varchar(50) DEFAULT NULL,
+  `peso` decimal(5,0) DEFAULT NULL,
+  `altura` decimal(5,0) DEFAULT NULL,
+  `preferencias` varchar(50) DEFAULT NULL,
+  `tipoUsuario` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`) VALUES
+('26515643R', 'JUAN LIU', '$2y$10$vsnM.mnZYqtDZ8GbhnCIiu0qJwylwmaZsfk7sD.i8LycSq3nzbYmy', NULL, 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Índices para tablas volcadas
