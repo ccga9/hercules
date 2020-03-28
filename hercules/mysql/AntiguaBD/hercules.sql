@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-03-2020 a las 22:51:36
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 23-03-2020 a las 13:45:09
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alimentocomida` (
   `idAlimento` varchar(10) NOT NULL,
-  `idComida` varchar(10) NOT NULL
+  `idRegistro` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -82,12 +82,11 @@ CREATE TABLE `comida` (
 --
 
 CREATE TABLE `ejercicio` (
-  `idEjercicio` int(100) NOT NULL,
-  `nombre` varchar(25) NOT NULL,
-  `caloriasGastadas` int(4) UNSIGNED NOT NULL,
-  `tipo` varchar(10) NOT NULL,
-  `descripcion` text NOT NULL,
-  `multimedia` mediumblob NOT NULL
+  `Nombre` varchar(25) NOT NULL,
+  `Calorias gastadas` int(4) UNSIGNED NOT NULL,
+  `Tipo` varchar(10) NOT NULL,
+  `Descripcion` text NOT NULL,
+  `Multimedia` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -102,32 +101,6 @@ CREATE TABLE `entrenadores` (
   `especialidad` varchar(50) NOT NULL,
   `experiencia` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `entrenamiento`
---
-
-CREATE TABLE `entrenamiento` (
-  `idEntrenamiento` varchar(10) CHARACTER SET utf8mb4 NOT NULL,
-  `idUsuarioEntrenador` varchar(10) CHARACTER SET utf8mb4 NOT NULL,
-  `tipo` varchar(10) CHARACTER SET utf8mb4 NOT NULL,
-  `fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `entrenamientoejercicio`
---
-
-CREATE TABLE `entrenamientoejercicio` (
-  `idEntrenamiento` varchar(10) CHARACTER SET utf8mb4 NOT NULL,
-  `idEjercicio` varchar(10) CHARACTER SET utf8mb4 NOT NULL,
-  `repeticiones` int(2) NOT NULL,
-  `series` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -215,29 +188,10 @@ ALTER TABLE `comida`
   ADD UNIQUE KEY `usuario` (`usuario`);
 
 --
--- Indices de la tabla `ejercicio`
---
-ALTER TABLE `ejercicio`
-  ADD PRIMARY KEY (`idEjercicio`);
-
---
 -- Indices de la tabla `entrenadores`
 --
 ALTER TABLE `entrenadores`
   ADD PRIMARY KEY (`nif`);
-
---
--- Indices de la tabla `entrenamiento`
---
-ALTER TABLE `entrenamiento`
-  ADD PRIMARY KEY (`idEntrenamiento`,`idUsuarioEntrenador`),
-  ADD KEY `entrenamiento_ibfk_2` (`idUsuarioEntrenador`);
-
---
--- Indices de la tabla `entrenamientoejercicio`
---
-ALTER TABLE `entrenamientoejercicio`
-  ADD PRIMARY KEY (`idEntrenamiento`,`idEjercicio`);
 
 --
 -- Indices de la tabla `prueba`
@@ -267,16 +221,6 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`nif`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `ejercicio`
---
-ALTER TABLE `ejercicio`
-  MODIFY `idEjercicio` int(100) NOT NULL AUTO_INCREMENT;
-
---
 -- Restricciones para tablas volcadas
 --
 
@@ -291,12 +235,6 @@ ALTER TABLE `comentarios`
 --
 ALTER TABLE `comida`
   ADD CONSTRAINT `comida_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`nif`);
-
---
--- Filtros para la tabla `entrenamiento`
---
-ALTER TABLE `entrenamiento`
-  ADD CONSTRAINT `entrenamiento_ibfk_2` FOREIGN KEY (`idUsuarioEntrenador`) REFERENCES `usuarioentrenador` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `recomendaciones`
