@@ -42,5 +42,4 @@ class registrocomidaDAO extends DAO{
         eliminar($query);
     }
 }
-
 ?>
