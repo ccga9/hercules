@@ -3,6 +3,7 @@
 //Es para preguntar el lunes donde deberia ir
 
 require_once __DIR__.'/Aplicacion.php';
+require_once __DIR__.'/TOUsuario.php';
 
 /**
  * Parámetros de conexión a la BD

@@ -69,19 +69,22 @@ class FormularioRegistro extends Form {
     {
     	$erroresFormulario = array();
 
-        $nif = isset($datos['nif']) ? strtoupper($datos['nif']) : null;
+        $nif = isset($datos['nif']) ? htmlspecialchars(strip_tags(strtoupper($datos['nif']))) : null;
+        $datos['nif'] = $nif;
 
         if ( empty($nif) || mb_strlen($nif) != 9 || !ctype_alnum($nif) ) {
             $erroresFormulario[] = "NIF/NIE invalido.";
         }
 
-        $nombre = isset($datos['nombre']) ? strtoupper($datos['nombre']) : null;
+        $nombre = isset($datos['nombre']) ? htmlspecialchars(strip_tags(strtoupper($datos['nombre']))) : null;
+        $datos['nombre'] = $nombre;
 
         if ( empty($nombre) || mb_strlen($nombre) < 5) {
             $erroresFormulario[] = "El nombre tiene que tener una longitud de al menos 5 caracteres";
         }
 
-        $email = isset($datos['email']) ? $datos['email'] : null;
+        $email = isset($datos['email']) ? htmlspecialchars(strip_tags($datos['email'])) : null;
+        $datos['email'] = $email; 
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $erroresFormulario[] = "E-mail invalido.";
@@ -97,12 +100,14 @@ class FormularioRegistro extends Form {
         }
 
         $rol = isset($datos['tipoUsuario']) ? 1 : 0;
+        $datos['tipoUsuario'] = $rol;
 
         if (count($erroresFormulario) === 0) {
-            $us = UsuarioDAO::registra($datos);
+            $dao = new UsuarioDAO();
+            $us = $dao->registra($datos);
             if ($us != null) {
                 $_SESSION['login'] = true;
-                $_SESSION['nombre'] = $nombre;
+                $_SESSION['usuario'] = $us;
             } else {
                 $erroresFormulario[] = "Error al consultar en la BD: Puede que el usuario ya exista";
             }

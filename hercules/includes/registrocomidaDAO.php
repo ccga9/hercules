@@ -32,6 +32,7 @@ class registrocomidaDAO extends DAO{
         
        $rs = consultar($query);
        //Hacer cosas con $rs. :))
+       /*supongo que */return $rs;
     }
     
     public function eliminaRegistro($dia, $tipo, $usuario){

@@ -41,21 +41,21 @@ class DAO {
     
     //Falta probar
     protected function buscar(){
-        return '';
+        return $this->mysqli->query($query);
     }
     //Falta probar
     protected function insertar($query){
-       return '';
+        return $this->mysqli->query($query);
     }
     
     //Falta probar
     protected function modificar($query){
-        return '';
+        return $this->mysqli->query($query);
     }
     
     //Falta probar
     protected function consultar($query){
-        return '';
+        return $this->mysqli->query($query);
     }
      
     //Falta probar
