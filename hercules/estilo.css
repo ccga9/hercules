@@ -30,7 +30,7 @@ div#cabecera a:hover {
 
 div#contenido {
 	padding-top: 30px;
-	height: 500px;
+	min-height: 500px;
 	width: 100%;
 	background-color: white;
 }

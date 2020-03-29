@@ -1,7 +1,7 @@
 <?php  
 
-require('Form.php');
-require('usuarioDAO.php');
+require_once('Form.php');
+require_once('usuarioDAO.php');
 
 class FormularioLogin extends Form {
 

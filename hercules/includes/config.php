@@ -4,6 +4,7 @@
 
 require_once __DIR__.'/Aplicacion.php';
 require_once __DIR__.'/TOUsuario.php';
+require_once __DIR__.'/controller.php';
 
 /**
  * Parámetros de conexión a la BD
@@ -19,8 +20,10 @@ date_default_timezone_set('Europe/Madrid');
 
 session_start();
 
-$app = aplicacion::getInstance();
-$app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS));
+$ctrl = new controller();
+
+//$app = aplicacion::getInstance();
+//$app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS));
 
 //$conn->close(); //Esto puede ser que vaya en otra parte
 

@@ -4,9 +4,8 @@
  * Operaciones CRUD
  */
 
-include_once('DAO.php');
-include_once('aplicacion.php');
-include_once('TOUsuario.php');
+require_once('DAO.php');
+require_once('TOUsuario.php');
 
 class UsuarioDAO extends DAO {
     
@@ -16,12 +15,13 @@ class UsuarioDAO extends DAO {
     
     public function cargarUsuario($nif){
         $usuario = new TOUsuario($nif);
-        $query = "SELECT * FROM usuarios WHERE nif = '". $nif ."'";
+        $query = "SELECT * FROM usuario WHERE nif = '". $nif ."'";
         
         $res = $this->consultar($query);
         if ($res && $res->num_rows > 0) {
             $row = $res->fetch_assoc();
             $usuario = new TOUsuario();
+            $usuario->setNif($nif);
             $usuario->setNombre($row["nombre"]);
             $usuario->setPassword($row["contrasenna"]);
             $usuario->setEmail($row["email"]);
@@ -67,10 +67,44 @@ class UsuarioDAO extends DAO {
             return null;
         }
     }
+
+    public function listarEntrenadores($nif){
+        $query = "SELECT nif, nombre, titulacion, especialidad, experiencia FROM usuario WHERE tipoUsuario = 1 AND nif != '" .$nif."'";
+        return $this->consultar($query);
+    }
+
+    public function listarSolicitudes($nif){
+        $query = "SELECT entrenador, estado FROM usuarioentrenador WHERE usuario = '".$nif."'";
+        return $this->consultar($query);
+    }
+
+    public function miBuzon($nif){
+        $query = "SELECT usuario FROM usuarioentrenador WHERE entrenador = '".$nif."' AND estado = 'pendiente'";
+        return $this->consultar($query);
+    }
+
+    public function enviarSolicitud($nif_user, $nif_entrena){
+        $query = "INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES (NULL, '".$nif_user."',
+        '" . $nif_entrena . "',
+        'pendiente')";
+        return $this->consultar($query);
+    }
+
+    public function responderSolicitud($nif_entrena, $nif_cliente, $aceptar){
+        if ($aceptar) {
+             $query = "UPDATE `usuarioentrenador` SET estado='aceptado' WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_cliente."'";
+        }
+        else {
+            $query = "DELETE FROM `usuarioentrenador` WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_cliente."'";
+        }
+        
+        return $this->consultar($query);
+    }
     
+
     public function add(TOUsuario $u){
 
-        $query = 'INSERT INTO `usuarios` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`) VALUES '
+        $query = 'INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`) VALUES '
         . "('" . $u->getNif() . "', 
         '" . $u->getNombre() . "',
         '" . $u->getPassword() . "',
@@ -102,6 +136,7 @@ class UsuarioDAO extends DAO {
     public function delete(TOUsuario $u){
         $query("DELETE usuarios where nif = '" . $u->nif . "' ");
     }
+
     
     /*public function getUsuario($nif){
         $filas = SelectArray("SELECT * from usuarios where nif = '$nif'");

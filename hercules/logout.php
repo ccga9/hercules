@@ -23,7 +23,7 @@
 	?>
 
 	<div id="contenido">
-		<p> Has cerrado tu sesion. ¡Vuelve pronto!. </p>
+		<p> Has cerrado tu sesion. </p>
 	</div>
 
 	<?php	
