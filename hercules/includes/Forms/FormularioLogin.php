@@ -1,7 +1,7 @@
 <?php  
 
-require_once('Form.php');
-require_once('usuarioDAO.php');
+require_once(__DIR__.'/Form.php');
+require_once(__DIR__.'/../DAOs/usuarioDAO.php');
 
 class FormularioLogin extends Form {
 

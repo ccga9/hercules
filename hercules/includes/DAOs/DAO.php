@@ -1,14 +1,12 @@
 <?php
 
-
 class DAO {
     private $servername = "localhost";
     private $username = "hercules";
     private $password = "iG8hC62acnPrvIeU";
     private $dbname = "hercules";
     
-    public $mysqli;
-    private $usuarioDAO;
+    private $mysqli = null;
     
     public function __construct(){
         if(!$this->mysqli){
@@ -30,8 +28,10 @@ class DAO {
         if($sql != ""){
             $consulta = $this->mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
             $tablaDatos = array();
-            while ($fila = mysqli_fetch_assoc($consulta)){
-                array_push($tablaDatos, $fila);
+            if ($consulta) {
+                while ($fila = mysqli_fetch_assoc($consulta)){
+                    array_push($tablaDatos, $fila);
+                }
             }
             return $tablaDatos;
         } else{

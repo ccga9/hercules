@@ -1,6 +1,6 @@
 <?php  
-	require_once('includes/config.php');
-	require_once('includes/FormularioRegistro.php');
+	require_once(__DIR__.'/includes/config.php');
+	require_once(__DIR__.'/includes/Forms/FormularioRegistro.php');
 ?>
 
 <!DOCTYPE html>

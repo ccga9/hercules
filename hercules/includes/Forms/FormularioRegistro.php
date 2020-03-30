@@ -1,6 +1,6 @@
 <?php  
-require_once('Form.php');
-require_once('usuarioDAO.php');
+require_once(__DIR__.'/Form.php');
+require_once(__DIR__.'/../DAOs/usuarioDAO.php');
 
 class FormularioRegistro extends Form {
 
@@ -49,7 +49,19 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>Vuelve a introducir el Password:</label> <input class="control" type="password" name="contra2" />';
             $ret .= '</div>';
 
-            $ret .= '<input type="checkbox" name="tipoUsuario" value="ok">¿Eres entrenador/a?';
+            $ret .= '<input type="checkbox" name="tipoUsuario" value="ok">¿Eres entrenador/a? (Rellena los campos de abajo entonces)';
+
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Titulacion</label> <input class="control" type="text" name="titulacion" />';
+            $ret .= '</div>';
+
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Expecialidad</label> <input class="control" type="text" name="especialidad" />';
+            $ret .= '</div>';
+
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Experiencia</label> <input class="control" type="text" name="experiencia" />';
+            $ret .= '</div>';
 
             $ret .= '<div class="grupo-control"><button type="submit" name="registro">Registrar</button></div>';
 		$ret .= '</fieldset>';
@@ -79,8 +91,8 @@ class FormularioRegistro extends Form {
         $nombre = isset($datos['nombre']) ? htmlspecialchars(strip_tags(strtoupper($datos['nombre']))) : null;
         $datos['nombre'] = $nombre;
 
-        if ( empty($nombre) || mb_strlen($nombre) < 5) {
-            $erroresFormulario[] = "El nombre tiene que tener una longitud de al menos 5 caracteres";
+        if ( empty($nombre) || mb_strlen($nombre) < 3) {
+            $erroresFormulario[] = "El nombre tiene que tener una longitud de al menos 3 caracteres";
         }
 
         $email = isset($datos['email']) ? htmlspecialchars(strip_tags($datos['email'])) : null;
@@ -101,6 +113,18 @@ class FormularioRegistro extends Form {
 
         $rol = isset($datos['tipoUsuario']) ? 1 : 0;
         $datos['tipoUsuario'] = $rol;
+
+        if ($rol == 1) {
+            if ( !isset($datos['titulacion']) || empty($datos['titulacion']) ) {
+                $erroresFormulario[] = "Como entrenador/a debes poner tu titulacion.";
+            }
+            if ( !isset($datos['especialidad']) || empty($datos['especialidad']) ) {
+                $erroresFormulario[] = "Como entrenador/a debes poner tu especialidad.";
+            }
+            if ( !isset($datos['experiencia']) || empty($datos['experiencia']) ) {
+                $erroresFormulario[] = "Como entrenador/a debes poner tu experiencia.";
+            }
+        }
 
         if (count($erroresFormulario) === 0) {
             $dao = new UsuarioDAO();

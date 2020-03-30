@@ -4,8 +4,8 @@
  * Operaciones CRUD
  */
 
-require_once('DAO.php');
-require_once('TOUsuario.php');
+require_once(__DIR__.'/DAO.php');
+require_once(__DIR__.'/../TOs/TOUsuario.php');
 
 class UsuarioDAO extends DAO {
     
@@ -67,6 +67,11 @@ class UsuarioDAO extends DAO {
             $usuario->setPassword(password_hash($arr["contrasenna"], PASSWORD_DEFAULT));
             $usuario->setEmail($arr["email"]);
             $usuario->setTipoUsuario($arr["tipoUsuario"]);
+            if ($arr["tipoUsuario"]) {
+                $usuario->setTitulacion($arr["titulacion"]);
+                $usuario->setEspecialidad($arr["especialidad"]);
+                $usuario->setExperiencia($arr["experiencia"]);
+            }
             return  $this->add($usuario);
         }
         else {
@@ -75,7 +80,12 @@ class UsuarioDAO extends DAO {
     }
 
     public function listarEntrenadores($nif){
-        $query = "SELECT nif, nombre, titulacion, especialidad, experiencia FROM usuario WHERE tipoUsuario = 1 AND nif != '" .$nif."'";
+        if ($nif) {
+            $query = "SELECT nif, nombre, titulacion, especialidad, experiencia FROM usuario WHERE tipoUsuario = 1 AND nif != '" .$nif."'";
+        }
+        else {
+             $query = "SELECT nif, nombre, titulacion, especialidad, experiencia FROM usuario WHERE tipoUsuario = 1";
+        }
         return $this->consultar($query);
     }
 
@@ -110,20 +120,40 @@ class UsuarioDAO extends DAO {
 
     public function add(TOUsuario $u){
 
-        $query = 'INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`) VALUES '
-        . "('" . $u->getNif() . "', 
-        '" . $u->getNombre() . "',
-        '" . $u->getPassword() . "',
-        NULL,
-        '" . $u->getEmail() . "',
-        NULL,
-        NULL, 
-        NULL, 
-        NULL, 
-        NULL, 
-        NULL, 
-        NULL, 
-        '" . $u->getTipoUsuario() . "')";
+        $query = 'INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`, `titulacion`, `especialidad`, `experiencia`) VALUES '
+        . "(" 
+        . "'".$u->getNif()."'" 
+        . ","
+        . "'".$u->getNombre()."'"
+        . "," 
+        . "'".$u->getPassword()."'"
+        . "," 
+        . "NULL"
+        . ","
+        . "'".$u->getEmail()."'"
+        . ","
+        . "NULL"
+        . "," 
+        . "NULL"
+        . "," 
+        . "NULL"
+        . "," 
+        . "NULL"
+        . "," 
+        . "NULL"
+        . "," 
+        . "NULL"
+        . "," 
+        . "NULL"
+        . "," 
+        . "'".$u->getTipoUsuario()."'"
+        . ",";
+        $query .= ($u->getTitulacion() !== null)? "'".$u->getTitulacion()."'" : "NULL";
+        $query .= ",";
+        $query .= ($u->getEspecialidad() !== null)? "'".$u->getEspecialidad()."'" : "NULL";
+        $query .= ",";
+        $query .= ($u->getExperiencia() !== null)? "'".$u->getExperiencia()."'" : "NULL";
+        $query .=  ")";
 
         if ($this->insertar($query)) {
             return $u;

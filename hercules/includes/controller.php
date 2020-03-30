@@ -6,7 +6,7 @@
  *
  */
 
-require_once('usuarioDAO.php');
+require_once(__DIR__ . '/DAOs/usuarioDAO.php');
 
 class controller{
     
@@ -30,7 +30,7 @@ class controller{
 
 
 
-    public function listarEntrenadores($nif){
+    public function listarEntrenadores($nif=0){
         $usuarioDAO = new UsuarioDAO();
         $consulta = $usuarioDAO->listarEntrenadores($nif);
 

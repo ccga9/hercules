@@ -2,8 +2,8 @@
 //Este codigo esta duplicado con DAO de momento.
 //Es para preguntar el lunes donde deberia ir
 
-require_once __DIR__.'/Aplicacion.php';
-require_once __DIR__.'/TOUsuario.php';
+//require_once __DIR__.'/aplicacion.php';
+require_once __DIR__.'/TOs/TOUsuario.php';
 require_once __DIR__.'/controller.php';
 
 /**

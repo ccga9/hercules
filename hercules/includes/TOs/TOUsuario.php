@@ -25,7 +25,7 @@ class TOUsuario {
 /**
  * Constructor del UsuarioTO
  */
-    public function __construct($nif = null, $nombre = null, $password = null, $foto = null, $email = null, $sexo = null, $fechaNac = null, $telefono = null, $ubicacion = null, $peso = null, $altura = null, $preferencias = null, $tipoUsuario = null){
+    public function __construct($nif = null, $nombre = null, $password = null, $foto = null, $email = null, $sexo = null, $fechaNac = null, $telefono = null, $ubicacion = null, $peso = null, $altura = null, $preferencias = null, $tipoUsuario = null, $titulacion= null, $especialidad = null, $experiencia = null){
       $this->nif = $nif;
       $this->nombre = $nombre;
       $this->password = $password;
@@ -39,6 +39,9 @@ class TOUsuario {
       $this->altura = $altura;
       $this->preferencias = $preferencias;
       $this->tipoUsuario = $tipoUsuario;
+      $this->titulacion = $titulacion;
+      $this->especialidad = $especialidad;
+      $this->experiencia = $experiencia;
     }
     
 /**
