@@ -15,14 +15,14 @@ class recomendacion
 		$this->recomendacion = "";
 		$this->tipo = "";
 	}
-	public function __construct($entre, $clien, $fe, $reco, $t)
+	/*public function __construct($entre, $clien, $fe, $reco, $t)
 	{
 		$this->entrenador = $entre;
 		$this->cliente = $clien;
 		$this->fecha = $fe;
 		$this->recomendacion = $reco;
 		$this->tipo = $t;
-	}
+	}*/
 
 	public function get_entrenador()
 	{

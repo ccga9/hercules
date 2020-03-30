@@ -7,10 +7,29 @@
  */
 
 require_once(__DIR__ . '/DAOs/usuarioDAO.php');
+require_once(__DIR__ . '/DAOs/alimentoDAO.php');
+require_once(__DIR__ . '/DAOs/comidaDAO.php');
+require_once(__DIR__ . '/DAOs/entrenamientoDAO.php');
+require_once(__DIR__ . '/DAOs/recomendacionesDAO.php');
+require_once(__DIR__ . '/DAOs/registrocomidaDAO.php');
 
 class controller{
+
+    private $usuarioDAO;
+    private $alimentoDAO;
+    private $comidaDAO;
+    private $entrenamientoDAO;
+    private $recomendacionesDAO;
+    private $registrocomidaDAO;
     
-    public function __construct(){}
+    public function __construct(){
+        $usuarioDAO = new UsuarioDAO();
+        $alimentoDAO = new alimentoDAO();
+        $comidaDAO = new comidaDAO();
+        $entrenamientoDAO = new entrenamientoDAO();
+        $recomendacionesDAO = new recomendacionesDAO();
+        $registrocomidaDAO = new registrocomidaDAO();
+    }
     
     //Funciones relacionadas con el usuario
     public static function consultarUsuario($nif){

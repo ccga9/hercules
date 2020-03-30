@@ -15,14 +15,14 @@ class comida
 		$this->usuario = "";
 		//$this->comida = "";
 	}
-	public function __construct($id, $d, $t, $u/*, $c*/)
+	/*public function __construct($id, $d, $t, $u/*, $c)
 	{
 		$this->idComida = $id;
 		$this->dia = $d;
 		$this->tipo = $t;
 		$this->usuario = $u;
 		//$this->comida = $c;
-	}
+	}*/
 
 	public function get_idComida()
 	{

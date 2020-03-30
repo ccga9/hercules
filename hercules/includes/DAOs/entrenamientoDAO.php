@@ -4,9 +4,9 @@
  * Operaciones CRUD
  */
 
-include_once('DAO.php');
-include_once('aplicacion.php');
-include_once('entrenamientoTO.php');
+require_once(__DIR__.'/DAO.php');
+require_once(__DIR__.'/../TOs/entrenamientoTO.php');
+include_once(__DIR__.'/../aplicacion.php');
 
 class entrenamientoDAO extends DAO{
     

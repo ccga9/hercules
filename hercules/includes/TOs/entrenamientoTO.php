@@ -17,11 +17,11 @@ class entrenamientoTO {
 /**
  * Constructor del entrenamientoTO
  */
-    public function __construct($id, $tipo){
+    /*public function __construct($id, $tipo){
       $this->id = $id;
       $this->tipo = $tipo;
     }
-    
+    */
 	/**
      * @return mixed
      */

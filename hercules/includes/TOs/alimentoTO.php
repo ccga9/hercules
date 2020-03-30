@@ -25,7 +25,7 @@ class alimento
 		$this->carbohidratos = $carb;
 		$this->proteínas = $prot;
 		$this->grasas = $gras;
-	}
+	}*/
 
 	public function get_idAlimento()
 	{
