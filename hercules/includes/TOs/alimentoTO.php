@@ -17,15 +17,6 @@ class alimento
 		$this->proteínas = 0;
 		$this->grasas = 0;
 	}
-	public function __construct($id, $nom, $cc, $carb, $prot, $gras)
-	{
-		$this->idAlimento = $id;
-		$this->nombre = $nom;
-		$this->caloríasConsumidas = $cc;
-		$this->carbohidratos = $carb;
-		$this->proteínas = $prot;
-		$this->grasas = $gras;
-	}
 
 	public function get_idAlimento()
 	{
