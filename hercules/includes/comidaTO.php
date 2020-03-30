@@ -1,26 +1,33 @@
 <?php
 class comida
 {
+	private $idComida;
 	private $dia;
 	private $tipo;
 	private $usuario;
-	private $comida;
+	//private $comida;
 
 	public function __construct()
 	{
+		$this->idComida = 0;
 		$this->dia = "00/00/00";
 		$this->tipo = "";
 		$this->usuario = "";
-		$this->comida = "";
+		//$this->comida = "";
 	}
-	public function __construct($d, $t, $u, $c)
+	public function __construct($id, $d, $t, $u/*, $c*/)
 	{
+		$this->idComida = $id;
 		$this->dia = $d;
 		$this->tipo = $t;
 		$this->usuario = $u;
-		$this->comida = $c;
+		//$this->comida = $c;
 	}
 
+	public function get_idComida()
+	{
+		return $this->idComida;
+	}
 	public function get_dia()
 	{
 		return $this->dia;
@@ -33,12 +40,16 @@ class comida
 	{
 		return $this->usuario;
 	}
-	public function get_comida()
+	/*public function get_comida()
 	{
 		return $this->comida;
+	}*/
+
+
+	public function set_idComida($id)
+	{
+		$this->idComida = $id;
 	}
-
-
 	public function set_dia($d)
 	{
 		$this->dia = $d;
@@ -51,9 +62,9 @@ class comida
 	{
 		$this->usuario = $u;
 	}
-	public function set_comida($c)
+	/*public function set_comida($c)
 	{
 		$this->comida = $c;
-	}
+	}*/
 }
 ?>
