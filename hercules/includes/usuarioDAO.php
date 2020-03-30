@@ -12,7 +12,13 @@ class UsuarioDAO extends DAO {
     public function __construct(){
         parent::__construct();
     }
-    
+
+    public function consultarUsuario($nif){
+        $usuario = new TOUsuario($nif);
+        $query = "SELECT * FROM usuario WHERE nif = '". $nif ."'";
+        return $this->consultar($query);
+    }
+
     public function cargarUsuario($nif){
         $usuario = new TOUsuario($nif);
         $query = "SELECT * FROM usuario WHERE nif = '". $nif ."'";

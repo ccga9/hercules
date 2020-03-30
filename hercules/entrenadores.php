@@ -20,16 +20,20 @@
 	?>
 
 	<div id="contenido">
-		<h1>Todos los entrenadores disponibles</h1>
 
 		<form action="entrena_check.php" method="post">
 
 		<?php  
 
 			if (!isset($_SESSION['login'])) {
-				echo 'Registrate para realizar solicitudes de entrenamiento';
+				echo "<h1>Usuario no registrado!</h1>";
+				echo "<p>Debes iniciar sesión para realizar solicitudes de entrenamiento.</p>";
 			}
-			$arr = $ctrl->listarEntrenadores($_SESSION['usuario']->getNif());
+			else {
+				?>
+				<h1>Todos los entrenadores disponibles</h1>
+				<?php
+				$arr = $ctrl->listarEntrenadores($_SESSION['usuario']->getNif());
 			if (count($arr) > 0) {
 				echo '<table>';
 				  echo '<tr>'.'<th>Nombre</th>'.'<th>Titulacion</th>'.'<th>Especialidad</th>'.'<th>Experiencia</th>';
@@ -79,6 +83,7 @@
 			else {
 				echo "No parece haber entrenadores disponibles ahora mismo. Vuelve mas tarde.";
 			}
+		}
 		?>
 
 		</form>

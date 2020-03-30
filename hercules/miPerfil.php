@@ -16,15 +16,24 @@
 	<?php
 
 		require('includes/comun/cabecera.php');
-
+		if(isset($_SESSION['login'])){
+			require('miPerfilCabecera.php');
+		}
 	?>
 
 	<div id="contenido">
-		<h1>Buzón</h1>
 
 		<form action="buzon.php" method="post">
 
-		<?php  
+		<?php
+		if(!isset($_SESSION['login'])){
+			echo "<h1>Usuario no registrado!</h1>";
+			echo "<p>Debes iniciar sesión para ver el contenido.</p>";
+		}
+		else { //Usuario registrado
+			?>
+			<h1>Buzón de <?php echo $_SESSION['usuario']->getNombre(); ?></h1>
+			<?php
 			$arr = $ctrl->miBuzon($_SESSION['usuario']->getNif());
 			if (count($arr) > 0) {
 				foreach ($arr as $key => $value) {
@@ -34,8 +43,26 @@
 				}
 			}
 			else {
-				echo 'Nada por aqui. Pero ya verás... en cualquier momento...' . '<br>';
+				echo 'Bienvenid@' . '<br>'; ?>
+				<h2>Datos personales</h2>
+				<?php
+				$datos = $ctrl->consultarUsuario($_SESSION['usuario']->getNif());
+
+				echo '<table>';
+				foreach ($datos as $key => $valor) {
+							echo '<tr>';
+								echo '<td>'.$valor['nombre'].'</td>';					
+							echo'</tr>';
+							echo '<tr>';
+								echo '<td>'.$valor['nif'].'</td>';				
+							echo'</tr>';
+							echo '<tr>';
+								echo '<td>'.$valor['email'].'</td>';			
+							echo'</tr>';	
+				}
+				echo '</table>';
 			}
+		}
 		?>
 
 		</form>

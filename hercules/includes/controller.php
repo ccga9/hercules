@@ -13,10 +13,22 @@ class controller{
     public function __construct(){}
     
     //Funciones relacionadas con el usuario
-    public static function cargarUsuario($nif){
+    public static function consultarUsuario($nif){
         $usuarioDAO = new UsuarioDAO();
-        return $usuarioDAO->cargarUsuario($nif);
+        return $usuarioDAO->consultarUsuario($nif);
     }
+
+/*public static function cargarUsuario($nif){
+        $usuarioDAO = new UsuarioDAO();
+        $consulta = $usuarioDAO->cargarUsuario($nif);
+        $row = array(); 
+        if ($consulta) {
+
+
+        }
+    }*/
+
+
 
     public function listarEntrenadores($nif){
         $usuarioDAO = new UsuarioDAO();
