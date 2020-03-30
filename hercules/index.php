@@ -21,21 +21,6 @@
 
 	<div id="contenido">
 		<h1>Página principal</h1>
-
-		<!-- Prueba -->
-		<?php
-		echo
-		"<h3> Lista de alimentos </h3>
-		<form action='nada.php' method='POST'>
-		<select name='alimentos'";
-		foreach ($ctrl->listarAlimentos() as $key => $value)
-		{
-			echo
-			"option value = \"$key\" > \"$value\"</option>";
-		}
-		?>
-		<!-- Fin prueba -->
-		
 		<p> Aqui esta el contenido publico, visible para todos los usuarios. </p>
 	</div>
 
