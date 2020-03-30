@@ -1,7 +1,7 @@
 <?php
 
-include_once('DAO.php');
-include_once('alimentoTO.php');
+require_once(__DIR__.'/DAO.php');
+require_once(__DIR__.'/../TOs/alimentoTO.php');
 
 class alimentoDAO extends DAO
 {

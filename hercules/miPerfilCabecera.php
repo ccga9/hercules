@@ -15,7 +15,14 @@
 		<ul>
 			<li><a href= miPerfilComidas.php>Comidas</a></li>
 			<li><a href= miPerfilEntrenamientos.php>Entrenamientos</a></li>
-			<li><a href= miPerfilMisEntrenadores.php>Mis Entrenadores</a></li>
+			<?php  
+				if ($_SESSION['usuario']->getTipoUsuario()) {
+					echo '<li><a href= miPerfilMisEntrenadores.php>Mis Clientes</a></li>';
+				}
+				else {
+					echo '<li><a href= miPerfilMisEntrenadores.php>Mis Entrenadores</a></li>';
+				}
+			?>
 		</ul>
 	</div>
 

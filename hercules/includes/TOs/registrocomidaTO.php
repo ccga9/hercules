@@ -13,13 +13,13 @@ class comida
 		$this->usuario = "";
 		$this->comida = "";
 	}
-	public function __construct($d, $t, $u, $c)
+	/*public function __construct($d, $t, $u, $c)
 	{
 		$this->dia = $d;
 		$this->tipo = $t;
 		$this->usuario = $u;
 		$this->comida = $c;
-	}
+	}*/
 
 	public function get_dia()
 	{
