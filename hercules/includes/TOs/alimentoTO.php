@@ -17,7 +17,7 @@ class alimento
 		$this->proteínas = 0;
 		$this->grasas = 0;
 	}
-	public function __construct($id, $nom, $ct, $carb, $prot, $gras)
+	/*public function __construct($id, $nom, $ct, $carb, $prot, $gras)
 	{
 		$this->idAlimento = $id;
 		$this->nombre = $nom;

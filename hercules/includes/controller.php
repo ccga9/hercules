@@ -11,7 +11,6 @@ require_once(__DIR__ . '/DAOs/alimentoDAO.php');
 require_once(__DIR__ . '/DAOs/comidaDAO.php');
 require_once(__DIR__ . '/DAOs/entrenamientoDAO.php');
 require_once(__DIR__ . '/DAOs/recomendacionesDAO.php');
-require_once(__DIR__ . '/DAOs/registrocomidaDAO.php');
 
 class controller{
 
@@ -28,7 +27,6 @@ class controller{
         $comidaDAO = new comidaDAO();
         $entrenamientoDAO = new entrenamientoDAO();
         $recomendacionesDAO = new recomendacionesDAO();
-        $registrocomidaDAO = new registrocomidaDAO();
     }
     
     //Funciones relacionadas con el usuario
@@ -126,17 +124,16 @@ class controller{
     {
         $alimentoDAO = new alimentoDAO();
         $lista = $alimentoDAO->listarAlimentos();
-        //$fila = $mysqli_fetch_assoc($lista);
-
-        //$nombres = array();
-        $i = 1;
-        while ($fila = $mysqli_fetch_assoc($lista))
+        
+        $nombres = array();
+        $i = 0;
+        while ($fila = mysqli_fetch_assoc($lista))
         {
-            $nombres[$i] = $fila['nombre']; //i coincide con idAlimento
+            $nombres[$i] = $fila['nombre']; //i coincide con idAlimento - 1
             $i++;
         }
         return $nombres;
     }
-    
+
 }
 
