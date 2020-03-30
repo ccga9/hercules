@@ -3,7 +3,7 @@ class alimento
 {
 	private $idAlimento;
 	private $nombre;
-	private $caloríasConsumidas;
+	private $caloríasTotales;
 	private $carbohidratos;
 	private $proteínas;
 	private $grasas;
@@ -12,16 +12,16 @@ class alimento
 	{
 		$this->idAlimento = 0;
 		$this->nombre = "";
-		$this->caloríasConsumidas = 0;
+		$this->caloríasTotales = 0;
 		$this->carbohidratos = 0;
 		$this->proteínas = 0;
 		$this->grasas = 0;
 	}
-	public function __construct($id, $nom, $cc, $carb, $prot, $gras)
+	public function __construct($id, $nom, $ct, $carb, $prot, $gras)
 	{
 		$this->idAlimento = $id;
 		$this->nombre = $nom;
-		$this->caloríasConsumidas = $cc;
+		$this->caloríasTotales = $ct;
 		$this->carbohidratos = $carb;
 		$this->proteínas = $prot;
 		$this->grasas = $gras;
@@ -35,9 +35,9 @@ class alimento
 	{
 		return $this->nombre;
 	}
-	public function get_caloríasConsumidas()
+	public function get_caloríasTotales()
 	{
-		return $this->caloríasConsumidas;
+		return $this->caloríasTotales;
 	}
 	public function get_carbohidratos()
 	{
@@ -61,9 +61,9 @@ class alimento
 	{
 		$this->nombre = $nom;
 	}
-	public function set_caloríasConsumidas($cc)
+	public function set_caloríasTotales($ct)
 	{
-		$this->caloríasConsumidas = $cc;
+		$this->caloríasTotales = $ct;
 	}
 	public function set_carbohidratos($carb)
 	{

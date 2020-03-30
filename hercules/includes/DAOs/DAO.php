@@ -33,7 +33,7 @@ class DAO {
                     array_push($tablaDatos, $fila);
                 }
             }
-            return $tablaDatos;
+            return $tablaDatos; 
         } else{
             return 0;
         }

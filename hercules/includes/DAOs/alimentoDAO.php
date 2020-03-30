@@ -23,20 +23,21 @@ class alimentoDAO extends DAO
 
     public function consulta($idAlimento)
     {
-    	$filas = SelectArray("SELECT * from alimento where idAlimento = '\"$idAlimento\"'");
-    	/*$fila = $filas[0];
 
-    	$a = new alimento();
-    	$a->get_idAlimento() = $fila['idAlimento'];
-    	$a->get_nombre() = $fila['nombre'];
-    	$a->get_caloríasConsumidas() = $fila['caloriasConsumidas'];
-    	$a->get_carbohidratos() = $fila['carbohidratos'];
-    	$a->get_proteínas() = $fila['proteínas'];
-    	$a->get_grasas() = $fila['grasas'];
+        $query = "SELECT * FROM alimento WHERE idAlimento = ".$idAlimento."";
 
-    	return $a;*/
+        $res = consultar($query);
+        $fila = $res->fetch_assoc();
 
-    	return $this->consultar($query);
+        $alimento = new alimentoTO();
+        $alimento->set_idAlimento($fila['idAlimento']);
+        $alimento->set_nombre($fila['nombre']);
+        $alimento->set_caloríasTotales($fila['caloriasTotales']);
+        $alimento->set_carbohidratos($fila['carbohidratos']);
+        $alimento->set_proteínas($fila['proteínas']);
+        $alimento->set_grasas($fila['grasas']);
+
+        return $alimento;
     }
 
     public function inserta(alimento $a)
