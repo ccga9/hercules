@@ -139,10 +139,9 @@ class controller{
     {
         $alimentoDAO = new alimentoDAO();
         $lista = $alimentoDAO->listarAlimentos();
-        //$fila = $mysqli_fetch_assoc($lista);
 
-        //$nombres = array();
-        $i = 1;
+        $nombres = array();
+        $i = 0;
         while ($fila = $mysqli_fetch_assoc($lista))
         {
             $nombres[$i] = $fila['nombre']; //i coincide con idAlimento
