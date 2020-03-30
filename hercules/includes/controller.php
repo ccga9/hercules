@@ -121,5 +121,22 @@ class controller{
 
         return $consulta;
     }
+
+    public function listarAlimentos()
+    {
+        $alimentoDAO = new alimentoDAO();
+        $lista = $alimentoDAO->listarAlimentos();
+        //$fila = $mysqli_fetch_assoc($lista);
+
+        //$nombres = array();
+        $i = 1;
+        while ($fila = $mysqli_fetch_assoc($lista))
+        {
+            $nombres[$i] = $fila['nombre']; //i coincide con idAlimento
+            $i++;
+        }
+        return $nombres;
+    }
+    
 }
 
