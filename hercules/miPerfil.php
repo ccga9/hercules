@@ -46,20 +46,19 @@
 				echo 'Bienvenid@' . '<br>'; ?>
 				<h2>Datos personales</h2>
 				<?php
-				$datos = $ctrl->consultarUsuario($_SESSION['usuario']->getNif());
 
 				echo '<table>';
-				foreach ($datos as $key => $valor) {
-							echo '<tr>';
-								echo '<td>'.$valor['nombre'].'</td>';					
-							echo'</tr>';
-							echo '<tr>';
-								echo '<td>'.$valor['nif'].'</td>';				
-							echo'</tr>';
-							echo '<tr>';
-								echo '<td>'.$valor['email'].'</td>';			
-							echo'</tr>';	
-				}
+				
+				echo '<tr>';
+				 echo '<td>'.$_SESSION['usuario']->getNombre().'</td>';					
+				echo'</tr>';
+				echo '<tr>';
+				 echo '<td>'.$_SESSION['usuario']->getNif().'</td>';				
+				echo'</tr>';
+				echo '<tr>';
+				 echo '<td>'.$_SESSION['usuario']->getEmail().'</td>';			
+				echo'</tr>';	
+			
 				echo '</table>';
 			}
 		}

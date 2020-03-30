@@ -19,37 +19,30 @@ class controller{
     private $comidaDAO;
     private $entrenamientoDAO;
     private $recomendacionesDAO;
-    private $registrocomidaDAO;
     
     public function __construct(){
-        $usuarioDAO = new UsuarioDAO();
-        $alimentoDAO = new alimentoDAO();
-        $comidaDAO = new comidaDAO();
-        $entrenamientoDAO = new entrenamientoDAO();
-        $recomendacionesDAO = new recomendacionesDAO();
+        $this->usuarioDAO = new UsuarioDAO();
+        $this->alimentoDAO = new alimentoDAO();
+        $this->comidaDAO = new comidaDAO();
+        $this->entrenamientoDAO = new entrenamientoDAO();
+        $this->recomendacionesDAO = new recomendacionesDAO();
     }
     
+    //FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
+    
     //Funciones relacionadas con el usuario
-    public static function consultarUsuario($nif){
-        $usuarioDAO = new UsuarioDAO();
-        return $usuarioDAO->consultarUsuario($nif);
+    public function consultarUsuario($nif){
+        return $this->usuarioDAO->consultarUsuario($nif);
     }
 
-/*public static function cargarUsuario($nif){
-        $usuarioDAO = new UsuarioDAO();
-        $consulta = $usuarioDAO->cargarUsuario($nif);
-        $row = array(); 
-        if ($consulta) {
-
-
-        }
-    }*/
-
+    public function cargarUsuario($nif){
+        return $this->usuarioDAO->cargarUsuario($nif);
+    }
 
 
     public function listarEntrenadores($nif=0){
-        $usuarioDAO = new UsuarioDAO();
-        $consulta = $usuarioDAO->listarEntrenadores($nif);
+        //$usuarioDAO = new UsuarioDAO();
+        $consulta = $this->usuarioDAO->listarEntrenadores($nif);
 
         $row = array(); 
         $entrena = array();
@@ -67,10 +60,31 @@ class controller{
 
         return $entrena;
     }
+    
+    public function listarMisEntrenadores($nif=0){
+       
+        $consulta = $this->usuarioDAO->listarMisEntrenadores($nif);
+        
+        $row = array();
+        $entrena = array();
+        
+        if ($consulta) {
+            while ($fila = mysqli_fetch_assoc($consulta)){
+                $user = $this->usuarioDAO->cargarUsuario($fila['entrenador']);
+                $row['nombre'] = $user->getNombre();
+                $row['titulacion'] = $user->getTitulacion();
+                $row['especialidad'] = $user->getEspecialidad();
+                $row['experiencia'] = $user->getExperiencia();
+                
+                $entrena[$fila['entrenador']] = $row;
+            }
+        }
+        
+        return $entrena;
+    }
 
     public function listarSolicitudes($nif){
-        $usuarioDAO = new UsuarioDAO();
-        $consulta = $usuarioDAO->listarSolicitudes($nif);
+        $consulta = $this->usuarioDAO->listarSolicitudes($nif);
  
         $entrena = array();
 
@@ -85,15 +99,13 @@ class controller{
 
     public function enviarSolicitud($nif_user, $nif_entrena){
 
-        $usuarioDAO = new UsuarioDAO();
-        $consulta = $usuarioDAO->enviarSolicitud($nif_user, $nif_entrena);
+        $consulta = $this->usuarioDAO->enviarSolicitud($nif_user, $nif_entrena);
 
         return $consulta;
     }
 
     public function miBuzon($nif){
-        $usuarioDAO = new UsuarioDAO();
-        $consulta = $usuarioDAO->miBuzon($nif);
+        $consulta = $this->usuarioDAO->miBuzon($nif);
 
         $clientes = array();
 
@@ -106,7 +118,7 @@ class controller{
         $nom_clientes = array();
 
         foreach ($clientes as $value) {
-            $u = $usuarioDAO->cargarUsuario($value);
+            $u = $this->usuarioDAO->cargarUsuario($value);
             $nom_clientes[$u->getNif()] = $u->getNombre();
         }
 
@@ -114,26 +126,33 @@ class controller{
     }
 
     public function responderSolicitud($nif_entrena, $nif_cliente, $aceptar){
-        $usuarioDAO = new UsuarioDAO();
-        $consulta = $usuarioDAO->responderSolicitud($nif_entrena, $nif_cliente, $aceptar);
+        $consulta = $this->usuarioDAO->responderSolicitud($nif_entrena, $nif_cliente, $aceptar);
 
         return $consulta;
     }
+    
+    //FIN FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
+    
 
+    //FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     public function listarAlimentos()
     {
         $alimentoDAO = new alimentoDAO();
         $lista = $alimentoDAO->listarAlimentos();
-        
-        $nombres = array();
-        $i = 0;
-        while ($fila = mysqli_fetch_assoc($lista))
+        //$fila = $mysqli_fetch_assoc($lista);
+
+        //$nombres = array();
+        $i = 1;
+        while ($fila = $mysqli_fetch_assoc($lista))
         {
-            $nombres[$i] = $fila['nombre']; //i coincide con idAlimento - 1
+            $nombres[$i] = $fila['nombre']; //i coincide con idAlimento
             $i++;
         }
         return $nombres;
     }
-
+    
+    //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+    
+    
 }
 

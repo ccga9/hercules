@@ -14,7 +14,6 @@ class UsuarioDAO extends DAO {
     }
 
     public function consultarUsuario($nif){
-        $usuario = new TOUsuario($nif);
         $query = "SELECT * FROM usuario WHERE nif = '". $nif ."'";
         return $this->consultar($query);
     }
@@ -39,6 +38,9 @@ class UsuarioDAO extends DAO {
             $usuario->setAltura($row["altura"]);
             $usuario->setPreferencias($row["preferencias"]);
             $usuario->setTipoUsuario($row["tipoUsuario"]);
+            $usuario->setTitulacion($row["titulacion"]);
+            $usuario->setEspecialidad($row["especialidad"]);
+            $usuario->setExperiencia($row["experiencia"]);
             return $usuario;
         } else{
             return null;
@@ -77,6 +79,13 @@ class UsuarioDAO extends DAO {
         else {
             return null;
         }
+    }
+    
+    public function listarMisEntrenadores($nif){
+        
+        $query = "SELECT entrenador FROM usuarioentrenador WHERE usuario = '".$nif."' AND estado = 'aceptado'";
+       
+        return $this->consultar($query);
     }
 
     public function listarEntrenadores($nif){

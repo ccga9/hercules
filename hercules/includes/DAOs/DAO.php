@@ -24,7 +24,7 @@ class DAO {
         
     }
     
-    public function ejecutarConsulta($sql){
+    /*public function ejecutarConsulta($sql){
         if($sql != ""){
             $consulta = $this->mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
             $tablaDatos = array();
@@ -37,30 +37,12 @@ class DAO {
         } else{
             return 0;
         }
-    }
+    }*/
     
-    //Falta probar
-    protected function buscar(){
-        return $this->mysqli->query($query);
-    }
-    //Falta probar
-    protected function insertar($query){
-        return $this->mysqli->query($query);
-    }
-    
-    //Falta probar
-    protected function modificar($query){
-        return $this->mysqli->query($query);
-    }
     
     //Falta probar
     protected function consultar($query){
         return $this->mysqli->query($query);
-    }
-     
-    //Falta probar
-    protected function eliminar($query){
-        return '';
     }
 }
 

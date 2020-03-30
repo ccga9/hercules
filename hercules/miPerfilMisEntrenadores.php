@@ -27,43 +27,28 @@
 
 		<?php  
 			
-			$arr = $ctrl->listarEntrenadores($_SESSION['usuario']->getNif());
-			$estados = $ctrl->listarSolicitudes($_SESSION['usuario']->getNif());
-
-			if (count($arr) > 0) {
-
-				if(count($estados) > 1){
-					echo '<table>';
-					echo '<tr>'.'<th>Nombre</th>'.'<th>Titulacion</th>'.'<th>Especialidad</th>'.'<th>Experiencia</th>'.'<th>Seleccionar</th>';
-			
-					foreach ($arr as $key => $valor) {
-						if ($estados[$key] == 'aceptado'){
-							echo '<tr>';
-								echo '<td>'.$valor['nombre'].'</td>';
-							    echo '<td>'.$valor['titulacion'].'</td>';
-							    echo '<td>'.$valor['especialidad'].'</td>';
-							    echo '<td>'.$valor['experiencia'].'</td>';
-							    echo '<td>'.'<input type="radio" name="radio_entrenador" value='.$key.'>'.'</td>'; 
-							echo'</tr>';
-							}
-					}
-
-
-					echo '</table>';
-
-					if (isset($_SESSION['login'])) {
-						echo '<input type="submit" name="submit" Value="Ver entrenamientos recomendados"/>';
-					}
+			$arr = $ctrl->listarMisEntrenadores($_SESSION['usuario']->getNif());
+            
+			if(count($arr) > 0){
+			    echo '<table>';
+				echo '<tr>'.'<th>Nombre</th>'.'<th>Titulacion</th>'.'<th>Especialidad</th>'.'<th>Experiencia</th>'.'<th></th>';
+		
+				foreach ($arr as $key => $valor) {
+					echo '<tr>';
+						echo '<td>'.$valor['nombre'].'</td>';
+					    echo '<td>'.$valor['titulacion'].'</td>';
+					    echo '<td>'.$valor['especialidad'].'</td>';
+					    echo '<td>'.$valor['experiencia'].'</td>';
+					    echo '<td> <a href="perfil_Entrenador.php?id='.$key.'">Mostrar Perfil</a> </td>'; 
+					echo'</tr>';
+					
 				}
+				echo '</table>';
+			 }
+			 else {
+			     echo "Todavía no tiene entrenadores.";
+			 }
 
-				else {
-					echo "Todavía no tiene entrenadores.";
-				}
-
-			}
-			else {
-				echo "No parece haber entrenadores ahora mismo. Vuelve mas tarde.";
-			}
 		?>
 
 		</form>
