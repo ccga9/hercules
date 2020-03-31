@@ -14,7 +14,7 @@
 	<div class = "menu">
 		<ul>
 			<li><a href= miPerfilComidas.php>Comidas</a></li>
-			<li><a href= miPerfilEntrenamientos.php>Entrenamientos</a></li>
+			
 			<?php  
 				if ($_SESSION['usuario']->getTipoUsuario()) {
 					echo '<li><a href= miPerfilMisEntrenadores.php>Mis Clientes</a></li>';

@@ -40,7 +40,7 @@
 		?>
 
 		</form>
-
+		<button onclick="href= 'miPerfilEntrenamientos.php?idEntrenador='.$_GET['id'].'">Ver entrenamientos</button>
 	</div>
 
 	<?php	

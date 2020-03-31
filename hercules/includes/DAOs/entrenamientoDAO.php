@@ -14,65 +14,52 @@ class entrenamientoDAO extends DAO{
         parent::__construct();
     }
     
-    private static function buscaEntrenamiento($id){
-        $query = "SELECT * FROM entrenamiento_ejecicio WHERE id = '". $id ."'";
-        $app = aplicacion::getInstance();
-        $conn = $app->conexionBD();
-
-        $res = $conn->query($query);
-       
-        if ($res){
-			if($res->num_rows == 1) {
-				$row = $res->fetch_assoc();
-				$entrenamiento = new entrenamientoTO($row["id"],$row["tipo"]);
-				$rs->free();
-				return $entrenamiento;
-			}
-			$rs->free();
-		}	
-		else{
-            return null;
-        }
-    }
-    
-    private static function inserta($entrenamiento){
-     
-        $app = aplicacion::getInstance();
-        $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Entrenamiento(tipo) VALUES('%s')"
-            , $conn->real_escape_string($entrenamiento->tipo));
-        if ( $conn->query($query) ) {
-            $entrenamiento->id = $conn->insert_id;
-        } else {
-            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
-            exit();
-        }
-        return $entrenamiento;
-    
-    }
-    
-    private static function update($entrenamiento){
-     $app = aplicacion::getInstance();
-        $conn = $app->conexionBd();
-        $query=sprintf("UPDATE Entrenamiento E SET tipo = '%s' WHERE E.id=%i"
-            , $conn->real_escape_string($entrenamiento->tipo)
-            , $usuario->id);
-        if ( $conn->query($query) ) {
-            if ( $conn->affected_rows != 1) {
-                echo "No se ha podido actualizar el entrenamiento: " . $entrenamiento->id;
-                exit();
-            }
-        } else {
-            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
-            exit();
-        }
+    private static function listarEntrenamientos($id){
+        $query = "SELECT * FROM entrenamiento WHERE idUsuarioEntrenador = '". $id ."'";
         
-        return $entrenamiento;
+        return $this->consultar($query);
+    }
+    
+    private static function inserta(entrenamientoTO $entrenamiento){
+     
+        $query= 'INSERT INTO entrenamiento (`idEntrenamiento`, `idUsuarioEntrenador`, `tipo`, `fecha`) VALUES '
+        . "(" 
+        . "'".$entrenamiento->getIdEntrenamiento()."'" 
+        . ","
+        . "'".$entrenamiento->getIdUsuarioEntrenador()."'"
+        . "," 
+        . "'".$entrenamiento->getTipo()."'"
+        . ","
+        . "'".$entrenamiento->getFecha()."'"
+        . ")";
+
+        return $this->consultar($query);
+    
+    }
+    
+    private static function update(entrenamientoTO $entrenamiento){
+ 
+       $query= 'UPDATE entrenamiento (`idEntrenamiento`, `idUsuarioEntrenador`, `tipo`, `fecha`) VALUES '
+        . "(" 
+        . "'".$entrenamiento->getIdEntrenamiento()."'" 
+        . ","
+        . "'".$entrenamiento->getIdUsuarioEntrenador()."'"
+        . "," 
+        . "'".$entrenamiento->getTipo()."'"
+        . ","
+        . "'".$entrenamiento->getFecha()."'"
+        . ")";
+        
+       return $this->consultar($query);
     
 	}
     
+
     private static function delete($entrenamiento){
-        $query("DELETE Entrenamientos where id = '" . $entrenamiento->id . "' ");
+
+        $query= "DELETE entrenamiento where idEntrenamiento = '". $entrenamiento->idEntrenamiento ."'";
+
+        return $this->consultar($query);
     }
 }
 

@@ -52,9 +52,9 @@
 		?>
 
 		</form>
-
+		<button onclick="href= 'miPerfilEntrenamientos.php'">Ver entrenamientos</button>
 	</div>
-
+			
 	<?php	
 
 		require('includes/comun/pie.php');

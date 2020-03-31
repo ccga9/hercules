@@ -23,7 +23,8 @@
 	<div id="contenido">
 		<h1>Entrenamientos</h1>
 		<?php
-			echo "Apartado disponible en la práctica 3";
+			$idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_GET['idEntrenador'], $_SESSION['usuario']->getNif());
+			$entrenamientos = $ctrl->listarEntrenamientos($idUsuarioEntrenador);
 		?>
 	</div>
 

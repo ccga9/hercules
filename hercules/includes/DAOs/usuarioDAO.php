@@ -109,12 +109,18 @@ class UsuarioDAO extends DAO {
     }
 
     public function enviarSolicitud($nif_user, $nif_entrena){
-        $query = "INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES (NULL, '".$nif_user."',
+        $query = "INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES (0, '".
+        $nif_user."',
         '" . $nif_entrena . "',
         'pendiente')";
         return $this->consultar($query);
     }
 
+    public function getIdUsuarioEntrenador($nif_user, $nif_entrena){
+         $query = "SELECT idUsuarioEntrenador FROM usuarioentrenador WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."'";
+        return $this->consultar($query);
+
+    }
     public function responderSolicitud($nif_entrena, $nif_cliente, $aceptar){
         if ($aceptar) {
              $query = "UPDATE `usuarioentrenador` SET estado='aceptado' WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_cliente."'";
@@ -164,7 +170,7 @@ class UsuarioDAO extends DAO {
         $query .= ($u->getExperiencia() !== null)? "'".$u->getExperiencia()."'" : "NULL";
         $query .=  ")";
 
-        if ($this->insertar($query)) {
+        if ($this->consultar($query)) {
             return $u;
         }
         else {

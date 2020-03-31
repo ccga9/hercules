@@ -131,6 +131,11 @@ class controller{
         return $consulta;
     }
     
+    public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
+        $consulta = $this->usuarioDAO->getIdUsuarioEntrenador($nif_cliente, $nif_entrena);
+
+        return $consulta;
+    }
     //FIN FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     
 
@@ -151,6 +156,25 @@ class controller{
     }
     
     //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+
+
+    //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
+    public function listarEntrenamientos($idUsuarioEntrenador)
+    {
+
+        $lista = $entrenamientoDAO->listarEntrenamientos($idUsuarioEntrenador);
+
+        $nombres = array();
+        $i = 0;
+        while ($fila = $mysqli_fetch_assoc($lista))
+        {
+            $nombres[$i] = $fila['nombre']; //i coincide con idAlimento
+            $i++;
+        }
+        return $nombres;
+    }
+    
+    //FIN FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
     
 }

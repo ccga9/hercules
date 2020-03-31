@@ -3,39 +3,59 @@
  * Transfer Object entrenamiento
   */
 class entrenamientoTO {
-    private $id;
-	private $tipo;
+    private $idEntrenamiento;
+	private $idUsuarioEntrenador;
+    private $tipo;
+    private $fecha;
 	
 /**
  * Constructor del entrenamientoTO
  */
-    public function __construct($id = null, $tipo = null){
-      $this->id = $id;
-      $this->tipo = $tipo;
+    public function __construct(){
+    
     }
 
 /**
  * Constructor del entrenamientoTO
  */
-    /*public function __construct($id, $tipo){
-      $this->id = $id;
+    /* public function __construct($idEntrenamiento , $idUsuarioEntrenador,
+                                $tipo, $fecha){
+      $this->idEntrenamiento = $idEntrenamiento;
+      $this->idUsuarioEntrenador = $idUsuarioEntrenador;
       $this->tipo = $tipo;
-    }
-    */
+      $this->fecha = $fecha;
+    }*/
+    
 	/**
      * @return mixed
      */
-    public function getId()
+    public function getIdEntrenamiento()
     {
-        return $this->id;
+        return $this->idEntrenamiento;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $idEntrenamiento
      */
-    public function setId($id)
+    public function setIdEntrenamiento($idEntrenamiento)
     {
-        $this->id = $id;
+        $this->idEntrenamiento = $idEntrenamiento;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdUsuarioEntrenador()
+    {
+        return $this->idUsuarioEntrenador;
+    }
+
+    /**
+     * @param mixed $idEntrenamiento
+     */
+    public function setIdUsuarioEntrenador($id)
+    {
+        $this->idUsuarioEntrenador = $id;
     }
 
     /**
@@ -52,6 +72,21 @@ class entrenamientoTO {
     public function setTipo($tipo)
     {
         $this->tipo = $tipo;
+    }
+    /**
+     * @return mixed
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * @param mixed $tipo
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
     }
 }
 ?>
