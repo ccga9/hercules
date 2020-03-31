@@ -59,6 +59,7 @@ class controller{
         }
 
         return $entrena;
+        
     }
     
     public function listarMisEntrenadores($nif){
@@ -167,7 +168,7 @@ class controller{
 
         $nombres = array();
         $i = 0;
-        while ($fila = $mysqli_fetch_assoc($lista))
+        while ($fila = mysqli_fetch_assoc($lista))
         {
             $nombres[$i] = $fila['nombre']; //i coincide con idAlimento
             $i++;
