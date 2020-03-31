@@ -37,17 +37,18 @@
 		echo '<h2>Datos personales</h2>';
 		
 		echo '<table>';
-			echo '<tr><td>'.$entrenador->getNombre().'</td></tr>';
-			echo '<tr><td>'.$entrenador->getEmail().'</td></tr>';
-			echo '<tr><td>'.$entrenador->getTitulacion().'</td></tr>';
-			echo '<tr><td>'.$entrenador->getEspecialidad().'</td></tr>';
-			echo '<tr><td>'.$entrenador->getExperiencia().'</td></tr>';
+			echo '<tr><td>Nombre: '.$entrenador->getNombre().'</td></tr>';
+			echo '<tr><td>Email: '.$entrenador->getEmail().'</td></tr>';
+			echo '<tr><td>Titulacion: '.$entrenador->getTitulacion().'</td></tr>';
+			echo '<tr><td>Especialidad: '.$entrenador->getEspecialidad().'</td></tr>';
+			echo '<tr><td>Experiencia: '.$entrenador->getExperiencia().'</td></tr>';
 		echo '</table>';
 		
 		?>
 
 		</form>
-		<button onclick="href= 'miPerfilEntrenamientos.php?idEntrenador='.$_GET['id'].'">Ver entrenamientos</button>
+		
+		<button onclick="href= 'miPerfilEntrenamientos.php?idEntrenador='.$_GET['id'].">Ver entrenamientos</button>
 	</div>
 
 	<?php	

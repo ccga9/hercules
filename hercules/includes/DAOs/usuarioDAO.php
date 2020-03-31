@@ -87,6 +87,12 @@ class UsuarioDAO extends DAO {
        
         return $this->consultar($query);
     }
+    public function listarMisClientes($nif){
+        
+        $query = "SELECT usuario FROM usuarioentrenador WHERE entrenador = '".$nif."' AND estado = 'aceptado'";
+       
+        return $this->consultar($query);
+    }
 
     public function listarEntrenadores($nif){
         if ($nif) {
