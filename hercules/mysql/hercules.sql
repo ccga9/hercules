@@ -91,6 +91,29 @@ CREATE TABLE `ejercicio` (
   `multimedia` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `ejercicio`
+--
+
+INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
+(0, 'Sentadillas', 68, `Tonificacion` , 'Consiste en flexionar las rodillas y bajar el cuerpo manteniendo la verticalidad,
+  para luego regresar a una posición erguida.', $img);
+
+INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
+ (0, 'Jumping jacks', 188, `Cardio` , ' En la posición de inicio, abre las piernas a la anchura de los hombros, a continuación
+   júntalas con un leve salto mientras levantas los brazos a la vez para que las manos se toquen detrás de la cabeza.
+   Asegúrate de mantener la cabeza recta y la vista al frente.', $img);
+
+INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
+ (0, 'Planchas', 80, `Tonificacion` , 'Recuéstate boca abajo sobre la manta y luego apóyate sobre los antebrazos,
+   de modo que los codos queden ubicados debajo del pecho. Ahora, eleva tus piernas del piso sosteniéndote con las
+   puntas de los pies para formar la plancha .', $img);
+
+INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
+ (0, 'Remo con banda elástica', 133, `Fuerza` , 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde
+  las caderas, la columna vertebral de permanecer neutral. Tiramos desde los omóplatos hacia atrás y levantamos los codos
+  tanto como pueda. Baje lentamente y repita.', $img);
+
 -- --------------------------------------------------------
 
 --
