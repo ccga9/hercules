@@ -59,6 +59,7 @@ class controller{
         }
 
         return $entrena;
+        
     }
     
     public function listarMisEntrenadores($nif){
