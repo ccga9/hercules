@@ -24,11 +24,18 @@
 	?>
 
 	<div id="contenido">
-
-		<h1>Perfil de Entrenador/a</h1>
-		
-		<h2>Datos personales</h2>
+	
 		<?php
+
+		if ($entrenador->getTipoUsuario()) {
+		    echo '<h1>Perfil de Entrenador/a</h1>';
+		}
+		else {
+		    echo '<h1>Perfil de Cliente</h1>';
+		}
+		
+		echo '<h2>Datos personales</h2>';
+		
 		echo '<table>';
 			echo '<tr><td>'.$entrenador->getNombre().'</td></tr>';
 			echo '<tr><td>'.$entrenador->getEmail().'</td></tr>';
