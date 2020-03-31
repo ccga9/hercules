@@ -25,7 +25,11 @@
 		<?php
 			$idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_GET['idEntrenador'], $_SESSION['usuario']->getNif());
 			$entrenamientos = $ctrl->listarEntrenamientos($idUsuarioEntrenador);
+
+			
 		?>
+
+
 	</div>
 
 	<?php	

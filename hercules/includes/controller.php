@@ -61,7 +61,7 @@ class controller{
         return $entrena;
     }
     
-    public function listarMisEntrenadores($nif=0){
+    public function listarMisEntrenadores($nif){
        
         $consulta = $this->usuarioDAO->listarMisEntrenadores($nif);
         
@@ -77,6 +77,26 @@ class controller{
                 $row['experiencia'] = $user->getExperiencia();
                 
                 $entrena[$fila['entrenador']] = $row;
+            }
+        }
+        
+        return $entrena;
+    }
+
+     public function listarMisClientes($nif){
+       
+        $consulta = $this->usuarioDAO->listarMisClientes($nif);
+        
+        $row = array();
+        $entrena = array();
+        
+        if ($consulta) {
+            while ($fila = mysqli_fetch_assoc($consulta)){
+                $user = $this->usuarioDAO->cargarUsuario($fila['usuario']);
+                $row['nombre'] = $user->getNombre();
+                $row['email'] = $user->getEmail();
+
+                $entrena[$fila['usuario']] = $row;
             }
         }
         
@@ -162,16 +182,22 @@ class controller{
     public function listarEntrenamientos($idUsuarioEntrenador)
     {
 
-        $lista = $entrenamientoDAO->listarEntrenamientos($idUsuarioEntrenador);
+        $consulta = $entrenamientoDAO->listarEntrenamientos($idUsuarioEntrenador);
 
-        $nombres = array();
-        $i = 0;
-        while ($fila = $mysqli_fetch_assoc($lista))
-        {
-            $nombres[$i] = $fila['nombre']; //i coincide con idAlimento
-            $i++;
+        $row = array();
+        $entrena = array();
+        
+        if ($consulta) {
+            while ($fila = mysqli_fetch_assoc($consulta)){
+                $user = $this->entrenamientoDAO->cargarEntrenamiento($fila['idEntrenamiento']);
+                $row['nombre'] = $user->getNombre();
+                $row['email'] = $user->getEmail();
+
+                $entrena[$fila['usuario']] = $row;
+            }
         }
-        return $nombres;
+        
+        return $entrena;
     }
     
     //FIN FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /

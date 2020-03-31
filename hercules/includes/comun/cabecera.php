@@ -28,6 +28,7 @@
 		  <li><a href= miPerfil.php>Mi Perfil</a></li>
 		  <li><a href= quienes_somos.php>Quienes Somos</a></li>
 		  <li><a href= faqs.php>FAQs</a></li>
+		  <li><a href= contacto.php>Contacto</a></li>
 		</ul>
 
 	</div>
