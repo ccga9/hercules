@@ -17,7 +17,7 @@
 	?>
 
 	<div id="contenido">
-		<h1>FAQs</h1>
+		<h1>Quienes somos</h1>
 		<p> Disponible para la práctica 3 </p>
 	</div>
 
