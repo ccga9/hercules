@@ -8,23 +8,17 @@ class entrenamientoTO {
     private $tipo;
     private $fecha;
 	
-/**
- * Constructor del entrenamientoTO
- */
-    public function __construct(){
-    
-    }
 
 /**
  * Constructor del entrenamientoTO
  */
-    /* public function __construct($idEntrenamiento , $idUsuarioEntrenador,
-                                $tipo, $fecha){
+     public function __construct($idEntrenamiento  = null , $idUsuarioEntrenador = null,
+                                $tipo = null, $fecha = null){
       $this->idEntrenamiento = $idEntrenamiento;
       $this->idUsuarioEntrenador = $idUsuarioEntrenador;
       $this->tipo = $tipo;
       $this->fecha = $fecha;
-    }*/
+    }
     
 	/**
      * @return mixed
