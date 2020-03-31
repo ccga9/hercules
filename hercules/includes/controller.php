@@ -175,6 +175,16 @@ class controller{
         }
         return $nombres;
     }
+
+    public function registrarComida()
+    {
+        return $this->comidaDAO->registrarComida();
+    }
+
+    public function verComidas()
+    {
+        return $this->comida->verComidas();
+    }
     
     //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
