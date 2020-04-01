@@ -219,10 +219,12 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
 
         if ($consulta) {
             while ($fila = mysqli_fetch_assoc($consulta)){
+
                 $entrenamiento = $this->entrenamientoDAO->cargarEntrenamiento($fila['idEntrenamiento']);
 
-                $row['nombre'] = $consulta->getNombre();
-                $row['fecha'] = $consulta->getFecha();
+                $row['nombre'] = $entrenamiento->getNombre();
+                 echo  $row['nombre'];
+                $row['fecha'] = $entrenamiento->getFecha();
 
                  $consulta2 = $ejercicioDAO->listarEjercicios($idEntrenamiento);
 

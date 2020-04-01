@@ -86,7 +86,7 @@ CREATE TABLE `ejercicio` (
   `idEjercicio` int(10) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   `caloriasGastadas` int(4) UNSIGNED NOT NULL,
-  `tipo` varchar(10) NOT NULL,
+  `tipo` varchar(25) NOT NULL,
   `descripcion` text NOT NULL,
   `multimedia` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -95,24 +95,24 @@ CREATE TABLE `ejercicio` (
 -- Volcado de datos para la tabla `ejercicio`
 --
 
-INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
-(0, 'Sentadillas', 68, `Tonificacion` , 'Consiste en flexionar las rodillas y bajar el cuerpo manteniendo la verticalidad,
-  para luego regresar a una posición erguida.', $img);
+INSERT INTO `ejercicio` (`idEjercicio`,`nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
+(1, 'Sentadillas', 68, 'Tonificacion' , 'Consiste en flexionar las rodillas y bajar el cuerpo manteniendo la verticalidad,
+  para luego regresar a una posición erguida.', '');
 
-INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
- (0, 'Jumping jacks', 188, `Cardio` , ' En la posición de inicio, abre las piernas a la anchura de los hombros, a continuación
+INSERT INTO `ejercicio` (`idEjercicio`,`nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
+ (2, 'Jumping jacks', 188, 'Cardio' , ' En la posición de inicio, abre las piernas a la anchura de los hombros, a continuación
    júntalas con un leve salto mientras levantas los brazos a la vez para que las manos se toquen detrás de la cabeza.
-   Asegúrate de mantener la cabeza recta y la vista al frente.', $img);
+   Asegúrate de mantener la cabeza recta y la vista al frente.', '');
 
 INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
- (0, 'Planchas', 80, `Tonificacion` , 'Recuéstate boca abajo sobre la manta y luego apóyate sobre los antebrazos,
+ (3,'Planchas', 80, 'Tonificacion' , 'Recuéstate boca abajo sobre la manta y luego apóyate sobre los antebrazos,
    de modo que los codos queden ubicados debajo del pecho. Ahora, eleva tus piernas del piso sosteniéndote con las
-   puntas de los pies para formar la plancha .', $img);
+   puntas de los pies para formar la plancha .', '');
 
 INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
- (0, 'Remo con banda elástica', 133, `Fuerza` , 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde
+ (4, 'Remo con banda elástica', 133, 'Fuerza' , 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde
   las caderas, la columna vertebral de permanecer neutral. Tiramos desde los omóplatos hacia atrás y levantamos los codos
-  tanto como pueda. Baje lentamente y repita.', $img);
+  tanto como pueda. Baje lentamente y repita.', '');
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,7 @@ INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `d
 CREATE TABLE `entrenamiento` (
   `idEntrenamiento` int(10) NOT NULL,
   `idUsuarioEntrenador` int(10) NOT NULL,
-  `tipo` varchar(10) NOT NULL,
+  `nombre` varchar(10) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -184,7 +184,10 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`, `titulacion`, `especialidad`, `experiencia`) VALUES
 ('01234568F', 'SOLID SNAKE', '$2y$10$jrEMOknXYLCVAvcd7K9PuO0/JtYzpwljmxw7lj7zqXGZouDkkB2Q2', NULL, 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Maestro del sigilo', 'Gluteos', 'Demasiada'),
-('26515643R', 'JUAN LIU', '$2y$10$vsnM.mnZYqtDZ8GbhnCIiu0qJwylwmaZsfk7sD.i8LycSq3nzbYmy', NULL, 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
+('26515643R', 'JUAN LIU', '$2y$10$vsnM.mnZYqtDZ8GbhnCIiu0qJwylwmaZsfk7sD.i8LycSq3nzbYmy', NULL, 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+('50259205L', 'EMILIO JOSé VALENCIA', '$2y$10$sKUix8BEnoob0HUC36phMOurd3S4/lCMpguG9iLO4ieQ7/IDWueOK', NULL, 'emiliova@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Monitor', 'Pesas', '4 años'),
+('50259206L', 'PEP GUARDIOLA', '$2y$10$v2/1j1AQMrt8bGN9Kvvd4uEksmjYQhsGss4b7nuym3CK4fzOVofOW', NULL, 'emiliovalenciabarcelona@gmail.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador', 'Entrenador Fútbol', '10 años'),
+('50259207L', 'MIRIAM ELIZABETH', '$2y$10$B8vficduIFMyEkleLWrEWOHJeLAp9rRXVC4pBqeo5NqKCEQML4n5e', NULL, 'miriam@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -202,6 +205,9 @@ CREATE TABLE `usuarioentrenador` (
 --
 -- Índices para tablas volcadas
 --
+INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
+(1, '50259207L', '50259205L', 'aceptado');
+
 
 --
 -- Indices de la tabla `alimento`

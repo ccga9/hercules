@@ -26,15 +26,18 @@ class entrenamientoDAO extends DAO{
         $query = "SELECT * FROM entrenamientoejercicio WHERE idEntrenamiento = '". $idEntrenamiento ."'";
         
         $res = $this->consultar($query);
-        if ($res && $res->num_rows > 0) {
+
+        if ($res) {
             $row = $res->fetch_assoc();
             $entrenamiento = new entrenamientoTO();
             $entrenamiento->setIdEntrenamiento($idEntrenamiento);
             $entrenamiento->setIdUsuarioEntrenador($row["idUsuarioEntrenador"]);
+            echo $row["nombre"];
             $entrenamiento->setNombre($row["nombre"]);
             $entrenamiento->setFecha($row["fecha"]);
             return $entrenamiento;
         } else{
+            echo "No entra";
             return null;
         }
     }

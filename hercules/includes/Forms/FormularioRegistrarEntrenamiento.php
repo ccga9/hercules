@@ -72,11 +72,11 @@ class FormularioRegistrarEntrenamiento extends Form {
     protected function procesaFormulario($datos)
     {
     	$erroresFormulario = array();
-        $hoy = date("Y-m-d");
+       /* $hoy = date("Y-m-d");
 
         if ( $hoy < $datos['fecha'] ) {
             $erroresFormulario[] = "Fecha Incorrecta";
-        }
+        }*/
 
 		
 
@@ -88,16 +88,16 @@ class FormularioRegistrarEntrenamiento extends Form {
 	        $dao = new entrenamientoDAO();
 
             $idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_SESSION['usuario']->getNif(), $datos['cliente']);
-
+            echo $idUsuarioEntrenador;
             $to = new entrenamientoTO(0,$idUsuarioEntrenador, $datos['nombre'], $datos['fecha'], $datos['repeticiones']);
             $entrenamiento = $dao->inserta($to);
  
 
 		}
  
-		if (count($erroresFormulario) === 0) {
+		/*if (count($erroresFormulario) === 0) {
 			$erroresFormulario = "index.php";
-		}
+		}*/
 
         return $erroresFormulario;
     }
