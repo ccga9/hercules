@@ -1,12 +1,10 @@
 <?php 
     require_once 'includes/config.php';
 ?>
-
 <!DOCTYPE html>
-
 <html>
 	<head>
-	<title>RegistrarComida</title>
+	<title>HERCULES</title>
 	<meta charset="UTF-8"> 
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css">
 	</head>
@@ -20,34 +18,56 @@
 		
 		<div id="contenido">
 		
-		<h1> Lista de alimentos </h1>
 		<?php
 		  if (!isset($_SESSION['login'])) {	
 		      echo 'Entra con tu usuario para registrar comida'.'<br>';
 		  }
 
-		$nif_usuario = $_SESSION['usuario']->getNif();
-
+		$alimentos = $ctrl->listarAlimentos();
 		?>
-		<!--<form action='nada.php' method='POST' id="alimentoform">-->
-		  <label for="nombre">Alimento :</label>
-		 
- 			 <select id="alimentos" name="alimentos" form="alimentoform">
- 			<?php
-				$alimentos = $ctrl->listarAlimentos();
+		<form action='InsertaComida.php' method='POST' id="alimentoform">
+			
+			<label for="instrucciones_tipo"> Escoge el tipo de comida que desees:</label>
+			<input type="radio" name="tipo" value="desayuno" checked/> desayuno
+			<input type="radio" name="tipo" value="comida"/> comida
+			<input type="radio" name="tipo" value="cena"/> cena
+
+			<p> - - - </p>
+
+			<label for="instrucciones_alimentos">Selecciona entre 1 y 3 platos, dependiendo del tipo de comida que hayas escogido y la cantidad que quieras comer:</label>
+
+		  	<label for="nombre_1">Primer plato o plato único</label>
+			<select id="alimento_1" name="alimento_1" form="alimentoform">
+				<option value = ""> </option>
+				<?php
 				foreach ($alimentos as $key => $value)
-				{
-					echo
-					"<option value = '".$value."'>".$value."</option>";
-				}
+					echo "<option value = '".$value."'>".$value."</option>";
 				?>
 			</select>
-		
- 		    <label for="peso">Peso :</label>
-  			<input type="text" id="lname" name="lname" value="En Gramos">
- 			 
- 		   <p><input type="submit" value="Submit"></p>
-		<!--</form>-->
+
+			<label for="nombre_2">Segundo plato</label>
+			<select id="alimento_2" name="alimento_2" form="alimentoform">
+				<option value = ""> </option>
+				<?php
+				foreach ($alimentos as $key => $value)
+					echo "<option value = '".$value."'>".$value."</option>";
+				?>
+			</select>
+
+			<label for="nombre_3">Postre</label>
+			<select id="alimento_3" name="alimento_3" form="alimentoform">
+				<option value = ""> </option>
+				<?php
+				foreach ($alimentos as $key => $value)
+					echo "<option value = '".$value."'>".$value."</option>";
+				?>
+			</select>
+
+		    <label for="peso">Peso :</label>
+			<input type="text" id="lname" name="lname" value="En Gramos">
+			 
+		   <p><input type="submit" value="Submit"></p>
+		</form>
 		  
 
 	</div><!-- fin contenido -->

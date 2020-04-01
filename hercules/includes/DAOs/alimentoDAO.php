@@ -43,21 +43,21 @@ class alimentoDAO extends DAO
     {
     	$query = "INSERT into alimento (nombre, caloriasConsumidas, carbohidratos, proteínas, grasas) values ('".$a->get_nombre()."','".$a->get_caloríasConsumidas()."','".$a->get_carbohidratos()."','".$a->get_proteínas()."','".$a->get_grasas()."') where idAlimento = '".$a->get_idAlimento()."'";
 
-    	return $this->insertar($query);
+    	return $this->consultar($query);
     }
 
     public function actualiza(alimentoTO $a)
     {
     	$query = "UPDATE alimento (nombre, caloriasConsumidas, carbohidratos, proteínas, grasas) values (".$a->get_nombre()."','".$a->get_caloríasConsumidas()."','".$a->get_carbohidratos()."','".$a->get_proteínas()."','".$a->get_grasas()."') where idAlimento = '".$a->get_idAlimento()."'";
 
-    	return $this->modificar($query);
+    	return $this->consultar($query);
     }
 
     public function elimina(alimentoTO $a)
     {
     	$query = "DELETE alimento where idAlimento = '".$a->get_idAlimento()."'";
 
-    	return $this->eliminar($query);
+    	return $this->consultar($query);
     }
 
 }

@@ -196,9 +196,9 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
         return $nombres;
     }
 
-    public function registrarComida()
+    public function registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
     {
-        return $this->comidaDAO->registrarComida();
+        return $this->comidaDAO->registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif);
     }
 
     public function verComidas()

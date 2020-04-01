@@ -23,11 +23,6 @@
 	<div id="contenido">
 		<h1>Comidas</h1>
 
-		<!-- 1º dos formularios, uno para verComidas, y otro para registarComida:
-			- verComidas es una lista de selección con las comidas que ha usado previamente el usuario.
-		 	- registrarComida te lleva a otra página php y te propone 3 alimentos a escoger (en una lista de selección) 	además del tipo de comida que quieres.
-		-->
-
 		<p>Ver comidas (alimentos escogidos previamente):</p>
 		<select name='comidas'>
 			<p><?php
