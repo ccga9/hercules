@@ -1,5 +1,5 @@
 <?php 
-    require_once'includes/config.php';
+    require_once 'includes/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +15,7 @@
 	<div id="contenedor">
 		<?php
 			require('includes/comun/cabecera.php');
+			require('miPerfilCabecera.php');
 		?>
 		
 		<div id="contenido">
@@ -24,8 +25,11 @@
 		  if (!isset($_SESSION['login'])) {	
 		      echo 'Entra con tu usuario para registrar comida'.'<br>';
 		  }
+
+		$nif_usuario = $_SESSION['usuario']->getNif();
+
 		?>
-		<form action='nada.php' method='POST' id="alimentoform">
+		<!--<form action='nada.php' method='POST' id="alimentoform">-->
 		  <label for="nombre">Alimento :</label>
 		 
  			 <select id="alimentos" name="alimentos" form="alimentoform">
@@ -42,8 +46,8 @@
  		    <label for="peso">Peso :</label>
   			<input type="text" id="lname" name="lname" value="En Gramos">
  			 
- 		   <input type="submit" value="Submit">
-		</form>
+ 		   <p><input type="submit" value="Submit"></p>
+		<!--</form>-->
 		  
 
 	</div><!-- fin contenido -->
