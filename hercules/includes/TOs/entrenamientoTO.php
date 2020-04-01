@@ -13,8 +13,8 @@ class entrenamientoTO {
 /**
  * Constructor del entrenamientoTO
  */
-     public function __construct($idEntrenamiento, $idUsuarioEntrenador,
-                                $nombre, $fecha, $repeticiones){
+     public function __construct($idEntrenamiento = null, $idUsuarioEntrenador = null,
+                                $nombr = null, $fecha= null, $repeticiones = null){
       $this->idEntrenamiento = $idEntrenamiento;
       $this->idUsuarioEntrenador = $idUsuarioEntrenador;
       $this->nombre = $nombre;

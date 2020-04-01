@@ -11,6 +11,7 @@ require_once(__DIR__ . '/DAOs/alimentoDAO.php');
 require_once(__DIR__ . '/DAOs/comidaDAO.php');
 require_once(__DIR__ . '/DAOs/entrenamientoDAO.php');
 require_once(__DIR__ . '/DAOs/recomendacionesDAO.php');
+require_once(__DIR__ . '/DAOs/ejercicioDAO.php');
 
 class controller{
 

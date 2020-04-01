@@ -54,7 +54,7 @@ class comidaDAO extends DAO
 
         if ($alimento_1 != null)
         {
-            $query_c_a1 = "SELECT idAlimento, nombre from alimento where nombre = '".$alimento_1"'";
+            $query_c_a1 = "SELECT idAlimento, nombre from alimento where nombre = '".$alimento_1."'";
             $consultaA1 = query($query_c_a1);
             $a1 = mysqli_fetch_assoc($consultaA1);
             $a1_id = $a1['idAlimento'];
@@ -64,7 +64,7 @@ class comidaDAO extends DAO
 
         if ($alimento_2 != null)
         {
-            $query_c_a2 = "SELECT idAlimento, nombre from alimento where nombre = '".$alimento_2"'";
+            $query_c_a2 = "SELECT idAlimento, nombre from alimento where nombre = '".$alimento_2."'";
             $consultaA2 = query($query_c_a2);
             $a2 = mysqli_fetch_assoc($consultaA2);
             $a2_id = $a2['idAlimento'];
@@ -74,7 +74,7 @@ class comidaDAO extends DAO
 
         if ($alimento_3 != null)
         {
-            $query_c_a3 = "SELECT idAlimento, nombre from alimento where nombre = '".$alimento_3"'";        
+            $query_c_a3 = "SELECT idAlimento, nombre from alimento where nombre = '".$alimento_3."'";        
             $consultaA3 = query($query_c_a3);
             $a3 = mysqli_fetch_assoc($consultaA3);
             $a3_id = $a3['idAlimento'];
@@ -84,7 +84,9 @@ class comidaDAO extends DAO
 
         if (($alimento_1 != null) && ($tipo != null))
         {
-            $query_i_comida = "INSERT into comida(dia, tipo, usuario) values ('"sysdate"','"$tipo"','"$nif"')";
+            $fecha = getdate();
+          
+            $query_i_comida = "INSERT into comida(dia, tipo, usuario) values (".$fecha.",'".$tipo."','".$nif."')";
             // where idComida = '".$nuevo_num_id."'";   
         }
         else
