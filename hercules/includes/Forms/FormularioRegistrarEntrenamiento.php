@@ -1,8 +1,6 @@
 <?php  
 
 require_once(__DIR__.'/Form.php');
-require_once(__DIR__.'/../DAOs/entrenamientoDAO.php');
-require_once(__DIR__.'/../TOs/entrenamientoTO.php');
 require_once(__DIR__.'/../../registrarEntrenamiento.php');
 require_once(__DIR__.'/../config.php');
 require_once(__DIR__.'/../controller.php');
@@ -83,15 +81,19 @@ class FormularioRegistrarEntrenamiento extends Form {
         if ( $datos['repeticiones'] <= 0 ) {
             $erroresFormulario[] = "Numero de repeticiones incorrectas";
         }
+        if(empty($datos['ejercicios']) ){
+            $erroresFormulario[] = "Debes seleccionar al menos un ejercicio";
+        }
+
+
          $ctrl = controller::getInstance();
+
+
 		if (count($erroresFormulario) === 0) {
-	        $dao = new entrenamientoDAO();
 
             $idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_SESSION['usuario']->getNif(), $datos['cliente']);
-            echo $idUsuarioEntrenador;
-            $to = new entrenamientoTO(0,$idUsuarioEntrenador, $datos['nombre'], $datos['fecha'], $datos['repeticiones']);
-            $entrenamiento = $dao->inserta($to);
- 
+            
+            $ctrl->nuevoEntrenamiento($datos, $idUsuarioEntrenador);
 
 		}
  

@@ -202,7 +202,7 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
 
     public function verComidas()
     {
-        return $this->comidaDAO->verComidas();
+        return $this->comida->verComidas();
     }
     
     //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
@@ -247,6 +247,26 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
         }
         
         return $entrena;
+    }
+
+     public function nuevoEntrenamiento($datos, $idUsuarioEntrenador)
+    {   
+       $entrenamiento = $this->entrenamientoDAO->crearEntrenamiento($datos, $idUsuarioEntrenador);
+
+       foreach ($datos['ejercicios'] as $nombre) {
+        echo $nombre;
+            $consulta = $this->ejercicioDAO->buscarIdEntrenamiento($nombre);
+
+            if($consulta){
+                 $fila = mysqli_fetch_assoc($consulta);
+
+                $id = $fila['idEntrenamiento'];
+            }
+            $this->agregarEjercicioaEntrenamiento($entrenamiento->getIdEntrenamiento(), $id);
+
+       }
+    
+        
     }
     
     //FIN FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /

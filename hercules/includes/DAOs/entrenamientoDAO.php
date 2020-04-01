@@ -14,12 +14,32 @@ class entrenamientoDAO extends DAO{
         parent::__construct();
     }
     
+
     public function listarEntrenamientos($id){
         $query = "SELECT * FROM entrenamiento WHERE idUsuarioEntrenador = '". $id ."'";
         
         return $this->consultar($query);
     }
     
+    public function crearEntrenamiento($datos, $idUsuarioEntrenador){
+        $to = new entrenamientoTO($idUsuarioEntrenador, $datos['nombre'], $datos['fecha'], $datos['repeticiones']);
+       $this->inserta($to);
+
+       $res = $this->buscarIdEntrenamiento($idUsuarioEntrenador,  $datos['nombre'], $datos['fecha']);
+
+       if($res){
+            $row = $res->fetch_assoc();
+            $to->setIdEntrenamiento($row['idEntrenamiento']);
+       }
+
+        return $to;
+    }
+
+    public function buscarIdEntrenamiento($idUsuarioEntrenador, $nombre, $fecha){
+        $query = "SELECT idEntrenamiento FROM entrenamiento WHERE idUsuarioEntrenador = '".$idUsuarioEntrenador."' AND  nombre = '".$nombre."' AND fecha = '".$fecha."'";
+
+        return $this->consultar($query);
+    }
 
      public function cargarEntrenamiento($idEntrenamiento){
         $entrenamiento = new entrenamientoTO($idEntrenamiento);
@@ -53,7 +73,7 @@ class entrenamientoDAO extends DAO{
        '".$entrenamiento->getFecha()."'
         )";
   
-        return $this->consultar($query);
+    $this->consultar($query);
     
     }
     

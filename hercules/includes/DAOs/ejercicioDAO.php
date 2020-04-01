@@ -21,10 +21,27 @@ class ejercicioDAO extends DAO
     	
     	return $this->consultar($query);
     }
+    public function buscarIdEjercicio($nombre){
 
+        $query = "SELECT * from ejercicio WHERE $nombre = '". $nombre ."'";
+        
+        return $this->consultar($query);
+    }
+
+    public function agregarEjercicioaEntrenamiento($idEntrenamiento, $idEjercicio){
+
+        $query= "INSERT INTO `entrenamientoejercicio` (`idEntrenamiento`, `idEjercicio`) VALUES(
+        ".$idEntrenamiento."
+         , 
+        '".$idEjercicio()."'
+        )";
+
+        $this->consultar($query);
+
+    }
     public function cargarEjercicio($idEjercicio) 
     {   
-        $query = "SELECT * FROM ejercicio WHERE idEjercicio = '". idEjercicio ."'";
+        $query = "SELECT * FROM ejercicio WHERE idEjercicio = '". $idEjercicio ."'";
         
         $res = consultar($query);
         
