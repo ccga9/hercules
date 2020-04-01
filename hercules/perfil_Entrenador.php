@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>
