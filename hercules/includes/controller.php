@@ -14,19 +14,31 @@ require_once(__DIR__ . '/DAOs/recomendacionesDAO.php');
 
 class controller{
 
-    private $usuarioDAO;
+   private $usuarioDAO;
     private $alimentoDAO;
     private $comidaDAO;
     private $entrenamientoDAO;
     private $recomendacionesDAO;
-    
+    private $ejercicioDAO;
+    private static $instance = null;
+
     public function __construct(){
         $this->usuarioDAO = new UsuarioDAO();
         $this->alimentoDAO = new alimentoDAO();
         $this->comidaDAO = new comidaDAO();
         $this->entrenamientoDAO = new entrenamientoDAO();
         $this->recomendacionesDAO = new recomendacionesDAO();
+        $this->ejercicioDAO = new ejercicioDAO();
     }
+
+     public static function getInstance() {
+        if (null === self::$instance) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+    
     
     //FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     
@@ -152,10 +164,16 @@ class controller{
         return $consulta;
     }
     
-    public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
+public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
         $consulta = $this->usuarioDAO->getIdUsuarioEntrenador($nif_cliente, $nif_entrena);
+        $id = null;
+        if ($consulta) {
+            $fila = mysqli_fetch_assoc($consulta);
 
-        return $consulta;
+                $id = $fila['id'];
+
+        }
+        return $id;
     }
     //FIN FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     
@@ -189,22 +207,39 @@ class controller{
     //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
 
-    //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
+   //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     public function listarEntrenamientos($idUsuarioEntrenador)
     {
-
-        $consulta = $entrenamientoDAO->listarEntrenamientos($idUsuarioEntrenador);
+        $consulta = $this->entrenamientoDAO->listarEntrenamientos($idUsuarioEntrenador);
 
         $row = array();
         $entrena = array();
-        
+        $ejercicios = array();
+
         if ($consulta) {
             while ($fila = mysqli_fetch_assoc($consulta)){
-                $user = $this->entrenamientoDAO->cargarEntrenamiento($fila['idEntrenamiento']);
-                $row['nombre'] = $user->getNombre();
-                $row['email'] = $user->getEmail();
+                $entrenamiento = $this->entrenamientoDAO->cargarEntrenamiento($fila['idEntrenamiento']);
 
-                $entrena[$fila['usuario']] = $row;
+                $row['nombre'] = $consulta->getNombre();
+                $row['fecha'] = $consulta->getFecha();
+
+                 $consulta2 = $ejercicioDAO->listarEjercicios($idEntrenamiento);
+
+                    while($filaEjercicios = mysqli_fetch_assoc($consulta2)){
+
+                        $ejercicio = $this->ejercicioDAO->cargarEjercicio($filaEjercicios['idEjercicio']);
+
+                        $ejercicios['nombreEjercicio'] = $ejercicio->getNombre();
+                        $ejercicios['caloriasGastadas'] = $ejercicio->getCaloriasGastadas();
+                        $ejercicios['descripcion'] = $ejercicio->getDescripcion();
+                        
+                        $ejercicios['repeticiones'] = $consulta2->getRepeticiones();
+
+                         $row['ejercicios'] = $ejercicios;
+                    }
+
+                     
+                $entrena[$fila['entrenamiento']] = $row;
             }
         }
         
@@ -212,6 +247,24 @@ class controller{
     }
     
     //FIN FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+    
+     //FUNCIONES EJERCICIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
+    public function listarEjercicios()
+    {
+        $consulta = $this->ejercicioDAO->listarNombresEjercicios();
+       
+         $ejercicios = array();
+
+        if ($consulta) {
+            while ($fila = mysqli_fetch_assoc($consulta)){
+                $ejercicios[] = $fila['nombre'];
+            }
+        }
+
+        return $ejercicios;
+    }
+    
+    //FIN FUNCIONES EJERCICIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
     
 }

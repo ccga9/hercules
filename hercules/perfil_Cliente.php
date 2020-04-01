@@ -27,7 +27,7 @@
 	
 		<?php
 
-		if ($entrenador->getTipoUsuario()) {
+		if ($cliente->getTipoUsuario()) {
 		    echo '<h1>Perfil de Entrenador/a</h1>';
 		}
 		else {
@@ -37,17 +37,14 @@
 		echo '<h2>Datos personales</h2>';
 		
 		echo '<table>';
-			echo '<tr><td>'.$entrenador->getNombre().'</td></tr>';
-			echo '<tr><td>'.$entrenador->getEmail().'</td></tr>';
-			echo '<tr><td>'.$entrenador->getTitulacion().'</td></tr>';
-			echo '<tr><td>'.$entrenador->getEspecialidad().'</td></tr>';
-			echo '<tr><td>'.$entrenador->getExperiencia().'</td></tr>';
+			echo '<tr><td>'.$cliente->getNombre().'</td></tr>';
+			echo '<tr><td>'.$cliente->getEmail().'</td></tr>';
 		echo '</table>';
-		
+		echo '<a href= "registrarEntrenamiento.php?idCliente='.$_GET['id'].'"> Proponer nuevo entrenamiento </a>';
 		?>
 
 		</form>
-		<button onclick="href= 'miPerfilEntrenamientos.php?idEntrenador='.$_GET['id'].'">Ver entrenamientos</button>
+		
 	</div>
 
 	<?php	

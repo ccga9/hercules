@@ -43,12 +43,14 @@
 			echo '<tr><td>Especialidad: '.$entrenador->getEspecialidad().'</td></tr>';
 			echo '<tr><td>Experiencia: '.$entrenador->getExperiencia().'</td></tr>';
 		echo '</table>';
+		echo '<a href= "miPerfilEntrenamientos.php?idEntrenador='.$_GET['id'].'"> Ver entrenamientos </a>';
 		
 		?>
 
 		</form>
+
 		
-		<button onclick="href= 'miPerfilEntrenamientos.php?idEntrenador='.$_GET['id'].">Ver entrenamientos</button>
+		
 	</div>
 
 	<?php	

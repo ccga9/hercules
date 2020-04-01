@@ -14,7 +14,7 @@ class entrenamientoDAO extends DAO{
         parent::__construct();
     }
     
-    public static function listarEntrenamientos($id){
+    public function listarEntrenamientos($id){
         $query = "SELECT * FROM entrenamiento WHERE idUsuarioEntrenador = '". $id ."'";
         
         return $this->consultar($query);
@@ -28,55 +28,41 @@ class entrenamientoDAO extends DAO{
         $res = $this->consultar($query);
         if ($res && $res->num_rows > 0) {
             $row = $res->fetch_assoc();
-            $usuario = new TOUsuario();
-            $usuario->setNif($nif);
-            $usuario->setNombre($row["nombre"]);
-            $usuario->setPassword($row["contrasenna"]);
-            $usuario->setEmail($row["email"]);
-            $usuario->setSexo($row["sexo"]);
-            $usuario->setFechaNac($row["fechaNac"]);
-            $usuario->setTelefono($row["telefono"]);
-            $usuario->setUbicacion($row["ubicacion"]);
-            $usuario->setPeso($row["peso"]);
-            $usuario->setAltura($row["altura"]);
-            $usuario->setPreferencias($row["preferencias"]);
-            $usuario->setTipoUsuario($row["tipoUsuario"]);
-            $usuario->setTitulacion($row["titulacion"]);
-            $usuario->setEspecialidad($row["especialidad"]);
-            $usuario->setExperiencia($row["experiencia"]);
-            return $usuario;
+            $entrenamiento = new entrenamientoTO();
+            $entrenamiento->setIdEntrenamiento($idEntrenamiento);
+            $entrenamiento->setIdUsuarioEntrenador($row["idUsuarioEntrenador"]);
+            $entrenamiento->setNombre($row["nombre"]);
+            $entrenamiento->setFecha($row["fecha"]);
+            return $entrenamiento;
         } else{
             return null;
         }
     }
 
-
-    private static function inserta(entrenamientoTO $entrenamiento){
-     
-        $query= 'INSERT INTO entrenamiento (`idEntrenamiento`, `idUsuarioEntrenador`, `tipo`, `fecha`) VALUES '
-        . "(" 
-        . "'".$entrenamiento->getIdEntrenamiento()."'" 
-        . ","
-        . "'".$entrenamiento->getIdUsuarioEntrenador()."'"
-        . "," 
-        . "'".$entrenamiento->getTipo()."'"
-        . ","
-        . "'".$entrenamiento->getFecha()."'"
-        . ")";
-
+    
+    public function inserta(entrenamientoTO $entrenamiento){
+     $fecha = null;
+        $query= "INSERT INTO `entrenamiento` (`idUsuarioEntrenador`, `nombre`, `fecha`) VALUES(
+        ".$entrenamiento->getIdUsuarioEntrenador()."
+         , 
+        '".$entrenamiento->getNombre()."'
+         ,
+       '".$entrenamiento->getFecha()."'
+        )";
+  
         return $this->consultar($query);
     
     }
     
     private static function update(entrenamientoTO $entrenamiento){
  
-       $query= 'UPDATE entrenamiento (`idEntrenamiento`, `idUsuarioEntrenador`, `tipo`, `fecha`) VALUES '
+       $query= 'UPDATE entrenamiento (`idEntrenamiento`, `idUsuarioEntrenador`, `nombre`, `fecha`) VALUES '
         . "(" 
         . "'".$entrenamiento->getIdEntrenamiento()."'" 
         . ","
         . "'".$entrenamiento->getIdUsuarioEntrenador()."'"
         . "," 
-        . "'".$entrenamiento->getTipo()."'"
+        . "'".$entrenamiento->getNombre()."'"
         . ","
         . "'".$entrenamiento->getFecha()."'"
         . ")";

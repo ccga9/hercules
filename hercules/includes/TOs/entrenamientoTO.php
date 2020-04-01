@@ -5,19 +5,22 @@
 class entrenamientoTO {
     private $idEntrenamiento;
 	private $idUsuarioEntrenador;
-    private $tipo;
+    private $nombre;
     private $fecha;
+    private $repeticiones;
 	
 
 /**
  * Constructor del entrenamientoTO
  */
-     public function __construct($idEntrenamiento  = null , $idUsuarioEntrenador = null,
-                                $tipo = null, $fecha = null){
+     public function __construct($idEntrenamiento, $idUsuarioEntrenador,
+                                $nombre, $fecha, $repeticiones){
       $this->idEntrenamiento = $idEntrenamiento;
       $this->idUsuarioEntrenador = $idUsuarioEntrenador;
-      $this->tipo = $tipo;
+      $this->nombre = $nombre;
       $this->fecha = $fecha;
+
+      $this->repeticiones = $repeticiones;
     }
     
 	/**
@@ -55,17 +58,17 @@ class entrenamientoTO {
     /**
      * @return mixed
      */
-    public function getTipo()
+    public function getNombre()
     {
-        return $this->tipo;
+        return $this->nombre;
     }
 
     /**
-     * @param mixed $tipo
+     * @param mixed $nombre
      */
-    public function setTipo($tipo)
+    public function setNombre($nombre)
     {
-        $this->tipo = $tipo;
+        $this->nombre = $nombre;
     }
     /**
      * @return mixed
@@ -81,6 +84,22 @@ class entrenamientoTO {
     public function setFecha($fecha)
     {
         $this->fecha = $fecha;
+    }
+
+     /**
+     * @return mixed
+     */
+    public function getRepeticiones()
+    {
+        return $this->repeticiones;
+    }
+
+    /**
+     * @param mixed $tipo
+     */
+    public function setRepeticiones($repeticiones)
+    {
+        $this->repeticiones = $repeticiones;
     }
 }
 ?>

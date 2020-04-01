@@ -68,7 +68,7 @@ class ejercicioTO {
     /**
      * @param mixed $caloriasGastadas
      */
-    public function setTipo($caloriasGastadas)
+    public function setCaloriasGastadas($caloriasGastadas)
     {
         $this->caloriasGastadas = $caloriasGastadas;
     }

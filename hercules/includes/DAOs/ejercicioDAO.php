@@ -9,6 +9,12 @@ class ejercicioDAO extends DAO
         parent::__construct();
     }
 
+    public function listarNombresEjercicios(){
+        $query = "SELECT nombre from ejercicio";
+        
+        return $this->consultar($query);
+    }
+    
     public function listarEjercicios($idEntrenamiento)
     {
         $query = "SELECT * from entrenamientoejercicio WHERE $idEntrenamiento = '". $idEntrenamiento ."'";
@@ -21,6 +27,7 @@ class ejercicioDAO extends DAO
         $query = "SELECT * FROM ejercicio WHERE idEjercicio = '". idEjercicio ."'";
         
         $res = consultar($query);
+        
         $fila = $res->fetch_assoc();
 
         $ejercicio = new ejercicioTO();

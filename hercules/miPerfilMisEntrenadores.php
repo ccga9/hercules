@@ -31,7 +31,7 @@
             
 			if(count($arr) > 0){
 			    echo '<table>';
-				echo '<tr>'.'<th>Nombre</th>'.'<th>Titulacion</th>'.'<th>Especialidad</th>'.'<th>Experiencia</th>'.'<th></th>';
+				echo '<tr>'.'<th>Nombre</th>'.'<th>Titulacion</th>'.'<th>Especialidad</th>'.'<th>Experiencia</th>'.'</tr>';
 		
 				foreach ($arr as $key => $valor) {
 					echo '<tr>';
@@ -52,7 +52,7 @@
 		?>
 
 		</form>
-		<button onclick="href= 'miPerfilEntrenamientos.php'">Ver entrenamientos</button>
+		
 	</div>
 			
 	<?php	
