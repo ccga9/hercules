@@ -32,14 +32,8 @@ class comidaDAO extends DAO
     }
 
     //public function consulta($idComida)
-    
-
-
-    public function listar1comida($idComida) // ¿?
     {
-        /*$query = "SELECT tipo, alimento_1, alimento_2, alimento_3 from comida inner join alimentocomida on comida.idComida = alimentocomida.idComida where idComida = '".$idComida."'";
         
-        $this->consultar($query);*/
     }
 
     // esta función se ejecuta cuando el usuario elige los alimentos que quiere añadir a una comida y el tipo de comida que elige (desayuno, comida o cena).
