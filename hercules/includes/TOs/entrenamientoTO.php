@@ -16,15 +16,12 @@ class entrenamientoTO {
      public function __construct($idEntrenamiento = null, $idUsuarioEntrenador = null,
                                 $nombre = null, $fecha= null, $repeticiones = null){
       $this->idEntrenamiento = $idEntrenamiento;
-      echo $this->idEntrenamiento;
       $this->idUsuarioEntrenador = $idUsuarioEntrenador;
       $this->nombre = $nombre;
       $this->fecha = $fecha;
 
       $this->repeticiones = $repeticiones;
-      echo $this->idUsuarioEntrenador;
-      echo $this->nombre;
-      echo $this->fecha;
+
 
     }
     
