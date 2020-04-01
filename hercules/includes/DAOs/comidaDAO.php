@@ -88,7 +88,9 @@ class comidaDAO extends DAO
             //$fecha = getdate ([ int $timestamp = time() ] ) : array;
             
             $query_i_comida = "INSERT into comida(dia, tipo, usuario) values (/*'sysdate'*/'".$fecha."','".$tipo."','".$nif."')";
-            // where idComida = '".$nuevo_num_id."'";   
+            // where idComida = '".$nuevo_num_id."'";
+
+            //comida->set(...);
         }
         else
             echo "ERROR: Introduzca datos válidos en los campos '".$alimento_1."' y '".$tipo."'";

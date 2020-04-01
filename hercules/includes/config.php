@@ -5,7 +5,6 @@
 //require_once __DIR__.'/aplicacion.php';
 require_once __DIR__.'/TOs/TOUsuario.php';
 require_once __DIR__.'/controller.php';
-//require_once __DIR__.'/TOs/AlimentoTO.php';
 
 /**
  * Parámetros de conexión a la BD
