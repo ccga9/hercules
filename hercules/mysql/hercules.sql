@@ -123,7 +123,7 @@ INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `d
 CREATE TABLE `entrenamiento` (
   `idEntrenamiento` int(10) NOT NULL,
   `idUsuarioEntrenador` int(10) NOT NULL,
-  `nombre` varchar(10) NOT NULL,
+  `tipo` varchar(10) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

@@ -9,7 +9,7 @@ class comida
 	public function __construct()
 	{
 		$this->idComida = 0;
-		$this->dia = "00/00/00";
+		$this->dia = null;
 		$this->tipo = "";
 		$this->usuario = "";
 	}

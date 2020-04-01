@@ -85,8 +85,9 @@ class comidaDAO extends DAO
         if (($alimento_1 != null) && ($tipo != null))
         {
             $fecha = getdate();
-          
-            $query_i_comida = "INSERT into comida(dia, tipo, usuario) values (".$fecha.",'".$tipo."','".$nif."')";
+            //$fecha = getdate ([ int $timestamp = time() ] ) : array;
+            
+            $query_i_comida = "INSERT into comida(dia, tipo, usuario) values (/*'sysdate'*/'".$fecha."','".$tipo."','".$nif."')";
             // where idComida = '".$nuevo_num_id."'";   
         }
         else
