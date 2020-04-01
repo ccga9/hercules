@@ -202,7 +202,7 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
 
     public function verComidas()
     {
-        return $this->comida->verComidas();
+        return $this->comidaDAO->verComidas();
     }
     
     //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
