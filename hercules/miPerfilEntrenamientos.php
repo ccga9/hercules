@@ -23,9 +23,9 @@
 	<div id="contenido">
 		<h1>Entrenamientos</h1>
 		<?php
-			echo
+	
 			$idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_GET['idEntrenador'], $_SESSION['usuario']->getNif());
-			echo $idUsuarioEntrenador;
+
 			$entrenamientos = $ctrl->listarEntrenamientos($idUsuarioEntrenador);
 
 			if(count($entrenamientos) > 0){
@@ -36,15 +36,15 @@
 					echo '<tr>';
 						echo '<td>'.$entrenamiento['nombre'].'</td>';
 					    echo '<td>'.$entrenamiento['fecha'].'</td>';
-					    if(count($entrenamiento) > 0){
+					    if(count($entrenamiento['ejercicios']) > 0){
 					    	 echo '<table>';
 							 echo '<tr>'.'<th>Nombre</th>'.'<th>Calorias Gastadas</th>'.'<th>Descripcion</th>'.'</tr>';
-							 foreach ($entrenamiento as $ejercicios) {
+							 foreach ($entrenamiento['ejercicios'] as $value) {
 									echo '<tr>';
 
-									echo '<td>'.$ejercicios['nombre'].'</td>';
-					    			echo '<td>'.$ejercicios['caloriasGastadas'].'</td>';
-					    			echo '<td>'.$ejercicios['descripcion'].'</td>';
+									echo '<td>'.$value['nombreEjercicio'].'</td>';
+					    			echo '<td>'.$value['caloriasGastadas'].'</td>';
+					    			echo '<td>'.$value['descripcion'].'</td>';
 
 					    			echo'</tr>';
 					    	}

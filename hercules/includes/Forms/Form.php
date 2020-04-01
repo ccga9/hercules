@@ -71,6 +71,7 @@ abstract class Form
             $result = $this->procesaFormulario($_POST);
             if ( is_array($result) ) {
                 echo $this->generaFormulario($result, $_POST);
+                header('Location: '.$result['idCliente']);
             } else {
                 header('Location: '.$result);
                 exit();
@@ -127,7 +128,7 @@ abstract class Form
      */
     private function generaFormulario($errores = array(), &$datos = array())
     {
-
+        
         $html= $this->generaListaErrores($errores);
 
         $html .= '<form method="POST" action="'.$this->action.'" id="'.$this->formId.'" >';

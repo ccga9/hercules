@@ -61,14 +61,14 @@ class controller{
         $entrena = array();
 
         if ($consulta) {
-        	while ($fila = mysqli_fetch_assoc($consulta)){
+            while ($fila = mysqli_fetch_assoc($consulta)){
                 $row['nombre'] = $fila['nombre'];
                 $row['titulacion'] = $fila['titulacion'];
                 $row['especialidad'] = $fila['especialidad'];
                 $row['experiencia'] = $fila['experiencia'];
 
                 $entrena[$fila['nif']] = $row;
-        	}
+            }
         }
 
         return $entrena;
@@ -166,6 +166,7 @@ class controller{
     }
     
 public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
+
         $consulta = $this->usuarioDAO->getIdUsuarioEntrenador($nif_cliente, $nif_entrena);
         $id = null;
         if ($consulta) {
@@ -211,6 +212,7 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
    //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     public function listarEntrenamientos($idUsuarioEntrenador)
     {
+
         $consulta = $this->entrenamientoDAO->listarEntrenamientos($idUsuarioEntrenador);
 
         $row = array();
@@ -223,10 +225,9 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
                 $entrenamiento = $this->entrenamientoDAO->cargarEntrenamiento($fila['idEntrenamiento']);
 
                 $row['nombre'] = $entrenamiento->getNombre();
-                 echo  $row['nombre'];
                 $row['fecha'] = $entrenamiento->getFecha();
 
-                 $consulta2 = $ejercicioDAO->listarEjercicios($idEntrenamiento);
+                 $consulta2 = $this->ejercicioDAO->listarEjercicios($fila['idEntrenamiento']);
 
                     while($filaEjercicios = mysqli_fetch_assoc($consulta2)){
 
@@ -236,13 +237,13 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
                         $ejercicios['caloriasGastadas'] = $ejercicio->getCaloriasGastadas();
                         $ejercicios['descripcion'] = $ejercicio->getDescripcion();
                         
-                        $ejercicios['repeticiones'] = $consulta2->getRepeticiones();
+                        
 
                          $row['ejercicios'] = $ejercicios;
                     }
 
                      
-                $entrena[$fila['entrenamiento']] = $row;
+                $entrena[] = $row;
             }
         }
         
@@ -251,18 +252,20 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
 
      public function nuevoEntrenamiento($datos, $idUsuarioEntrenador)
     {   
+    
        $entrenamiento = $this->entrenamientoDAO->crearEntrenamiento($datos, $idUsuarioEntrenador);
 
        foreach ($datos['ejercicios'] as $nombre) {
-        echo $nombre;
-            $consulta = $this->ejercicioDAO->buscarIdEntrenamiento($nombre);
+    
+            $consulta = $this->ejercicioDAO->buscarIdEjercicio($nombre);
 
             if($consulta){
                  $fila = mysqli_fetch_assoc($consulta);
 
-                $id = $fila['idEntrenamiento'];
+                $id = $fila['idEjercicio'];
             }
-            $this->agregarEjercicioaEntrenamiento($entrenamiento->getIdEntrenamiento(), $id);
+
+            $this->ejercicioDAO->agregarEjercicioaEntrenamiento($entrenamiento->getIdEntrenamiento(), $id);
 
        }
     

@@ -22,9 +22,11 @@ class entrenamientoDAO extends DAO{
     }
     
     public function crearEntrenamiento($datos, $idUsuarioEntrenador){
-        $to = new entrenamientoTO($idUsuarioEntrenador, $datos['nombre'], $datos['fecha'], $datos['repeticiones']);
-       $this->inserta($to);
+        $to = new entrenamientoTO("", $idUsuarioEntrenador, $datos['nombre'], $datos['fecha'], $datos['repeticiones']);
+       $id = $to->getIdUsuarioEntrenador();
 
+       $this->inserta($to);
+       
        $res = $this->buscarIdEntrenamiento($idUsuarioEntrenador,  $datos['nombre'], $datos['fecha']);
 
        if($res){
@@ -43,16 +45,15 @@ class entrenamientoDAO extends DAO{
 
      public function cargarEntrenamiento($idEntrenamiento){
         $entrenamiento = new entrenamientoTO($idEntrenamiento);
-        $query = "SELECT * FROM entrenamientoejercicio WHERE idEntrenamiento = '". $idEntrenamiento ."'";
+        $query = "SELECT * FROM entrenamiento WHERE idEntrenamiento = '". $idEntrenamiento ."'";
         
         $res = $this->consultar($query);
 
         if ($res) {
             $row = $res->fetch_assoc();
-            $entrenamiento = new entrenamientoTO();
+            echo $row["idUsuarioEntrenador"];
             $entrenamiento->setIdEntrenamiento($idEntrenamiento);
             $entrenamiento->setIdUsuarioEntrenador($row["idUsuarioEntrenador"]);
-            echo $row["nombre"];
             $entrenamiento->setNombre($row["nombre"]);
             $entrenamiento->setFecha($row["fecha"]);
             return $entrenamiento;
@@ -65,15 +66,19 @@ class entrenamientoDAO extends DAO{
     
     public function inserta(entrenamientoTO $entrenamiento){
      $fecha = null;
+    
+
         $query= "INSERT INTO `entrenamiento` (`idUsuarioEntrenador`, `nombre`, `fecha`) VALUES(
-        ".$entrenamiento->getIdUsuarioEntrenador()."
+        '".$entrenamiento->getIdUsuarioEntrenador()."'
          , 
         '".$entrenamiento->getNombre()."'
          ,
        '".$entrenamiento->getFecha()."'
         )";
+
+    
   
-    $this->consultar($query);
+    return $this->consultar($query);
     
     }
     

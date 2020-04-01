@@ -8,6 +8,7 @@ require_once(__DIR__.'/../controller.php');
 
 class FormularioRegistrarEntrenamiento extends Form {
 
+    private $idCliente;
 	public function __construct()
     {
     	parent::__construct('registrarEntrenamiento', array());
@@ -30,6 +31,7 @@ class FormularioRegistrarEntrenamiento extends Form {
      */
     protected function generaCamposFormulario($datosIniciales)
     {
+
     	$ret = '';
     	$ret .= '<fieldset>';
            $ret .= '<legend>Nuevo Entrenamiento</legend>';
@@ -49,7 +51,7 @@ class FormularioRegistrarEntrenamiento extends Form {
             $datos = $ctrl->listarEjercicios();
             foreach ($datos as $value) {
                 $ret .= '<div class="grupo-control">';
-                    $ret .= '<label>'.$value.':</label> <input type="checkbox" name="ejercicios[]"/>';
+                    $ret .= '<label>'.$value.':</label> <input type="checkbox" name="ejercicios[]" value="'.$value.'"/>';
                 $ret .= '</div>';
             }
 
@@ -76,10 +78,10 @@ class FormularioRegistrarEntrenamiento extends Form {
             $erroresFormulario[] = "Fecha Incorrecta";
         }*/
 
-		
 
         if ( $datos['repeticiones'] <= 0 ) {
             $erroresFormulario[] = "Numero de repeticiones incorrectas";
+
         }
         if(empty($datos['ejercicios']) ){
             $erroresFormulario[] = "Debes seleccionar al menos un ejercicio";
@@ -88,18 +90,20 @@ class FormularioRegistrarEntrenamiento extends Form {
 
          $ctrl = controller::getInstance();
 
-
+         
 		if (count($erroresFormulario) === 0) {
 
             $idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_SESSION['usuario']->getNif(), $datos['cliente']);
-            
+            echo $idUsuarioEntrenador;
             $ctrl->nuevoEntrenamiento($datos, $idUsuarioEntrenador);
 
 		}
  
-		/*if (count($erroresFormulario) === 0) {
+		if (count($erroresFormulario) === 0) {
 			$erroresFormulario = "index.php";
-		}*/
+		}else{
+            $erroresFormulario['idCliente'] = "registrarEntrenamiento.php?idCliente=".$datos['cliente'];
+        }
 
         return $erroresFormulario;
     }

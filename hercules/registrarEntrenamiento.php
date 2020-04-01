@@ -19,6 +19,7 @@
 	<?php	
 
 		require('./includes/comun/cabecera.php');
+		require('miPerfilCabecera.php');
 
 	?>
 

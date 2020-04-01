@@ -23,8 +23,8 @@ class ejercicioDAO extends DAO
     }
     public function buscarIdEjercicio($nombre){
 
-        $query = "SELECT * from ejercicio WHERE $nombre = '". $nombre ."'";
-        
+        $query = "SELECT * from ejercicio WHERE nombre = '". $nombre ."'";
+
         return $this->consultar($query);
     }
 
@@ -33,7 +33,7 @@ class ejercicioDAO extends DAO
         $query= "INSERT INTO `entrenamientoejercicio` (`idEntrenamiento`, `idEjercicio`) VALUES(
         ".$idEntrenamiento."
          , 
-        '".$idEjercicio()."'
+        '".$idEjercicio."'
         )";
 
         $this->consultar($query);
@@ -43,7 +43,7 @@ class ejercicioDAO extends DAO
     {   
         $query = "SELECT * FROM ejercicio WHERE idEjercicio = '". $idEjercicio ."'";
         
-        $res = consultar($query);
+        $res = $this->consultar($query);
         
         $fila = $res->fetch_assoc();
 
