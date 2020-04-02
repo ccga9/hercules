@@ -238,7 +238,7 @@ class controller{
                 $entrenamiento = $this->entrenamientoDAO->cargarEntrenamiento($idEntrenamiento);
 
                 $row['nombre'] = $entrenamiento->getNombre();
-                $row['repeticiones'] = $entrenamiento->getFecha();
+                $row['repeticiones'] = $entrenamiento->getRepeticiones();
                 $row['fecha'] = $entrenamiento->getFecha();
 
 
