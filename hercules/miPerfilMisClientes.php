@@ -21,7 +21,7 @@
 	?>
 
 	<div id="contenido">
-		<h1>Mis Entrenadores</h1>
+		<h1>Mis clientes</h1>
 
 		<form action="recomendacionesEntrenador.php" method="post">
 

@@ -51,7 +51,6 @@ class entrenamientoDAO extends DAO{
 
         if ($res) {
             $row = $res->fetch_assoc();
-            echo $row["idUsuarioEntrenador"];
             $entrenamiento->setIdEntrenamiento($idEntrenamiento);
             $entrenamiento->setIdUsuarioEntrenador($row["idUsuarioEntrenador"]);
             $entrenamiento->setNombre($row["nombre"]);

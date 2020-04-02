@@ -29,28 +29,33 @@
 			$entrenamientos = $ctrl->listarEntrenamientos($idUsuarioEntrenador);
 
 			if(count($entrenamientos) > 0){
-			    echo '<table>';
-				echo '<tr>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th>Ejercicios</th>'.'</tr>';
+			    echo '<table class="tablaEntrenamientos">';
+				
 		
 				foreach ($entrenamientos as $entrenamiento) {
+					echo '<tr>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'</tr>';
+
 					echo '<tr>';
 						echo '<td>'.$entrenamiento['nombre'].'</td>';
 					    echo '<td>'.$entrenamiento['fecha'].'</td>';
+
 					    if(count($entrenamiento['ejercicios']) > 0){
-					    	 echo '<table>';
-							 echo '<tr>'.'<th>Nombre</th>'.'<th>Calorias Gastadas</th>'.'<th>Descripcion</th>'.'</tr>';
+					    	 
 							 foreach ($entrenamiento['ejercicios'] as $value) {
-									echo '<tr>';
+							 		echo '<tr>'.'<th>Ejercicios---</th>'.'</tr>';
+
+							 		echo '<tr>';
 
 									echo '<td>'.$value['nombreEjercicio'].'</td>';
-					    			echo '<td>'.$value['caloriasGastadas'].'</td>';
-					    			echo '<td>'.$value['descripcion'].'</td>';
-
-					    			echo'</tr>';
+									echo '<td>'.$value['caloriasGastadas'].'</td>';
+									echo '<td>'.$value['descripcion'].'</td>';
+								    
+								    echo '</tr>';
+									
 					    	}
 
-					    	echo'</tr>';
-					    	echo '</table>';
+					
+					    	
 					    }else{
 					    	echo "No tienes ejercicios.";
 					    }
@@ -58,7 +63,6 @@
 					echo'</tr>';
 					
 				}
-				echo'</tr>';
 				echo '</table>';
 			 }
 			 else {
