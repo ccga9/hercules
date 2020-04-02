@@ -41,7 +41,12 @@ class comidaDAO extends DAO
         $consulta_idComidas = $this->consultar($query_numComidas);
         $num_idComidas = mysqli_fetch_assoc($consulta_idComidas);
         $n = $num_idComidas['max(idComida)'];
-        $nuevo_num_id = $n + 1;
+        if ($n > 1)
+        {
+            $nuevo_num_id = $n + 1;
+        }
+        else
+            $nuevo_num_id = 1;
 
         /*$comida = new comida();
         $comida->set_idComida($nuevo_num_id);
