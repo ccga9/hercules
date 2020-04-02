@@ -40,6 +40,8 @@
 					echo '<tr>';
 						echo '<td>'.$entrenamiento['nombre'].'</td>';
 					    echo '<td>'.$entrenamiento['fecha'].'</td>';
+					    
+
 
 					    if(count($entrenamiento['ejercicios']) > 0){
 					    	 
@@ -55,14 +57,15 @@
 								    echo '</tr>';
 									
 					    	}
-
-					
+					    	
 					    	
 					    }else{
 					    	echo "No tienes ejercicios.";
 					    }
 					    
 					echo'</tr>';
+					echo '<tr>'.'<th>Numero de Repeticiones</th>'.'</tr>';
+						echo '<td>'.$entrenamiento['repeticiones'].'</td>';
 					
 				}
 				echo '</table>';
