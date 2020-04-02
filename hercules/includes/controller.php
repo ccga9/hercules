@@ -165,7 +165,7 @@ class controller{
         return $consulta;
     }
     
-public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
+	public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
 
         $consulta = $this->usuarioDAO->getIdUsuarioEntrenador($nif_cliente, $nif_entrena);
         $id = null;
@@ -176,6 +176,17 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
 
         }
         return $id;
+    }
+
+    public function eliminarEntrenador($nif_cliente, $nif_entrena){
+
+        $consulta = $this->usuarioDAO->eliminarIdUsuarioEntrenador($nif_cliente, $nif_entrena);
+        if ($consulta) {
+            return true;
+        }
+        else {
+        	return false;
+        }
     }
     //FIN FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     

@@ -60,9 +60,6 @@
 					echo "<option value = '".$value."'>".$value."</option>";
 				?>
 			</select>
-
-		    <label for="peso">Peso :</label>
-			<input type="text" id="lname" name="lname" value="En Gramos">
 			 
 		   <p><input type="submit" value="Submit"></p>
 		</form>

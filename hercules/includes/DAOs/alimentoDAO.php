@@ -13,11 +13,6 @@ class alimentoDAO extends DAO
     {
     	$query = "SELECT nombre from alimento";
 
-    	/*$nombres = array();
-    	while ($query['nombre'])
-    	{
-    		array_push($nombres, $query['nombre']);
-    	}*/
     	return $this->consultar($query);
     }
 
@@ -28,7 +23,7 @@ class alimentoDAO extends DAO
         $res = consultar($query);
         $fila = $res->fetch_assoc();
 
-        $alimento = new alimentoTO();
+        $alimento = new alimento();
         $alimento->set_idAlimento($fila['idAlimento']);
         $alimento->set_nombre($fila['nombre']);
         $alimento->set_caloríasTotales($fila['caloriasTotales']);
@@ -39,21 +34,21 @@ class alimentoDAO extends DAO
         return $alimento;
     }*/
 
-    public function inserta(alimentoTO $a)
+    public function inserta(alimento $a)
     {
     	$query = "INSERT into alimento (nombre, caloriasConsumidas, carbohidratos, proteínas, grasas) values ('".$a->get_nombre()."','".$a->get_caloríasConsumidas()."','".$a->get_carbohidratos()."','".$a->get_proteínas()."','".$a->get_grasas()."') where idAlimento = '".$a->get_idAlimento()."'";
 
     	return $this->consultar($query);
     }
 
-    public function actualiza(alimentoTO $a)
+    public function actualiza(alimento $a)
     {
     	$query = "UPDATE alimento (nombre, caloriasConsumidas, carbohidratos, proteínas, grasas) values (".$a->get_nombre()."','".$a->get_caloríasConsumidas()."','".$a->get_carbohidratos()."','".$a->get_proteínas()."','".$a->get_grasas()."') where idAlimento = '".$a->get_idAlimento()."'";
 
     	return $this->consultar($query);
     }
 
-    public function elimina(alimentoTO $a)
+    public function elimina(alimento $a)
     {
     	$query = "DELETE alimento where idAlimento = '".$a->get_idAlimento()."'";
 
