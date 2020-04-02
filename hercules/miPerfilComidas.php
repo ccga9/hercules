@@ -21,20 +21,31 @@
 	?>
 
 	<div id="contenido">
-		<h1>Comidas</h1>
 
-		<p>Ver comidas (alimentos escogidos previamente):</p>
-		<select name='comidas'>
+		<h3>Comidas</h3>
+		<?php
+		$nif_usuario = $_SESSION['usuario']->getNif();
+		$comidas = $ctrl->verComidas($nif_usuario);
+		?>
+		<textarea name='comidas' rows ='4' cols='100'>
+		<?php
+		foreach ($comidas as $key => $value)
+		{
+			echo $value.' - ';
+		}
+		?>
+		</textarea>
+		<!--<select name='comidas'>
 			<p><?php
-			$comidas = $ctrl->verComidas();
+			/*$nif_usuario = $_SESSION['usuario']->getNif();
+
+			$comidas = $ctrl->verComidas($nif_usuario);
 			foreach ($comidas as $key => $value)
 			{
 				echo "<option value = '".$value."'>".$value."</option";
-			}
+			}*/
 			?></p>
-		</select>
-
-		<p> - - - </p>
+		</select>-->
 
 		<form action="registroComida.php" method="post">
 			<p><input type="submit" name="registroComida" value="Registrar comida" /></p>
