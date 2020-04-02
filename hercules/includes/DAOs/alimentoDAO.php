@@ -23,7 +23,7 @@ class alimentoDAO extends DAO
         $res = consultar($query);
         $fila = $res->fetch_assoc();
 
-        $alimento = new alimentoTO();
+        $alimento = new alimento();
         $alimento->set_idAlimento($fila['idAlimento']);
         $alimento->set_nombre($fila['nombre']);
         $alimento->set_caloríasTotales($fila['caloriasTotales']);
