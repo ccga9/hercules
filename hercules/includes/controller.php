@@ -226,7 +226,9 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
                 $entrenamiento = $this->entrenamientoDAO->cargarEntrenamiento($idEntrenamiento);
 
                 $row['nombre'] = $entrenamiento->getNombre();
+                $row['repeticiones'] = $entrenamiento->getFecha();
                 $row['fecha'] = $entrenamiento->getFecha();
+
 
                  $consulta2 = $this->ejercicioDAO->listarEjercicios($idEntrenamiento);
                  $aux = array();

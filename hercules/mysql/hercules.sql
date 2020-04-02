@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2020 a las 12:57:47
+-- Tiempo de generación: 02-04-2020 a las 20:28:01
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Versión de PHP: 7.2.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,7 +33,7 @@ CREATE TABLE `alimento` (
   `nombre` varchar(15) NOT NULL,
   `caloriasConsumidas` int(4) UNSIGNED DEFAULT NULL,
   `carbohidratos` int(4) UNSIGNED DEFAULT NULL,
-  `proteínas` int(4) UNSIGNED DEFAULT NULL,
+  `proteinas` int(4) UNSIGNED DEFAULT NULL,
   `grasas` int(4) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -41,13 +41,13 @@ CREATE TABLE `alimento` (
 -- Volcado de datos para la tabla `alimento`
 --
 
-INSERT INTO `alimento` (`idAlimento`, `nombre`, `caloriasConsumidas`, `carbohidratos`, `proteínas`, `grasas`) VALUES
+INSERT INTO `alimento` (`idAlimento`, `nombre`, `caloriasConsumidas`, `carbohidratos`, `proteinas`, `grasas`) VALUES
 (1, 'manzana', NULL, NULL, NULL, NULL),
 (2, 'ensalada', NULL, NULL, NULL, NULL),
 (3, 'pescado', NULL, NULL, NULL, NULL),
 (4, 'pollo', NULL, NULL, NULL, NULL),
 (5, 'tarta de queso', NULL, NULL, NULL, NULL),
-(6, 'judías', NULL, NULL, NULL, NULL);
+(6, 'judí­as', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -59,20 +59,6 @@ CREATE TABLE `alimentocomida` (
   `idAlimento` int(10) NOT NULL,
   `idComida` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `alimentocomida`
---
-
-INSERT INTO `alimentocomida` (`idAlimento`, `idComida`) VALUES
-(1, 1),
-(1, 15),
-(2, 1),
-(2, 9),
-(3, 10),
-(4, 9),
-(5, 9),
-(6, 10);
 
 -- --------------------------------------------------------
 
@@ -97,22 +83,10 @@ CREATE TABLE `comentario` (
 
 CREATE TABLE `comida` (
   `idComida` int(10) NOT NULL,
-  `dia` date DEFAULT NULL,
+  `dia` date NOT NULL,
   `tipo` varchar(15) NOT NULL,
   `usuario` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `comida`
---
-
-INSERT INTO `comida` (`idComida`, `dia`, `tipo`, `usuario`) VALUES
-(1, '2020-04-01', 'desayuno', '01234568F'),
-(9, '2020-04-02', 'comida', '48213250W'),
-(10, '2020-04-02', 'cena', '48213250W'),
-(13, NULL, 'desayuno', '48213250W'),
-(14, NULL, 'desayuno', '48213250W'),
-(15, NULL, 'desayuno', '48213250W');
 
 -- --------------------------------------------------------
 
@@ -124,10 +98,20 @@ CREATE TABLE `ejercicio` (
   `idEjercicio` int(10) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   `caloriasGastadas` int(4) UNSIGNED NOT NULL,
-  `tipo` varchar(10) NOT NULL,
+  `tipo` varchar(25) NOT NULL,
   `descripcion` text NOT NULL,
   `multimedia` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ejercicio`
+--
+
+INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
+(1, 'Sentadillas', 68, 'Tonificacion', 'Consiste en flexionar las rodillas y bajar el cuerpo manteniendo la verticalidad,\r\n  para luego regresar a una posición erguida.', ''),
+(2, 'Jumping jacks', 188, 'Cardio', ' En la posición de inicio, abre las piernas a la anchura de los hombros, a continuación\r\n   júntalas con un leve salto mientras levantas los brazos a la vez para que las manos se toquen detrás de la cabeza.\r\n   Asegúrate de mantener la cabeza recta y la vista al frente.', ''),
+(3, 'Planchas', 80, 'Tonificacion', 'Recuéstate boca abajo sobre la manta y luego apóyate sobre los antebrazos,\r\n   de modo que los codos queden ubicados debajo del pecho. Ahora, eleva tus piernas del piso sosteniéndote con las\r\n   puntas de los pies para formar la plancha .', ''),
+(4, 'Remo con banda elástica', 133, 'Fuerza', 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde\r\n  las caderas, la columna vertebral de permanecer neutral. Tiramos desde los omóplatos hacia atrás y levantamos los codos\r\n  tanto como pueda. Baje lentamente y repita.', '');
 
 -- --------------------------------------------------------
 
@@ -138,8 +122,9 @@ CREATE TABLE `ejercicio` (
 CREATE TABLE `entrenamiento` (
   `idEntrenamiento` int(10) NOT NULL,
   `idUsuarioEntrenador` int(10) NOT NULL,
-  `tipo` varchar(10) NOT NULL,
-  `fecha` date NOT NULL
+  `nombre` varchar(10) NOT NULL,
+  `fecha` date NOT NULL,
+  `repeticiones` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -150,9 +135,7 @@ CREATE TABLE `entrenamiento` (
 
 CREATE TABLE `entrenamientoejercicio` (
   `idEntrenamiento` int(10) NOT NULL,
-  `idEjercicio` int(10) NOT NULL,
-  `repeticiones` int(2) NOT NULL,
-  `series` int(2) NOT NULL
+  `idEjercicio` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -200,7 +183,9 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`, `titulacion`, `especialidad`, `experiencia`) VALUES
 ('01234568F', 'SOLID SNAKE', '$2y$10$jrEMOknXYLCVAvcd7K9PuO0/JtYzpwljmxw7lj7zqXGZouDkkB2Q2', NULL, 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Maestro del sigilo', 'Gluteos', 'Demasiada'),
 ('26515643R', 'JUAN LIU', '$2y$10$vsnM.mnZYqtDZ8GbhnCIiu0qJwylwmaZsfk7sD.i8LycSq3nzbYmy', NULL, 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
-('48213250W', 'FALSO', '$2y$10$9t05GKoN2MOZqX5HLe.MKe5T4qSFHIp5IvjXpcvdG5kyct.0llRfe', NULL, 'jaimemf07@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
+('50259205L', 'EMILIO JOSé VALENCIA', '$2y$10$sKUix8BEnoob0HUC36phMOurd3S4/lCMpguG9iLO4ieQ7/IDWueOK', NULL, 'emiliova@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Monitor', 'Pesas', '4 años'),
+('50259206L', 'PEP GUARDIOLA', '$2y$10$v2/1j1AQMrt8bGN9Kvvd4uEksmjYQhsGss4b7nuym3CK4fzOVofOW', NULL, 'emiliovalenciabarcelona@gmail.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador', 'Entrenador Fútbol', '10 años'),
+('50259207L', 'MIRIAM ELIZABETH', '$2y$10$B8vficduIFMyEkleLWrEWOHJeLAp9rRXVC4pBqeo5NqKCEQML4n5e', NULL, 'miriam@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -214,6 +199,13 @@ CREATE TABLE `usuarioentrenador` (
   `entrenador` varchar(10) NOT NULL,
   `estado` enum('aceptado','pendiente','') NOT NULL DEFAULT 'pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarioentrenador`
+--
+
+INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
+(1, '50259207L', '50259205L', 'aceptado');
 
 --
 -- Índices para tablas volcadas
@@ -294,7 +286,7 @@ ALTER TABLE `usuarioentrenador`
 -- AUTO_INCREMENT de la tabla `alimento`
 --
 ALTER TABLE `alimento`
-  MODIFY `idAlimento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idAlimento` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `comentario`
@@ -306,19 +298,19 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT de la tabla `comida`
 --
 ALTER TABLE `comida`
-  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio`
 --
 ALTER TABLE `ejercicio`
-  MODIFY `idEjercicio` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEjercicio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `entrenamiento`
 --
 ALTER TABLE `entrenamiento`
-  MODIFY `idEntrenamiento` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEntrenamiento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `recomendacion`

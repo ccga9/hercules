@@ -5,7 +5,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
-	<meta charset="utf-8">
+	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
 </head>
 
@@ -19,11 +19,19 @@
 
 	?>
 
+
 	<div id="contenido">
-		<h1>Página principal</h1>
+		<h1 align="center">Bienvenido a Hercules</h1>
 		
-		<p> Aqui esta el contenido publico, visible para todos los usuarios. </p>
+		
+		<p >Nuestra plataforma está especialmente diseñada para que los 
+		usuarios puedan ejercitarse sin necesidad de desplazarse ni de
+		quedarse a una hora en concreta  también dando la posibilidad de 
+		poder realizar registro y seguimiento del entrenamiento .</p>
+		<img src='includes/img/foto_inicio.jpg' align="right" alt =" " height ="300" width="450" >
+
 	</div>
+		
 
 	<?php	
 

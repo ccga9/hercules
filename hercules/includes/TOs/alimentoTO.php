@@ -1,5 +1,5 @@
 <?php
-class alimento
+class alimentoTO
 {
 	private $idAlimento;
 	private $nombre;
