@@ -17,8 +17,8 @@ class ejercicioDAO extends DAO
     
     public function listarEjercicios($idEntrenamiento)
     {
-        $query = "SELECT * from entrenamientoejercicio WHERE $idEntrenamiento = '". $idEntrenamiento ."'";
-    	
+        $query = "SELECT idEjercicio from entrenamientoejercicio WHERE idEntrenamiento = '". $idEntrenamiento ."'";
+
     	return $this->consultar($query);
     }
     public function buscarIdEjercicio($nombre){

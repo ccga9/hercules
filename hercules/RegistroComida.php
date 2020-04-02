@@ -6,7 +6,7 @@
 	<head>
 	<title>HERCULES</title>
 	<meta charset="UTF-8"> 
-	<link rel="stylesheet" type="text/css" href="includes/estilo.css">
+	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	</head>
 	
 	<body>
@@ -28,13 +28,11 @@
 		<form action='InsertaComida.php' method='POST' id="alimentoform">
 			
 			<label for="instrucciones_tipo"> Escoge el tipo de comida que desees:</label>
-			<input type="radio" name="tipo" value="desayuno" checked/> desayuno
+			<p><input type="radio" name="tipo" value="desayuno" checked/> desayuno
 			<input type="radio" name="tipo" value="comida"/> comida
-			<input type="radio" name="tipo" value="cena"/> cena
+			<input type="radio" name="tipo" value="cena"/> cena</p>
 
-			<p> - - - </p>
-
-			<label for="instrucciones_alimentos">Selecciona entre 1 y 3 platos, dependiendo del tipo de comida que hayas escogido y la cantidad que quieras comer:</label>
+			<p><label for="instrucciones_alimentos">Selecciona entre 1 y 3 platos, dependiendo del tipo de comida que hayas escogido y la cantidad que quieras comer:</label></p>
 
 		  	<label for="nombre_1">Primer plato o plato único</label>
 			<select id="alimento_1" name="alimento_1" form="alimentoform">

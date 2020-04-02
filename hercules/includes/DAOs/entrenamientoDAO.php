@@ -27,7 +27,7 @@ class entrenamientoDAO extends DAO{
 
        $this->inserta($to);
        
-       $res = $this->buscarIdEntrenamiento($idUsuarioEntrenador,  $datos['nombre'], $datos['fecha']);
+       $res = $this->buscarIdEntrenamiento($idUsuarioEntrenador,  $datos['nombre'], $datos['fecha'], $datos['repeticiones'] );
 
        if($res){
             $row = $res->fetch_assoc();
@@ -37,8 +37,8 @@ class entrenamientoDAO extends DAO{
         return $to;
     }
 
-    public function buscarIdEntrenamiento($idUsuarioEntrenador, $nombre, $fecha){
-        $query = "SELECT idEntrenamiento FROM entrenamiento WHERE idUsuarioEntrenador = '".$idUsuarioEntrenador."' AND  nombre = '".$nombre."' AND fecha = '".$fecha."'";
+    public function buscarIdEntrenamiento($idUsuarioEntrenador, $nombre, $fecha, $repeticiones){
+        $query = "SELECT idEntrenamiento FROM entrenamiento WHERE idUsuarioEntrenador = '".$idUsuarioEntrenador."' AND  nombre = '".$nombre."' AND fecha = '".$fecha."'  AND  repeticiones = '".$repeticiones."' ";
 
         return $this->consultar($query);
     }
@@ -51,11 +51,11 @@ class entrenamientoDAO extends DAO{
 
         if ($res) {
             $row = $res->fetch_assoc();
-            echo $row["idUsuarioEntrenador"];
             $entrenamiento->setIdEntrenamiento($idEntrenamiento);
             $entrenamiento->setIdUsuarioEntrenador($row["idUsuarioEntrenador"]);
             $entrenamiento->setNombre($row["nombre"]);
             $entrenamiento->setFecha($row["fecha"]);
+            $entrenamiento->setRepeticiones($row["repeticiones"]);
             return $entrenamiento;
         } else{
             echo "No entra";
@@ -68,12 +68,14 @@ class entrenamientoDAO extends DAO{
      $fecha = null;
     
 
-        $query= "INSERT INTO `entrenamiento` (`idUsuarioEntrenador`, `nombre`, `fecha`) VALUES(
+        $query= "INSERT INTO `entrenamiento` (`idUsuarioEntrenador`, `nombre`, `fecha`, `repeticiones`) VALUES(
         '".$entrenamiento->getIdUsuarioEntrenador()."'
          , 
         '".$entrenamiento->getNombre()."'
          ,
        '".$entrenamiento->getFecha()."'
+         , 
+       '".$entrenamiento->getRepeticiones()."'
         )";
 
     
@@ -84,7 +86,7 @@ class entrenamientoDAO extends DAO{
     
     private static function update(entrenamientoTO $entrenamiento){
  
-       $query= 'UPDATE entrenamiento (`idEntrenamiento`, `idUsuarioEntrenador`, `nombre`, `fecha`) VALUES '
+       $query= 'UPDATE entrenamiento (`idEntrenamiento`, `idUsuarioEntrenador`, `nombre`, `fecha`, `repeticiones`) VALUES '
         . "(" 
         . "'".$entrenamiento->getIdEntrenamiento()."'" 
         . ","
@@ -93,6 +95,8 @@ class entrenamientoDAO extends DAO{
         . "'".$entrenamiento->getNombre()."'"
         . ","
         . "'".$entrenamiento->getFecha()."'"
+        . ","
+        . "'".$entrenamiento->getRepeticiones()."'"
         . ")";
         
        return $this->consultar($query);

@@ -201,9 +201,9 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
         return $this->comidaDAO->registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif);
     }
 
-    public function verComidas()
+    public function verComidas($nif)
     {
-        return $this->comidaDAO->verComidas();
+        return $this->comidaDAO->verComidas($nif);
     }
     
     //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
@@ -217,31 +217,37 @@ public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
 
         $row = array();
         $entrena = array();
-        $ejercicios = array();
+       
 
         if ($consulta) {
             while ($fila = mysqli_fetch_assoc($consulta)){
-
-                $entrenamiento = $this->entrenamientoDAO->cargarEntrenamiento($fila['idEntrenamiento']);
+               
+                $idEntrenamiento = $fila['idEntrenamiento'];
+                $entrenamiento = $this->entrenamientoDAO->cargarEntrenamiento($idEntrenamiento);
 
                 $row['nombre'] = $entrenamiento->getNombre();
+                $row['repeticiones'] = $entrenamiento->getFecha();
                 $row['fecha'] = $entrenamiento->getFecha();
 
-                 $consulta2 = $this->ejercicioDAO->listarEjercicios($fila['idEntrenamiento']);
 
+                 $consulta2 = $this->ejercicioDAO->listarEjercicios($idEntrenamiento);
+                 $aux = array();
+             
                     while($filaEjercicios = mysqli_fetch_assoc($consulta2)){
+                        $ejercicios = array();
+                        
 
                         $ejercicio = $this->ejercicioDAO->cargarEjercicio($filaEjercicios['idEjercicio']);
+                        $ejercicios['nombreEjercicio'] = "Nombre: ".$ejercicio->getNombre();
+                        $ejercicios['caloriasGastadas'] = " Calorías Gastadas: ". $ejercicio->getCaloriasGastadas();
+                        $ejercicios['descripcion'] = "Descripcion: ".$ejercicio->getDescripcion();    
 
-                        $ejercicios['nombreEjercicio'] = $ejercicio->getNombre();
-                        $ejercicios['caloriasGastadas'] = $ejercicio->getCaloriasGastadas();
-                        $ejercicios['descripcion'] = $ejercicio->getDescripcion();
-                        
-                        
-
-                         $row['ejercicios'] = $ejercicios;
+                       $aux[] = $ejercicios;
+                                         
                     }
-
+                
+                 
+                     $row['ejercicios'] = $aux;
                      
                 $entrena[] = $row;
             }

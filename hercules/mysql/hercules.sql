@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-03-2020 a las 01:38:10
+-- Tiempo de generación: 02-04-2020 a las 20:28:01
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+-- Versión de PHP: 7.2.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,11 +31,23 @@ SET time_zone = "+00:00";
 CREATE TABLE `alimento` (
   `idAlimento` int(10) NOT NULL,
   `nombre` varchar(15) NOT NULL,
-  `caloriasConsumidas` int(4) UNSIGNED NOT NULL,
-  `carbohidratos` int(4) UNSIGNED NOT NULL,
-  `proteínas` int(4) UNSIGNED NOT NULL,
-  `grasas` int(4) UNSIGNED NOT NULL
+  `caloriasConsumidas` int(4) UNSIGNED DEFAULT NULL,
+  `carbohidratos` int(4) UNSIGNED DEFAULT NULL,
+  `proteinas` int(4) UNSIGNED DEFAULT NULL,
+  `grasas` int(4) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `alimento`
+--
+
+INSERT INTO `alimento` (`idAlimento`, `nombre`, `caloriasConsumidas`, `carbohidratos`, `proteinas`, `grasas`) VALUES
+(1, 'manzana', NULL, NULL, NULL, NULL),
+(2, 'ensalada', NULL, NULL, NULL, NULL),
+(3, 'pescado', NULL, NULL, NULL, NULL),
+(4, 'pollo', NULL, NULL, NULL, NULL),
+(5, 'tarta de queso', NULL, NULL, NULL, NULL),
+(6, 'judí­as', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -95,24 +107,11 @@ CREATE TABLE `ejercicio` (
 -- Volcado de datos para la tabla `ejercicio`
 --
 
-INSERT INTO `ejercicio` (`idEjercicio`,`nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
-(1, 'Sentadillas', 68, 'Tonificacion' , 'Consiste en flexionar las rodillas y bajar el cuerpo manteniendo la verticalidad,
-  para luego regresar a una posición erguida.', '');
-
-INSERT INTO `ejercicio` (`idEjercicio`,`nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
- (2, 'Jumping jacks', 188, 'Cardio' , ' En la posición de inicio, abre las piernas a la anchura de los hombros, a continuación
-   júntalas con un leve salto mientras levantas los brazos a la vez para que las manos se toquen detrás de la cabeza.
-   Asegúrate de mantener la cabeza recta y la vista al frente.', '');
-
 INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
- (3,'Planchas', 80, 'Tonificacion' , 'Recuéstate boca abajo sobre la manta y luego apóyate sobre los antebrazos,
-   de modo que los codos queden ubicados debajo del pecho. Ahora, eleva tus piernas del piso sosteniéndote con las
-   puntas de los pies para formar la plancha .', '');
-
-INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
- (4, 'Remo con banda elástica', 133, 'Fuerza' , 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde
-  las caderas, la columna vertebral de permanecer neutral. Tiramos desde los omóplatos hacia atrás y levantamos los codos
-  tanto como pueda. Baje lentamente y repita.', '');
+(1, 'Sentadillas', 68, 'Tonificacion', 'Consiste en flexionar las rodillas y bajar el cuerpo manteniendo la verticalidad,\r\n  para luego regresar a una posición erguida.', ''),
+(2, 'Jumping jacks', 188, 'Cardio', ' En la posición de inicio, abre las piernas a la anchura de los hombros, a continuación\r\n   júntalas con un leve salto mientras levantas los brazos a la vez para que las manos se toquen detrás de la cabeza.\r\n   Asegúrate de mantener la cabeza recta y la vista al frente.', ''),
+(3, 'Planchas', 80, 'Tonificacion', 'Recuéstate boca abajo sobre la manta y luego apóyate sobre los antebrazos,\r\n   de modo que los codos queden ubicados debajo del pecho. Ahora, eleva tus piernas del piso sosteniéndote con las\r\n   puntas de los pies para formar la plancha .', ''),
+(4, 'Remo con banda elástica', 133, 'Fuerza', 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde\r\n  las caderas, la columna vertebral de permanecer neutral. Tiramos desde los omóplatos hacia atrás y levantamos los codos\r\n  tanto como pueda. Baje lentamente y repita.', '');
 
 -- --------------------------------------------------------
 
@@ -124,7 +123,8 @@ CREATE TABLE `entrenamiento` (
   `idEntrenamiento` int(10) NOT NULL,
   `idUsuarioEntrenador` int(10) NOT NULL,
   `nombre` varchar(10) NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` date NOT NULL,
+  `repeticiones` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -135,9 +135,7 @@ CREATE TABLE `entrenamiento` (
 
 CREATE TABLE `entrenamientoejercicio` (
   `idEntrenamiento` int(10) NOT NULL,
-  `idEjercicio` int(10) NOT NULL,
-  `repeticiones` int(2) NOT NULL,
-  `series` int(2) NOT NULL
+  `idEjercicio` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -203,11 +201,15 @@ CREATE TABLE `usuarioentrenador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Índices para tablas volcadas
+-- Volcado de datos para la tabla `usuarioentrenador`
 --
+
 INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
 (1, '50259207L', '50259205L', 'aceptado');
 
+--
+-- Índices para tablas volcadas
+--
 
 --
 -- Indices de la tabla `alimento`
@@ -302,13 +304,13 @@ ALTER TABLE `comida`
 -- AUTO_INCREMENT de la tabla `ejercicio`
 --
 ALTER TABLE `ejercicio`
-  MODIFY `idEjercicio` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEjercicio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `entrenamiento`
 --
 ALTER TABLE `entrenamiento`
-  MODIFY `idEntrenamiento` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEntrenamiento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `recomendacion`

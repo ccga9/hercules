@@ -6,7 +6,7 @@
 	<head>
 	<title>HERCULES</title>
 	<meta charset="UTF-8"> 
-	<link rel="stylesheet" type="text/css" href="includes/estilo.css">
+	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	</head>
 	
 	<body>

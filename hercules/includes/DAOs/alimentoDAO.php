@@ -21,7 +21,7 @@ class alimentoDAO extends DAO
     	return $this->consultar($query);
     }
 
-    public function consulta($idAlimento) 
+    /*public function consulta($idAlimento) 
     {   
         $query = "SELECT * FROM alimento WHERE idAlimento = ".$idAlimento."";
 
@@ -37,7 +37,7 @@ class alimentoDAO extends DAO
         $alimento->set_grasas($fila['grasas']);
 
         return $alimento;
-    }
+    }*/
 
     public function inserta(alimentoTO $a)
     {
