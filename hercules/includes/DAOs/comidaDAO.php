@@ -35,7 +35,6 @@ class comidaDAO extends DAO
 
 
 
-    // esta función se ejecuta cuando el usuario elige los alimentos que quiere añadir a una comida y el tipo de comida que elige (desayuno, comida o cena).
     public function registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
     {
         $query_numComidas = "SELECT max(idComida) from comida";
@@ -50,14 +49,13 @@ class comidaDAO extends DAO
         $comida->set_tipo($tipo);
         $comida->set_usuario($nif);*/
 
-        /*$fecha_completa = getdate ([ int $timestamp = time() ]) : array;
+        /*$fecha_completa = getdate ([ int $timestamp = time() ]): array;
         $d = $fecha_completa['mday'];
         $m = $fecha_completa['mon'];
         $y = $fecha_completa['year'];
         $fecha = $y."-".$m."-".$d;*/
 
-        $query_i_comida = "INSERT into comida(/*dia,*/tipo, usuario) values (/*sysdate*//*null,*/'".$tipo."','".$nif."')";
-        // where idComida = '".$nuevo_num_id."'";
+        $query_i_comida = "INSERT into comida(/*dia,*/ tipo, usuario) values ('".$tipo."','".$nif."')";
         $this->consultar($query_i_comida);
 
 
@@ -90,10 +88,9 @@ class comidaDAO extends DAO
 
     }
 
-    // el usuario ve TODAS las comidas que ha registrado en la aplicación
     public function verComidas($nif)
     {
-        $query = "  SELECT a.nombre 
+        $query = "  SELECT distinct a.nombre 
                     from comida c
                     join alimentocomida ac on c.idComida = ac.idComida
                     join alimento a on a.idAlimento = ac.idAlimento
@@ -106,11 +103,7 @@ class comidaDAO extends DAO
         $i = 0;
         while($fila = mysqli_fetch_assoc($consulta))
         {
-            /*$comidas[$i] = $fila['nombre'];
-            if ($fila['nombre' + 1] != null)
-                $comidas[$i] = $comidas[$i].' - ';*/
-
-            $comidas[$i] = $fila['nombre']/*. ' - '*/;
+            $comidas[$i] = $fila['nombre'];
             $i++;
         }
         return $comidas;
