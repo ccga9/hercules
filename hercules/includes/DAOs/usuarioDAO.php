@@ -124,7 +124,6 @@ class UsuarioDAO extends DAO {
 
     public function getIdUsuarioEntrenador($nif_user, $nif_entrena){
          $query = "SELECT id FROM usuarioentrenador WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."'";
-       echo $query;
          return $this->consultar($query);
 
     }
