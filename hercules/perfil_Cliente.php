@@ -40,10 +40,10 @@
 			echo '<tr><td>'.$cliente->getNombre().'</td></tr>';
 			echo '<tr><td>'.$cliente->getEmail().'</td></tr>';
 		echo '</table>';
-		echo '<a href= "registrarEntrenamiento.php?idCliente='.$_GET['id'].'"> Proponer nuevo entrenamiento </a>';
+		echo '<br><a href= "registrarEntrenamiento.php?idCliente='.$_GET['id'].'"> Proponer nuevo entrenamiento </a></br> ';
+		echo '<a href= "miPerfilEntrenamientos.php?idCliente='.$_GET['id'].'"> Ver entrenamientos </a>';
 		?>
 
-		</form>
 		
 	</div>
 

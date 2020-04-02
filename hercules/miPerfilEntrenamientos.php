@@ -23,9 +23,11 @@
 	<div id="contenido">
 		<h1>Entrenamientos</h1>
 		<?php
-	
+		if($_SESSION['usuario']->getTipoUsuario()){
+		    $idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_SESSION['usuario']->getNif(), $_GET['idCliente']);    
+		}else{
 			$idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_GET['idEntrenador'], $_SESSION['usuario']->getNif());
-
+		}
 			$entrenamientos = $ctrl->listarEntrenamientos($idUsuarioEntrenador);
 
 			if(count($entrenamientos) > 0){

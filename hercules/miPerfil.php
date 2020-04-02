@@ -32,18 +32,21 @@
 		}
 		else { //Usuario registrado
 			?>
-			<h1>Buzón de <?php echo $_SESSION['usuario']->getNombre(); ?></h1>
 			<?php
-			$arr = $ctrl->miBuzon($_SESSION['usuario']->getNif());
-			if (count($arr) > 0) {
-				foreach ($arr as $key => $value) {
-					echo $value .' quiere que le entrenes!!   '.
-					 '<button type="submit" name="aceptar" value="'.$key.'">Aceptar</button>///
-					<button type="submit" name="rechazar" value="'.$key.'">Rechazar</button>'.'<br>';
-				}
+			if ($_SESSION['usuario']->getTipoUsuario()) {
+    			echo '<h1>Buzón de  '.$_SESSION['usuario']->getNombre().'</h1>';
+    			
+    			$arr = $ctrl->miBuzon($_SESSION['usuario']->getNif());
+    			if (count($arr) > 0) {
+    				foreach ($arr as $key => $value) {
+    					echo $value .' quiere que le entrenes!!   '.
+    					 '<button type="submit" name="aceptar" value="'.$key.'">Aceptar</button>///
+    					<button type="submit" name="rechazar" value="'.$key.'">Rechazar</button>'.'<br>';
+    				}
+    			}
 			}
-			else {
-				echo 'Bienvenid@' . '<br>'; ?>
+			
+				echo 'Bienvenid@ !!' . '<br>'; ?>
 				<h2>Datos personales</h2>
 				<?php
 
@@ -60,7 +63,7 @@
 				echo'</tr>';	
 			
 				echo '</table>';
-			}
+			
 		}
 		?>
 
