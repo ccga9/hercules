@@ -31,16 +31,6 @@ class comidaDAO extends DAO
         return $this->consultar($query);
     }
 
-<<<<<<< HEAD
-    //public function consulta($idComida){  }
-        
-    
-    
-=======
-    //public function consulta($idComida)
->>>>>>> d62c2db60c768a80550f60fd306b07ca415ca592
-
-
 
     public function registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
     {

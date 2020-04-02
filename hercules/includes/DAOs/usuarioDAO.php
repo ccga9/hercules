@@ -127,6 +127,13 @@ class UsuarioDAO extends DAO {
         return $this->consultar($query);
 
     }
+
+    public function eliminarIdUsuarioEntrenador($nif_user, $nif_entrena){
+        $query = "DELETE FROM `usuarioentrenador` WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."'";
+        return $this->consultar($query);
+
+    }
+
     public function responderSolicitud($nif_entrena, $nif_cliente, $aceptar){
         if ($aceptar) {
              $query = "UPDATE `usuarioentrenador` SET estado='aceptado' WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_cliente."'";
