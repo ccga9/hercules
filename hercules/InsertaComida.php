@@ -31,7 +31,6 @@
 			$primer_plato = $_REQUEST['alimento_1'];
 			$segundo_plato = $_REQUEST['alimento_2'];
 			$postre = $_REQUEST['alimento_3'];
-			// ¿peso?
 
 			$ctrl->registrarComida($primer_plato, $segundo_plato, $postre, $tipo_comida, $nif_usuario);
 

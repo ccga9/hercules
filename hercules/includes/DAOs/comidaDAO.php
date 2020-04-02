@@ -37,17 +37,6 @@ class comidaDAO extends DAO
 
     public function registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
     {
-        $query_numComidas = "SELECT max(idComida) from comida";
-        $consulta_idComidas = $this->consultar($query_numComidas);
-        $num_idComidas = mysqli_fetch_assoc($consulta_idComidas);
-        $n = $num_idComidas['max(idComida)'];
-        if ($n > 1)
-        {
-            $nuevo_num_id = $n + 1;
-        }
-        else
-            $nuevo_num_id = 1;
-
         /*$comida = new comida();
         $comida->set_idComida($nuevo_num_id);
         //$comida->set_dia($fecha);
@@ -62,6 +51,12 @@ class comidaDAO extends DAO
 
         $query_i_comida = "INSERT into comida(/*dia,*/ tipo, usuario) values ('".$tipo."','".$nif."')";
         $this->consultar($query_i_comida);
+
+
+        $query_numComidas = "SELECT max(idComida) from comida";
+        $consulta_idComidas = $this->consultar($query_numComidas);
+        $num_idComidas = mysqli_fetch_assoc($consulta_idComidas);
+        $nuevo_num_id = $num_idComidas['max(idComida)'];
 
 
         $query_c_a1 = "SELECT idAlimento from alimento where nombre = '".$alimento_1."'";
