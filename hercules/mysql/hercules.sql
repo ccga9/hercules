@@ -351,7 +351,7 @@ ALTER TABLE `comida`
 -- Filtros para la tabla `entrenamiento`
 --
 ALTER TABLE `entrenamiento`
-  ADD CONSTRAINT `entrenamiento_ibfk_1` FOREIGN KEY (`idUsuarioEntrenador`) REFERENCES `usuarioentrenador` (`id`);
+  ADD CONSTRAINT `entrenamiento_ibfk_1` FOREIGN KEY (`idUsuarioEntrenador`) REFERENCES `usuarioentrenador` (`id`)  ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `entrenamientoejercicio`

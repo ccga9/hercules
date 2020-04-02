@@ -124,12 +124,15 @@ class UsuarioDAO extends DAO {
 
     public function getIdUsuarioEntrenador($nif_user, $nif_entrena){
          $query = "SELECT id FROM usuarioentrenador WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."'";
-        return $this->consultar($query);
+       echo $query;
+         return $this->consultar($query);
 
     }
 
-    public function eliminarIdUsuarioEntrenador($nif_user, $nif_entrena){
-        $query = "DELETE FROM `usuarioentrenador` WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."'";
+    public function eliminarIdUsuarioEntrenador($nif_user, $nif_entrena, $idUsuarioEntrenador){
+        
+        $query = "DELETE FROM `usuarioentrenador` WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."' AND id = '".$idUsuarioEntrenador."'";
+       echo $query;
         return $this->consultar($query);
 
     }

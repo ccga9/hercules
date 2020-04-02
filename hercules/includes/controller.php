@@ -179,8 +179,9 @@ class controller{
     }
 
     public function eliminarEntrenador($nif_cliente, $nif_entrena){
-
-        $consulta = $this->usuarioDAO->eliminarIdUsuarioEntrenador($nif_cliente, $nif_entrena);
+        $idUsuarioEntrenador = $this->idUsuarioEntrenador($nif_entrena, $nif_cliente);
+        echo $idUsuarioEntrenador;
+        $consulta = $this->usuarioDAO->eliminarIdUsuarioEntrenador($nif_cliente, $nif_entrena, $idUsuarioEntrenador);
         if ($consulta) {
             return true;
         }

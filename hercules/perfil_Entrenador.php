@@ -45,7 +45,7 @@
 		echo '</table>';
 		echo '<a href= "miPerfilEntrenamientos.php?idEntrenador='.$_GET['id'].'"> Ver entrenamientos </a>';
 		echo '<br>';
-		echo '<a href= "eliminarEntrenador.php?idEntrenador='.$_GET['id'].'"> Eliminar de mis lista </a>';
+		echo '<a href= "eliminarEntrenador.php?idEntrenador='.$_GET['id'].'"> Eliminar de mi lista </a>';
 		?>
 
 		</form>
