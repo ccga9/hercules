@@ -27,8 +27,12 @@
 			<h1>Todos los entrenadores disponibles</h1>
 			<?php
 			if (!isset($_SESSION['login'])) {
-				echo 'Entra con tu usuario para mandar solicitudes de entrenamiento'.'<br>';
+				echo 'Entra con tu usuario para mandar solicitudes de entrenamiento.'.'<br>';
 			}
+			else if ($_SESSION['usuario']->getTipoUsuario() == 1) {
+				echo 'Debes ser cliente para solicitar entrenadores.'.'<br>';
+			}
+			
 			$arr = $ctrl->listarEntrenadores( (isset($_SESSION['login']))? $_SESSION['usuario']->getNif() : 0);
 			if (count($arr) > 0) {
 				echo '<table>';
@@ -38,7 +42,7 @@
 				  }
 				  echo '</tr>';
 
-				  if (isset($_SESSION['login'])) {
+				  if (isset($_SESSION['login']) && $_SESSION['usuario']->getTipoUsuario() == 0) {
 				  	$estados = $ctrl->listarSolicitudes($_SESSION['usuario']->getNif());
 				  	foreach ($arr as $key => $valor) {
 						echo '<tr>';
@@ -71,7 +75,7 @@
 				  	
 				echo '</table>';
 
-				if (isset($_SESSION['login'])) {
+				if (isset($_SESSION['login']) && $_SESSION['usuario']->getTipoUsuario() == 0) {
 					echo '<input type="submit" name="submit" Value="Enviar petición"/>';
 				}
 			}

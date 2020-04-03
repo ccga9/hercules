@@ -2,6 +2,7 @@
 
 require_once(__DIR__.'/Form.php');
 require_once(__DIR__.'/../DAOs/usuarioDAO.php');
+require_once(__DIR__.'/../controller.php');
 
 class FormularioLogin extends Form {
 
@@ -67,13 +68,12 @@ class FormularioLogin extends Form {
         }
 
 		if (count($erroresFormulario) === 0) {
-	        $dao = new UsuarioDAO();
-            $us = $dao->login($datos);
+			$ctrl = controller::getInstance();
+            $us = $ctrl->login($datos);
 
 			if ($us != null) {
 				$_SESSION['login'] = true;
 				$_SESSION['usuario'] = $us;
-				//$_SESSION['esAdmin'] = $us->isAdmin();
 			} else {
 				// No se da pistas a un posible atacante
 				$erroresFormulario[] = "El usuario o el password no coinciden";

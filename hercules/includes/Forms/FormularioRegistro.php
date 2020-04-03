@@ -1,6 +1,7 @@
 <?php  
 require_once(__DIR__.'/Form.php');
 require_once(__DIR__.'/../DAOs/usuarioDAO.php');
+require_once(__DIR__.'/../controller.php');
 
 class FormularioRegistro extends Form {
 
@@ -121,14 +122,18 @@ class FormularioRegistro extends Form {
             if ( !isset($datos['especialidad']) || empty($datos['especialidad']) ) {
                 $erroresFormulario[] = "Como entrenador/a debes poner tu especialidad.";
             }
-            if ( !isset($datos['experiencia']) || empty($datos['experiencia']) ) {
+            if ($datos['experiencia'] == 0) {
+                $datos['experiencia'] == "Ninguna";
+            }
+            else if ( !isset($datos['experiencia']) || empty($datos['experiencia']) ) {
                 $erroresFormulario[] = "Como entrenador/a debes poner tu experiencia.";
             }
         }
 
         if (count($erroresFormulario) === 0) {
-            $dao = new UsuarioDAO();
-            $us = $dao->registra($datos);
+            $ctrl = controller::getInstance();
+            $us = $ctrl->registra($datos);
+            
             if ($us != null) {
                 $_SESSION['login'] = true;
                 $_SESSION['usuario'] = $us;

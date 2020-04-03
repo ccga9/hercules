@@ -51,6 +51,23 @@ class controller{
     public function cargarUsuario($nif){
         return $this->usuarioDAO->cargarUsuario($nif);
     }
+    
+    public function login($arr = array()){
+        $usuario = $this->usuarioDAO->cargarUsuario($arr['nif']);
+        if ($usuario != null) {
+            if (password_verify ($arr["contrasenna"], $usuario->getPassword())) {
+                return $usuario;
+            }
+            else {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    public function registra($arr = array()){
+        return $this->usuarioDAO->registra($arr);
+    }
 
 
     public function listarEntrenadores($nif=0){

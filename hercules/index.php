@@ -28,7 +28,7 @@
 		usuarios puedan ejercitarse sin necesidad de desplazarse ni de
 		quedarse a una hora en concreta  también dando la posibilidad de 
 		poder realizar registro y seguimiento del entrenamiento .</p>
-		<img src='includes/img/foto_inicio.jpg' align="right" alt =" " height ="300" width="450" >
+		<img src='includes/img/foto_inicio.jpg' align="middle" alt ="Chica haciendo plank" height ="300" width="450" >
 
 	</div>
 		

@@ -100,7 +100,7 @@ class FormularioRegistrarEntrenamiento extends Form {
 		}
  
 		if (count($erroresFormulario) === 0) {
-			$erroresFormulario = "index.php";
+			$erroresFormulario = "perfil_Cliente.php?id=".$datos['cliente'];
 		}else{
             $erroresFormulario['idCliente'] = "registrarEntrenamiento.php?idCliente=".$datos['cliente'];
         }

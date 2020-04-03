@@ -20,7 +20,7 @@ date_default_timezone_set('Europe/Madrid');
 
 session_start();
 
-$ctrl = new controller();
+$ctrl = controller::getInstance();
 
 //$app = aplicacion::getInstance();
 //$app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS));

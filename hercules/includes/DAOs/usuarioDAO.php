@@ -47,7 +47,7 @@ class UsuarioDAO extends DAO {
         }
     }
 
-    public function login($arr = array()){
+    /*public function login($arr = array()){
         $usuario = $this->cargarUsuario($arr['nif']);
         if ($usuario != null) {
             if (password_verify ($arr["contrasenna"], $usuario->getPassword())) {
@@ -58,7 +58,7 @@ class UsuarioDAO extends DAO {
             }
         }
         return null;
-    }
+    }*/
 
     public function registra($arr = array()){
         $usuario = $this->cargarUsuario($arr['nif']);

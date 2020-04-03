@@ -6,7 +6,6 @@
 
 require_once(__DIR__.'/DAO.php');
 require_once(__DIR__.'/../TOs/entrenamientoTO.php');
-include_once(__DIR__.'/../aplicacion.php');
 
 class entrenamientoDAO extends DAO{
     

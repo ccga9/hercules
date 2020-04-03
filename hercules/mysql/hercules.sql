@@ -181,11 +181,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`, `titulacion`, `especialidad`, `experiencia`) VALUES
-('01234568F', 'SOLID SNAKE', '$2y$10$jrEMOknXYLCVAvcd7K9PuO0/JtYzpwljmxw7lj7zqXGZouDkkB2Q2', NULL, 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Maestro del sigilo', 'Gluteos', 'Demasiada'),
-('26515643R', 'JUAN LIU', '$2y$10$vsnM.mnZYqtDZ8GbhnCIiu0qJwylwmaZsfk7sD.i8LycSq3nzbYmy', NULL, 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
-('50259205L', 'EMILIO JOSé VALENCIA', '$2y$10$sKUix8BEnoob0HUC36phMOurd3S4/lCMpguG9iLO4ieQ7/IDWueOK', NULL, 'emiliova@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Monitor', 'Pesas', '4 años'),
-('50259206L', 'PEP GUARDIOLA', '$2y$10$v2/1j1AQMrt8bGN9Kvvd4uEksmjYQhsGss4b7nuym3CK4fzOVofOW', NULL, 'emiliovalenciabarcelona@gmail.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador', 'Entrenador Fútbol', '10 años'),
-('50259207L', 'MIRIAM ELIZABETH', '$2y$10$B8vficduIFMyEkleLWrEWOHJeLAp9rRXVC4pBqeo5NqKCEQML4n5e', NULL, 'miriam@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
+('12345678A', 'PETER PARKER', '$2y$10$AVXZMNDY3t0qMnnlDsK2ieHc20jp0elXy3AGUtTTROr29gJwgZ9h6', NULL, 'spidy@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Escalada', '20'),
+('12345678B', 'TONY STARK', '$2y$10$tatd6qauszToIxFssh7V8uvAn/jdLXu0ttWYQhi3vbc6ZHQ58PCsC', NULL, 't_stark@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Apoyo moral', '30'),
+('12345678C', 'MIKE', '$2y$10$WXvI7J3TDkc3K4WdSjuZBebcgpYB8FK0NIfcZmA4S1IY.zvufxsYG', NULL, 'm_tyson@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+('12345678D', 'HUGAN', '$2y$10$L9uPLpdr8gX6ffx.6tBuy.xciEHtyQV7Q9CV4sJXSzp93fPKaZsRu', NULL, 'theHulk@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -205,7 +204,7 @@ CREATE TABLE `usuarioentrenador` (
 --
 
 INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
-(1, '50259207L', '50259205L', 'aceptado');
+(8, '12345678D', '12345678B', 'aceptado');
 
 --
 -- Índices para tablas volcadas
