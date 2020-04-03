@@ -1,4 +1,4 @@
 servidor       : localhost
 nombre usuario : hercules
-contraseña     : iG8hC62acnPrvIeU
+contraseña    : iG8hC62acnPrvIeU
 nombre BD      : hercules
