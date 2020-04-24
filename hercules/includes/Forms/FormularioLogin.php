@@ -30,14 +30,14 @@ class FormularioLogin extends Form {
     {
     	$ret = '';
     	$ret .= '<fieldset>';
-           $ret .= '<legend>Usuario y contraseña</legend>';
+           $ret .= '<legend>INICIAR SESIÓN EN HÉRCULES</legend>';
            $ret .= '<div class="grupo-control">';
-                $ret .= '<label>NIF/NIE:</label> <input type="text" name="nif"/>';
+                $ret .= '<label>NIF/NIE</label> <input type="text" placeholder="&#128100;NIF/NIE" Usuario name="nif"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Password:</label> <input type="password" name="contrasenna" />';
+                $ret .= '<label>CONTRASEÑA</label> <input type="password" placeholder="&#128272;Contraseña" name="contrasenna" />';
             $ret .= '</div>';
-            $ret .= '<div class="grupo-control"><button type="submit" name="login">Entrar</button></div>';
+            $ret .= '<div class="grupo-control"><button type="submit" name="login">Iniciar sesión</button></div>';
 		$ret .= '</fieldset>';
 
         return $ret;
