@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2020 a las 20:28:01
+-- Tiempo de generación: 25-04-2020 a las 19:07:28
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.28
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alimento` (
   `idAlimento` int(10) NOT NULL,
-  `nombre` varchar(15) NOT NULL,
-  `caloriasConsumidas` int(4) UNSIGNED DEFAULT NULL,
-  `carbohidratos` int(4) UNSIGNED DEFAULT NULL,
-  `proteinas` int(4) UNSIGNED DEFAULT NULL,
-  `grasas` int(4) UNSIGNED DEFAULT NULL
+  `nombre` varchar(50) NOT NULL,
+  `caloriasConsumidas` double UNSIGNED DEFAULT NULL,
+  `carbohidratos` double UNSIGNED DEFAULT NULL,
+  `proteinas` double UNSIGNED DEFAULT NULL,
+  `grasas` double UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -42,12 +42,20 @@ CREATE TABLE `alimento` (
 --
 
 INSERT INTO `alimento` (`idAlimento`, `nombre`, `caloriasConsumidas`, `carbohidratos`, `proteinas`, `grasas`) VALUES
-(1, 'manzana', NULL, NULL, NULL, NULL),
-(2, 'ensalada', NULL, NULL, NULL, NULL),
-(3, 'pescado', NULL, NULL, NULL, NULL),
-(4, 'pollo', NULL, NULL, NULL, NULL),
-(5, 'tarta de queso', NULL, NULL, NULL, NULL),
-(6, 'judí­as', NULL, NULL, NULL, NULL);
+(1, 'manzana', 55, 12, 0, 0),
+(2, 'ensalada mediterránea', 57, 9, 1.9, 1.5),
+(3, 'merluza', 64, 0, 12, 1.8),
+(4, 'pollo', 166, 0, 19.8, 9.6),
+(5, 'tarta de queso', 233, 22, 7.3, 11.8),
+(6, 'judí­as', 37, 4.2, 2.3, 0.5),
+(7, 'paella', 173, 17.4, 12.3, 5.7),
+(8, 'salmorejo', 77, 6.2, 1.1, 5.1),
+(9, 'tortilla de patatas', 217, 24, 3.9, 11.8),
+(10, 'pulpo', 84, 0, 18, 1.5),
+(11, 'macarrones boloñesa', 136, 17, 3.3, 6),
+(12, 'cereales frosties', 355, 88.6, 5.3, 0.2),
+(13, 'solomillo de cerdo', 158, 0, 22.3, 7.6),
+(14, 'lasaña boloñesa', 156, 12, 7.9, 8.4);
 
 -- --------------------------------------------------------
 
@@ -59,6 +67,16 @@ CREATE TABLE `alimentocomida` (
   `idAlimento` int(10) NOT NULL,
   `idComida` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `alimentocomida`
+--
+
+INSERT INTO `alimentocomida` (`idAlimento`, `idComida`) VALUES
+(1, 1),
+(2, 2),
+(3, 2),
+(5, 2);
 
 -- --------------------------------------------------------
 
@@ -83,10 +101,18 @@ CREATE TABLE `comentario` (
 
 CREATE TABLE `comida` (
   `idComida` int(10) NOT NULL,
-  `dia` date NOT NULL,
+  `dia` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `tipo` varchar(15) NOT NULL,
   `usuario` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comida`
+--
+
+INSERT INTO `comida` (`idComida`, `dia`, `tipo`, `usuario`) VALUES
+(1, '2020-04-24 18:00:00', 'desayuno', '12345678E'),
+(2, '2020-04-25 16:18:46', 'cena', '12345678E');
 
 -- --------------------------------------------------------
 
@@ -184,7 +210,8 @@ INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, 
 ('12345678A', 'PETER PARKER', '$2y$10$AVXZMNDY3t0qMnnlDsK2ieHc20jp0elXy3AGUtTTROr29gJwgZ9h6', NULL, 'spidy@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Escalada', '20'),
 ('12345678B', 'TONY STARK', '$2y$10$tatd6qauszToIxFssh7V8uvAn/jdLXu0ttWYQhi3vbc6ZHQ58PCsC', NULL, 't_stark@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Apoyo moral', '30'),
 ('12345678C', 'MIKE', '$2y$10$WXvI7J3TDkc3K4WdSjuZBebcgpYB8FK0NIfcZmA4S1IY.zvufxsYG', NULL, 'm_tyson@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
-('12345678D', 'HUGAN', '$2y$10$L9uPLpdr8gX6ffx.6tBuy.xciEHtyQV7Q9CV4sJXSzp93fPKaZsRu', NULL, 'theHulk@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
+('12345678D', 'HUGAN', '$2y$10$L9uPLpdr8gX6ffx.6tBuy.xciEHtyQV7Q9CV4sJXSzp93fPKaZsRu', NULL, 'theHulk@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+('12345678E', 'PACO', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', NULL, 'paco@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -285,7 +312,7 @@ ALTER TABLE `usuarioentrenador`
 -- AUTO_INCREMENT de la tabla `alimento`
 --
 ALTER TABLE `alimento`
-  MODIFY `idAlimento` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAlimento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `comentario`
@@ -297,7 +324,7 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT de la tabla `comida`
 --
 ALTER TABLE `comida`
-  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio`
@@ -321,7 +348,7 @@ ALTER TABLE `recomendacion`
 -- AUTO_INCREMENT de la tabla `usuarioentrenador`
 --
 ALTER TABLE `usuarioentrenador`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
@@ -350,7 +377,7 @@ ALTER TABLE `comida`
 -- Filtros para la tabla `entrenamiento`
 --
 ALTER TABLE `entrenamiento`
-  ADD CONSTRAINT `entrenamiento_ibfk_1` FOREIGN KEY (`idUsuarioEntrenador`) REFERENCES `usuarioentrenador` (`id`)  ON DELETE CASCADE;
+  ADD CONSTRAINT `entrenamiento_ibfk_1` FOREIGN KEY (`idUsuarioEntrenador`) REFERENCES `usuarioentrenador` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `entrenamientoejercicio`
