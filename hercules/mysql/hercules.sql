@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2020 a las 19:07:28
+-- Tiempo de generación: 25-04-2020 a las 20:19:53
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Versión de PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -167,14 +167,19 @@ CREATE TABLE `entrenamientoejercicio` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `recomendacion`
+-- Estructura de tabla para la tabla `mensajes`
 --
 
-CREATE TABLE `recomendacion` (
-  `idUsuarioEntrenador` int(10) NOT NULL,
-  `fecha` date NOT NULL,
-  `recomendacion` text NOT NULL,
-  `tipo` varchar(10) NOT NULL
+CREATE TABLE `mensajes` (
+  `id` int(11) NOT NULL,
+  `emisor` varchar(10) NOT NULL,
+  `receptor` varchar(10) NOT NULL,
+  `asunto` varchar(20) NOT NULL,
+  `texto` text NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `visto` tinyint(1) NOT NULL,
+  `emisor_del` tinyint(1) NOT NULL,
+  `receptor_del` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -285,10 +290,10 @@ ALTER TABLE `entrenamientoejercicio`
   ADD KEY `idEjercicio` (`idEjercicio`);
 
 --
--- Indices de la tabla `recomendacion`
+-- Indices de la tabla `mensajes`
 --
-ALTER TABLE `recomendacion`
-  ADD PRIMARY KEY (`idUsuarioEntrenador`);
+ALTER TABLE `mensajes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuario`
@@ -339,10 +344,10 @@ ALTER TABLE `entrenamiento`
   MODIFY `idEntrenamiento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `recomendacion`
+-- AUTO_INCREMENT de la tabla `mensajes`
 --
-ALTER TABLE `recomendacion`
-  MODIFY `idUsuarioEntrenador` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `mensajes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarioentrenador`
@@ -385,12 +390,6 @@ ALTER TABLE `entrenamiento`
 ALTER TABLE `entrenamientoejercicio`
   ADD CONSTRAINT `entrenamientoejercicio_ibfk_1` FOREIGN KEY (`idEntrenamiento`) REFERENCES `entrenamiento` (`idEntrenamiento`),
   ADD CONSTRAINT `entrenamientoejercicio_ibfk_2` FOREIGN KEY (`idEjercicio`) REFERENCES `ejercicio` (`idEjercicio`);
-
---
--- Filtros para la tabla `recomendacion`
---
-ALTER TABLE `recomendacion`
-  ADD CONSTRAINT `recomendacion_ibfk_1` FOREIGN KEY (`idUsuarioEntrenador`) REFERENCES `usuarioentrenador` (`id`);
 
 --
 -- Filtros para la tabla `usuarioentrenador`

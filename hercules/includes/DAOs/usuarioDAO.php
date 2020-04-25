@@ -13,7 +13,7 @@ class UsuarioDAO extends DAO {
         parent::__construct();
     }
     
-    public function select($col, $cond){
+    public function selectUsuario($col, $cond){
         $query = "";
         if ($col == "") {
             $col = "*";
@@ -28,14 +28,14 @@ class UsuarioDAO extends DAO {
         return $this->consultarv2($query);
     }
     
-    public function insert($col, $values){
+    public function insertUsuario($col, $values){
         $query = "";
         $query = "INSERT INTO usuario(".$col.") VALUES (".$values.")";
         
         return $this->consultarv2($query);
     }
     
-    public function update($set, $cond){
+    public function updateUsuario($set, $cond){
         $query = "";
         if ($cond != "") {
             $query = "UPDATE usuario SET ".$set." WHERE ".$cond;
@@ -44,7 +44,7 @@ class UsuarioDAO extends DAO {
         return $this->consultarv2($query);
     }
     
-    public function delete($cond){
+    public function deleteUsuario($cond){
         $query = "";
         if ($cond != "") {
             $query = "DELETE FROM usuario WHERE ".$cond;
@@ -53,32 +53,44 @@ class UsuarioDAO extends DAO {
         return $this->consultarv2($query);
     }
     
-    public function listarMisEntrenadores($nif){
-        
-        $query = "SELECT entrenador FROM usuarioentrenador WHERE usuario = '".$nif."' AND estado = 'aceptado'";
-       
-        return $this->consultar($query);
-    }
-    public function listarMisClientes($nif){
-        
-        $query = "SELECT usuario FROM usuarioentrenador WHERE entrenador = '".$nif."' AND estado = 'aceptado'";
-       
-        return $this->consultar($query);
-    }
-
-    public function listarEntrenadores($nif){
-        if ($nif) {
-            $query = "SELECT nif, nombre, titulacion, especialidad, experiencia FROM usuario WHERE tipoUsuario = 1 AND nif != '" .$nif."'";
+    public function selectUs_Ent($col, $cond){
+        $query = "";
+        if ($col == "") {
+            $col = "*";
+        }
+        if ($cond == "") {
+            $query = "SELECT ".$col." FROM usuarioentrenador";
         }
         else {
-             $query = "SELECT nif, nombre, titulacion, especialidad, experiencia FROM usuario WHERE tipoUsuario = 1";
+            $query = "SELECT ".$col." FROM usuarioentrenador WHERE ".$cond;
         }
-        return $this->consultar($query);
+        
+        return $this->consultarv2($query);
     }
-
-    public function listarSolicitudes($nif){
-        $query = "SELECT entrenador, estado FROM usuarioentrenador WHERE usuario = '".$nif."'";
-        return $this->consultar($query);
+    
+    public function insertUs_Ent($col, $values){
+        $query = "";
+        $query = "INSERT INTO usuarioentrenador(".$col.") VALUES (".$values.")";
+        
+        return $this->consultarv2($query);
+    }
+    
+    public function updateUs_Ent($set, $cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "UPDATE usuarioentrenador SET ".$set." WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
+    
+    public function deleteUs_Ent($cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "DELETE FROM usuarioentrenador WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
     }
 
     public function miBuzon($nif){
@@ -118,44 +130,6 @@ class UsuarioDAO extends DAO {
         
         return $this->consultar($query);
     }
-   
-    
-    /*public function getUsuario($nif){
-        $filas = SelectArray("SELECT * from usuarios where nif = '$nif'");
-        $fila = $filas[0];
-        
-        $u = new TOUsuario();
-        $u->nombre = $fila['nombre'];
-        $u->contrasenna = $fila['contrasenna'];
-        $u->email = $fila['email'];
-        $u->sexo = $fila['sexo'];
-        $u->fechaNac = $fila['fechaNac'];
-        $u->telefono = $fila['telefono'];
-        $u->ubicacion = $fila['ubicacion'];
-        $u->peso = $fila['peso'];
-        $u->altura = $fila['altura'];
-        $u->preferencias = $fila['preferencias'];
-        $u->tipoUsuario = $fila['tipoUsuario'];
-        $u->titulacion = $fila['titulacion'];
-        $u->especialidad = $fila['especialidad'];
-        $u->experiencia = $fila['experiencia'];
-    }*/
-    
-    /*public function insertarUsuario(){
-     buscarUsuario();
-     }
-     
-     //Falta probar y completar
-     public function buscarUsuario(){
-     $query = "SELECT * FROM prueba U WHERE U.nombre = 'uno'";
-     $rs = $this->mysqli->query($query);
-     $result = false;
-     if(count($rs) == 1){
-     $user = new TOUsuario($rs[0]['nombre']);
-     }
-     
-     return $result;
-     }*/
 }
 
 ?>

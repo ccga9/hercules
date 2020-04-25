@@ -46,7 +46,7 @@ class controller{
     //Funciones relacionadas con el usuario
     public function cargarUsuario($nif){
         $cond= "nif = '". $nif ."'";
-        $res=$this->usuarioDAO->select('', $cond);
+        $res=$this->usuarioDAO->selectUsuario('', $cond);
         
         if (count($res) == 1) {
             $row=$res[0];
@@ -93,7 +93,7 @@ class controller{
             $values .= ($u->getEspecialidad() !== null)? ",'".$u->getEspecialidad()."'" : ",NULL";
             $values .= ($u->getExperiencia() !== null)? ",'".$u->getExperiencia()."'" : ",NULL";
                                                                                                                         
-            return $this->usuarioDAO->insert($col, $values);
+            return $this->usuarioDAO->insertUsuario($col, $values);
         }
         else {
             return 0;
@@ -120,7 +120,16 @@ class controller{
             $set .= ",experiencia=".($u->getExperiencia() !== null)? "'".$u->getExperiencia()."'" : "NULL";
             $cond="nif = '". $u->getNif() ."'";
                                                                                                     
-            return $this->usuarioDAO->update($set, $cond);
+            return $this->usuarioDAO->updateUsuario($set, $cond);
+        }
+        else {
+            return 0;
+        }
+    }
+    
+    public function deleteUsuario($nif){
+        if ($this->cargarUsuario($arr['nif']) !== 0) {
+            return $this->usuarioDAO->deleteUsuario("nif='".$nif);
         }
         else {
             return 0;
@@ -160,90 +169,50 @@ class controller{
         }
     }
 
-
     public function listarEntrenadores($nif=0){
-        //$usuarioDAO = new UsuarioDAO();
-        $consulta = $this->usuarioDAO->listarEntrenadores($nif);
-
-        $row = array(); 
-        $entrena = array();
-
-        if ($consulta) {
-            while ($fila = mysqli_fetch_assoc($consulta)){
-                $row['nombre'] = $fila['nombre'];
-                $row['titulacion'] = $fila['titulacion'];
-                $row['especialidad'] = $fila['especialidad'];
-                $row['experiencia'] = $fila['experiencia'];
-
-                $entrena[$fila['nif']] = $row;
-            }
+        $col='nif, nombre, titulacion, especialidad, experiencia';
+        $cond='';
+        if ($nif) {
+            $cond="tipoUsuario = 1 AND nif != '" .$nif."'";
         }
-
-        return $entrena;
-        
+        else {
+            $cond="tipoUsuario = 1";
+        }
+        return $consulta = $this->usuarioDAO->selectUsuario($col, $cond);
     }
     
     public function listarMisEntrenadores($nif){
+        
+        $col = "entrenador";
+        $cond="usuario = '".$nif."' AND estado = 'aceptado'";
        
-        $consulta = $this->usuarioDAO->listarMisEntrenadores($nif);
-        
-        $row = array();
-        $entrena = array();
-        
-        if ($consulta) {
-            while ($fila = mysqli_fetch_assoc($consulta)){
-                $user = $this->usuarioDAO->cargarUsuario($fila['entrenador']);
-                $row['nombre'] = $user->getNombre();
-                $row['titulacion'] = $user->getTitulacion();
-                $row['especialidad'] = $user->getEspecialidad();
-                $row['experiencia'] = $user->getExperiencia();
-                
-                $entrena[$fila['entrenador']] = $row;
-            }
-        }
-        
-        return $entrena;
+        return $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
     }
 
-     public function listarMisClientes($nif){
-       
-        $consulta = $this->usuarioDAO->listarMisClientes($nif);
+    public function listarMisClientes($nif){
+         
+        $col = "usuario";
+        $cond="entrenador = '".$nif."' AND estado = 'aceptado'";
         
-        $row = array();
-        $entrena = array();
-        
-        if ($consulta) {
-            while ($fila = mysqli_fetch_assoc($consulta)){
-                $user = $this->usuarioDAO->cargarUsuario($fila['usuario']);
-                $row['nombre'] = $user->getNombre();
-                $row['email'] = $user->getEmail();
-
-                $entrena[$fila['usuario']] = $row;
-            }
-        }
-        
-        return $entrena;
+        return $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
     }
 
     public function listarSolicitudes($nif){
-        $consulta = $this->usuarioDAO->listarSolicitudes($nif);
  
-        $entrena = array();
-
-        if ($consulta) {
-            while ($fila = mysqli_fetch_assoc($consulta)){
-                $entrena[$fila['entrenador']] = $fila['estado'];
-            }
-        }
-
-        return $entrena;
+        $col = "entrenador, estado";
+        $cond="usuario = '".$nif."'";
+        
+        return $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
     }
 
-    public function enviarSolicitud($nif_user, $nif_entrena){
-
-        $consulta = $this->usuarioDAO->enviarSolicitud($nif_user, $nif_entrena);
-
-        return $consulta;
+    public function enviarSolicitud($nif_user, $nif_entrena){     
+        $col="`id`, `usuario`, `entrenador`, `estado`";
+        $values="0, '".
+            $nif_user."',
+        '" . $nif_entrena . "',
+        'pendiente'";
+        
+        return $consulta = $this->usuarioDAO->insertUs_Ent($col, $values);
     }
 
     public function miBuzon($nif){
