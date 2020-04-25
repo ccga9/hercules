@@ -12,6 +12,7 @@ require_once(__DIR__ . '/DAOs/comidaDAO.php');
 require_once(__DIR__ . '/DAOs/entrenamientoDAO.php');
 require_once(__DIR__ . '/DAOs/recomendacionesDAO.php');
 require_once(__DIR__ . '/DAOs/ejercicioDAO.php');
+require_once(__DIR__ . '/DAOs/foroDAO.php');
 
 class controller{
 
@@ -21,6 +22,7 @@ class controller{
     private $entrenamientoDAO;
     private $recomendacionesDAO;
     private $ejercicioDAO;
+    private $foroDAO;
     private static $instance = null;
 
     public function __construct(){
@@ -30,6 +32,7 @@ class controller{
         $this->entrenamientoDAO = new entrenamientoDAO();
         $this->recomendacionesDAO = new recomendacionesDAO();
         $this->ejercicioDAO = new ejercicioDAO();
+        $this->foroDAO = new foroDAO();
     }
 
      public static function getInstance() {
@@ -387,6 +390,27 @@ class controller{
     
     //FIN FUNCIONES EJERCICIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
+    //FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+    public function listarTemas()
+    {
+        $consulta = $this->foroDAO->listarNombresTemas();
+        
+        $ret = array();
+        $tema = array();
+        
+        if ($consulta) {
+            while ($fila = mysqli_fetch_assoc($consulta)){
+                $tema[] = $fila['tema'];
+                $tema[] = $fila['autor'];
+                $tema[] = $fila['fecha'];
+                $tema[] = $fila['respuestas'];
+                $ret[] = $tema;
+            }
+        }
+        
+        return $ret;
+    }
+    //FIN FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
 }
 

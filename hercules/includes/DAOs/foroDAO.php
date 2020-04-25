@@ -44,5 +44,10 @@ class foroDAO extends DAO
         
         return $this->consultar($query);
     }
+    
+   public function listarNombresTemas(){
+       $query = "SELECT tema, autor, fecha, respuestas FROM foro WHERE id_r = 0";
+       return $this->consulta($query);
+    }
 }
 ?>
