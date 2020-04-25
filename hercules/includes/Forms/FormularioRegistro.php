@@ -134,7 +134,7 @@ class FormularioRegistro extends Form {
             $ctrl = controller::getInstance();
             $us = $ctrl->registra($datos);
             
-            if ($us != null) {
+            if ($us !== 0) {
                 $_SESSION['login'] = true;
                 $_SESSION['usuario'] = $us;
             } else {

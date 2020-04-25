@@ -44,29 +44,120 @@ class controller{
     //FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     
     //Funciones relacionadas con el usuario
-    public function consultarUsuario($nif){
-        return $this->usuarioDAO->consultarUsuario($nif);
-    }
-
     public function cargarUsuario($nif){
-        return $this->usuarioDAO->cargarUsuario($nif);
+        $cond= "nif = '". $nif ."'";
+        $res=$this->usuarioDAO->select('', $cond);
+        
+        if (count($res) == 1) {
+            $row=$res[0];
+            $usuario = new TOUsuario();
+            $usuario->setNif($nif);
+            $usuario->setNombre($row["nombre"]);
+            $usuario->setPassword($row["contrasenna"]);
+            $usuario->setEmail($row["email"]);
+            $usuario->setSexo($row["sexo"]);
+            $usuario->setFechaNac($row["fechaNac"]);
+            $usuario->setTelefono($row["telefono"]);
+            $usuario->setUbicacion($row["ubicacion"]);
+            $usuario->setPeso($row["peso"]);
+            $usuario->setAltura($row["altura"]);
+            $usuario->setPreferencias($row["preferencias"]);
+            $usuario->setTipoUsuario($row["tipoUsuario"]);
+            $usuario->setTitulacion($row["titulacion"]);
+            $usuario->setEspecialidad($row["especialidad"]);
+            $usuario->setExperiencia($row["experiencia"]);
+            return $usuario;
+        } else{
+            return 0;
+        }
+    }
+    
+    public function insertarUsuario($u){
+        if ($u->getNif() !== null) {
+            $col = '`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`, `titulacion`, `especialidad`, `experiencia`';
+            $values='';
+            $values .= ($u->getNif() !== null)? "'".$u->getNif()."'" : "NULL";
+            $values .= ($u->getNombre() !== null)? ",'".$u->getNombre()."'" : ",NULL";
+            $values .= ($u->getPassword() !== null)? ",'".$u->getPassword()."'" : ",NULL";
+            $values .= ($u->getFoto() !== null)? ",'".$u->getFoto()."'" : ",NULL";
+            $values .= ($u->getEmail() !== null)? ",'".$u->getEmail()."'" : ",NULL";
+            $values .= ($u->getSexo() !== null)? ",'".$u->getSexo()."'" : ",NULL";
+            $values .= ($u->getFechaNac() !== null)? ",'".$u->getFechaNac()."'" : ",NULL";
+            $values .= ($u->getTelefono() !== null)? ",'".$u->getTelefono()."'" : ",NULL";
+            $values .= ($u->getUbicacion() !== null)? ",'".$u->getUbicacion()."'" : ",NULL";
+            $values .= ($u->getPeso() !== null)? ",".$u->getPeso() : ",NULL";
+            $values .= ($u->getAltura() !== null)? ",".$u->getAltura() : ",NULL";
+            $values .= ($u->getPreferencias() !== null)? ",'".$u->getPreferencias()."'" : ",NULL";
+            $values .= ($u->getTipoUsuario() !== null)? ",".$u->getTipoUsuario() : ",NULL";
+            $values .= ($u->getTitulacion() !== null)? ",'".$u->getTitulacion()."'" : ",NULL";
+            $values .= ($u->getEspecialidad() !== null)? ",'".$u->getEspecialidad()."'" : ",NULL";
+            $values .= ($u->getExperiencia() !== null)? ",'".$u->getExperiencia()."'" : ",NULL";
+                                                                                                                        
+            return $this->usuarioDAO->insert($col, $values);
+        }
+        else {
+            return 0;
+        }
+    }
+    
+    public function updateUsuario($u){
+        $set='';
+        $cond="";
+        if ($u->getNif() !== null) {
+            $set .= "nombre=".($u->getNombre() !== null)? "'".$u->getNombre()."'" : "NULL";
+            $set .= ",contrasenna=".($u->getPassword() !== null)? "'".$u->getPassword()."'" : "NULL";
+            $set .= ",email=".($u->getEmail() !== null)? "'".$u->getEmail()."'" : "NULL";
+            $set .= ",sexo=".($u->getSexo() !== null)? "'".$u->getSexo()."'" : "NULL";
+            $set .= ",fechaNac=".($u->getFechaNac() !== null)? "'".$u->getFechaNac()."'" : "NULL";
+            $set .= ",telefono=".($u->getTelefono() !== null)? "'".$u->getTelefono()."'" : "NULL";
+            $set .= ",ubicacion=".($u->getUbicacion() !== null)? "'".$u->getUbicacion()."'" : "NULL";
+            $set .= ",peso=".($u->getPeso() !== null)? $u->getPeso() : "NULL";
+            $set .= ",altura=".($u->getAltura() !== null)? $u->getAltura() : "NULL";
+            $set .= ",preferencias=".($u->getPreferencias() !== null)? "'".$u->getPreferencias()."'" : "NULL";
+            $set .= ",tipoUsuario=".($u->getTipoUsuario() !== null)? $u->getTipoUsuario() : "NULL";
+            $set .= ",titulacion=".($u->getTitulacion() !== null)? "'".$u->getTitulacion()."'" : "NULL";
+            $set .= ",especialidad=".($u->getEspecialidad() !== null)? "'".$u->getEspecialidad()."'" : "NULL";
+            $set .= ",experiencia=".($u->getExperiencia() !== null)? "'".$u->getExperiencia()."'" : "NULL";
+            $cond="nif = '". $u->getNif() ."'";
+                                                                                                    
+            return $this->usuarioDAO->update($set, $cond);
+        }
+        else {
+            return 0;
+        }
     }
     
     public function login($arr = array()){
-        $usuario = $this->usuarioDAO->cargarUsuario($arr['nif']);
-        if ($usuario != null) {
-            if (password_verify ($arr["contrasenna"], $usuario->getPassword())) {
-                return $usuario;
-            }
-            else {
-                return null;
+        $usuario = $this->cargarUsuario($arr['nif']);
+        if ($usuario !== 0) {
+            if (!password_verify ($arr["contrasenna"], $usuario->getPassword())) {
+                $usuario = 0;
             }
         }
-        return null;
+        return $usuario;
     }
 
     public function registra($arr = array()){
-        return $this->usuarioDAO->registra($arr);
+        $usuario = $this->cargarUsuario($arr['nif']);
+        if ($usuario === 0) {
+            $usuario = new TOUsuario();
+            $usuario->setNif($arr["nif"]);
+            $usuario->setNombre($arr["nombre"]);
+            $usuario->setPassword(password_hash($arr["contrasenna"], PASSWORD_DEFAULT));
+            $usuario->setEmail($arr["email"]);
+            $usuario->setTipoUsuario($arr["tipoUsuario"]);
+            
+            if ($arr["tipoUsuario"]) {
+                $usuario->setTitulacion($arr["titulacion"]);
+                $usuario->setEspecialidad($arr["especialidad"]);
+                $usuario->setExperiencia($arr["experiencia"]);
+            }
+            $this->insertarUsuario($usuario);
+            return $usuario;
+        }
+        else {
+            return 0;
+        }
     }
 
 

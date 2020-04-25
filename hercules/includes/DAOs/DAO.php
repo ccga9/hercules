@@ -17,33 +17,35 @@ class DAO {
             }
             
             if(!$this->mysqli->set_charset("utf8")) {
-                printf("<hr>Error loading character set utf8 (Err. nº %d): %s\n<hr/>",  $this->mysqli->errno, $this->mysqli->error);
+                printf("<hr>Error loading character set utf8 (Err. nï¿½ %d): %s\n<hr/>",  $this->mysqli->errno, $this->mysqli->error);
                 exit();
             }
         }
         
     }
     
-    /*public function ejecutarConsulta($sql){
-        if($sql != ""){
-            $consulta = $this->mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+    protected function consultarv2($sql){
+        if ($sql != "") {
+            $consulta = $this->mysqli->query($sql) or die ($this->mysqli->error. " en la linea ".(__LINE__-1));
             $tablaDatos = array();
-            if ($consulta) {
-                while ($fila = mysqli_fetch_assoc($consulta)){
-                    array_push($tablaDatos, $fila);
+            if (substr($sql, 0, 6) == "SELECT") {
+                if ($consulta) {
+                    while ($fila = mysqli_fetch_assoc($consulta)){
+                        array_push($tablaDatos, $fila);
+                    }
                 }
             }
             return $tablaDatos; 
-        } else{
+        }
+        else {
             return 0;
         }
-    }*/
-    
-    
-    //Falta probar
-    protected function consultar($query){
-        return $this->mysqli->query($query);
     }
+    
+    protected function consultar($sql){
+        return $this->mysqli->query($sql);
+    }
+ 
 }
 
 ?>
