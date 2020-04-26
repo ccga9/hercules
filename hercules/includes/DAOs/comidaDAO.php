@@ -89,21 +89,20 @@ class comidaDAO extends DAO
 
     public function verComidas($nif)
     {
-        $query = "  SELECT distinct a.nombre
+        $query = "  SELECT c.dia, c.tipo, a.nombre, count(c.dia)
                     from comida c
                     join alimentocomida ac on c.idComida = ac.idComida
                     join alimento a on a.idAlimento = ac.idAlimento
-                    where c.usuario = '".$nif."'";
-                    //group by ac.idComida";
+                    where c.usuario = '".$nif."'
+                    group by ac.idComida, ac.idAlimento
+                    order by c.dia";
 
         $consulta = $this->consultar($query);
 
         $comidas = array();
-        $i = 0;
         while($fila = mysqli_fetch_assoc($consulta))
         {
-            $comidas[$i] = $fila['nombre'];
-            $i++;
+            array_push($comidas, $fila);
         }
         return $comidas;
     }

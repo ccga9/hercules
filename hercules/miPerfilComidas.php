@@ -1,12 +1,19 @@
 <?php 
 	require_once 'includes/config.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<meta charset="utf-8">
 	<title>HERCULES</title>
+	<style>
+	table { border: 1px solid black;
+	        border-collapse: collapse;
+	        width: 600px; }
+    td { border: 1px solid black; }
+	</style>
 </head>
 
 <body>
@@ -30,26 +37,45 @@
 		
 		$nif_usuario = $_SESSION['usuario']->getNif();
 		$comidas = $ctrl->verComidas($nif_usuario);
-		$capacidad = count($comidas);
 		?>
 		<p>A continuación se muestran las comidas que usted ha registrado:</p>
-		
-		<!-- Hacer tabla con datos de comidas (fecha y tipo) -->
-		
-		<textarea name='listaComidas' rows ='4' cols='100' readonly>
+		<p><table>
+		<tr> <th>Fecha de registro</th> <th>Tipo</th> <th>Alimento</th> </tr>
+		<!-- <th>1er plato (o plato único)</th> <th>2º plato</th> <th>Postre</th> </tr> -->
 		<?php
-		foreach ($comidas as $key => $value)
+		$i = 0;
+		$aux = 0;
+		$j = 0;
+		foreach ($comidas as $valor)
 		{
-			if ($capacidad != $key + 1)
-				echo $value.' - ';
-			else
-				echo $value;
+	        /*while ($comidas[$i]['dia'] == $comidas[$i + 1]['dia'])
+	        {
+	            ++$i;
+	            $aux = $i % 3;
+	        }*/
+		    
+		    echo "<tr>";
+		    
+		    /* NO FUNCIONA
+		     * 
+		     * while (($j == $aux) || ($i % 3 == 0))
+		    {
+		        echo "<td rowspan = ".$aux.">".$valor['dia']."</td>";
+		        echo "<td rowspan = ".$aux.">".$valor['tipo']."</td>";
+		        $j = 0;
+		    }
+		    ++$j;*/
+		    
+		    echo "<td>".$valor['dia']."</td>";
+		    echo "<td>".$valor['tipo']."</td>";
+		    echo "<td>".$valor['nombre']."</td>";
+            echo "</tr>";
 		}
 		?>
-		</textarea>
+		</table></p>
 
 		<p>La siguiente opción le permitirá añadir una nueva comida a la tabla:</p>
-		<form action="comidas.php" method="post">
+		<form action="comida.php" method="post">
 			<p><input type="submit" name="registroComida" value="Registrar comida" /></p>
 		</form>
 

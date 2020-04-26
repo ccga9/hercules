@@ -2,6 +2,7 @@
     require_once 'includes/config.php';
     require_once(__DIR__.'/includes/Forms/FormularioComida.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -30,16 +31,15 @@
 	    $form = new FormularioComida();
 	    $form->gestiona();
 	    
-	    
         $alimentos = $ctrl->listarAlimentos();
+        ?>
         
-        echo"
         <p>Esta es una tabla con todos los alimentos de los que disponemos, acompañados de sus características.
         La cantidad resultante (en gramos) de cada una de estas características está medida
         cada 100 gramos del alimento:</p>
         <p><table>
-        <tr><th>Alimento</th> <th>Calorías</th> <th>Proteínas</th> <th>Grasas</th> <th>Hidratos de carbono</th></tr>";
-        
+        <tr> <th>Alimento</th> <th>Calorías</th> <th>Proteínas</th> <th>Grasas</th> <th>Hidratos de carbono</th> </tr>
+        <?php
         foreach ($alimentos as $valor)
         {
             echo
@@ -51,13 +51,13 @@
             <td>".$valor['carbohidratos']."</td>
             </tr>";
         }
-        echo "</table></p>";
-        
-		?>
+        ?>
+        </table></p>
 
-	</div>
+		</div>
+		
 		<?php	
-		require('includes/comun/pie.php');
+		  require('includes/comun/pie.php');
 		?>
 	</div>
 	</body>
