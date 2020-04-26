@@ -11,9 +11,16 @@ class alimentoDAO extends DAO
 
     public function listarAlimentos()
     {
-    	$query = "SELECT nombre from alimento";
+    	$query = "SELECT * FROM alimento ORDER BY nombre ASC";
 
-    	return $this->consultar($query);
+    	$consulta = $this->consultar($query);
+    	
+    	$nombres = array();
+    	while ($fila = mysqli_fetch_assoc($consulta))
+    	{    	    
+    	    array_push($nombres, $fila);
+    	}
+    	return $nombres;
     }
 
     /*public function consulta($idAlimento) 

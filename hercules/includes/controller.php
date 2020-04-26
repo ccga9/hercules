@@ -272,20 +272,10 @@ class controller{
     //FIN FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     
 
-    //FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
+    //FUNCIONES ALIMENTODAO Y COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     public function listarAlimentos()
     {
-        $alimentoDAO = new alimentoDAO();
-        $lista = $alimentoDAO->listarAlimentos();
-
-        $nombres = array();
-        $i = 0;
-        while ($fila = mysqli_fetch_assoc($lista))
-        {
-            $nombres[$i] = $fila['nombre'];
-            $i++;
-        }
-        return $nombres;
+        return $this->alimentoDAO->listarAlimentos();
     }
 
     public function registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
@@ -298,7 +288,8 @@ class controller{
         return $this->comidaDAO->verComidas($nif);
     }
     
-    //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+    //FIN FUNCIONES ALIMENTODAO Y COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+
 
 
    //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  

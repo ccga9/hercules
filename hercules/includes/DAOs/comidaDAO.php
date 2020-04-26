@@ -40,13 +40,15 @@ class comidaDAO extends DAO
         $comida->set_tipo($tipo);
         $comida->set_usuario($nif);*/
 
-        /*$fecha_completa = getdate ([ int $timestamp = time() ]): array;
+        /*$fecha_completa = getdate();
         $d = $fecha_completa['mday'];
         $m = $fecha_completa['mon'];
         $y = $fecha_completa['year'];
-        $fecha = $y."-".$m."-".$d;*/
+        $hour = $fecha_completa['hours'];
+        $min = $fecha_completa['minutes'];
+        $fecha = $y."-".$m."-".$d."-".$hour."-".$min;*/
 
-        $query_i_comida = "INSERT into comida(/*dia,*/ tipo, usuario) values ('".$tipo."','".$nif."')";
+        $query_i_comida = "INSERT into comida(tipo, usuario) values ('".$tipo."','".$nif."')";
         $this->consultar($query_i_comida);
 
 
