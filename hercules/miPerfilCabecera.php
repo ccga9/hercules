@@ -22,6 +22,7 @@
 					echo '<li><a href= miPerfilMisEntrenadores.php>Mis Entrenadores</a></li>';
 				}
 			?>
+			<li><a href= miPerfilBuzon.php>Mensajes</a></li>
 		</ul>
 	</div>
 

@@ -8,7 +8,7 @@ class mensajesDAO extends DAO
         parent::__construct();
     }
     
-    public function selectUsuario($col, $cond){
+    public function select($col, $cond){
         $query = "";
         if ($col == "") {
             $col = "*";
@@ -23,14 +23,14 @@ class mensajesDAO extends DAO
         return $this->consultarv2($query);
     }
     
-    public function insertUsuario($col, $values){
+    public function insert($col, $values){
         $query = "";
         $query = "INSERT INTO mensajes(".$col.") VALUES (".$values.")";
         
         return $this->consultarv2($query);
     }
     
-    public function updateUsuario($set, $cond){
+    public function update($set, $cond){
         $query = "";
         if ($cond != "") {
             $query = "UPDATE mensajes SET ".$set." WHERE ".$cond;
@@ -39,7 +39,7 @@ class mensajesDAO extends DAO
         return $this->consultarv2($query);
     }
     
-    public function deleteUsuario($cond){
+    public function delete($cond){
         $query = "";
         if ($cond != "") {
             $query = "DELETE FROM mensajes WHERE ".$cond;

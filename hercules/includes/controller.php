@@ -13,6 +13,7 @@ require_once(__DIR__ . '/DAOs/entrenamientoDAO.php');
 require_once(__DIR__ . '/DAOs/recomendacionesDAO.php');
 require_once(__DIR__ . '/DAOs/ejercicioDAO.php');
 require_once(__DIR__ . '/DAOs/foroDAO.php');
+require_once(__DIR__ . '/DAOs/mensajesDAO.php');
 
 class controller{
 
@@ -23,6 +24,7 @@ class controller{
     private $recomendacionesDAO;
     private $ejercicioDAO;
     private $foroDAO;
+    private $mensajesDAO;
     private static $instance = null;
 
     public function __construct(){
@@ -33,6 +35,7 @@ class controller{
         $this->recomendacionesDAO = new recomendacionesDAO();
         $this->ejercicioDAO = new ejercicioDAO();
         $this->foroDAO = new foroDAO();
+        $this->mensajesDAO = new mensajesDAO();
     }
 
      public static function getInstance() {
@@ -47,6 +50,10 @@ class controller{
     //FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     
     //Funciones relacionadas con el usuario
+    public function selectUsuario($col, $cond){
+        return $this->usuarioDAO->selectUsuario($col, $cond);
+    }
+    
     public function cargarUsuario($nif){
         $cond= "nif = '". $nif ."'";
         $res=$this->usuarioDAO->selectUsuario('', $cond);
@@ -271,26 +278,40 @@ class controller{
     }
     //FIN FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     
-
-    //FUNCIONES ALIMENTODAO Y COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
+    //FUNCIONES MENSAJESDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+    public function selectMensajes($col, $cond){
+        return $this->mensajesDAO->select($col, $cond);
+    }
+    
+    public function insertMensajes($col, $values){
+        return $this->mensajesDAO->insert($col, $values);
+    }
+    
+    public function deleteMensajes($my_id){
+        return $arr = $this->mensajesDAO->select('', "emisor='".$my_id."' OR receptor='".$my_id.
+            "' AND del_1!='".$my_id."' AND del_2!='".$my_id."' GROUP BY receptor,emisor");
+    }
+    //FIN FUNCIONES MENSAJESDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
+    
+    
+    //FUNCIONES ALIMENTODAO Y COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     public function listarAlimentos()
     {
         return $this->alimentoDAO->listarAlimentos();
     }
-
+    
     public function registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
     {
         return $this->comidaDAO->registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif);
     }
-
+    
     public function verComidas($nif)
     {
         return $this->comidaDAO->verComidas($nif);
     }
     
     //FIN FUNCIONES ALIMENTODAO Y COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
-
-
+    
 
    //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     public function listarEntrenamientos($idUsuarioEntrenador)
