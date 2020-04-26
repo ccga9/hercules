@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2020 a las 20:19:53
+-- Tiempo de generación: 26-04-2020 a las 20:20:38
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -174,13 +174,20 @@ CREATE TABLE `mensajes` (
   `id` int(11) NOT NULL,
   `emisor` varchar(10) NOT NULL,
   `receptor` varchar(10) NOT NULL,
-  `asunto` varchar(20) NOT NULL,
   `texto` text NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
-  `visto` tinyint(1) NOT NULL,
-  `emisor_del` tinyint(1) NOT NULL,
-  `receptor_del` tinyint(1) NOT NULL
+  `del_1` varchar(10) NOT NULL DEFAULT '0',
+  `del_2` varchar(10) NOT NULL DEFAULT '0',
+  `visto` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`id`, `emisor`, `receptor`, `texto`, `fecha`, `del_1`, `del_2`, `visto`) VALUES
+(1, '26515643R', '12345678A', 'Prueba de mensajes', '2020-04-26 13:27:40', '0', '0', 0),
+(2, '12345678A', '26515643R', 'Que pasa bro', '2020-04-26 14:11:21', '0', '0', 0);
 
 -- --------------------------------------------------------
 
@@ -216,7 +223,8 @@ INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, 
 ('12345678B', 'TONY STARK', '$2y$10$tatd6qauszToIxFssh7V8uvAn/jdLXu0ttWYQhi3vbc6ZHQ58PCsC', NULL, 't_stark@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Apoyo moral', '30'),
 ('12345678C', 'MIKE', '$2y$10$WXvI7J3TDkc3K4WdSjuZBebcgpYB8FK0NIfcZmA4S1IY.zvufxsYG', NULL, 'm_tyson@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
 ('12345678D', 'HUGAN', '$2y$10$L9uPLpdr8gX6ffx.6tBuy.xciEHtyQV7Q9CV4sJXSzp93fPKaZsRu', NULL, 'theHulk@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
-('12345678E', 'PACO', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', NULL, 'paco@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
+('12345678E', 'PACO', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', NULL, 'paco@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+('26515643R', 'JUAN LIU', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', NULL, 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -293,7 +301,9 @@ ALTER TABLE `entrenamientoejercicio`
 -- Indices de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `emisor` (`emisor`,`receptor`),
+  ADD KEY `receptor` (`receptor`);
 
 --
 -- Indices de la tabla `usuario`
@@ -347,7 +357,7 @@ ALTER TABLE `entrenamiento`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarioentrenador`
@@ -390,6 +400,13 @@ ALTER TABLE `entrenamiento`
 ALTER TABLE `entrenamientoejercicio`
   ADD CONSTRAINT `entrenamientoejercicio_ibfk_1` FOREIGN KEY (`idEntrenamiento`) REFERENCES `entrenamiento` (`idEntrenamiento`),
   ADD CONSTRAINT `entrenamientoejercicio_ibfk_2` FOREIGN KEY (`idEjercicio`) REFERENCES `ejercicio` (`idEjercicio`);
+
+--
+-- Filtros para la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  ADD CONSTRAINT `mensajes_ibfk_1` FOREIGN KEY (`emisor`) REFERENCES `usuario` (`nif`) ON DELETE CASCADE,
+  ADD CONSTRAINT `mensajes_ibfk_2` FOREIGN KEY (`receptor`) REFERENCES `usuario` (`nif`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `usuarioentrenador`
