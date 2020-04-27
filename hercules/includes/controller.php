@@ -291,9 +291,8 @@ class controller{
         return $this->mensajesDAO->update($set, $cond);
     }
     
-    public function deleteMensajes($my_id){
-        return $arr = $this->mensajesDAO->select('', "emisor='".$my_id."' OR receptor='".$my_id.
-            "' AND del_1!='".$my_id."' AND del_2!='".$my_id."' GROUP BY receptor,emisor");
+    public function deleteMensajes($cond){
+        return $this->mensajesDAO->delete($cond);
     }
     //FIN FUNCIONES MENSAJESDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     
