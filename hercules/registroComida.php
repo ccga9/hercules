@@ -1,6 +1,6 @@
 <?php 
     require_once 'includes/config.php';
-    require_once(__DIR__.'/includes/Forms/FormularioComida.php');
+    require_once(__DIR__.'/includes/Forms/FormRegistroComida.php');
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
 		
 		<?php
 		
-	    $form = new FormularioComida();
+	    $form = new FormRegistroComida();
 	    $form->gestiona();
 	    
         $alimentos = $ctrl->listarAlimentos();

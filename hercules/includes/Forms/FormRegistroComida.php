@@ -2,11 +2,11 @@
     require_once(__DIR__.'/Form.php');
     require_once(__DIR__.'/../config.php');
     
-class FormularioComida extends Form
+class FormRegistroComida extends Form
 {
     public function __construct()
     {
-        parent::__construct('comida', array());
+        parent::__construct('registroComida', array());
     }
     
     public function gestiona()
@@ -19,9 +19,8 @@ class FormularioComida extends Form
         $ctrl = controller::getInstance();
         $alimentos = $ctrl->listarAlimentos();
         
-        $ret =
-        '	
-		<label for="instrucciones_tipo"> Escoge el tipo de comida que desees:</label>
+        $ret =	
+		'<label for="instrucciones_tipo"> Escoge el tipo de comida que desees:</label>
 		<p><input type="radio" name="tipo" value="desayuno" checked/> desayuno
 		<input type="radio" name="tipo" value="comida"/> comida
 		<input type="radio" name="tipo" value="cena"/> cena</p>

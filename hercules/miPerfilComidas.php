@@ -37,45 +37,52 @@
 		
 		$nif_usuario = $_SESSION['usuario']->getNif();
 		$comidas = $ctrl->verComidas($nif_usuario);
+		
+		if (count($comidas) == 0)
+		{
+		    echo "<p> No se ha registrado ninguna comida todavía.</p>";
+		}
+		else
+		{
 		?>
 		<p>A continuación se muestran las comidas que usted ha registrado:</p>
 		<p><table>
 		<tr> <th>Fecha de registro</th> <th>Tipo</th> <th>Alimento</th> </tr>
 		<!-- <th>1er plato (o plato único)</th> <th>2º plato</th> <th>Postre</th> </tr> -->
 		<?php
-		$i = 0;
-		$aux = 0;
-		$j = 0;
+		
+		$i = 0; $j = 0; $aux = 0;
+		
 		foreach ($comidas as $valor)
 		{
-	        /*while ($comidas[$i]['dia'] == $comidas[$i + 1]['dia'])
-	        {
-	            ++$i;
-	            $aux = $i % 3;
-	        }*/
-		    
 		    echo "<tr>";
 		    
-		    /* NO FUNCIONA
-		     * 
-		     * while (($j == $aux) || ($i % 3 == 0))
-		    {
-		        echo "<td rowspan = ".$aux.">".$valor['dia']."</td>";
-		        echo "<td rowspan = ".$aux.">".$valor['tipo']."</td>";
-		        $j = 0;
-		    }
-		    ++$j;*/
+		    if (($i == $j))
+	        {
+	            while ((count($comidas) != $i + 1) && ($comidas[$i]['dia'] == $comidas[$i + 1]['dia']))
+	            {
+	                ++$i;
+	                ++$aux;
+	            }
+	            ++$i;
+	            ++$aux;
+	            
+	            echo "<td rowspan = ".$aux.">".$valor['dia']."</td>";
+	            echo "<td rowspan = ".$aux.">".$valor['tipo']."</td>";
+	            
+	            $aux = 0;
+	        }
+            ++$j;
 		    
-		    echo "<td>".$valor['dia']."</td>";
-		    echo "<td>".$valor['tipo']."</td>";
 		    echo "<td>".$valor['nombre']."</td>";
             echo "</tr>";
 		}
+        }
 		?>
 		</table></p>
 
 		<p>La siguiente opción le permitirá añadir una nueva comida a la tabla:</p>
-		<form action="comida.php" method="post">
+		<form action="registroComida.php" method="post">
 			<p><input type="submit" name="registroComida" value="Registrar comida" /></p>
 		</form>
 
