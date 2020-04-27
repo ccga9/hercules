@@ -29,15 +29,17 @@
 		$arr = $ctrl->selectMensajes('', "emisor='".$_SESSION["usuario"]->getNif()."' OR receptor='".$_SESSION["usuario"]->getNif()."' 
             GROUP BY emisor, receptor");
 		
+		$pre_arr= $ctrl->selectMensajes('', "emisor='".$_SESSION["usuario"]->getNif()."' OR receptor='".$_SESSION["usuario"]->getNif()."'");
+		
 		$no_visto = array();
 		$user_arr = array();
-		foreach($arr as $value) {
+		foreach($pre_arr as $value) {
 		    if ($_SESSION['usuario']->getNif() == $value['receptor'] && $value['visto'] == 0) {
 		        if (!isset($no_visto[$value['emisor']])) {
 		            $no_visto[$value['emisor']] = 1;
 		        }
 		        else {
-		            $no_visto[$value['emisor']] += 1;
+		            $no_visto[$value['emisor']]++;
 		        }
 		    }
 		}
@@ -78,6 +80,9 @@
 		if (isset($_GET['reciever'])) {
 		    
 		    echo '<div id="chat">';
+		    
+		    $ctrl->updateMensajes('visto=1', "receptor='".$_SESSION["usuario"]->getNif()."' AND emisor='".$_GET['reciever']."'");
+		    
 		    $men_arr = $ctrl->selectMensajes('', "emisor='".$_SESSION["usuario"]->getNif()."' AND receptor='".$_GET['reciever']."' OR 
                 emisor='".$_GET['reciever']."' AND receptor='".$_SESSION["usuario"]->getNif()."' ORDER BY fecha");
 		    
@@ -85,10 +90,10 @@
 		    
 		    if (count($men_arr) > 0) {
 		        if ($men_arr[0]['emisor'] == $_SESSION["usuario"]->getNif()) {
-		            $el_otro = $ctrl->cargarUsuario($value['receptor'])->getNombre();
+		            $el_otro = $ctrl->cargarUsuario($men_arr[0]['receptor'])->getNombre();
 		        }
 		        else {
-		            $el_otro = $ctrl->cargarUsuario($value['emisor'])->getNombre();
+		            $el_otro = $ctrl->cargarUsuario($men_arr[0]['emisor'])->getNombre();
 		        }
 		            
 	            foreach ($men_arr as $value) {
@@ -104,8 +109,17 @@
 	            }
 		    }
 		    
-		    $act = new FormularioChat();
-		    $act->gestiona();
+		    echo '<form method="POST" action="procesaChat.php">';
+    		    echo '<fieldset>';
+    		        echo '<input type="hidden" name="emisor" value="'.$_SESSION["usuario"]->getNif().'">';
+    		        echo '<input type="hidden" name="receptor" value="'.$_GET['reciever'].'">';
+        		    echo '<textarea name="men" rows="5" cols="40" placeholder="Escribe algo para mandar"></textarea>';
+        		    
+        		    echo '<div class="grupo-control"><button type="submit" name="send">Enviar</button></div>';
+    		    echo '</fieldset>';
+		    echo '</form>';
+		    
+		    
 		    
 		    echo '</div>';
 		}
