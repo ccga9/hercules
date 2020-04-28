@@ -203,8 +203,19 @@ class controller{
          
         $col = "usuario";
         $cond="entrenador = '".$nif."' AND estado = 'aceptado'";
-        
-        return $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
+       
+        $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
+ 
+       if ($consulta) {
+        $result = array();
+        foreach ($consulta as $value) {
+           $result[] = $this->cargarUsuario($value['usuario']);
+        }
+            return $result;
+        }else{
+            return false;
+        }
+
     }
 
     public function listarSolicitudes($nif){

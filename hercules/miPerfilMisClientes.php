@@ -1,5 +1,6 @@
 <?php 
 	require_once 'includes/config.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,16 +29,15 @@
 		<?php  
 			
 			$arr = $ctrl->listarMisClientes($_SESSION['usuario']->getNif());
-            
-			if(count($arr) > 0){
+			if( $arr != "" && count($arr) > 0 ){
 			    echo '<table>';
 				echo '<tr>'.'<th>Nombre</th>'.'<th>email</th>'.'<th></th>';
 		
 				foreach ($arr as $key => $valor) {
 					echo '<tr>';
-						echo '<td>'.$valor['nombre'].'</td>';
-					    echo '<td>'.$valor['email'].'</td>';
-					    echo '<td> <a href="perfil_Cliente.php?id='.$key.'">Mostrar Perfil</a> </td>'; 
+						echo '<td>'.$valor->getNombre().'</td>';
+					    echo '<td>'.$valor->getEmail().'</td>';
+					    echo '<td> <a href="perfil_Cliente.php?id='.$valor->getNif().'">Mostrar Perfil</a> </td>'; 
 					echo'</tr>';
 					
 				}

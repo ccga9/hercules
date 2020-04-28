@@ -16,10 +16,12 @@
 			<?php  
 				if ($_SESSION['usuario']->getTipoUsuario()) {
 					echo '<li><a href= miPerfilMisClientes.php>Mis Clientes</a></li>';
+					echo '<li><a href= editarMiPerfil.php>Editar Perfil</a></li>';
 				}
 				else {
 				   echo '<li><a href= miPerfilComidas.php>Comidas</a></li>';
 					echo '<li><a href= miPerfilMisEntrenadores.php>Mis Entrenadores</a></li>';
+					echo '<li><a href= editarMiPerfil.php>Editar Perfil</a></li>';
 				}
 			?>
 			<li><a href= miPerfilBuzon.php>Mensajes</a></li>
