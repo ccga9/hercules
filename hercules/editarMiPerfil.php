@@ -1,5 +1,6 @@
 <?php 
 	require_once 'includes/config.php';
+	require_once(__DIR__.'/includes/Forms/FormularioEditarPerfil.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +23,10 @@
 
 	<div id="contenido">
 		
-		
+		<?php  
+			$act = new FormularioEditarPerfil();
+			$act->gestiona();
+		?>
 			
 		
 	</div>

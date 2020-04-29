@@ -136,6 +136,37 @@ class controller{
             return 0;
         }
     }
+
+
+    public function updateUsuario2($u){
+        $set='';
+        $cond="";
+        if ($u['nif'] !== null) {
+            if($u['nombre'] != "")
+                $set .= "nombre=' ".$u['nombre']."', ";
+            if($u['password'] !== "")
+                $set .= "contrasenna='".$u['password']."', ";
+            if($u['email'] !== "")
+                $set .= "email='".$u['email']."'";
+            /*if($u['fechaNac'] !== null)
+                $set .= "fechaNac='".$u['fechaNac']."'";
+            if($u['ubicacion'] !== null)
+                $set .= "ubicacion='".$u['ubicacion']."'";
+            if($u['peso'] !== null)
+                $set .= "peso='".$u['peso']."'";
+            if($u['preferencias'] !== null)
+                $set .= "preferencias='".$u['preferencias']."'";
+            if($u['telefono'] !== null)
+                $set .= "telefono='".$u['telefono']."'";
+            */
+            $cond="nif = '".$u['nif']."'";
+            
+            return $this->usuarioDAO->updateUsuario($set, $cond);
+        }
+        else {
+            return 0;
+        }
+    }
     
     public function deleteUsuario($nif){
         if ($this->cargarUsuario($arr['nif']) !== 0) {
@@ -155,6 +186,7 @@ class controller{
         }
         return $usuario;
     }
+
 
     public function registra($arr = array()){
         $usuario = $this->cargarUsuario($arr['nif']);
@@ -278,7 +310,7 @@ class controller{
 
     public function eliminarEntrenador($nif_cliente, $nif_entrena){
         $idUsuarioEntrenador = $this->idUsuarioEntrenador($nif_entrena, $nif_cliente);
-        echo $idUsuarioEntrenador;
+
         $consulta = $this->usuarioDAO->eliminarIdUsuarioEntrenador($nif_cliente, $nif_entrena, $idUsuarioEntrenador);
         if ($consulta) {
             return true;

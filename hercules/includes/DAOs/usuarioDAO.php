@@ -24,8 +24,6 @@ class UsuarioDAO extends DAO {
         else {
             $query = "SELECT ".$col." FROM usuario WHERE ".$cond;
         }
-
-        echo $query;
         
         return $this->consultarv2($query);
     }

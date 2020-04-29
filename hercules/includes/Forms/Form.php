@@ -66,8 +66,7 @@ abstract class Form
     public function gestiona()
     {   
         if ( ! $this->formularioEnviado($_POST) ) {
-            echo $_POST;
-            echo $this->generaFormulario($_POST);
+            echo $this->generaFormulario();
         } else {
             $result = $this->procesaFormulario($_POST);
             if ( is_array($result) ) {
