@@ -20,6 +20,7 @@
 				}
 				else {
 				   echo '<li><a href= miPerfilComidas.php>Comidas</a></li>';
+				   echo '<li><a href= miPerfilEntrenamientosNew.php>Entrenamientos</a></li>';
 					echo '<li><a href= miPerfilMisEntrenadores.php>Mis Entrenadores</a></li>';
 					echo '<li><a href= editarMiPerfil.php>Editar Perfil</a></li>';
 				}
