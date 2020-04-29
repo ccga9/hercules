@@ -145,7 +145,7 @@ class controller{
             if($u['nombre'] != "")
                 $set .= "nombre=' ".$u['nombre']."', ";
             if($u['password'] !== "")
-                $set .= "contrasenna='".$u['password']."', ";
+                $set .= "contrasenna='".password_hash($u['password'], PASSWORD_DEFAULT)."', ";
             if($u['email'] !== "")
                 $set .= "email='".$u['email']."'";
             /*if($u['fechaNac'] !== null)
