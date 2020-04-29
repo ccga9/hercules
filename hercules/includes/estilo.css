@@ -100,13 +100,7 @@ div#contenido .submenu-perfil .comidaentrena-all a{
 	text-decoration: none;
 	color: #3498db;
 }
-/*FIN MENU PERFIL*/
-div#pie {
-	padding: 30px;
-	height: 120px;
-	background-color: #303030;
-	color: white;
-}
+/*FIN SUBMENU PERFIL*/
 
 div.menu {
 	width: 100%;
@@ -121,7 +115,6 @@ div.menu ul {
   overflow: hidden;
   display: flex;
   flex-direction: row;  /*Eje principal de momento no se usa*/
-
 }
 
 div.menu ul li {
@@ -141,22 +134,11 @@ div.menu li {
 	float: left;
 }
 
-/*div.menu li a {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  width: 100px;
-  height: 15px;
-  align-items: center;
-}*/
-
 div.menu ul li:hover {
   background-color: #e1d80d;
 }
 
-form {
+div.form-registro {
 	margin: auto;
 	width: 50%;
 	max-width: 600px;
@@ -222,14 +204,22 @@ label {
 	display: block;
 }
 
+div#pie {
+	padding: 30px;
+	height: 120px;
+	background-color: #303030;
+	color: white;
+}
+
+/*REVISAR RESPONSIVE*/
 @media (max-width: 768px){
-	form {
+	div.form-registro {
 		width: 75%;
 	}
 }
 
 @media (max-width: 480px){
-	form {
+	div.form-registro {
 		width: 95%;
 	}
 }
