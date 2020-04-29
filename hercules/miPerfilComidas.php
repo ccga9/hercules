@@ -7,7 +7,8 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<meta charset="utf-8">
-	<title>HERCULES</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Mi Perfil - Comidas</title>
 	<style>
 	table { border: 1px solid black;
 	        border-collapse: collapse;
@@ -27,7 +28,7 @@
 
 	<div id="contenido">
 
-		<!--<h2>Comidas</h2>-->
+		<h2>Comidas</h2>
 		
 		<?php
 		if (!isset($_SESSION['login']))
@@ -38,6 +39,34 @@
 		$nif_usuario = $_SESSION['usuario']->getNif();
 		$comidas = $ctrl->verComidas($nif_usuario);
 		
+		?>
+		<div class="submenu-perfil">
+			<div class="comidaentrena-all">
+			<img src="includes/img/ver_comidas.png" alt="Histórico de comidas">
+			<h3>Ver Comidas</h3>
+			<a href="#"></a>
+			</div>
+
+			<div class="comidaentrena-all">
+			<img src="includes/img/registrar_comida.png" alt="Registrar Comida">
+			<h3>Registrar Comida</h3>
+			<a href="#"></a>
+			</div>
+
+			<div class="comidaentrena-all">
+			<img src="includes/img/editar_comida.png" alt="Editar Comida">
+			<h3>Modificar Comida</h3>
+			<a href="#"></a>
+			</div>
+
+			<div class="comidaentrena-all">
+			<img src="includes/img/borrar_comida.png" alt="Borrar comida">
+			<h3>Eliminar Comida</h3>
+			<a href="#"></a>
+			</div>
+		</div>
+
+		<?php
 		if (count($comidas) == 0)
 		{
 		    echo "<p> No se ha registrado ninguna comida todavía.</p>";
