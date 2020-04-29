@@ -22,7 +22,11 @@
 
 	<div id="contenido">
 		<h1>Quienes somos</h1>
-		<p> Disponible para la práctica 3 </p>
+		<p> Somos un grupo de estudiantes de la Universidad Complutense de Madrid ,la idea de esta plataforma nacío gracias a 
+		un miembro del equipo cuyo nombre es Emilio, esta plataforma se dedica a facilitar acceso a los usuarios para poder ejercitarse 
+		de una forma monitorizada y sin tener que desplazarse. </p>
+		<h2>Miembros del equipo:</h2>
+		<p>fotos<p>
 	</div>
 
 	<?php	
