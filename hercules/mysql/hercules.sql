@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2020 a las 19:32:37
+-- Tiempo de generación: 30-04-2020 a las 20:48:45
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -139,8 +139,8 @@ INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `d
 (3, 'Planchas', 160, 'Tonificacion', 'Recuéstate boca abajo sobre la manta y luego apóyate sobre los antebrazos,\r\n   de modo que los codos queden ubicados debajo del pecho. Ahora, eleva tus piernas del piso sosteniéndote con las\r\n   puntas de los pies para formar la plancha .', ''),
 (4, 'Remo con banda elástica', 133, 'Fuerza', 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde\r\n  las caderas, la columna vertebral de permanecer neutral. Tiramos desde los omóplatos hacia atrás y levantamos los codos\r\n  tanto como pueda. Baje lentamente y repita.', ''),
 (5, 'Zumba Fitness', 200, 'Cardio', 'La zumba es un tipo de actividad física (fitness) basada en ritmos y músicas lationamericanas. Las coreografías de zumba incluyen ritmos como la samba, la salsa, el reggaeton, la cumbia, el merengue y el mambo.', ''),
-(6, 'Aeróbic step, con step de 15-20 cm', 193, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aerobic.', ''),
-(7, 'Aeróbic step, con step de 25-30 cm', 227, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aerobic.', ''),
+(6, 'Aeróbic step, con step de', 193, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aerobic.', ''),
+(7, 'Aeróbic step, con step de', 227, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aerobic.', ''),
 (8, 'Kettlebells', 196, 'Fuerza', 'Colócate de pie con los pies a la anchura de los hombros y deja la kettlebell en el suelo a la altura de los dedos de los pies. Dobla las rodillas, mantén la espalda recta y baja en posición de sentadilla hasta coger del asa al kettle con ambas manos hasta elevarlo hacia atrás mientras estiras las piernas manteniendo tensión en la zona de los abdominales y el glúteo hasta llevarla de nuevo con un impulso a la zona delantera por encima de la cabeza. Cuando éste regresa al centro después del balanceo, lleva la cadera hacia atrás y colócate con las piernas rectas.', ''),
 (9, 'Saltar a la cuerda', 260, 'Cardio', 'Hay muchas modalidades, salto simple lo más rápido posible, doble salto, etc...', ''),
 (10, 'Burpees', 286, 'Tonificacion', ' Consiste en agachar el cuerpo y apoyar las manos en el suelo, impulsar los pies hacia atrás hasta quedar en la postura de una plancha, para después realizar una flexión tocando el suelo con el pecho. Trabaja pectorales, bíceps, tríceps, abdominales, glúteos y cuádriceps.', ''),
@@ -260,6 +260,20 @@ CREATE TABLE `usuarioentrenador` (
 INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
 (8, '12345678D', '12345678B', 'aceptado');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `valoracion`
+--
+
+CREATE TABLE `valoracion` (
+  `hacia` varchar(10) NOT NULL,
+  `de` varchar(10) NOT NULL,
+  `texto` text NOT NULL,
+  `valor` int(1) NOT NULL,
+  `visible` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Índices para tablas volcadas
 --
@@ -334,6 +348,12 @@ ALTER TABLE `usuarioentrenador`
   ADD KEY `entrenador` (`entrenador`);
 
 --
+-- Indices de la tabla `valoracion`
+--
+ALTER TABLE `valoracion`
+  ADD PRIMARY KEY (`hacia`,`de`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -359,7 +379,7 @@ ALTER TABLE `comida`
 -- AUTO_INCREMENT de la tabla `ejercicio`
 --
 ALTER TABLE `ejercicio`
-  MODIFY `idEjercicio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idEjercicio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `entrenamiento`
