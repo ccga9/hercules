@@ -14,10 +14,11 @@ require_once(__DIR__ . '/DAOs/recomendacionesDAO.php');
 require_once(__DIR__ . '/DAOs/ejercicioDAO.php');
 require_once(__DIR__ . '/DAOs/foroDAO.php');
 require_once(__DIR__ . '/DAOs/mensajesDAO.php');
+require_once(__DIR__ . '/DAOs/valoracionDAO.php');
 
 class controller{
 
-   private $usuarioDAO;
+    private $usuarioDAO;
     private $alimentoDAO;
     private $comidaDAO;
     private $entrenamientoDAO;
@@ -25,6 +26,7 @@ class controller{
     private $ejercicioDAO;
     private $foroDAO;
     private $mensajesDAO;
+    private $valoracionDAO;
     private static $instance = null;
 
     public function __construct(){
@@ -36,6 +38,7 @@ class controller{
         $this->ejercicioDAO = new ejercicioDAO();
         $this->foroDAO = new foroDAO();
         $this->mensajesDAO = new mensajesDAO();
+        $this->valoracionDAO = new valoracionDAO();
     }
 
      public static function getInstance() {
@@ -269,20 +272,13 @@ class controller{
     }
 
     public function miBuzon($nif){
-        $consulta = $this->usuarioDAO->miBuzon($nif);
-
-        $clientes = array();
-
-        if ($consulta) {
-            while ($fila = mysqli_fetch_assoc($consulta)){
-                $clientes[] = $fila['usuario'];
-            }
-        }
-
+        
+        $consulta = $this->usuarioDAO->selectUs_Ent('usuario', "entrenador = '".$nif."' AND estado = 'pendiente'");
+     
         $nom_clientes = array();
 
-        foreach ($clientes as $value) {
-            $u = $this->usuarioDAO->cargarUsuario($value);
+        foreach ($consulta as $value) {
+            $u = $this->usuarioDAO->cargarUsuario($value['usuario']);
             $nom_clientes[$u->getNif()] = $u->getNombre();
         }
 
@@ -290,28 +286,33 @@ class controller{
     }
 
     public function responderSolicitud($nif_entrena, $nif_cliente, $aceptar){
-        $consulta = $this->usuarioDAO->responderSolicitud($nif_entrena, $nif_cliente, $aceptar);
+        $consulta = 0;
+        if ($aceptar) {
+            $consulta = $this->usuarioDAO->updateUs_Ent("estado='aceptado'", "entrenador = '".$nif_entrena."' AND usuario = '".$nif_cliente."'");
+        }
+        else {
+            $consulta = $this->usuarioDAO->deleteUs_Ent("entrenador = '".$nif_entrena."' AND usuario = '".$nif_cliente."'");
+        }
 
         return $consulta;
     }
     
 	public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
 
-        $consulta = $this->usuarioDAO->getIdUsuarioEntrenador($nif_cliente, $nif_entrena);
-        $id = null;
+        $consulta = $this->usuarioDAO->selectUs_Ent('id', "entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."'");
+        
+        $id = 0;
         if ($consulta) {
-            $fila = mysqli_fetch_assoc($consulta);
-
-                $id = $fila['id'];
-
+            $id = $consulta[0]['id'];
         }
+        
         return $id;
     }
 
     public function eliminarEntrenador($nif_cliente, $nif_entrena){
         $idUsuarioEntrenador = $this->idUsuarioEntrenador($nif_entrena, $nif_cliente);
-
-        $consulta = $this->usuarioDAO->eliminarIdUsuarioEntrenador($nif_cliente, $nif_entrena, $idUsuarioEntrenador);
+     
+        $consulta = $this->usuarioDAO->deleteUs_Ent("entrenador = '".$nif_entrena."' AND usuario = '".$nif_cliente."' AND id = '".$idUsuarioEntrenador."'");
         if ($consulta) {
             return true;
         }
@@ -337,7 +338,25 @@ class controller{
     public function deleteMensajes($cond){
         return $this->mensajesDAO->delete($cond);
     }
-    //FIN FUNCIONES MENSAJESDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
+    //FIN FUNCIONES MENSAJESDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   / 
+    
+    //FUNCIONES VALORACIONDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+    public function selectValor($col, $cond){
+        return $this->valoracionDAO->select($col, $cond);
+    }
+    
+    public function insertValor($col, $values){
+        return $this->valoracionDAO->insert($col, $values);
+    }
+    
+    public function updateValor($set, $cond){
+        return $this->valoracionDAO->update($set, $cond);
+    }
+    
+    public function deleteValor($cond){
+        return $this->valoracionDAO->delete($cond);
+    }
+    //FIN FUNCIONES VALORACIONDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
     
     //FUNCIONES ALIMENTODAO Y COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /

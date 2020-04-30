@@ -96,42 +96,12 @@ class UsuarioDAO extends DAO {
         return $this->consultarv2($query);
     }
 
-    public function miBuzon($nif){
-        $query = "SELECT usuario FROM usuarioentrenador WHERE entrenador = '".$nif."' AND estado = 'pendiente'";
-        return $this->consultar($query);
-    }
-
-    public function enviarSolicitud($nif_user, $nif_entrena){
-        $query = "INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES (0, '".
-        $nif_user."',
-        '" . $nif_entrena . "',
-        'pendiente')";
-        return $this->consultar($query);
-    }
-
-    public function getIdUsuarioEntrenador($nif_user, $nif_entrena){
-         $query = "SELECT id FROM usuarioentrenador WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."'";
-         return $this->consultar($query);
-
-    }
-
     public function eliminarIdUsuarioEntrenador($nif_user, $nif_entrena, $idUsuarioEntrenador){
         
         $query = "DELETE FROM `usuarioentrenador` WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."' AND id = '".$idUsuarioEntrenador."'";
        echo $query;
         return $this->consultar($query);
 
-    }
-
-    public function responderSolicitud($nif_entrena, $nif_cliente, $aceptar){
-        if ($aceptar) {
-             $query = "UPDATE `usuarioentrenador` SET estado='aceptado' WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_cliente."'";
-        }
-        else {
-            $query = "DELETE FROM `usuarioentrenador` WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_cliente."'";
-        }
-        
-        return $this->consultar($query);
     }
 }
 
