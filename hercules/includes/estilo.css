@@ -18,6 +18,7 @@ div#cabecera {
 	background-color: #303030;
 	color: white;
 	display: flex;
+	flex-direction: column;
 }
 
 div#cabecera a, div#cabecera a:visited {
@@ -31,16 +32,20 @@ div#cabecera a:hover {
 	font-weight: bold;
 }
 
-section.cabecera-flex {
-	display: flex;
-	flex-direction: column; /*Login arriba / menu abajo*/
-}
-
-div#saludo {
+div#cabecera .saludo {
 	display: flex;
 	justify-content: flex-end;
-	border-radius: 10px;
+}
+
+div#cabecera .saludo a {
 	background-color: #e1d80d;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+div#cabecera .menu {
+	display: flex;
+	justify-content: space-around;
 }
 
 div#contenido {
@@ -59,83 +64,6 @@ div#contenido h2 {
 	background-color: #f4ec1c;
 	padding: 10px;
 	position: relative;
-}
-
-/*INICIO MENU PERFIL CLIENTE*/
-div#contenido .submenu-perfil {
-	
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-
-div#contenido .submenu-perfil .comidaentrena-all {
-	width: 330px;
-	height: 300px;
-	border-radius: 8px;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-	overflow: hidden;
-	margin: 20px;
-	text-align: center;
-	transition: all 0.25s;
-}
-
-div#contenido .submenu-perfil .comidaentrena-all:hover{
-	transform: translateY(-15px);
-	box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
-}
-
-div#contenido .submenu-perfil .comidaentrena-all img{
-	width: 250px;
-	height: 220px;
-}
-
-div#contenido .submenu-perfil .comidaentrena-all h3{
-	font-weight: 600;
-	font-size: 18px;
-}
-
-div#contenido .submenu-perfil .comidaentrena-all a{
-	font-weight: 500px;
-	text-decoration: none;
-	color: #3498db;
-}
-/*FIN SUBMENU PERFIL*/
-
-div.menu {
-	width: 100%;
-	background-color: #303030;
-	margin-top: 15px;
-}
-
-div.menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;  /*Eje principal de momento no se usa*/
-}
-
-div.menu ul li {
-	background: #3b3b3b;
-	color: #333;
-	margin-left: 10px;
-	font-size: 1em;
-	padding: 1em;
-	line-hight: 2;
-	width: 180px;
-	height: 25px;
-	display: flex;
-	justify-content: center;
-}
-
-div.menu li {
-	float: left;
-}
-
-div.menu ul li:hover {
-  background-color: #e1d80d;
 }
 
 div.form-registro {

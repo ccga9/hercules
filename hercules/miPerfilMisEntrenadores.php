@@ -5,6 +5,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloPagsMiPerfil.css" />
 	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>
@@ -21,7 +22,7 @@
 	?>
 
 	<div id="contenido">
-		<h1>Mis Entrenadores</h1>
+		<h2>Mis Entrenadores</h2>
 
 		<form action="recomendacionesEntrenador.php" method="post">
 
