@@ -40,6 +40,15 @@ class FormularioEditarPerfil extends Form {
                 $ret .= '<label>Modifica </label/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
+                $ret .= '<input type="hidden" name="MAX_FILE_SIZE" value="200000" />';
+                $ret .= '<label>Sube foto</label><input name="uploadImage" type="file"  ';
+            $ret .= '</div>';
+
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<img src="'.$_SESSION['usuario']->getFoto().'" width="300" height="120" alt="Foto usuario">';
+            $ret .= '</div>';
+
+            $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Tu NIF/NIE:</label> <input class="control" type="text" name="nif" value="'.$_SESSION['usuario']->getNif().'" readonly/>';
             $ret .= '</div>';
              $ret .= '<div class="grupo-control">';
@@ -117,7 +126,11 @@ class FormularioEditarPerfil extends Form {
         if((empty($passwordA)) && ($password != "" || $password2 != "")){
             $erroresFormulario[] = "Debes meter tu contraseña anterior para poder cambiarla.";
         }
-        
+
+        if (!$this->subir_fichero("includes/img/usuarios",'uploadImage', $datos['nif']))
+                 $erroresFormulario[] = "Foto incorrecta. Compruebe el formato del archivo";
+         $nif = isset($datos['nif']) ? htmlspecialchars(strip_tags(strtoupper($datos['nif']))) : null;
+        $datos['foto'] = "includes/img/usuarios/".$_SESSION['usuario']->getNif().".jpg";
          $ctrl = controller::getInstance();
          
 

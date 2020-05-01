@@ -79,7 +79,45 @@ abstract class Form
             }
         }  
     }
+     /**
+ * subir_fichero()
+ *
+ * Sube una imagen al servidor  al directorio especificado teniendo el Atributo 'Name' del campo archivo.
+ *
+ * @param string $directorio_destino Directorio de destino dónde queremos dejar el archivo
+ * @param string $nombre_fichero Atributo 'Name' del campo archivo
+ * @return boolean
+ */
+function subir_fichero($directorio_destino, $nombre_fichero, $nif)
+{
+    $tmp_name = $_FILES[$nombre_fichero]['tmp_name'];
+    //si hemos enviado un directorio que existe realmente y hemos subido el archivo  
 
+    if (is_dir($directorio_destino) && is_uploaded_file($tmp_name))
+    {
+
+        $img_file = $nif.".jpg";
+        $img_type = $_FILES[$nombre_fichero]['type'];
+
+        echo $img_file;
+        echo 1;
+        // Si se trata de una imagen   
+        if (((strpos($img_type, "gif") || strpos($img_type, "jpeg") ||
+                strpos($img_type, "jpg")) || strpos($img_type, "png")))
+        {
+            //¿Tenemos permisos para subir la imágen?
+            echo 2;
+            if (move_uploaded_file($tmp_name, $directorio_destino . '/' . $img_file))
+            {
+                return true;
+            }
+        }
+    }
+
+    echo "no";
+    //Si llegamos hasta aquí es que algo ha fallado
+    return false;
+}
     /**
      * Genera el HTML necesario para presentar los campos del formulario.
      *
@@ -132,7 +170,7 @@ abstract class Form
         
         $html= $this->generaListaErrores($errores);
 
-        $html .= '<form method="POST" action="'.$this->action.'" id="'.$this->formId.'" >';
+        $html .= '<form enctype="multipart/form-data" method="POST" action="'.$this->action.'" id="'.$this->formId.'" >';
         $html .= '<input type="hidden" name="action" value="'.$this->formId.'" />';
 
         $html .= $this->generaCamposFormulario($datos);
