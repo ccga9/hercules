@@ -28,45 +28,49 @@ class FormularioRegistro extends Form {
     protected function generaCamposFormulario($datosIniciales)
     {
     	$ret = '';
+        $ret .= '<div class="form-registro">';
     	$ret .= '<fieldset>';
-           $ret .= '<legend>Usuario y contraseña</legend>';
+           $ret .= '<legend>REGISTRO DE USUARIO</legend>';
            $ret .= '<div class="grupo-control">';
-                $ret .= '<label>NIF/NIE:</label> <input class="control" type="text" name="nif"/>';
+                $ret .= '<label>NIF/NIE:</label> <input class="control" type="text" placeholder="&#128100;NIF/NIE" name="nif" required autofocus/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Nombre completo:</label> <input class="control" type="text" name="nombre" />';
+                $ret .= '<label>Nombre completo:</label> <input class="control" type="text" placeholder="&#128100;Nombre y apellidos" name="nombre" required/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>E-mail:</label> <input class="control" type="text" name="email" />';
+                $ret .= '<label>E-mail:</label> <input class="control" type="text" placeholder="&#128231;Correo electrónico" name="email" required/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Password:</label> <input class="control" type="password" name="contrasenna" />';
+                $ret .= '<label>Password:</label> <input class="control" type="password" placeholder="&#128272;Contraseña" name="contrasenna" required/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Vuelve a introducir el Password:</label> <input class="control" type="password" name="contra2" />';
-            $ret .= '</div>';
-
-            $ret .= '<input type="checkbox" name="tipoUsuario" value="ok">¿Eres entrenador/a? (Rellena los campos de abajo entonces)';
-
-            $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Titulacion</label> <input class="control" type="text" name="titulacion" />';
+                $ret .= '<label>Vuelve a introducir el Password:</label> <input class="control" type="password" placeholder="&#128272;Repita contraseña" name="contra2" required/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Expecialidad</label> <input class="control" type="text" name="especialidad" />';
+            $ret .= '<input type="checkbox" name="tipoUsuario" value="ok"/><label>¿Eres entrenador/a? (Rellena los campos de abajo)</label>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Experiencia</label> <input class="control" type="text" name="experiencia" />';
+                $ret .= '<label>Titulacion</label> <input class="control" type="text" placeholder="&#127891;Titulación" name="titulacion" />';
             $ret .= '</div>';
 
-            $ret .= '<div class="grupo-control"><button type="submit" name="registro">Registrar</button></div>';
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Especialidad</label> <input class="control" type="text" placeholder="&#127941;Especialidad" name="especialidad" />';
+            $ret .= '</div>';
+
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Experiencia</label> <input class="control" type="text" placeholder="&#9874;Experiencia" name="experiencia" />';
+            $ret .= '</div>';
+
+            $ret .= '<div class="botones"><button type="submit" name="registro">Registrar</button>';
+            $ret .= '<button type="reset" name="limpiar">Limpiar</button></div>';
 		$ret .= '</fieldset>';
-
+         $ret .= '</div>';
         return $ret;
     }
 

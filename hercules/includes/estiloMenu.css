@@ -1,3 +1,6 @@
+/*
+*Estilos para menús
+*/
 .menu ul {
 	list-style-type: none;
   	margin: 0;
@@ -53,7 +56,6 @@
 
 .menu-interno a{
 	display: block;
-	padding: 15px 20px;
 	color: #fff;
 	text-decoration: none;
 }

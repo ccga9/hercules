@@ -29,7 +29,7 @@ class FormularioLogin extends Form {
     protected function generaCamposFormulario($datosIniciales)
     {
     	$ret = '';
-        $ret .= '<div class="form-registro">';
+        $ret .= '<div class="form-inicio">';
     	$ret .= '<fieldset>';
            $ret .= '<legend>INICIAR SESIÓN EN HÉRCULES</legend>';
            $ret .= '<div class="grupo-control">';
