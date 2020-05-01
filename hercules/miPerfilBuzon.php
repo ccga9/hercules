@@ -101,15 +101,7 @@
 		    echo '<div id="chat">';
 		    
 		    if (count($men_arr) > 0) {
-		        echo '<form method="POST" action="procesaChat.php">';
-		        
-		        echo '<input type="hidden" name="emisor" value="'.$_SESSION["usuario"]->getNif().'">';
-		        echo '<input type="hidden" name="receptor" value="'.$_GET['reciever'].'">';
-		        
-		        echo '<button type="submit" name="borrar">Borrar toda la conversacion</button>';
-		        
-		        echo '</form>';
-		        
+		      
 		        if ($men_arr[0]['emisor'] == $_SESSION["usuario"]->getNif()) {
 		            $el_otro = $ctrl->cargarUsuario($men_arr[0]['receptor'])->getNombre();
 		        }
@@ -139,6 +131,17 @@
             		    
             		    echo '<div class="grupo-control"><button type="submit" name="send">Enviar</button></div>';
         		    echo '</fieldset>';
+    		    echo '</form>';
+    		    
+    		    echo '<br>';
+    		    
+    		    echo '<form method="POST" action="procesaChat.php">';
+    		    
+    		    echo '<input type="hidden" name="emisor" value="'.$_SESSION["usuario"]->getNif().'">';
+    		    echo '<input type="hidden" name="receptor" value="'.$_GET['reciever'].'">';
+    		    
+    		    echo '<button type="submit" name="borrar">Borrar toda la conversacion</button>';
+    		    
     		    echo '</form>';
 		    }
 		    echo '</div>';

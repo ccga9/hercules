@@ -2,10 +2,11 @@
 
 require_once 'includes/config.php';
 
-foreach($_POST['check_list'] as $value) {
-	$ctrl->enviarSolicitud($_SESSION['usuario']->getNif(), $value);
+if (isset($_POST['solicitud'])) {
+    $ctrl->enviarSolicitud($_POST['cliente'], $_POST['entrenador']);
 }
 
-header('Location: entrenadores.php');
+
+header('Location: entrenadores.php?perfil='.$_POST['entrenador']);
 
 ?>

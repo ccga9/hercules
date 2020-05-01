@@ -255,6 +255,11 @@ class controller{
         }
 
     }
+    
+    public function selectUs_Ent($col, $cond){
+        
+        return $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
+    }
 
     public function listarSolicitudes($nif){
  
