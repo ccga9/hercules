@@ -213,7 +213,7 @@ CREATE TABLE `usuario` (
   `nif` varchar(10) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `contrasenna` varchar(255) NOT NULL,
-  `foto` varchar(30) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `email` varchar(30) NOT NULL,
   `sexo` varchar(6) DEFAULT NULL,
   `fechaNac` date DEFAULT NULL,

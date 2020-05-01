@@ -69,6 +69,7 @@ class controller{
             $usuario->setPassword($row["contrasenna"]);
             $usuario->setEmail($row["email"]);
             $usuario->setSexo($row["sexo"]);
+            $usuario->setFoto($row["foto"]);
             $usuario->setFechaNac($row["fechaNac"]);
             $usuario->setTelefono($row["telefono"]);
             $usuario->setUbicacion($row["ubicacion"]);
@@ -150,7 +151,9 @@ class controller{
             if($u['password'] !== "")
                 $set .= "contrasenna='".password_hash($u['password'], PASSWORD_DEFAULT)."', ";
             if($u['email'] !== "")
-                $set .= "email='".$u['email']."'";
+                $set .= "email='".$u['email']."',";
+             if($u['foto'] !== "")
+                $set .= "foto=' ".$u['foto']."'";
             /*if($u['fechaNac'] !== null)
                 $set .= "fechaNac='".$u['fechaNac']."'";
             if($u['ubicacion'] !== null)
@@ -200,7 +203,7 @@ class controller{
             $usuario->setPassword(password_hash($arr["contrasenna"], PASSWORD_DEFAULT));
             $usuario->setEmail($arr["email"]);
             $usuario->setTipoUsuario($arr["tipoUsuario"]);
-            
+            $usuario->setFoto($arr["dirreccion"]);
             if ($arr["tipoUsuario"]) {
                 $usuario->setTitulacion($arr["titulacion"]);
                 $usuario->setEspecialidad($arr["especialidad"]);

@@ -34,6 +34,14 @@ class FormularioRegistro extends Form {
            $ret .= '<div class="grupo-control">';
                 $ret .= '<label>NIF/NIE:</label> <input class="control" type="text" placeholder="&#128100;NIF/NIE" name="nif" required autofocus/>';
             $ret .= '</div>';
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<input type="hidden" name="MAX_FILE_SIZE" value="200000" />';
+                $ret .= '<label>Sube foto</label><input name="uploadImage" type="file" placeholder="&#128100';
+            $ret .= '</div>';
+           /* $ret .= '<div class="grupo-control">';
+                $ret .= '  <img id="uploadPreview1" width="150" height="150" " />';
+            $ret .= '</div>';
+          */
 
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Nombre completo:</label> <input class="control" type="text" placeholder="&#128100;Nombre y apellidos" name="nombre" required/>';
@@ -134,6 +142,11 @@ class FormularioRegistro extends Form {
             }
         }
 
+        if (!$this->subir_fichero("includes/img/usuarios",'uploadImage', $datos['nif']))
+                 $erroresFormulario[] = "Foto incorrecta. Compruebe el formato del archivo";
+        
+        $datos['dirreccion'] = "includes/img/usuarios/".$nif.".jpg";
+        
         if (count($erroresFormulario) === 0) {
             $ctrl = controller::getInstance();
             $us = $ctrl->registra($datos);

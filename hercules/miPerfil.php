@@ -52,6 +52,7 @@
 				<h2>Datos personales</h2>
 				<?php
 
+				echo '<img src="'.$_SESSION['usuario']->getFoto().'" width="300" height="120" alt="Foto usuario">';
 				echo '<table>';
 				
 				echo '<tr>';
