@@ -32,14 +32,31 @@ div#contenido .submenu-perfil .comidaentrena-all img{
 	height: 200px;
 }
 
-div#contenido .submenu-perfil .comidaentrena-all h3{
-	font-weight: 600;
-	font-size: 18px;
-}
-
 div#contenido .submenu-perfil .comidaentrena-all a{
 	font-weight: 500px;
 	text-decoration: none;
 	color: #3498db;
+}
+
+div#contenido .submenu-perfil .comidaentrena-all button[type="submit"]{
+	text-decoration: none;
+	border: 0;
+	color: black;
+	background-color: #f3f3f3;
+	opacity: 1.5;
+	margin-top: 20px;
+	padding: 10px;
+	width: 100%;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+div#contenido .submenu-perfil .comidaentrena-all button[type="submit"]:hover{
+	background-color: #f4ec1c;
+}
+
+button[type="submit"]{
+	background-color: red;
+	cursor:pointer;
 }
 /*FIN SUBMENU PERFIL*/

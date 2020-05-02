@@ -44,26 +44,24 @@
 		<div class="submenu-perfil">
 			<div class="comidaentrena-all">
 			<img src="includes/img/ver_comidas.png" alt="Histórico de comidas">
-			<h3>Ver Comidas</h3>
-			<a href="#"></a>
+			<button type="submit" name="registro">Ver Comidas</button>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/registrar_comida.png" alt="Registrar Comida">
-			<h3>Registrar Comida</h3>
-			<a href="#"></a>
+			<form action="registroComida.php" method="post">
+				<button type="submit" name="registro">Registrar Comida</button>
+			</form>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/editar_comida.png" alt="Editar Comida">
-			<h3>Modificar Comida</h3>
-			<a href="#"></a>
+			<button type="submit" name="registro">Modificar Comida</button>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/borrar_comida.png" alt="Borrar comida">
-			<h3>Eliminar Comida</h3>
-			<a href="#"></a>
+			<button type="submit" name="registro">Eliminar Comida</button>
 			</div>
 		</div>
 
@@ -110,11 +108,6 @@
         }
 		?>
 		</table></p>
-
-		<p>La siguiente opción le permitirá añadir una nueva comida a la tabla:</p>
-		<form action="registroComida.php" method="post">
-			<p><input type="submit" name="registroComida" value="Registrar comida" /></p>
-		</form>
 
 	</div>
 

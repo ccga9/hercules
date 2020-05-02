@@ -18,17 +18,29 @@ class FormRegistroComida extends Form
     {
         $ctrl = controller::getInstance();
         $alimentos = $ctrl->listarAlimentos();
-        
-        $ret =	
-		'<label for="instrucciones_tipo"> Escoge el tipo de comida que desees:</label>
-		<p><input type="radio" name="tipo" value="desayuno" checked/> desayuno
-		<input type="radio" name="tipo" value="comida"/> comida
-		<input type="radio" name="tipo" value="cena"/> cena</p>
 
-		<p><label for="instrucciones_alimentos">Selecciona entre 1 y 3 platos, 
-		dependiendo del tipo de comida que hayas escogido y la cantidad que quieras comer:</label></p>
+        $ret = '<div class="form-inicio">';
+        $ret .= '<fieldset>';
+           $ret .= '<legend>REGISTRO DE COMIDA</legend>';
 
-	  	<label for="nombre_1">Primer plato o plato único</label>
+        $ret .=	
+		'<label> Escoge el tipo de comida que desees:</label>
+        <div class="radio-button">
+            
+            <label for="desayuno">Desayuno</label>
+            <input type="radio" name="tipo" value="desayuno" checked/>
+            
+            <label for="comida">Comida</label>
+    		<input type="radio" name="tipo" value="comida"/>
+           
+            <label for="cena">Cena</label>
+    		<input type="radio" name="tipo" value="cena"/>
+        </div>
+
+		<div class="grupo-control"><label for="instrucciones_alimentos">Selecciona entre 1 y 3 platos, 
+		dependiendo del tipo de comida que hayas escogido y la cantidad que quieras comer:</label></div>
+
+	  	<div class="grupo-control"><label>Primer plato o plato único</label></div>
 		<select name="alimento_1">
 			<option value = ""> </option>';
 			
@@ -37,7 +49,7 @@ class FormRegistroComida extends Form
 			
 		$ret .= '</select>
 
-		<label for="nombre_2">Segundo plato</label>
+		<div class="grupo-control"><label>Segundo plato</label></div>
 		<select name="alimento_2">
 			<option value = ""> </option>';
 			
@@ -46,7 +58,7 @@ class FormRegistroComida extends Form
 			
 		$ret .= '</select>
 
-		<label for="nombre_3">Postre</label>
+		<div class="grupo-control"><label>Postre</label></div>
 		<select name="alimento_3">
 			<option value = ""> </option>';
 			
@@ -55,9 +67,11 @@ class FormRegistroComida extends Form
 			
 		$ret .= '</select>
 
-	    <p><input type="submit" value="Submit"></p>
+	    <div class="botones"><button type="submit" value="Submit">Registrar</button>
+        <a href:"#" value="Submit">Ver tabla de calorías</a></div>
         ';
-           
+        $ret .= '</fieldset>';
+         $ret .= '</div>';
         return $ret;
     }
     
