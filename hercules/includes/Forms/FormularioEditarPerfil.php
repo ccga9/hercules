@@ -32,13 +32,10 @@ class FormularioEditarPerfil extends Form {
     protected function generaCamposFormulario($datosIniciales)
     {
         
-
     	$ret = '';
+        $ret .= '<div class="form-registro">';
     	$ret .= '<fieldset>';
-           $ret .= '<legend>Editar Perfil</legend>';
-           $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Modifica </label/>';
-            $ret .= '</div>';
+        $ret .= '<legend>MODIFICA</legend>';
             $ret .= '<div class="grupo-control">';
                 $ret .= '<input type="hidden" name="MAX_FILE_SIZE" value="200000" />';
                 $ret .= '<label>Sube foto</label><input name="uploadImage" type="file"  ';
@@ -71,7 +68,7 @@ class FormularioEditarPerfil extends Form {
             $ret .= '</div>';
             $ret .= '<div class="grupo-control"><button type="submit" name="Enviar">Enviar</button></div>';
 		$ret .= '</fieldset>';
-
+        $ret .= '</div>';
         return $ret;
     }
 

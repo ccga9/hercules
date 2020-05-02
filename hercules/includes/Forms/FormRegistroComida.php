@@ -68,7 +68,7 @@ class FormRegistroComida extends Form
 		$ret .= '</select>
 
 	    <div class="botones"><button type="submit" value="Submit">Registrar</button>
-        <a href:"#" value="Submit">Ver tabla de calorías</a></div>
+        </div>
         ';
         $ret .= '</fieldset>';
          $ret .= '</div>';

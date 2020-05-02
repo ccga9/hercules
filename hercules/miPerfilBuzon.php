@@ -32,7 +32,7 @@
 		    
 		    echo '<input type="hidden" name="emisor_n" value="'.$_SESSION["usuario"]->getNombre().'">';
 		    echo '<input type="hidden" name="emisor" value="'.$_SESSION["usuario"]->getNif().'">';
-		    echo '<p><span class="texto-chat">NIF/NIE: <input type="text" name="receptor"></span>';
+		    echo '<p><span class="texto-chat">NIF/NIE: <input type="text" name="receptor" required></span>';
 		    echo '<span class="texto-chat">Saludo: </span><input type="text" name="men" value="¡Hola! Soy '.$_SESSION["usuario"]->getNombre().'."></p>';
 		    
 		    echo '<button type="submit" name="add">Añadir al chat</button>';

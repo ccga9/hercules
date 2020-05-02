@@ -29,26 +29,22 @@
 		<div class="submenu-perfil">
 			<div class="comidaentrena-all">
 			<img src="includes/img/ver_entrenamientos.png" alt="Histórico de Entrenamientos">
-			<h3>Ver Entrenamientos</h3>
-			<a href="#"></a>
+			<button type="submit" name="registro">Ver Entrenamientos</button>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/registrar_entrenamiento.png" alt="Registrar Entrenamiento">
-			<h3>Registrar Entrenamiento</h3>
-			<a href="#"></a>
+			<button type="submit" name="registro">Registrar Entrenamiento</button>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/editar_comida.png" alt="Editar Entrenamiento">
-			<h3>Modificar Entrenamiento</h3>
-			<a href="#"></a>
+			<button type="submit" name="registro">Editar Entrenamiento</button>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/borrar_comida.png" alt="Borrar Entrenamiento">
-			<h3>Eliminar Entrenamiento</h3>
-			<a href="#"></a>
+			<button type="submit" name="registro">Eliminar Entrenamiento</button>
 			</div>
 		</div>
 			

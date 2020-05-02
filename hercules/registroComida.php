@@ -34,7 +34,8 @@
 	    
         $alimentos = $ctrl->listarAlimentos();
         ?>
-        
+        <div class="form-inicio">
+        	<legend>TABLA DE CALORIAS</legend>
         <p>Esta es una tabla con todos los alimentos de los que disponemos, acompañados de sus características.
         La cantidad resultante (en gramos) de cada una de estas características está medida
         cada 100 gramos del alimento:</p>
@@ -55,6 +56,7 @@
         ?>
         </table></p>
 
+		</div>
 		</div>
 		
 		<?php	

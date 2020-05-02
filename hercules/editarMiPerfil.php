@@ -7,6 +7,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloPagsMiPerfil.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloFormularios.css" />
 	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>
@@ -23,7 +24,7 @@
 	?>
 
 	<div id="contenido">
-		
+		<h2>Editar Perfil</h2>
 		<?php  
 			$act = new FormularioEditarPerfil();
 			$act->gestiona();
