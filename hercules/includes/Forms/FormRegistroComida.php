@@ -67,7 +67,7 @@ class FormRegistroComida extends Form
 			
 		$ret .= '</select>
 
-	    <div class="botones"><button type="submit" value="Submit">Registrar</button>
+	    <div class="botones"><button type="submit" value="Enviar">Registrar</button>
         </div>
         ';
         $ret .= '</fieldset>';
@@ -108,7 +108,7 @@ class FormRegistroComida extends Form
         
         if (count($erroresFormulario) === 0)
         {
-            $erroresFormulario = "miPerfilComidas.php";
+            $erroresFormulario = "verComidas.php";
         }
         
         return $erroresFormulario;

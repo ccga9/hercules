@@ -10,27 +10,18 @@ class comidaDAO extends DAO
         parent::__construct();
     }
 
-    public function inserta(comida $c)
-    {
-        $query = "INSERT INTO comida(dia, tipo, usuario) VALUES ('".$c->get_dia()."','".$c->get_tipo()."','".$c->get_usuario()."','".$c->get_comida()."') where idComida = '".$c->get_idComida()."'";
-
-        return $this->consultar($query);
-    }
-
     public function modifica(comida $c)
     {
-        $query = "UPDATE comida(dia, tipo, usuario) VALUES ('".$c->get_dia()."','".$c->get_tipo()."','".$c->get_usuario()."','".$c->get_comida()."') where idComida = '".$c->get_idComida()."'";
+        $query = "UPDATE comida set dia = '".$c->get_dia()."', tipo = '".$c->get_tipo()."', usuario = '".$c->get_usuario()."' where idComida = '".$c->get_idComida()."'";
 
         return $this->consultar($query);
     }
 
-    public function elimina(comida $c)
+    public function eliminarComida($fecha, $nif)
     {
-        $query = "DELETE comida where idComida = '".$c->get_idComida()."'";
-
-        return $this->consultar($query);
+        $query = "DELETE from comida where dia = '".$fecha."' and usuario = '".$nif."'";
+        $this->consultar($query);
     }
-
 
     public function registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
     {
@@ -89,13 +80,12 @@ class comidaDAO extends DAO
 
     public function verComidas($nif)
     {
-        $query = "  SELECT c.dia, c.tipo, a.nombre
+        $query = "  SELECT dia, tipo, nombre, caloriasConsumidas, proteinas, grasas, carbohidratos
                     from comida c
                     join alimentocomida ac on c.idComida = ac.idComida
                     join alimento a on a.idAlimento = ac.idAlimento
                     where c.usuario = '".$nif."'
                     order by c.dia";
-                    //group by ac.idComida, ac.idAlimento
 
         $consulta = $this->consultar($query);
 

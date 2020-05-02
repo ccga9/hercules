@@ -366,13 +366,15 @@ class controller{
     }
     //FIN FUNCIONES VALORACIONDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
-    
-    //FUNCIONES ALIMENTODAO Y COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+    //FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     public function listarAlimentos()
     {
         return $this->alimentoDAO->listarAlimentos();
     }
     
+    //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+
+    //FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /    
     public function registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
     {
         return $this->comidaDAO->registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif);
@@ -382,9 +384,13 @@ class controller{
     {
         return $this->comidaDAO->verComidas($nif);
     }
+
+    public function eliminarComida($fecha, $nif)
+    {
+        return $this->comidaDAO->eliminarComida($fecha, $nif);
+    }
     
-    //FIN FUNCIONES ALIMENTODAO Y COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
-    
+    //FIN FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
    //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     public function listarEntrenamientos($idUsuarioEntrenador)
