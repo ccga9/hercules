@@ -26,6 +26,7 @@ require_once 'includes/config.php';
 
 	<div id="contenido">
 		<?php 
+		echo "<a href= nuevoTema.php><button type=button>Nuevo tema</button></a>";
 		$temas = $ctrl->listarTemas();
 		
 		if ($temas) {

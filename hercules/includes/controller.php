@@ -506,6 +506,11 @@ class controller{
     {
         return $this->foroDAO->mostrarRespuestasMensaje($id_tema);
     }
+    
+    public function nuevoMensaje($datos)
+    {
+        return $this->foroDAO->inserta($datos['autor'], $datos['texto'], $datos['fecha'], $datos['resp'], $datos['id_r'], $datos['tema']);
+    }
     //FIN FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
 }

@@ -25,18 +25,26 @@ require_once 'includes/config.php';
 
 	<div id="contenido">
 		<?php 
-		//aqui todo lo de responder
-		$id_msg = $_GET['id'];
+		$id_msg = $_GET['id_msg'];
+		echo "<a href= respuesta.php?id_msg='".$id_msg."'><button type=button>Responder</button></a>";
 		$msg = $ctrl->mostrarMensaje($id_msg);
 		echo "<p>'".$msg['tema']."' '".$msg['autor']."' '".$msg['fecha']."'</p>";
 		echo "<p>'".$msg['mensaje']."'</p>";
 		
-		//$nresp = $msg['respuestas'];
+		if($msg['autor'] == $_SESSION['usuario']){
+		    echo "Modificar";//hay que hacer esto.
+		    echo "Eliminar";//hay que hacer esto.
+		}
+		
 		$resp = $ctrl->mostrarRespuestas($id_msg);
 		if ($resp) {
 		    while ($fila = mysqli_fetch_assoc($resp)){
 		        echo "<p>'".$fila['autor']."' '".$fila['fecha']."'</p>";
-		        echo "<p>'".$fila['mensaje']."'</p>";
+		        if($fila['autor'] == $_SESSION['usuario']){
+		            echo "Modificar";//hay que hacer esto.
+		            echo "Eliminar";//hay que hacer esto.
+		        }
+		        echo "<p>'".$fila['mensaje']."'</p><br>";
 		    }
 		}
 		else{
