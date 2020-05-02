@@ -21,21 +21,26 @@ require_once 'includes/config.php';
 
 	<!-- Banner principal -->
 	<div class="main-banner" id="main-banner">
-	<h1>FORO</h1>
 	</div>
 
 	<div id="contenido">
 		<?php 
-		$temas = $ctrl->listarTemas();
+		//aqui todo lo de responder
+		$id_msg = $_GET['id'];
+		$msg = $ctrl->mostrarMensaje($id_msg);
+		echo "<p>'".$msg['tema']."' '".$msg['autor']."' '".$msg['fecha']."'</p>";
+		echo "<p>'".$msg['mensaje']."'</p>";
 		
-		if ($temas) {
-		    while ($fila = mysqli_fetch_assoc($temas)){
-		        echo "<pre><a href= mensaje.php>'".$fila['tema']."'</a>  
-                '".$fila['autor']."'  '".$fila['fecha']."'  '".$fila['respuestas']."'</pre> <br>";//HACER MENSAJE.PHP!!!
+		//$nresp = $msg['respuestas'];
+		$resp = $ctrl->mostrarRespuestas($id_msg);
+		if ($resp) {
+		    while ($fila = mysqli_fetch_assoc($resp)){
+		        echo "<p>'".$fila['autor']."' '".$fila['fecha']."'</p>";
+		        echo "<p>'".$fila['mensaje']."'</p>";
 		    }
 		}
 		else{
-		    echo "<h1>No hay mensajes...</h1>";
+		    echo "<p>No hay respuestas...</p>";
 		}
 		?>
 	</div>

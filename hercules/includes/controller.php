@@ -485,6 +485,7 @@ class controller{
         
         if ($consulta) {
             while ($fila = mysqli_fetch_assoc($consulta)){
+                $tema[] = $fila['id'];
                 $tema[] = $fila['tema'];
                 $tema[] = $fila['autor'];
                 $tema[] = $fila['fecha'];
@@ -494,6 +495,16 @@ class controller{
         }
         
         return $ret;
+    }
+    
+    public function mostrarMensaje($id)
+    {
+        return $this->foroDAO->mostrarContenidoMensaje($id);
+    }
+    
+    public function mostrarRespuestas($id_tema)
+    {
+        return $this->foroDAO->mostrarRespuestasMensaje($id_tema);
     }
     //FIN FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     

@@ -1,7 +1,7 @@
 <?php
 $uploadedfileload="true";
 $uploadedfile_size=$_FILES['uploadedfile']['size'];
-echo $_FILES['uploadedfile']'[name'];
+echo $_FILES['uploadedfile']['name'];
 if ($_FILES['uploadedfile']['size']>200000)
 {$msg=$msg."El archivo es mayor que 200KB, debes reduzcirlo antes de subirlo<BR>";
 $uploadedfileload="false";}
