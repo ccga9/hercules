@@ -6,6 +6,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloPagsCabecera.css" />
 	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>
@@ -21,24 +22,29 @@
 	?>
 
 	<div id="contenido">
-		
+		<div class="cab">
 		<h1>Todos los entrenadores disponibles</h1>
+		<img src="includes/img/entrenadores.png" alt="entrenadores">
+		</div>
 		<?php
 		
 		if (!isset($_GET['perfil'])) {
 		    $arr = $ctrl->listarEntrenadores( (isset($_SESSION['login']))? $_SESSION['usuario']->getNif() : 0);
 		    if (count($arr) > 0) {
+		    	echo '<div class="entrenadores-all">';
+		    	echo '<ul>';
 		        foreach ($arr as $key => $valor) {
-		            echo '<div id="entrenadores">';
-		            
-		            echo '<img src="includes/img/Hercules_logo.png" width="100" height="100" alt="Logo de Hercules: la web"><br>';
-		            echo $valor['nombre'].'<br>';
-		            echo $valor['titulacion'].'<br>';
-		            echo $valor['especialidad'].'<br>';
+		            echo '<li>';
+		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
+		            echo '<img src="includes/img/Hercules_logo.png" alt="Logo de Hercules: la web"><br>';
+		            echo '<p>'.$valor['titulacion'].'<br>';
+		            echo $valor['especialidad'].'</p>'.'<br>';
 		            echo "<a href= entrenadores.php?perfil=".$valor['nif'].">Ver Perfil</a>";
 		            
-		            echo '</div>';
+		            echo '</li>';
 		        }
+		        echo '</ul>';
+		        echo '</div>';
 		    }
 		    else {
 		        echo "No parece haber entrenadores disponibles ahora mismo. Vuelve mas tarde.";
