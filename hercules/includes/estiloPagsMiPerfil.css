@@ -55,8 +55,119 @@ div#contenido .submenu-perfil .comidaentrena-all button[type="submit"]:hover{
 	background-color: #f4ec1c;
 }
 
-button[type="submit"]{
-	background-color: red;
-	cursor:pointer;
-}
 /*FIN SUBMENU PERFIL*/
+
+/*INICIO ESTILO MENSAJE/CHAT*/
+div#contenido .chat-all {
+	width: 50%;
+	background-color:rgba(34,34,34,0.75);
+	margin: 0 auto;
+	padding: 20px;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-o-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	margin-bottom: 15px;
+}
+
+div#contenido .chat-all h4{
+	text-align: center;
+	font-size: 22px;
+	background-color: #f3f3f3;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+/*div#contenido .chat-all p {
+	width: 100%;
+	padding: 5px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid silver;
+	font-weight: bold;
+}*/
+
+input[type='text']{
+	width: 30%;
+	height: 30px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+div#contenido .chat-all textarea{
+	width: 100%;
+	height: 40px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.yo, .el-otro{
+	width: 50%;
+	padding: 10px;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+.yo {
+	background: #9AD36B;
+	text-align: right;
+	display: inline-block;
+	margin: 0 0 0 -10px;
+}
+
+.el-otro{
+	background: #82C6E3;
+	display: inline-block;
+	text-align: left;
+	margin: 0 0 0 -10px;
+}
+
+.los-dos{
+	width: 100%;
+	color: white;
+	margin: 20px;
+}
+
+div#contenido .chat-all ul{
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+}
+div#contenido .chat-all ul li{
+	padding: 10px;
+}
+/*FIN ESTILO MENSAJES/CHAT*/
+
+/*COMUNES*/
+div#contenido a, button[type="submit"]{
+	cursor:pointer;
+	text-decoration: none;
+	border: 0;
+	color: black;
+	background-color: #f3f3f3;
+	opacity: 1.5;
+	margin-top: 20px;
+	padding: 15px;
+	width: 30%;
+	font-size: 16px;
+	font-weight: 600;
+	border-radius: 8px;
+	text-align: center;
+}
+
+div#contenido a:hover, button[type="submit"]:hover{
+	background: linear-gradient(#e9e174, #e3da0c);
+}
+
+.texto-chat {
+	padding: 10px;
+	font-size: 18px;
+	color: white;
+	font-weight: bold;
+}
+
+

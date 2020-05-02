@@ -6,6 +6,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloPagsMiPerfil.css" />
 	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>
@@ -22,20 +23,22 @@
 	?>
 
 	<div id="contenido">
-	
+		<h2>Mensajes</h2>
 		<?php 
 		
 		if (!isset($_GET['reciever'])) {
+			echo '<div class="chat-all">';
 		    echo '<form method="POST" action="procesaChat.php">';
 		    
 		    echo '<input type="hidden" name="emisor_n" value="'.$_SESSION["usuario"]->getNombre().'">';
 		    echo '<input type="hidden" name="emisor" value="'.$_SESSION["usuario"]->getNif().'">';
-		    echo 'NIF/NIE: <input type="text" name="receptor">';
-		    echo 'Saludo: <input type="text" name="men" value="¡Hola! Soy '.$_SESSION["usuario"]->getNombre().'.">';
+		    echo '<p><span class="texto-chat">NIF/NIE: <input type="text" name="receptor"></span>';
+		    echo '<span class="texto-chat">Saludo: </span><input type="text" name="men" value="¡Hola! Soy '.$_SESSION["usuario"]->getNombre().'."></p>';
 		    
 		    echo '<button type="submit" name="add">Añadir al chat</button>';
 		    
 		    echo '</form>';
+		   
 		    
 		    $arr = $ctrl->selectMensajes('', "emisor='".$_SESSION["usuario"]->getNif()."' AND del_1=0 OR receptor='".$_SESSION["usuario"]->getNif()."'
             AND visto=0 GROUP BY emisor, receptor");
@@ -54,7 +57,7 @@
 		            }
 		        }
 		    }
-		    
+		    echo '<h4>CONVERSACIONES INICIADAS</h4>';
 		    echo '<ul>';
 		    foreach($arr as $value) {
 		        if ($_SESSION['usuario']->getNif() == $value['emisor']) {
@@ -85,6 +88,7 @@
 		        }
 		    }
 		    echo '</ul>';
+		     echo '</div>';
 		}
 		
 		if (isset($_GET['reciever'])) {
@@ -98,7 +102,8 @@
 		    
 		    $el_otro = '';
 		    
-		    echo '<div id="chat">';
+		    echo '<div class="chat-all">';
+		   
 		    
 		    if (count($men_arr) > 0) {
 		      
@@ -108,30 +113,32 @@
 		        else {
 		            $el_otro = $ctrl->cargarUsuario($men_arr[0]['emisor'])->getNombre();
 		        }
-		        
+		        echo '<div id="chat">';
 		        echo '<h4>Estas hablando con '.$el_otro.'</h4>';
 		            
 	            foreach ($men_arr as $value) {
 	                if ($value['emisor'] == $_SESSION["usuario"]->getNif()) {
-	                    $men = "Yo: ";
+	                    $men = '<p><span class="yo">'."Yo: ";
+	                    echo $men.'---'.$value['fecha'].'---</span></p>';
+	                    
 	                }
 	                else {
-	                    $men = $el_otro . ": ";
+	                    $men = '<p><span class="el-otro">'.$el_otro . ": ";
+	                    echo $men.'---'.$value['fecha'].'---</span></p>';
 	                }
 	                
-	                echo '<p><strong>'.$men.'</strong>---'.$value['fecha'].'---</p>';
-	                echo '<p>'.$value['texto'].'</p>';
+	               /* echo '<p><span class="yo">'.$men.'---'.$value['fecha'].'---</span></p>';*/
+	                echo '<p><span class="los-dos">'.$value['texto'].'</span></p>';
 	            }
 		 
     		    echo '<form method="POST" action="procesaChat.php">';
-        		    echo '<fieldset>';
         		        echo '<input type="hidden" name="emisor" value="'.$_SESSION["usuario"]->getNif().'">';
         		        echo '<input type="hidden" name="receptor" value="'.$_GET['reciever'].'">';
             		    echo '<textarea name="men" rows="5" cols="40" placeholder="Escribe algo para mandar"></textarea>';
             		    
             		    echo '<div class="grupo-control"><button type="submit" name="send">Enviar</button></div>';
-        		    echo '</fieldset>';
     		    echo '</form>';
+
     		    
     		    echo '<br>';
     		    
@@ -143,6 +150,7 @@
     		    echo '<button type="submit" name="borrar">Borrar toda la conversacion</button>';
     		    
     		    echo '</form>';
+    		    echo '</div>';
 		    }
 		    echo '</div>';
 		}
