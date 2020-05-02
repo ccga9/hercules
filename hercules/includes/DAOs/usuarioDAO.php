@@ -60,11 +60,9 @@ class UsuarioDAO extends DAO {
         }
         if ($cond == "") {
             $query = "SELECT ".$col." FROM usuarioentrenador";
-            echo $query;
         }
         else {
             $query = "SELECT ".$col." FROM usuarioentrenador WHERE ".$cond;
-            echo $query;
         }
         
         return $this->consultarv2($query);
@@ -74,7 +72,7 @@ class UsuarioDAO extends DAO {
         $query = "";
         $query = "INSERT INTO usuarioentrenador(".$col.") VALUES (".$values.")";
         
-        echo $query;
+
         return $this->consultarv2($query);
     }
     
@@ -99,7 +97,7 @@ class UsuarioDAO extends DAO {
     public function eliminarIdUsuarioEntrenador($nif_user, $nif_entrena, $idUsuarioEntrenador){
         
         $query = "DELETE FROM `usuarioentrenador` WHERE entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."' AND id = '".$idUsuarioEntrenador."'";
-       echo $query;
+
         return $this->consultar($query);
 
     }

@@ -129,9 +129,10 @@ class FormularioEditarPerfil extends Form {
 
         if (!$this->subir_fichero("includes/img/usuarios",'uploadImage', $datos['nif']))
                  $erroresFormulario[] = "Foto incorrecta. Compruebe el formato del archivo";
-         $nif = isset($datos['nif']) ? htmlspecialchars(strip_tags(strtoupper($datos['nif']))) : null;
+
+        $nif = isset($datos['nif']) ? htmlspecialchars(strip_tags(strtoupper($datos['nif']))) : null;
         $datos['foto'] = "includes/img/usuarios/".$_SESSION['usuario']->getNif().".jpg";
-         $ctrl = controller::getInstance();
+        $ctrl = controller::getInstance();
          
 
 		if (count($erroresFormulario) === 0) {
