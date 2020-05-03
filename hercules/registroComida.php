@@ -13,7 +13,7 @@
 	<style>
 	table { border: 1px solid black;
 	        border-collapse: collapse;
-	        width: 600px; }
+	        width: 520px; }
     td { border: 1px solid black; }
 	</style>
 	</head>
@@ -37,10 +37,10 @@
         <div class="form-inicio">
         	<legend>TABLA DE CALORIAS</legend>
         <p>Esta es una tabla con todos los alimentos de los que disponemos, acompañados de sus características.
-        La cantidad resultante (en gramos) de cada una de estas características está medida
+        La cantidad resultante de cada una de estas características está medida
         cada 100 gramos del alimento:</p>
         <p><table>
-        <tr> <th>Alimento</th> <th>Calorías</th> <th>Proteínas</th> <th>Grasas</th> <th>Hidratos de carbono</th> </tr>
+        <tr> <th>Alimento</th> <th>Calorías</th> <th>Proteínas</th> <th>Grasas</th> <th>Carbohidratos</th> </tr>
         <?php
         foreach ($alimentos as $valor)
         {

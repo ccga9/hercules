@@ -71,7 +71,7 @@ class FormEliminarComida extends Form
         
         if (count($erroresFormulario) === 0)
         {
-            $erroresFormulario = "verComidas.php";
+            $erroresFormulario = "verTablaComidas.php";
         }
         
         return $erroresFormulario;
