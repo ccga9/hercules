@@ -170,4 +170,26 @@ div#contenido a:hover, button[type="submit"]:hover{
 	font-weight: bold;
 }
 
+.varios{
+	width: 100%;
+	text-align: center;
+	border-radius: 10px;
+	background-color: #F3F3F3;
+	margin: 20px 20px 20px;
+	border: 1px solid rgba(0,0,0,0.2);
+	padding: 20px;
+}
 
+/*Boton personalizado para mis entrenadores*/
+div#contenido .entrenadores-all a{
+	display: block;
+	width: 93%;
+	background: linear-gradient(#FFBB33, #F8CC76);
+	padding: 8px;
+	margin: auto;
+	border-radius: 0;
+}
+
+div#contenido .entrenadores-all a:hover{
+	color: white;
+}

@@ -113,6 +113,7 @@ div#contenido .entrenadores-all {
 	text-align: center;
 	color: black;
 	margin: auto;
+	font-weight: 600;
 }
 
 .entrenadores-all a:hover{

@@ -37,8 +37,10 @@
 		            echo '<li>';
 		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
 		            echo '<img src="includes/img/Hercules_logo.png" alt="Logo de Hercules: la web"><br>';
-		            echo '<p>'.$valor['titulacion'].'<br>';
-		            echo $valor['especialidad'].'</p>'.'<br>';
+		            /*echo '<img src="'.$_SESSION['usuario']->getFoto().'"><br>';*/
+		            echo $valor['titulacion'].'<br>';
+		            echo $valor['especialidad'].'<br>';
+					    echo $valor['experiencia'].'</p>';
 		            echo "<a href= entrenadores.php?perfil=".$valor['nif'].">Ver Perfil</a>";
 		            
 		            echo '</li>';

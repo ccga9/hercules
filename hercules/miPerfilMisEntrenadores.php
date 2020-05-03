@@ -6,8 +6,9 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloPagsMiPerfil.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloPagsCabecera.css" />
 	<meta charset="utf-8">
-	<title>HERCULES</title>
+	<title>Mi Perfil - Mis Entrenadores</title>
 </head>
 
 <body>
@@ -28,26 +29,25 @@
 
 		<?php  
 			
-			$arr = $ctrl->listarMisEntrenadores($_SESSION['usuario']->getNif());
-            
+			$arr = $ctrl->listarEntrenadores($_SESSION['usuario']->getNif());
 			if(count($arr) > 0){
-			    echo '<table>';
-				echo '<tr>'.'<th>Nombre</th>'.'<th>Titulacion</th>'.'<th>Especialidad</th>'.'<th>Experiencia</th>'.'</tr>';
-		
+				echo '<div class="entrenadores-all">'; /*Estilo de estiloPagsCabecera*/
+				echo '<ul>';
 				foreach ($arr as $key => $valor) {
-					echo '<tr>';
-						echo '<td>'.$valor['nombre'].'</td>';
-					    echo '<td>'.$valor['titulacion'].'</td>';
-					    echo '<td>'.$valor['especialidad'].'</td>';
-					    echo '<td>'.$valor['experiencia'].'</td>';
-					    echo '<td> <a href="perfil_Entrenador.php?id='.$key.'">Mostrar Perfil</a> </td>'; 
-					echo'</tr>';
-					
+					echo '<li>';
+						echo '<h4>'.$valor['nombre'].'</h4>';
+						echo '<img src="'.$_SESSION['usuario']->getFoto().'"><br>';
+					    echo '<p><strong>Titulación: </strong> '.$valor['titulacion'].'<br>';
+					    echo '<strong>Especialidad: </strong> '.$valor['especialidad'].'<br>';
+					    echo '<strong>Experiencia: </strong> '.$valor['experiencia'].'</p>';
+					    echo '<a href="perfil_Entrenador.php?id='.$key.'">Mostrar Perfil</a>'; 
+					echo '</li>';
 				}
-				echo '</table>';
+				echo '</ul>';
+		        echo '</div>';
 			 }
 			 else {
-			     echo "Todavía no tiene entrenadores.";
+			     echo '<p><span class="varios">'. "Todavía no tiene entrenadores.".'</span></p>';
 			 }
 
 		?>
