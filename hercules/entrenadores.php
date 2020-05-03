@@ -36,8 +36,7 @@
 		        foreach ($arr as $key => $valor) {
 		            echo '<li>';
 		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
-		            echo '<img src="includes/img/Hercules_logo.png" alt="Logo de Hercules: la web"><br>';
-		            /*echo '<img src="'.$_SESSION['usuario']->getFoto().'"><br>';*/
+		            echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
 		            echo $valor['titulacion'].'<br>';
 		            echo $valor['especialidad'].'<br>';
 					    echo $valor['experiencia'].'</p>';
@@ -64,12 +63,9 @@
 		    
 		    $us = $ctrl->cargarUsuario($_GET['perfil']);
 		    echo '<h2>'.$us->getNombre().'</h2>';
-		    if (file_exists($us->getFoto())) {
-		        echo '<img src="'.$_SESSION['usuario']->getFoto().'" width="300" height="300" alt="Foto usuario">';
-		    }
-		    else {
-		        echo '<img src="includes/img/usuarios/default.png" width="300" height="300" alt="Foto usuario default">';
-		    }
+		    echo '<img src="'.$us->getFoto().'" width="300" height="300" alt="Foto usuario">';
+		 
+		    
 		    echo '<br>';
 		    echo $us->getTitulacion().'<br>';
 		    echo $us->getEspecialidad().'<br>';

@@ -218,7 +218,7 @@ class controller{
     }
 
     public function listarEntrenadores($nif=0){
-        $col='nif, nombre, titulacion, especialidad, experiencia';
+        $col='nif, nombre, titulacion, especialidad, experiencia, foto';
         $cond='';
         if ($nif) {
             $cond="tipoUsuario = 1 AND nif != '" .$nif."'";
@@ -234,7 +234,17 @@ class controller{
         $col = "entrenador";
         $cond="usuario = '".$nif."' AND estado = 'aceptado'";
        
-        return $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
+        $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
+ 
+       if ($consulta) {
+        $result = array();
+        foreach ($consulta as $value) {
+           $result[] = $this->cargarUsuario($value['entrenador']);
+        }
+            return $result;
+        }else{
+            return false;
+        }
     }
 
     public function listarMisClientes($nif){

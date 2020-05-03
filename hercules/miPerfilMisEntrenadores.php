@@ -29,17 +29,17 @@
 
 		<?php  
 			
-			$arr = $ctrl->listarEntrenadores($_SESSION['usuario']->getNif());
+			$arr = $ctrl->listarMisEntrenadores($_SESSION['usuario']->getNif());
 			if(count($arr) > 0){
 				echo '<div class="entrenadores-all">'; /*Estilo de estiloPagsCabecera*/
 				echo '<ul>';
 				foreach ($arr as $key => $valor) {
 					echo '<li>';
-						echo '<h4>'.$valor['nombre'].'</h4>';
-						echo '<img src="'.$_SESSION['usuario']->getFoto().'"><br>';
-					    echo '<p><strong>Titulación: </strong> '.$valor['titulacion'].'<br>';
-					    echo '<strong>Especialidad: </strong> '.$valor['especialidad'].'<br>';
-					    echo '<strong>Experiencia: </strong> '.$valor['experiencia'].'</p>';
+						echo '<h4>'.$valor->getNombre().'</h4>';
+						echo '<img src="'.$valor->getFoto().'" width="300" height="120" alt="Foto usuario">';
+					    echo '<p><strong>Titulación: </strong> '.$valor->getTitulacion().'<br>';
+					    echo '<strong>Especialidad: </strong> '.$valor->getEspecialidad().'<br>';
+					    echo '<strong>Experiencia: </strong> '.$valor->getExperiencia().'</p>';
 					    echo '<a href="perfil_Entrenador.php?id='.$key.'">Mostrar Perfil</a>'; 
 					echo '</li>';
 				}
