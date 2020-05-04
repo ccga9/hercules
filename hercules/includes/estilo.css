@@ -55,6 +55,7 @@ div#contenido {
 	width: 80%;
 	background-color: white;
 	margin-left: 10%;
+	overflow:auto;
 }
 
 div#contenido h2 {

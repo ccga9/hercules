@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-04-2020 a las 20:48:45
+-- Tiempo de generación: 04-05-2020 a las 20:19:38
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -177,6 +177,22 @@ CREATE TABLE `entrenamientoejercicio` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `foro`
+--
+
+CREATE TABLE `foro` (
+  `id` int(10) NOT NULL,
+  `autor` varchar(10) NOT NULL,
+  `mensaje` varchar(500) NOT NULL,
+  `fecha` date NOT NULL,
+  `respuestas` int(4) NOT NULL,
+  `id_r` int(10) NOT NULL,
+  `tema` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `mensajes`
 --
 
@@ -201,7 +217,8 @@ INSERT INTO `mensajes` (`id`, `emisor`, `receptor`, `texto`, `fecha`, `del_1`, `
 (3, '26515643R', '12345678A', 'Hola', '2020-04-27 14:21:36', 0, 0, 1),
 (4, '26515643R', '12345678A', 'Hola', '2020-04-27 14:22:53', 0, 0, 1),
 (5, '26515643R', '12345678A', 'Fuck', '2020-04-27 14:23:07', 0, 0, 1),
-(6, '26515643R', '12345678B', '¡Hola! Soy JUAN LIU.', '2020-04-27 17:11:18', 0, 0, 0);
+(6, '26515643R', '12345678B', '¡Hola! Soy JUAN LIU.', '2020-04-27 17:11:18', 0, 0, 1),
+(7, '12345678A', '26515643R', 'afrrfanñjkfanr\r\n', '2020-05-04 14:23:54', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -213,7 +230,7 @@ CREATE TABLE `usuario` (
   `nif` varchar(10) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `contrasenna` varchar(255) NOT NULL,
-  `foto` varchar(255) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT 'includes/img/usuarios/default.png',
   `email` varchar(30) NOT NULL,
   `sexo` varchar(6) DEFAULT NULL,
   `fechaNac` date DEFAULT NULL,
@@ -233,12 +250,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`, `titulacion`, `especialidad`, `experiencia`) VALUES
-('12345678A', 'PETER PARKER', '$2y$10$AVXZMNDY3t0qMnnlDsK2ieHc20jp0elXy3AGUtTTROr29gJwgZ9h6', NULL, 'spidy@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Escalada', '20'),
-('12345678B', 'TONY STARK', '$2y$10$tatd6qauszToIxFssh7V8uvAn/jdLXu0ttWYQhi3vbc6ZHQ58PCsC', NULL, 't_stark@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Apoyo moral', '30'),
-('12345678C', 'MIKE', '$2y$10$WXvI7J3TDkc3K4WdSjuZBebcgpYB8FK0NIfcZmA4S1IY.zvufxsYG', NULL, 'm_tyson@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
-('12345678D', 'HUGAN', '$2y$10$L9uPLpdr8gX6ffx.6tBuy.xciEHtyQV7Q9CV4sJXSzp93fPKaZsRu', NULL, 'theHulk@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
-('12345678E', 'PACO', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', NULL, 'paco@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
-('26515643R', 'JUAN LIU', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', NULL, 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
+('12345678A', 'PETER PARKER', '$2y$10$AVXZMNDY3t0qMnnlDsK2ieHc20jp0elXy3AGUtTTROr29gJwgZ9h6', 'includes/img/usuarios/default.png', 'spidy@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Escalada', '20'),
+('12345678B', 'TONY STARK', '$2y$10$tatd6qauszToIxFssh7V8uvAn/jdLXu0ttWYQhi3vbc6ZHQ58PCsC', 'includes/img/usuarios/default.png', 't_stark@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Apoyo moral', '30'),
+('12345678C', 'MIKE', '$2y$10$WXvI7J3TDkc3K4WdSjuZBebcgpYB8FK0NIfcZmA4S1IY.zvufxsYG', 'includes/img/usuarios/default.png', 'm_tyson@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+('12345678D', 'HUGAN', '$2y$10$L9uPLpdr8gX6ffx.6tBuy.xciEHtyQV7Q9CV4sJXSzp93fPKaZsRu', 'includes/img/usuarios/default.png', 'theHulk@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+('12345678E', 'PACO', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', 'includes/img/usuarios/default.png', 'paco@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+('26515643R', ' JUAN LIU', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', ' includes/img/usuarios/26515643R.jpg', 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -258,7 +275,8 @@ CREATE TABLE `usuarioentrenador` (
 --
 
 INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
-(8, '12345678D', '12345678B', 'aceptado');
+(8, '12345678D', '12345678B', 'aceptado'),
+(9, '26515643R', '12345678B', 'aceptado');
 
 -- --------------------------------------------------------
 
@@ -271,7 +289,8 @@ CREATE TABLE `valoracion` (
   `de` varchar(10) NOT NULL,
   `texto` text NOT NULL,
   `valor` int(1) NOT NULL,
-  `visible` tinyint(1) NOT NULL DEFAULT 0
+  `visible` tinyint(1) NOT NULL DEFAULT 0,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -391,13 +410,13 @@ ALTER TABLE `entrenamiento`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarioentrenador`
 --
 ALTER TABLE `usuarioentrenador`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

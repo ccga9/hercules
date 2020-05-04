@@ -263,7 +263,24 @@ class controller{
         }else{
             return false;
         }
-
+    }
+    
+    public function listarMisSolicitudes($nif){
+        
+        $col = "usuario";
+        $cond="entrenador = '".$nif."' AND estado='pendiente'";
+        
+        $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
+        
+        if ($consulta) {
+            $result = array();
+            foreach ($consulta as $value) {
+                $result[] = $this->cargarUsuario($value['usuario']);
+            }
+            return $result;
+        }else{
+            return false;
+        }
     }
     
     public function selectUs_Ent($col, $cond){
@@ -296,7 +313,7 @@ class controller{
         $nom_clientes = array();
 
         foreach ($consulta as $value) {
-            $u = $this->usuarioDAO->cargarUsuario($value['usuario']);
+            $u = $this->cargarUsuario($value['usuario']);
             $nom_clientes[$u->getNif()] = $u->getNombre();
         }
 

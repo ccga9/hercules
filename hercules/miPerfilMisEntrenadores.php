@@ -25,8 +25,6 @@
 	<div id="contenido">
 		<h2>Mis Entrenadores</h2>
 
-		<form action="recomendacionesEntrenador.php" method="post">
-
 		<?php  
 			
 			$arr = $ctrl->listarMisEntrenadores($_SESSION['usuario']->getNif());
@@ -40,7 +38,7 @@
 					    echo '<p><strong>Titulación: </strong> '.$valor->getTitulacion().'<br>';
 					    echo '<strong>Especialidad: </strong> '.$valor->getEspecialidad().'<br>';
 					    echo '<strong>Experiencia: </strong> '.$valor->getExperiencia().'</p>';
-					    echo '<a href="perfil_Entrenador.php?id='.$key.'">Mostrar Perfil</a>'; 
+					    echo '<a href="perfil_Entrenador.php?id='.$valor->getNif().'">Mostrar Perfil</a>'; 
 					echo '</li>';
 				}
 				echo '</ul>';
@@ -51,8 +49,6 @@
 			 }
 
 		?>
-
-		</form>
 		
 	</div>
 			

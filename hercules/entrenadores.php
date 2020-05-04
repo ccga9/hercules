@@ -36,7 +36,10 @@
 		        foreach ($arr as $key => $valor) {
 		            echo '<li>';
 		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
-		            echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
+		            if (file_exists($valor['foto'])) {
+		                echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
+		            }
+		            
 		            echo $valor['titulacion'].'<br>';
 		            echo $valor['especialidad'].'<br>';
 					    echo $valor['experiencia'].'</p>';
@@ -53,13 +56,6 @@
 		}
 		else {
 		    echo '<a href="entrenadores.php">Volver a ver entrenadores</a>';
-		    
-		    if (!isset($_SESSION['login'])) {
-		        echo 'Entra con tu usuario para mandar solicitudes de entrenamiento.'.'<br>';
-		    }
-		    else if ($_SESSION['usuario']->getTipoUsuario() == 1) {
-		        echo 'Debes ser cliente para solicitar entrenadores.';
-		    }
 		    
 		    $us = $ctrl->cargarUsuario($_GET['perfil']);
 		    echo '<h2>'.$us->getNombre().'</h2>';
@@ -79,14 +75,17 @@
 	            echo 'Debes ser cliente para solicitar entrenadores.';
 	        }
 	        else {
+	            $rating = $ctrl->selectValor('', "hacia='".$_SESSION["usuario"]->getNif()."' AND visible = 1 ORDER BY fecha DESC");
+	            
 	            $sol = $ctrl->selectUs_Ent('', "usuario='".$_SESSION["usuario"]->getNif()."' AND entrenador='".$us->getNif()."'");
 	            
 	            if (count($sol) == 1) {
 	                if ($sol[0]['estado'] == "aceptado") {
-	                    
+	                    echo '<p>Solicitud aceptada</p>';
+	                    echo "<a href= miPerfilBuzon.php?reciever=".$us->getNif().">Ir al chat</a>";
 	                }
 	                else {
-	                    echo 'Solicitud Enviada';
+	                    echo '<p>Solicitud Enviada</p>';
 	                }
 	                
 	            }
@@ -98,6 +97,17 @@
 	                
 	                echo '<button type="submit" name="solicitud">Enviar Solicitud</button>';
 	                echo '</form>';
+	            }
+	            $c = count($rating);
+	            echo '<h2>Valoraciones('.$c.')';
+	            
+                if ($c > 0) {
+	                foreach ($rating as $valor) {
+	                    echo '<p>'.$valor['valor'].' estrellas</p>';
+	                    echo '<label>De: </label><p>'.$valor['de'].'</p>';
+	                    echo '<p>---'.$valor['fecha'].'---</p>';
+	                    echo '<p>'.$valor['texto'].'</p>';
+	                }
 	            }
 	        }
 		}

@@ -41,7 +41,7 @@
 		   
 		    
 		    $arr = $ctrl->selectMensajes('', "emisor='".$_SESSION["usuario"]->getNif()."' AND del_1=0 OR receptor='".$_SESSION["usuario"]->getNif()."'
-            AND visto=0 GROUP BY emisor, receptor");
+            AND del_2=0 GROUP BY emisor, receptor");
 		    
 		    $pre_arr= $ctrl->selectMensajes('', "emisor='".$_SESSION["usuario"]->getNif()."' OR receptor='".$_SESSION["usuario"]->getNif()."'");
 		    
@@ -88,7 +88,7 @@
 		        }
 		    }
 		    echo '</ul>';
-		     echo '</div>';
+		    echo '</div>';
 		}
 		
 		if (isset($_GET['reciever'])) {
@@ -104,7 +104,6 @@
 		    
 		    echo '<div class="chat-all">';
 		   
-		    
 		    if (count($men_arr) > 0) {
 		      
 		        if ($men_arr[0]['emisor'] == $_SESSION["usuario"]->getNif()) {
