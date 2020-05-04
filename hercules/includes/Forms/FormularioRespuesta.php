@@ -64,6 +64,10 @@ class FormularioRespuesta extends Form {
             $erroresFormulario[] = "Respuesta inválida.";
         }
         
+        if ( strlen($text) > 500 ) {
+            $erroresFormulario[] = "El texto no puede contener más de 500 caracteres.";
+        }
+        
         $datos['autor'] = $_SESSION['usuario'];
         $datos['fecha'] = date_default_timezone_set();
         $datos['id_r'] = $this->id_r;
@@ -74,6 +78,7 @@ class FormularioRespuesta extends Form {
             $ctrl = controller::getInstance();
             $ctrl->nuevoMensaje($datos);
         }
+        
         if (count($erroresFormulario) === 0) {
             $erroresFormulario = "mensaje.php?id='".$_GET['id_msg']."'";
         }

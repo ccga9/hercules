@@ -64,11 +64,19 @@ class FormularioNuevoTema extends Form {
             $erroresFormulario[] = "Texto inválido.";
         }
         
+        if ( strlen($text) > 500 ) {
+            $erroresFormulario[] = "El texto no puede contener más de 500 caracteres.";
+        }
+        
         $tema = isset($datos['tema']) ? htmlspecialchars(strip_tags(strtoupper($datos['tema']))) : null;
         $datos['tema'] = $tema;
         
         if ( empty($tema) || !ctype_alnum($tema) ) {
             $erroresFormulario[] = "Tema inválido.";
+        }
+        
+        if ( strlen($tema) > 50 ) {
+            $erroresFormulario[] = "El tema no puede contener más de 50 caracteres.";
         }
         
         $datos['autor'] = $_SESSION['usuario'];
