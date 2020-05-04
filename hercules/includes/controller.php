@@ -203,7 +203,13 @@ class controller{
             $usuario->setPassword(password_hash($arr["contrasenna"], PASSWORD_DEFAULT));
             $usuario->setEmail($arr["email"]);
             $usuario->setTipoUsuario($arr["tipoUsuario"]);
-            $usuario->setFoto($arr["dirreccion"]);
+            $usuario->setFoto($arr["foto"]);
+            $usuario->setTelefono($arr["telefono"]);
+            $usuario->setFechaNac($arr["fecha"]);
+            $usuario->setPeso($arr["peso"]);
+            $usuario->setAltura($arr["altura"]);
+            $usuario->setPreferencias($arr["preferencias"]);
+            $usuario->setUbicacion($arr["ubicacion"]);
             if ($arr["tipoUsuario"]) {
                 $usuario->setTitulacion($arr["titulacion"]);
                 $usuario->setEspecialidad($arr["especialidad"]);

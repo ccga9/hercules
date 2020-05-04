@@ -11,6 +11,28 @@
 	<link rel="stylesheet" type="text/css" href="includes/estiloFormularios.css" />
 	<meta charset="utf-8">
 	<title>Hércules</title>
+<script type="text/javascript">
+	
+	function Edad(FechaNacimiento) {
+
+    var fechaNace = document.getElementById("fecha").value;
+    var fechaActual = new Date()
+
+    var mes = fechaActual.getMonth();
+    var dia = fechaActual.getDate();
+    var año = fechaActual.getFullYear();
+
+    fechaActual.setDate(dia);
+    fechaActual.setMonth(mes);
+    fechaActual.setFullYear(año);
+
+    edad = Math.floor(((fechaActual - fechaNace) / (1000 * 60 * 60 * 24) / 365));
+   
+    document.getElementById("result").innerHTML="Tienes "+edad+" años, "+meses+" meses y "+dias+" días";
+}
+
+</script>
+	
 </head>
 
 <body>

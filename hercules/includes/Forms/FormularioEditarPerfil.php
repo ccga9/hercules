@@ -55,6 +55,22 @@ class FormularioEditarPerfil extends Form {
                 $ret .= '<label>Tu email:</label> <input type="email" name="email" value="'.$_SESSION['usuario']->getEmail().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#128231;(Opcional)" name="telefono" pattern="[0-9]{9} value="'.$_SESSION['usuario']->getTelefono().'"/>';
+            $ret .= '</div>';
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0" step="0.01" min="40.0" max="150.0" value="'.$_SESSION['usuario']->getPeso().'" >';
+            $ret .= '</div>';
+             $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Altura (cm)</label>  <input type="number"  name="altura" placeholder="0.0" step="0.01" min="100.0" max="250.0" value="'.$_SESSION['usuario']->getAltura().'">';
+            $ret .= '</div>';
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Preferencias</label> <input class="control" type="text" placeholder="&#128100;Introduce lo que buscas" name="preferencias" value="'.$_SESSION['usuario']->getPreferencias().'"/>';
+            $ret .= '</div>';
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Ubicación</label> <input class="control" type="text" placeholder="&#128100;Introduce tu ubicacion" name="preferencias" value="'.$_SESSION['usuario']->getUbicacion().'"/>';
+            $ret .= '</div>';
+
+            $ret .= '<div class="grupo-control">';
                 $ret .= '<label>¿Quieres cambiar tu contraseña? </label/>';
             $ret .= '</div>';
              $ret .= '<div class="grupo-control">';
