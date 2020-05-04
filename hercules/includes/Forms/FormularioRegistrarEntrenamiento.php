@@ -51,7 +51,7 @@ class FormularioRegistrarEntrenamiento extends Form {
             $datos = $ctrl->listarEjercicios();
             foreach ($datos as $value) {
                 $ret .= '<div class="grupo-control">';
-                    $ret .= '<label>'.$value.':</label> <input type="checkbox" name="ejercicios[]" value="'.$value.'"/>';
+                    $ret .= '<label>'.$value.'</label> <input type="checkbox" name="ejercicios[]" value="'.$value.'"/>';
                 $ret .= '</div>';
             }
 
@@ -92,9 +92,10 @@ class FormularioRegistrarEntrenamiento extends Form {
 
          
 		if (count($erroresFormulario) === 0) {
-
+            //echo 'UserActual'.$_SESSION['usuario']->getNif()."<br>";
+            //echo 'Cliente'.$datos['cliente']."<br>";
             $idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_SESSION['usuario']->getNif(), $datos['cliente']);
-            echo $idUsuarioEntrenador;
+            //echo 'UsuEntr'.$idUsuarioEntrenador."<br>";
             $ctrl->nuevoEntrenamiento($datos, $idUsuarioEntrenador);
 
 		}

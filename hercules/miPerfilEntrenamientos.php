@@ -53,6 +53,7 @@
 									echo '<td>'.$value['nombreEjercicio'].'</td>';
 									echo '<td>'.$value['caloriasGastadas'].'</td>';
 									echo '<td>'.$value['descripcion'].'</td>';
+									echo '<td>'.'<img src='.$value['multimedia'].' alt="foto" />'.'</td>';
 								    
 								    echo '</tr>';
 									

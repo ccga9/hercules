@@ -126,7 +126,7 @@ CREATE TABLE `ejercicio` (
   `caloriasGastadas` int(4) UNSIGNED NOT NULL,
   `tipo` varchar(25) NOT NULL,
   `descripcion` text NOT NULL,
-  `multimedia` mediumblob NOT NULL
+  `multimedia` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -134,20 +134,20 @@ CREATE TABLE `ejercicio` (
 --
 
 INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
-(1, 'Sentadillas(Squats)', 220, 'Tonificacion', 'Consiste en flexionar las rodillas y bajar el cuerpo manteniendo la verticalidad,\r\n  para luego regresar a una posición erguida.', ''),
-(2, 'Jumping jacks', 188, 'Cardio', ' En la posición de inicio, abre las piernas a la anchura de los hombros, a continuación\r\n   júntalas con un leve salto mientras levantas los brazos a la vez para que las manos se toquen detrás de la cabeza.\r\n   Asegúrate de mantener la cabeza recta y la vista al frente.', ''),
-(3, 'Planchas', 160, 'Tonificacion', 'Recuéstate boca abajo sobre la manta y luego apóyate sobre los antebrazos,\r\n   de modo que los codos queden ubicados debajo del pecho. Ahora, eleva tus piernas del piso sosteniéndote con las\r\n   puntas de los pies para formar la plancha .', ''),
-(4, 'Remo con banda elástica', 133, 'Fuerza', 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde\r\n  las caderas, la columna vertebral de permanecer neutral. Tiramos desde los omóplatos hacia atrás y levantamos los codos\r\n  tanto como pueda. Baje lentamente y repita.', ''),
-(5, 'Zumba Fitness', 200, 'Cardio', 'La zumba es un tipo de actividad física (fitness) basada en ritmos y músicas lationamericanas. Las coreografías de zumba incluyen ritmos como la samba, la salsa, el reggaeton, la cumbia, el merengue y el mambo.', ''),
-(6, 'Aeróbic step, con step de', 193, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aerobic.', ''),
-(7, 'Aeróbic step, con step de', 227, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aerobic.', ''),
-(8, 'Kettlebells', 196, 'Fuerza', 'Colócate de pie con los pies a la anchura de los hombros y deja la kettlebell en el suelo a la altura de los dedos de los pies. Dobla las rodillas, mantén la espalda recta y baja en posición de sentadilla hasta coger del asa al kettle con ambas manos hasta elevarlo hacia atrás mientras estiras las piernas manteniendo tensión en la zona de los abdominales y el glúteo hasta llevarla de nuevo con un impulso a la zona delantera por encima de la cabeza. Cuando éste regresa al centro después del balanceo, lleva la cadera hacia atrás y colócate con las piernas rectas.', ''),
-(9, 'Saltar a la cuerda', 260, 'Cardio', 'Hay muchas modalidades, salto simple lo más rápido posible, doble salto, etc...', ''),
-(10, 'Burpees', 286, 'Tonificacion', ' Consiste en agachar el cuerpo y apoyar las manos en el suelo, impulsar los pies hacia atrás hasta quedar en la postura de una plancha, para después realizar una flexión tocando el suelo con el pecho. Trabaja pectorales, bíceps, tríceps, abdominales, glúteos y cuádriceps.', ''),
-(11, 'Máquina de remo', 250, 'Fuerza', 'Utiliza los músculos la espalda, brazos, hombros, piernas, así como los llamado músculos del core, los cuales se componen de los abdominales, lumbares, la pelvis, los glúteos y la musculatura de la columna.', ''),
-(12, 'Zancadas(Lunges)', 185, 'Tonificacion', 'De pie, con los pies separados casi a la altura de los hombros, haz un paso largo hacia atrás(o hacia delante) con una pierna mientras la otra permanece en la posicion inicial. Flexiona ambas rodillas y finalmente, vuelve a la posicion incial, así con ambas piernas.', ''),
-(13, 'Flexiones(Push ups)', 109, 'Tonificacion', 'Estás tumbado boca abajo con el pecho y vientre sobre el suelo, con los brazos doblados y las palmas de la mano en el suelo junto el pecho – los codos deben mirar hacia atrás. Luego, levantas el cuerpo entero empujando el cuerpo hacia arriba hasta que los brazos estén completamente estirados.', ''),
-(14, 'Correr', 380, 'Cardio', 'Puedes aumentar tu velocidad, correr en terrenos con más inclinación para consumir mas calorias y aumentar tu frecuencia cardíaca.', '');
+(1, 'Sentadillas(Squats)', 220, 'Tonificacion', 'Consiste en flexionar las rodillas y bajar el cuerpo manteniendo la verticalidad,\r\n  para luego regresar a una posición erguida.', 'includes/img/sentadillas.png'),
+(2, 'Jumping jacks', 188, 'Cardio', ' En la posición de inicio, abre las piernas a la anchura de los hombros, a continuación\r\n   júntalas con un leve salto mientras levantas los brazos a la vez para que las manos se toquen detrás de la cabeza.\r\n   Asegúrate de mantener la cabeza recta y la vista al frente.', 'includes/img/jumpingjacks.png'),
+(3, 'Planchas', 160, 'Tonificacion', 'Recuéstate boca abajo sobre la manta y luego apóyate sobre los antebrazos,\r\n   de modo que los codos queden ubicados debajo del pecho. Ahora, eleva tus piernas del piso sosteniéndote con las\r\n   puntas de los pies para formar la plancha .', 'includes/img/planchas.png'),
+(4, 'Remo con banda elástica', 133, 'Fuerza', 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde\r\n  las caderas, la columna vertebral de permanecer neutral. Tiramos desde los omóplatos hacia atrás y levantamos los codos\r\n  tanto como pueda. Baje lentamente y repita.', 'includes/img/remoconbandaelastica.png'),
+(5, 'Zumba Fitness', 200, 'Cardio', 'La zumba es un tipo de actividad física (fitness) basada en ritmos y músicas lationamericanas. Las coreografías de zumba incluyen ritmos como la samba, la salsa, el reggaeton, la cumbia, el merengue y el mambo.', 'includes/img/zumba.png'),
+(6, 'Aeróbic step, con step de', 193, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aerobic.', 'includes/img/aerobicsteps.png'),
+(7, 'Aeróbic step, con step de', 227, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aerobic.', 'includes/img/aerobicsteps.png'),
+(8, 'Kettlebells', 196, 'Fuerza', 'Colócate de pie con los pies a la anchura de los hombros y deja la kettlebell en el suelo a la altura de los dedos de los pies. Dobla las rodillas, mantén la espalda recta y baja en posición de sentadilla hasta coger del asa al kettle con ambas manos hasta elevarlo hacia atrás mientras estiras las piernas manteniendo tensión en la zona de los abdominales y el glúteo hasta llevarla de nuevo con un impulso a la zona delantera por encima de la cabeza. Cuando éste regresa al centro después del balanceo, lleva la cadera hacia atrás y colócate con las piernas rectas.', 'includes/img/kettlebells.png'),
+(9, 'Saltar a la cuerda', 260, 'Cardio', 'Hay muchas modalidades, salto simple lo más rápido posible, doble salto, etc...', 'includes/img/saltaralacuerda.png'),
+(10, 'Burpees', 286, 'Tonificacion', ' Consiste en agachar el cuerpo y apoyar las manos en el suelo, impulsar los pies hacia atrás hasta quedar en la postura de una plancha, para después realizar una flexión tocando el suelo con el pecho. Trabaja pectorales, bíceps, tríceps, abdominales, glúteos y cuádriceps.', 'includes/img/burpees.png'),
+(11, 'Máquina de remo', 250, 'Fuerza', 'Utiliza los músculos la espalda, brazos, hombros, piernas, así como los llamado músculos del core, los cuales se componen de los abdominales, lumbares, la pelvis, los glúteos y la musculatura de la columna.', 'includes/img/maquinaderemo.png'),
+(12, 'Zancadas(Lunges)', 185, 'Tonificacion', 'De pie, con los pies separados casi a la altura de los hombros, haz un paso largo hacia atrás(o hacia delante) con una pierna mientras la otra permanece en la posicion inicial. Flexiona ambas rodillas y finalmente, vuelve a la posicion incial, así con ambas piernas.', 'includes/img/zancadas.png'),
+(13, 'Flexiones(Push ups)', 109, 'Tonificacion', 'Estás tumbado boca abajo con el pecho y vientre sobre el suelo, con los brazos doblados y las palmas de la mano en el suelo junto el pecho – los codos deben mirar hacia atrás. Luego, levantas el cuerpo entero empujando el cuerpo hacia arriba hasta que los brazos estén completamente estirados.', 'includes/img/flexiones.png'),
+(14, 'Correr', 380, 'Cardio', 'Puedes aumentar tu velocidad, correr en terrenos con más inclinación para consumir mas calorias y aumentar tu frecuencia cardíaca.', 'includes/img/correr.png');
 
 -- --------------------------------------------------------
 
@@ -158,7 +158,7 @@ INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `d
 CREATE TABLE `entrenamiento` (
   `idEntrenamiento` int(10) NOT NULL,
   `idUsuarioEntrenador` int(10) NOT NULL,
-  `nombre` varchar(10) NOT NULL,
+  `nombre` varchar(25) NOT NULL,
   `fecha` date NOT NULL,
   `repeticiones` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

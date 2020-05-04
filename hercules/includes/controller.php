@@ -317,7 +317,7 @@ class controller{
     
 	public function idUsuarioEntrenador($nif_entrena, $nif_cliente){
 
-        $consulta = $this->usuarioDAO->selectUs_Ent('id', "entrenador = '".$nif_entrena."' AND usuario = '".$nif_user."'");
+        $consulta = $this->usuarioDAO->selectUs_Ent('id', "entrenador = '".$nif_entrena."' AND usuario = '".$nif_cliente."'");
         
         $id = 0;
         if ($consulta) {
@@ -433,8 +433,8 @@ class controller{
                         $ejercicio = $this->ejercicioDAO->cargarEjercicio($filaEjercicios['idEjercicio']);
                         $ejercicios['nombreEjercicio'] = "Nombre: ".$ejercicio->getNombre();
                         $ejercicios['caloriasGastadas'] = " Calorías Gastadas: ". $ejercicio->getCaloriasGastadas();
-                        $ejercicios['descripcion'] = "Descripcion: ".$ejercicio->getDescripcion();    
-
+                        $ejercicios['descripcion'] = "Descripcion: ".$ejercicio->getDescripcion(); 
+                        $ejercicios['multimedia'] = $ejercicio->getMultimedia();
                        $aux[] = $ejercicios;
                                          
                     }
@@ -463,7 +463,8 @@ class controller{
 
                 $id = $fila['idEjercicio'];
             }
-
+     //echo 'idejercicio'.$id."<br>";
+     //echo 'entrena'.$entrenamiento->getIdEntrenamiento()."<br>";
             $this->ejercicioDAO->agregarEjercicioaEntrenamiento($entrenamiento->getIdEntrenamiento(), $id);
 
        }
