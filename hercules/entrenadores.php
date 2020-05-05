@@ -7,6 +7,10 @@
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloPagsCabecera.css" />
+	<script src="https://code.jquery.com/jquery-3.4.0.js"
+  integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+  crossorigin="anonymous"></script>
+	<script src="includes/js/filtroEntrenadores.js"></script>
 	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>
@@ -26,12 +30,33 @@
 		<h1>Todos los entrenadores disponibles</h1>
 		<img src="includes/img/entrenadores.png" alt="entrenadores">
 		</div>
+
+		<div class="store-wrapper">
+			<div class="category-list">
+				<a href="#" class="categoryItem" category="all">Todos</a>
+				<a href="#" class="categoryItem" category="puntuacion">Mayor puntuación</a>
+				<a href="#" class="categoryItem" category="ubic">Ubicación</a>
+				<a href="#" class="categoryItem" category="espec">Entrenador Profesional</a>
+			</div>
+			<section class="products-list">
+				<!--Ejemplos para borrar cuando ya este implementado
+				<div class="elem-item" category="ubic">
+					<img src="includes/img/Hercules_logo.png" width="300" height="120" alt="Logo de Hercules: la web">
+				</div>
+				<div class="elem-item" category="espec">
+					<img src="includes/img/aerobicsteps.png" width="300" height="120" alt="Logo de Hercules: la web">
+				</div>-->
+			</section>
+		</div>
+
+
 		<?php
 		
 		if (!isset($_GET['perfil'])) {
 		    $arr = $ctrl->listarEntrenadores( (isset($_SESSION['login']))? $_SESSION['usuario']->getNif() : 0);
 		    if (count($arr) > 0) {
 		    	echo '<div class="entrenadores-all">';
+		    	echo '<div class="elem-item" category="ubic">';
 		    	echo '<ul>';
 		        foreach ($arr as $key => $valor) {
 		            echo '<li>';
@@ -48,6 +73,7 @@
 		            echo '</li>';
 		        }
 		        echo '</ul>';
+		        echo '</div>';
 		        echo '</div>';
 		    }
 		    else {

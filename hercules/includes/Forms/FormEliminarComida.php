@@ -19,11 +19,16 @@ class FormEliminarComida extends Form
         $ctrl = controller::getInstance();
         $comidas = $ctrl->verComidas($_SESSION['usuario']->getNif());
         
-        $ret =	
+
+         $ret = '<div class="form-inicio">';
+        $ret .= '<fieldset>';
+           $ret .= '<legend>ELIMINAR COMIDA</legend>';
+
+        $ret .=	
 		'<p>Selecciona la fecha de aquella comida que quieras borrar.</p>
          <p>La fecha corresponde al momento en que registraste una comida.</p>
 
-        <label>Fecha</label>
+        <div class="grupo-control"><label>Fecha</label>
 		<select name="fecha">
 			<option value = ""> </option>';
         
@@ -39,11 +44,13 @@ class FormEliminarComida extends Form
 			    ++$i;
 			}
 			
-		$ret .= '</select>
+		$ret .= '</select></div>
 
-	    <p><input type="submit" value="Borrar"></p>
+	    <div class="botones"><button type="submit" value="Enviar">Borrar</button>
+        </div>
         ';
-           
+        $ret .= '</fieldset>';
+         $ret .= '</div>';
         return $ret;
     }
     
