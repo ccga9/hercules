@@ -235,6 +235,24 @@ class controller{
         return $consulta = $this->usuarioDAO->selectUsuario($col, $cond);
     }
     
+    public function listarEntrenadorProfesional($nif){
+        $col='nif, nombre, titulacion, especialidad, experiencia, foto';
+        $cond="tipoUsuario = 1 AND titulacion = 'Entrenador profesional'";
+        return $consulta = $this->usuarioDAO->selectUsuario($col, $cond);
+    }
+
+    public function listarEntrenadorMadrid($nif){
+        $col='nif, nombre, titulacion, especialidad, experiencia, foto';
+        $cond="tipoUsuario = 1 AND ubicacion = 'Madrid'";
+        return $consulta = $this->usuarioDAO->selectUsuario($col, $cond);
+    }
+
+     public function listarEntrenadorVarios($nif){
+        $col='nif, nombre, titulacion, especialidad, experiencia, foto';
+        $cond="tipoUsuario = 1 AND ubicacion != 'Madrid' AND titulacion != 'Entrenador profesional'";
+        return $consulta = $this->usuarioDAO->selectUsuario($col, $cond);
+    }
+
     public function listarMisEntrenadores($nif){
         
         $col = "entrenador";

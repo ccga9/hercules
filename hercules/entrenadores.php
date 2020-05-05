@@ -31,32 +31,24 @@
 		<img src="includes/img/entrenadores.png" alt="entrenadores">
 		</div>
 
-		<div class="store-wrapper">
-			<div class="category-list">
-				<a href="#" class="categoryItem" category="all">Todos</a>
-				<a href="#" class="categoryItem" category="puntuacion">Mayor puntuación</a>
-				<a href="#" class="categoryItem" category="ubic">Ubicación</a>
-				<a href="#" class="categoryItem" category="espec">Entrenador Profesional</a>
-			</div>
-			<section class="products-list">
-				<!--Ejemplos para borrar cuando ya este implementado
-				<div class="elem-item" category="ubic">
-					<img src="includes/img/Hercules_logo.png" width="300" height="120" alt="Logo de Hercules: la web">
-				</div>
-				<div class="elem-item" category="espec">
-					<img src="includes/img/aerobicsteps.png" width="300" height="120" alt="Logo de Hercules: la web">
-				</div>-->
-			</section>
-		</div>
-
-
 		<?php
 		
 		if (!isset($_GET['perfil'])) {
-		    $arr = $ctrl->listarEntrenadores( (isset($_SESSION['login']))? $_SESSION['usuario']->getNif() : 0);
+
+			echo '<div class="store-wrapper">
+			<div class="category-list">
+				<a href="#" class="categoryItem" category="all">Todos</a>
+				<a href="#" class="categoryItem" category="ubic">Ubicación: Madrid</a>
+				<a href="#" class="categoryItem" category="espec">Entrenador Profesional</a>
+				<a href="#" class="categoryItem" category="vari">Varios</a> <!--Todos menos Madrid y Entrenadores Profesionales-->
+			</div>
+			</div>';
+
+
+			$arr = $ctrl->listarEntrenadorVarios((isset($_SESSION['login'])) ? $_SESSION['usuario']->getNif() : 0);
 		    if (count($arr) > 0) {
 		    	echo '<div class="entrenadores-all">';
-		    	echo '<div class="elem-item" category="ubic">';
+		    	echo '<div class="elem-item" category="vari">';
 		    	echo '<ul>';
 		        foreach ($arr as $key => $valor) {
 		            echo '<li>';
@@ -79,6 +71,55 @@
 		    else {
 		        echo "No parece haber entrenadores disponibles ahora mismo. Vuelve mas tarde.";
 		    }
+
+		    $arr1 = $ctrl->listarEntrenadorMadrid((isset($_SESSION['login'])) ? $_SESSION['usuario']->getNif() : 0);
+		    if (count($arr1) > 0) {
+		    	echo '<div class="entrenadores-all">';
+		    	echo '<div class="elem-item" category="ubic">';
+		    	echo '<ul>';
+		        foreach ($arr1 as $key => $valor) {
+		            echo '<li>';
+		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
+		            if (file_exists($valor['foto'])) {
+		                echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
+		            }
+		            
+		            echo $valor['titulacion'].'<br>';
+		            echo $valor['especialidad'].'<br>';
+					    echo $valor['experiencia'].'</p>';
+		            echo "<a href= entrenadores.php?perfil=".$valor['nif'].">Ver Perfil</a>";
+		            
+		            echo '</li>';
+		        }
+		        echo '</ul>';
+		        echo '</div>';
+		        echo '</div>';
+		    }
+
+		    $arr2 = $ctrl->listarEntrenadorProfesional( (isset($_SESSION['login']))? $_SESSION['usuario']->getNif() : 0);
+		    if (count($arr2) > 0) {
+		    	echo '<div class="entrenadores-all">';
+		    	echo '<div class="elem-item" category="espec">';
+		    	echo '<ul>';
+		        foreach ($arr2 as $key => $valor) {
+		            echo '<li>';
+		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
+		            if (file_exists($valor['foto'])) {
+		                echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
+		            }
+		            
+		            echo $valor['titulacion'].'<br>';
+		            echo $valor['especialidad'].'<br>';
+					    echo $valor['experiencia'].'</p>';
+		            echo "<a href= entrenadores.php?perfil=".$valor['nif'].">Ver Perfil</a>";
+		            
+		            echo '</li>';
+		        }
+		        echo '</ul>';
+		        echo '</div>';
+		        echo '</div>';
+		    }
+
 		}
 		else {
 		    echo '<a href="entrenadores.php">Volver a ver entrenadores</a>';
