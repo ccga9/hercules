@@ -19,8 +19,7 @@
 		if(isset($_SESSION['login'])){
 			require('miPerfilCabecera.php');
 		}
-		
-		$entrenador = $ctrl->cargarUsuario($_GET['id']);
+	
 	?>
 
 	<div id="contenido">
@@ -35,6 +34,8 @@
     		
     		echo '<h2>Datos personales</h2>';
     		
+    		$entrenador = $ctrl->cargarUsuario($_GET['id']);
+    		
     		echo '<table>';
     			echo '<tr><td>Nombre: '.$entrenador->getNombre().'</td></tr>';
     			echo '<tr><td>Email: '.$entrenador->getEmail().'</td></tr>';
@@ -47,6 +48,8 @@
     		echo "<a href= miPerfilBuzon.php?reciever=".$_GET['id'].">Ir al chat</a>";
     		echo '<br>';
     		echo '<a href= "eliminarEntrenador.php?idEntrenador='.$_GET['id'].'"> Eliminar de mi lista </a>';
+    		echo '<br>';
+    		echo '<button id= "abrir"> Dejar mi reseña </button>';
 		}
 		else {
 		    echo 'Página no encontrada';
@@ -54,37 +57,54 @@
 		
 		?>
 		
-		<div class="overlay">
-			<div class = "popup">
-				<a href="#">Cerrar</a>
+		<div class="overlay" id="overlay">
+			<div class = "popup" id="popup">
+				<a class = "cerrar" id="cerrar" href="#bottom">Cerrar</a>
+				<h2>DEJA TU RESEÑA</h2>
 				<?php 
 				$rate = $ctrl->selectValor('', "de='".$_SESSION['usuario']->getNif()."' AND hacia='".$_GET['id']."'");
 				if (count($rate) > 0) {
-				    echo '<form action="procesaValoracion.php">';
-				    echo '<label>Descripcion: </label><br>';
+				    echo '<form action="procesaValoracion.php" method="post">';
+				    echo '<input type="hidden" name="de" value="'.$_SESSION['usuario']->getNif().'"/>';
+				    echo '<input type="hidden" name="hacia" value="'.$_GET['id'].'"/>';
 				    echo '<textarea name="texto" placeholder="Escribe tu opinion">'.$rate[0]['texto'].'</textarea>';
 				    echo '<br>';
-				    echo '(Anteriormente elegiste '.$rate[0]['valor'].')';
+				    echo '<label>Puntuación: </label>';
+				    for ($i = 1; $i <= 5; $i++) {
+				        if ($i == $rate[0]['valor']) {
+				            echo '<input type="radio" checked="checked" name="rate" value="'.$i.'"/><label>'.$i.'</label>';
+				        }
+				        else {
+				            echo '<input type="radio" name="rate" value="'.$i.'"/><label>'.$i.'</label>';
+				        }
+				    }
+    			    echo '<br>';
+    			    if ($rate[0]['visible']) {
+    			        echo '<input type="radio" name="vis" value="0"/><label>No Visible</label>';
+    			        echo '<input type="radio" checked="checked" name="vis" value="1"/><label>Visible</label>';
+    			    }
+    			    else {
+    			        echo '<input type="radio" checked="checked" name="vis" value="0"/><label>No Visible</label>';
+    			        echo '<input type="radio" name="vis" value="1"/><label>Visible</label>';
+    			    }
 				    echo '<br>';
-				    echo '<label>1</label><input type="radio" name="rate" value="1"/>';
-				    echo '<label>2</label><input type="radio" name="rate" value="2"/>';
-				    echo '<label>3</label><input type="radio" name="rate" value="3"/>';
-				    echo '<label>4</label><input type="radio" name="rate" value="4"/>';
-				    echo '<label>5</label><input type="radio" name="rate" value="5"/>';
-				    echo '<br>';
-				    echo '<button type="submit" name="enviar" value="enviar">Enviar</button>'.'<br>';
+				    echo '<button type="submit" name="actualizar" value="actualizar">Actualizar</button>'.'<br>';
 				    echo '</form>';
 				}
 				else {
-				    echo '<form action="procesaValoracion.php">';
-				    echo '<label>Descripcion: </label><br>';
+				    echo '<form action="procesaValoracion.php" method="post">';
+				    echo '<input type="hidden" name="de" value="'.$_SESSION['usuario']->getNif().'"/>';
+				    echo '<input type="hidden" name="hacia" value="'.$_GET['id'].'"/>';
                     echo '<textarea name="texto" placeholder="Escribe tu opinion"></textarea>';
 				    echo '<br>';
-				    echo '<label>1</label><input type="radio" name="rate" value="1"/>';
-				    echo '<label>2</label><input type="radio" name="rate" value="2"/>';
-				    echo '<label>3</label><input type="radio" name="rate" value="3"/>';
-				    echo '<label>4</label><input type="radio" name="rate" value="4"/>';
-				    echo '<label>5</label><input type="radio" name="rate" value="5"/>';
+				    echo '<label>Puntuación: </label>';
+				    for ($i = 1; $i <= 4; $i++) {
+				        echo '<input type="radio" name="rate" value="'.$i.'"/><label>'.$i.'</label>';
+				    }
+				    echo '<input type="radio" checked="checked" name="rate" value="5"/><label>'.$i.'</label>';
+				    echo '<br>';
+				    echo '<input type="radio" name="vis" value="0"/><label>No Visible</label>';
+				    echo '<input type="radio" checked="checked" name="vis" value="1"/><label>Visible</label>';
 				    echo '<br>';
 				    echo '<button type="submit" name="enviar" value="enviar">Enviar</button>'.'<br>';
 				    echo '</form>';
@@ -92,8 +112,6 @@
 				?>
 			</div>
 		</div>
-
-		
 		
 	</div>
 
@@ -103,6 +121,6 @@
 
 	?>
 </div> <!-- Fin del contenedor -->
-
+<script type="text/javascript" src="includes/scripts.js" ></script>
 </body>
 </html>

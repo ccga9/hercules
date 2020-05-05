@@ -9,10 +9,10 @@ require_once __DIR__.'/controller.php';
 /**
  * Parámetros de conexión a la BD
  */
-define('BD_HOST', 'localhost');
+/*define('BD_HOST', 'localhost');
 define('BD_NAME', 'hercules');
 define('BD_USER', 'hercules');
-define('BD_PASS', 'iG8hC62acnPrvIeU');
+define('BD_PASS', 'iG8hC62acnPrvIeU');*/
 
 ini_set('default_charset', 'UTF-8');
 setLocale(LC_ALL, 'es_ES.UTF.8');
