@@ -10,6 +10,9 @@ div#contenedor {
 	margin: auto;
 	border: 1px solid black;
 	background-color: white;
+	width: auto;
+	min-width: min-content;
+	max-width:none;
 }
 
 div#cabecera {
@@ -19,6 +22,7 @@ div#cabecera {
 	color: white;
 	display: flex;
 	flex-direction: column;
+	min-width: min-content;
 }
 
 div#cabecera a, div#cabecera a:visited {
@@ -42,6 +46,7 @@ div#cabecera .saludo a {
 	padding: 15px;
 	border-radius: 10px;
 	margin: 5px;
+	width: max-content;
 }
 
 
@@ -53,15 +58,18 @@ div#cabecera #ctn-icon-search {
 div#cabecera .menu {
 	display: flex;
 	justify-content: space-around;
+	min-width: min-content;
+	width:100%;
 }
 
 div#contenido {
 	padding-top: 30px;
 	min-height: 500px;
-	width: 80%;
+	width: 100%;
 	background-color: white;
-	margin-left: 10%;
 	overflow:auto;
+	min-width: max-content;
+
 }
 
 div#contenido h2 {
