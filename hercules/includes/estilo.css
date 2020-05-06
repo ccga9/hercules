@@ -44,6 +44,12 @@ div#cabecera .saludo a {
 	margin: 5px;
 }
 
+
+div#cabecera #ctn-icon-search {
+	display: flex;
+	justify-content: flex-end;
+}
+
 div#cabecera .menu {
 	display: flex;
 	justify-content: space-around;
