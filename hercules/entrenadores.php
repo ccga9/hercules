@@ -70,7 +70,7 @@
 		        echo '</div>';
 		    }
 		    else {
-		        echo "No parece haber entrenadores disponibles ahora mismo. Vuelve mas tarde.";
+		        echo "<p>No parece haber entrenadores disponibles ahora mismo. Vuelve mas tarde.</p>";
 		    }
 
 		    $arr1 = $ctrl->listarEntrenadorMadrid((isset($_SESSION['login'])) ? $_SESSION['usuario']->getNif() : 0);

@@ -142,3 +142,13 @@ div#pie {
 	font-weight: bold;
 	transition: all 5%;
 }
+
+p{
+	max-width: fit-content;
+	text-align: left;
+    padding: 40px;
+}
+
+h1{
+	text-align: center;
+}
