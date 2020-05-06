@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="includes/estiloEntrenamientos.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloEntrenamientos.css" />
 	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>
@@ -61,7 +61,7 @@
 						    	
 						    	
 						    }else{
-						    	echo "No tienes ejercicios.";
+						    	echo "<p>No tienes ejercicios.</p>";
 						    }
 							
 					}

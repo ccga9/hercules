@@ -68,7 +68,6 @@ div#contenido {
 	width: 100%;
 	background-color: white;
 	overflow:auto;
-	min-width: max-content;
 
 }
 
@@ -152,6 +151,7 @@ p{
 
 h1{
 	text-align: center;
+}
 
 .valoraciones {
 	background: rgba(0,0,0,0.1);

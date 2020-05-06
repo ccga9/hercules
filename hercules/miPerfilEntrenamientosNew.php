@@ -41,11 +41,7 @@
 			<img src="includes/img/editar_comida.png" alt="Editar Entrenamiento">
 			<button type="submit" name="registro">Editar Entrenamiento</button>
 			</div>
-
-			<div class="comidaentrena-all">
-			<img src="includes/img/borrar_comida.png" alt="Borrar Entrenamiento">
-			<button type="submit" name="registro">Eliminar Entrenamiento</button>
-			</div>
+			
 		</div>
 			
 		
