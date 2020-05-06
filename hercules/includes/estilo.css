@@ -2,7 +2,7 @@ body {
 	width: 100%;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	margin: 0;
-	padding: 0;	
+	padding: 0;
 	background-color: white;
 }
 
@@ -113,7 +113,7 @@ div#pie {
 	padding: 30px;
 	text-align: center;
 	width: 500px;
-	
+
 }
 
 .popup .cerrar{
@@ -143,6 +143,7 @@ div#pie {
 	transition: all 5%;
 }
 
+
 p{
 	max-width: fit-content;
 	text-align: left;
@@ -151,4 +152,17 @@ p{
 
 h1{
 	text-align: center;
+
+.valoraciones {
+	background: rgba(0,0,0,0.1);
+	padding: 30px;
+	text-align: center;
+	align-items: center;
+	width: 100%;
+}
+.valoraciones .valor{
+	margin: auto;
+	width: 100px;
+	background: grey;
+	color: yellow;
 }

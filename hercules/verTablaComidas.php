@@ -6,14 +6,9 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloPagsMiPerfil.css" />
 	<meta charset="utf-8">
 	<title>Mi Perfil - Comidas</title>
-	<style>
-	table { border: 1px solid black;
-	        border-collapse: collapse;
-	        width: 800px; }
-    td { border: 1px solid black; }
-	</style>
 </head>
 
 <body>
@@ -26,10 +21,13 @@
 	?>
 
 	<div id="contenido">
+	
+		<a href="verComidas.php"> 🔙Volver </a>
+		
 		<?php
 		if (!isset($_SESSION['login']))
 		{
-		    echo '<p>Entra con tu usuario para registrar comida</p>';
+		    echo '<p>Entra con tu usuario para ver comidas</p>';
 		}
 		
 		$nif_usuario = $_SESSION['usuario']->getNif();
@@ -43,11 +41,11 @@
 		{
 	    ?>
 		
-		<p>A continuación se muestran las comidas que has registrado:</p>
+		<p>A continuación se muestran todas las comidas que has registrado:</p>
 		<p><table>
 		<tr> <th>Fecha de registro</th> <th>Tipo</th> <th>Calorías</th> <th>Proteínas</th>
 		    <th>Grasas</th> <th>Carbohidratos</th> <th>Alimentos</th> </tr>
-		
+		    
 		<?php
     		$i = 0; $j = 0; $aux = 0;
     		$sumaCalorias = 0; $sumaProteinas = 0; $sumaGrasas = 0; $sumaHidratos = 0;
@@ -88,7 +86,6 @@
                 echo "</tr>";
                 
     		}
-            
             
         }		
         ?>

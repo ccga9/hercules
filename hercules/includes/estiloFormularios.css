@@ -140,3 +140,16 @@ button[type="reset"]:hover {
 		width: 95%;
 	}
 }
+
+table
+{
+	border: 1px solid black;
+    border-collapse: collapse;
+    width: 520px;
+}
+
+td
+{
+	border: 1px solid black;
+}
+

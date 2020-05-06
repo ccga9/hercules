@@ -194,3 +194,15 @@ div#contenido .entrenadores-all a:hover{
 	color: white;
 }
 
+table
+{
+	border: 1px solid black;
+    border-collapse: collapse;
+    width: 800px;
+}
+
+td
+{
+	border: 1px solid black; 
+}
+

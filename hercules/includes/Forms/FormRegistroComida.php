@@ -81,7 +81,7 @@ class FormRegistroComida extends Form
         
         if (!isset($_SESSION['login']))
         {
-            $erroresFormulario[] = 'Entra con tu usuario para registrar comida';
+            $erroresFormulario[] = 'Entra con tu usuario para registrar una comida';
         }
         
         if ((!isset($_REQUEST['alimento_1'])) || (trim($_REQUEST['alimento_1']) == ''))

@@ -26,7 +26,7 @@
 	
 		<?php
 		
-		echo '<a href="miPerfilMisEntrenadores.php">ATRAS</a>';
+		echo '<a href="miPerfilMisEntrenadores.php">Volver a mis entrenadores</a>';
 		
 		if ($_SESSION['login'] && $_SESSION['usuario']->getTipoUsuario() == '0') {
 
@@ -52,7 +52,7 @@
     		echo '<button id= "abrir"> Dejar mi reseña </button>';
 		}
 		else {
-		    echo 'Página no encontrada';
+		    header("Location: login.php");
 		}
 		
 		?>
@@ -121,6 +121,6 @@
 
 	?>
 </div> <!-- Fin del contenedor -->
-<script type="text/javascript" src="includes/scripts.js" ></script>
+<script type="text/javascript" src="includes/js/scripts.js" ></script>
 </body>
 </html>
