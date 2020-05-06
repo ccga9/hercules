@@ -60,7 +60,7 @@ class FormEliminarComida extends Form
         
         if (!isset($_SESSION['login']))
         {
-            $erroresFormulario[] = 'Entra con tu usuario para borrar comida';
+            $erroresFormulario[] = 'Entra con tu usuario para borrar una comida';
         }
         
         if ((!isset($datos['fecha'])) || (trim($datos['fecha']) == ''))

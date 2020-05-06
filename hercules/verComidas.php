@@ -23,10 +23,12 @@
 
 	<div id="contenido">
 	
+		<p><a href="miPerfilComidas.php"> 🔙Volver </a></p>
+	
 		<?php
 		if (!isset($_SESSION['login']))
 		{
-		    echo '<p>Entra con tu usuario para registrar comida</p>';
+		    echo '<p>Entra con tu usuario para ver comidas</p>';
 		}
 		?>
 		

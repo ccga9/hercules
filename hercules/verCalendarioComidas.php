@@ -6,6 +6,8 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloPagsMiPerfil.css" />
+	<!-- <script type="text/javascript" src="includes/JS/volver.js"></script> -->
 	<meta charset="utf-8">
 	<title>Mi Perfil - Comidas</title>
 	<style>
@@ -26,10 +28,14 @@
 	?>
 
 	<div id="contenido">
+		
+		<a href="verComidas.php"> 🔙Volver </a>
+		<!-- <button type="submit" onclick="goBack()">Go Back</button> -->
+		
 		<?php
 		if (!isset($_SESSION['login']))
 		{
-		    echo '<p>Entra con tu usuario para registrar comida</p>';
+		    echo '<p>Entra con tu usuario para ver comidas</p>';
 		}
 		
 		$nif_usuario = $_SESSION['usuario']->getNif();

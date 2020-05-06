@@ -9,6 +9,7 @@
 	<title>HERCULES</title>
 	<meta charset="UTF-8"> 
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloPagsMiPerfil.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloFormularios.css" />
 	</head>
 	
@@ -20,11 +21,13 @@
 		?>
 		
 		<div id="contenido">
-		
-		<?php
-	    $form = new FormEliminarComida();
-	    $form->gestiona();
-        ?>
+
+			<a href="miPerfilComidas.php"> 🔙Volver </a>
+			
+			<?php
+		    $form = new FormEliminarComida();
+		    $form->gestiona();
+	        ?>
 
 		</div>
 		

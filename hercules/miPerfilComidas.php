@@ -47,12 +47,12 @@
 			</form>
 			</div>
 
-			<!-- <div class="comidaentrena-all">
+			<div class="comidaentrena-all">
 			<img src="includes/img/editar_comida.png" alt="Editar Comida">
-			<form action="?" method="post">
-				<button type="submit" name="modificar">Modificar Comida</button>
+			<form action="editarComida.php" method="post">
+				<button type="submit" name="editar">Editar Comida</button>
 			</form>
-			</div> -->
+			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/borrar_comida.png" alt="Borrar comida">

@@ -9,13 +9,8 @@
 	<title>HERCULES</title>
 	<meta charset="UTF-8"> 
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloPagsMiPerfil.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloFormularios.css" />
-	<style>
-	table { border: 1px solid black;
-	        border-collapse: collapse;
-	        width: 520px; }
-    td { border: 1px solid black; }
-	</style>
 	</head>
 	
 	<body>
@@ -26,6 +21,8 @@
 		?>
 		
 		<div id="contenido">
+		
+		<a href="miPerfilComidas.php"> 🔙Volver </a>
 		
 		<?php
 		
@@ -39,6 +36,7 @@
         <p>Esta es una tabla con todos los alimentos de los que disponemos, acompañados de sus características.
         La cantidad resultante de cada una de estas características está medida
         cada 100 gramos del alimento:</p>
+		<!-- <div class="t"> -->
         <p><table>
         <tr> <th>Alimento</th> <th>Calorías</th> <th>Proteínas</th> <th>Grasas</th> <th>Carbohidratos</th> </tr>
         <?php
@@ -55,8 +53,9 @@
         }
         ?>
         </table></p>
-
+        <!-- </div> -->
 		</div>
+		
 		</div>
 		
 		<?php	
