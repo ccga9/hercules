@@ -70,7 +70,7 @@
 		        echo '</div>';
 		    }
 		    else {
-		        echo "No parece haber entrenadores disponibles ahora mismo. Vuelve mas tarde.";
+		        echo "No parece haber entrenadores disponibles ahora mismo.";
 		    }
 
 		    $arr1 = $ctrl->listarEntrenadorMadrid((isset($_SESSION['login'])) ? $_SESSION['usuario']->getNif() : 0);
@@ -143,14 +143,15 @@
 	            echo 'Debes ser cliente para solicitar entrenadores.';
 	        }
 	        else {
-	            $rating = $ctrl->selectValor('', "hacia='".$_SESSION["usuario"]->getNif()."' AND visible = 1 ORDER BY fecha DESC");
+	            $media = $ctrl->selectValor('ROUND(AVG(valor),1) as media', "hacia='".$us->getNif()."'");
+	            $rating = $ctrl->selectValor('', "hacia='".$us->getNif()."' ORDER BY fecha DESC");
 	            
 	            $sol = $ctrl->selectUs_Ent('', "usuario='".$_SESSION["usuario"]->getNif()."' AND entrenador='".$us->getNif()."'");
 	            
 	            if (count($sol) == 1) {
 	                if ($sol[0]['estado'] == "aceptado") {
 	                    echo '<p>Solicitud aceptada</p>';
-	                    echo "<a href= miPerfilBuzon.php?reciever=".$us->getNif().">Ir al chat</a>";
+	                    echo "<a href=perfil_Entrenador.php?id=".$us->getNif().">Ir a Mis Entrenadores</a>";
 	                }
 	                else {
 	                    echo '<p>Solicitud Enviada</p>';
@@ -167,15 +168,20 @@
 	                echo '</form>';
 	            }
 	            $c = count($rating);
-	            echo '<h2>Valoraciones('.$c.')';
+	     
+	            echo '<h2>Puntuación: '.$media[0]['media'].' ('.$c.')</h2>';
 	            
                 if ($c > 0) {
+                    echo '<div class="valoraciones">';
 	                foreach ($rating as $valor) {
-	                    echo '<p>'.$valor['valor'].' estrellas</p>';
-	                    echo '<label>De: </label><p>'.$valor['de'].'</p>';
-	                    echo '<p>---'.$valor['fecha'].'---</p>';
-	                    echo '<p>'.$valor['texto'].'</p>';
+	                    if ($valor['visible']) {
+	                        echo '<p>---'.$valor['fecha'].'---</p>';
+	                        echo '<p class="valor">'.$valor['valor'].' estrellas</p>';
+	                        echo '<p> <label>De: </label>'.$valor['de'].'</p>';
+	                        echo '<p>'.$valor['texto'].'</p>';
+	                    }
 	                }
+	                echo '</div>';
 	            }
 	        }
 		}

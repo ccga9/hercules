@@ -142,3 +142,17 @@ div#pie {
 	font-weight: bold;
 	transition: all 5%;
 }
+
+.valoraciones {
+	background: rgba(0,0,0,0.1);
+	padding: 30px;
+	text-align: center;
+	align-items: center;
+	width: 100%;
+}
+.valoraciones .valor{
+	margin: auto;
+	width: 100px;
+	background: grey;
+	color: yellow;
+}
