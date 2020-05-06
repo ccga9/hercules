@@ -1,10 +1,9 @@
 table{
-	width: 95%;
+	max-width: 100%;
 	background-color: white;
 	text-align: center;
 	border-collapse: collapse;
-	margin-left: 27px;
-	margin-bottom: 40px;
+	margin-bottom: 100px;
 }
 
 th, td{
@@ -14,18 +13,19 @@ th, td{
 
 h1{
 	float: left;
-	margin-bottom: 0.83em;
-	margin-left: 20px;
 }
 
 .gif{
 	float: right;
-	margin-right: 30px;
 	width: 100px;
-	height: 140px;
+	height: 150px;
+
 }
 
 .fotos{
 	width: 290px;
 	height: 260px;
 }
+ p{
+ 	clear:both;
+ }
