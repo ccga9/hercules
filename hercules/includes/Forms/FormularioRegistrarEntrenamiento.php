@@ -32,9 +32,9 @@ class FormularioRegistrarEntrenamiento extends Form {
     protected function generaCamposFormulario($datosIniciales)
     {
 
-    	$ret = '';
+    	$ret = '<div class="form-registro">';
     	$ret .= '<fieldset>';
-           $ret .= '<legend>Nuevo Entrenamiento</legend>';
+           $ret .= '<legend>NUEVO ENTRENAMIENTO</legend>';
            $ret .= '<div class="grupo-control">';
                 $ret .= '<input type="hidden" name="cliente" value="'.$_GET['idCliente'].'"/>';
             $ret .= '</div>';
@@ -50,14 +50,14 @@ class FormularioRegistrarEntrenamiento extends Form {
             $ctrl = controller::getInstance();
             $datos = $ctrl->listarEjercicios();
             foreach ($datos as $value) {
-                $ret .= '<div class="grupo-control">';
+                $ret .= '<div class="radio-button">';
                     $ret .= '<label>'.$value.'</label> <input type="checkbox" name="ejercicios[]" value="'.$value.'"/>';
                 $ret .= '</div>';
             }
 
             $ret .= '<div class="grupo-control"><button type="submit" name="Enviar">Enviar</button></div>';
 		$ret .= '</fieldset>';
-
+        $ret .= '</div>';
         return $ret;
     }
 
