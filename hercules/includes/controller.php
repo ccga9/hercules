@@ -153,18 +153,20 @@ class controller{
             if($u['email'] !== "")
                 $set .= "email='".$u['email']."',";
              if($u['foto'] !== "")
-                $set .= "foto=' ".$u['foto']."'";
-            /*if($u['fechaNac'] !== null)
-                $set .= "fechaNac='".$u['fechaNac']."'";
-            if($u['ubicacion'] !== null)
-                $set .= "ubicacion='".$u['ubicacion']."'";
-            if($u['peso'] !== null)
-                $set .= "peso='".$u['peso']."'";
-            if($u['preferencias'] !== null)
-                $set .= "preferencias='".$u['preferencias']."'";
-            if($u['telefono'] !== null)
+                $set .= "foto=' ".$u['foto']."',";
+            if($u['fecha'] !== "")
+                $set .= "fechaNac='".$u['fecha']."',";
+            if($u['ubicacion'] !== "")
+                $set .= "ubicacion='".$u['ubicacion']."',";
+            if($u['peso'] !== "")
+                $set .= "peso='".$u['peso']."',";
+            if($u['altura'] !== "")
+                $set .= "altura='".$u['altura']."',";
+            if($u['preferencias'] !== "")
+                $set .= "preferencias='".$u['preferencias']."',";
+            if($u['telefono'] !== "")
                 $set .= "telefono='".$u['telefono']."'";
-            */
+            
             $cond="nif = '".$u['nif']."'";
             
             return $this->usuarioDAO->updateUsuario($set, $cond);
