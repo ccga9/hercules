@@ -7,6 +7,8 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloContacto.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloPagsCabecera.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 	<meta charset="utf-8">
 	<title>HERCULES</title>
@@ -23,25 +25,28 @@
 	?>
 
 	<div id="contenido">
+		<div class="cab">
 		<h1>Contacto</h1>
+		<img src="includes/img/entrenadores.png" alt="entrenadores">
+		</div>
 		<div id="after_submit"></div>
 			<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
  		    <div class="row">
-   			<label class="required" for="name">Tu Nombre:</label><br />
+   			<label class="required" for="name"><strong>Tu Nombre:</strong></label><br />
    			 <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
  			</div>
  			
  	 		<div class="row">
-  		    <label class="required" for="email">Tu Email:</label><br />
+  		    <label class="required" for="email"><strong>Tu Email:</strong></label><br />
             <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
  		    </div>
  		    
   			<div class="row">
-  			<label class="required" for="message">Mensaje:</label><br />
+  			<label class="required" for="message"><strong>Mensaje:</strong></label><br />
    			<textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
     		</div>
     
-   		 <input id="submit_button" type="submit" value="Enviar" />
+   		 <input id="submit_button" type="submit" value="Enviar"/>
 		</form>
 		<h2>Donde estamos:</h2>
 		
