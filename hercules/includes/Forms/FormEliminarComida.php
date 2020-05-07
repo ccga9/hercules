@@ -35,10 +35,7 @@ class FormEliminarComida extends Form
             $i = 0;
 			foreach ($comidas as $value)
 			{
-			    if ((count($comidas) != $i + 1) && ($comidas[$i]['dia'] != $comidas[$i + 1]['dia']))
-			        $ret .= '<option value = "'.$value['dia'].'">'.$value['dia'].'</option>';
-			    
-			    if (count($comidas) == $i + 1)
+			    if ((count($comidas) == $i + 1) || ($comidas[$i]['dia'] != $comidas[$i + 1]['dia']))
 			        $ret .= '<option value = "'.$value['dia'].'">'.$value['dia'].'</option>';
 			    
 			    ++$i;

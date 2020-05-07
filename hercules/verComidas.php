@@ -23,8 +23,10 @@
 
 	<div id="contenido">
 	
-		<p><a href="miPerfilComidas.php"> 🔙Volver </a></p>
-	
+		<div class="boton-volver">
+			<a href="miPerfilComidas.php"> 🔙Volver </a>
+		</div>
+		
 		<?php
 		if (!isset($_SESSION['login']))
 		{
@@ -32,6 +34,7 @@
 		}
 		?>
 		
+		<p>
         <div class="submenu-perfil">
 			<div class="comidaentrena-all">
 			<img src="includes/img/verTabla_comidas.png" alt="Tabla comidas">
@@ -47,6 +50,7 @@
 			</form>
 			</div>
 		</div>
+		</p>
 		
 	</div>
 	

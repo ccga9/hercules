@@ -194,14 +194,14 @@ div#contenido .entrenadores-all a:hover{
 	color: white;
 }
 
-table
+div#contenido .tabla_comidas table
 {
 	border: 1px solid black;
     border-collapse: collapse;
     width: 800px;
 }
 
-td
+div#contenido .tabla_comidas td
 {
 	border: 1px solid black; 
 }

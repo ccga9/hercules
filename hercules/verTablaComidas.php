@@ -22,7 +22,9 @@
 
 	<div id="contenido">
 	
-		<a href="verComidas.php"> 🔙Volver </a>
+		<div class="boton-volver">
+			<a href="verComidas.php"> 🔙Volver </a>
+		</div>
 		
 		<?php
 		if (!isset($_SESSION['login']))
@@ -42,6 +44,7 @@
 	    ?>
 		
 		<p>A continuación se muestran todas las comidas que has registrado:</p>
+		<div class="tabla_comidas">
 		<p><table>
 		<tr> <th>Fecha de registro</th> <th>Tipo</th> <th>Calorías</th> <th>Proteínas</th>
 		    <th>Grasas</th> <th>Carbohidratos</th> <th>Alimentos</th> </tr>
@@ -90,6 +93,7 @@
         }		
         ?>
         </table></p>
+        </div>
         
 	</div>
 	

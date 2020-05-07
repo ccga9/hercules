@@ -21,8 +21,10 @@
 		?>
 		
 		<div id="contenido">
-
-			<a href="miPerfilComidas.php"> 🔙Volver </a>
+		
+			<div class="boton-volver">
+				<a href="miPerfilComidas.php"> 🔙Volver </a>
+			</div>
 			
 			<?php
 		    $form = new FormEliminarComida();

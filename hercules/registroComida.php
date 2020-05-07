@@ -22,7 +22,9 @@
 		
 		<div id="contenido">
 		
-		<a href="miPerfilComidas.php"> 🔙Volver </a>
+		<div class="boton-volver">
+			<a href="miPerfilComidas.php"> 🔙Volver </a>
+		</div>
 		
 		<?php
 		
@@ -36,7 +38,8 @@
         <p>Esta es una tabla con todos los alimentos de los que disponemos, acompañados de sus características.
         La cantidad resultante de cada una de estas características está medida
         cada 100 gramos del alimento:</p>
-		<!-- <div class="t"> -->
+        
+        <div class="tabla_alimentos">
         <p><table>
         <tr> <th>Alimento</th> <th>Calorías</th> <th>Proteínas</th> <th>Grasas</th> <th>Carbohidratos</th> </tr>
         <?php
@@ -54,8 +57,10 @@
         ?>
         
 		</table>
-        <!-- </div> -->
 		</div>
+		
+		</div>
+		
 		</div>
 		
 		<?php	

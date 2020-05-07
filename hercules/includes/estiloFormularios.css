@@ -141,14 +141,14 @@ button[type="reset"]:hover {
 	}
 }
 
-table
+div#contenido .tabla_alimentos table
 {
 	border: 1px solid black;
     border-collapse: collapse;
     width: 520px;
 }
 
-td
+div#contenido .tabla_alimentos td
 {
 	border: 1px solid black;
 }

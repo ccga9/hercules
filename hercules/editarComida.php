@@ -23,7 +23,9 @@
 
 	<div id="contenido">
 	
-		<a href="miPerfilComidas.php"> 🔙Volver </a>
+		<div class="boton-volver">
+			<a href="miPerfilComidas.php"> 🔙Volver </a>
+		</div>
 		
 		<p>Disponible próximamente...</p>
 		
