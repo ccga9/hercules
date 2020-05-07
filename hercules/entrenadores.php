@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloPagsCabecera.css" />
+
 	<script src="https://code.jquery.com/jquery-3.4.0.js"
   integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
   crossorigin="anonymous"></script>
@@ -69,9 +70,6 @@
 		        echo '</div>';
 		        echo '</div>';
 		    }
-		    else {
-		        echo "<p>No parece haber entrenadores disponibles ahora mismo. Vuelve mas tarde.</p>";
-		    }
 
 		    $arr1 = $ctrl->listarEntrenadorMadrid((isset($_SESSION['login'])) ? $_SESSION['usuario']->getNif() : 0);
 		    if (count($arr1) > 0) {
@@ -123,7 +121,7 @@
 
 		}
 		else {
-		    echo '<a href="entrenadores.php">Volver a ver entrenadores</a>';
+		    echo '<div class="boton-volver"><a href="entrenadores.php">🔙Volver</a></div>';
 
 		    $us = $ctrl->cargarUsuario($_GET['perfil']);
 		    echo '<h2>'.$us->getNombre().'</h2>';
