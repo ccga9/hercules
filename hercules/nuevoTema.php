@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__.'/includes/config.php');
-require_once(__DIR__.'/includes/Forms/FormularioNuevaTema.php');
+require_once(__DIR__.'/includes/Forms/FormularioNuevoTema.php');
 ?>
 
 <!DOCTYPE html>

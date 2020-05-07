@@ -35,6 +35,7 @@ class FormularioNuevoTema extends Form {
         $ret .= '<div class="grupo-control">';
         $ret .= '<input type="text" name="tema"/>';
         $ret .= '</div>';
+        $ret .= '<legend>Texto</legend>';
         $ret .= '<div class="grupo-control">';
         $ret .= '<input type="text" name="texto"/>';
         $ret .= '</div>';
@@ -60,9 +61,9 @@ class FormularioNuevoTema extends Form {
         $text = isset($datos['texto']) ? htmlspecialchars(strip_tags(strtoupper($datos['texto']))) : null;
         $datos['texto'] = $text;
         
-        if ( empty($text) || !ctype_alnum($text) ) {
+       /* if ( empty($text) || !ctype_alnum($text) ) { PONERRRR
             $erroresFormulario[] = "Texto inválido.";
-        }
+        }*/
         
         if ( strlen($text) > 500 ) {
             $erroresFormulario[] = "El texto no puede contener más de 500 caracteres.";
@@ -79,17 +80,18 @@ class FormularioNuevoTema extends Form {
             $erroresFormulario[] = "El tema no puede contener más de 50 caracteres.";
         }
         
-        $datos['autor'] = $_SESSION['usuario'];
-        $datos['fecha'] = date_default_timezone_set();
-        $datos['resp'] = "0";
+        $datos['autor'] = $_SESSION['usuario']->getNombre();
+        $datos['fecha'] = date_default_timezone_set('Europe/Madrid');
+        $datos['resp'] = '0';
         $datos['tema'] = $datos['tema'];
+        $datos['id_r'] = '0';
         
         if (count($erroresFormulario) === 0) {
             $ctrl = controller::getInstance();
             $ctrl->nuevoMensaje($datos);
         }
         if (count($erroresFormulario) === 0) {
-            $erroresFormulario = "mensaje.php?id='".$_GET['id_msg']."'";
+            $erroresFormulario = "mensaje.php?id_msg='".$_GET['id_msg']."'";
         }
         
         return $erroresFormulario;

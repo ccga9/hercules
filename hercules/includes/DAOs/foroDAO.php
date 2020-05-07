@@ -47,12 +47,12 @@ class foroDAO extends DAO
     
    public function listarNombresTemas(){
        $query = "SELECT id, tema, autor, fecha, respuestas FROM foro WHERE id_r = 0";
-       return $this->consulta($query);
+       return $this->consultar($query);
     }
     
     public function mostrarContenidoMensaje($id){
         $query = "SELECT tema, autor, fecha, mensaje, respuestas FROM foro WHERE '".$id."' = id";
-        return $this->consulta($query);
+        return $this->consultar($query);
     }
     
     public function mostrarRespuestasMensaje($id_tema){

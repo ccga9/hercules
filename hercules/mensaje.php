@@ -25,9 +25,9 @@ require_once 'includes/config.php';
 
 	<div id="contenido">
 		<?php 
-		$id_msg = $_GET['id_msg'];
-		echo "<a href= respuesta.php?id_msg='".$id_msg."'><button type=button>Responder</button></a>";
-		$msg = $ctrl->mostrarMensaje($id_msg);
+		$id_mesg = $_GET['id_msg'];
+		echo "<a href= respuesta.php?id_msg='".$id_mesg."'><button type=button>Responder</button></a>";
+		$msg = $ctrl->mostrarMensaje($id_mesg);
 		echo "<p>'".$msg['tema']."' '".$msg['autor']."' '".$msg['fecha']."'</p>";
 		echo "<p>'".$msg['mensaje']."'</p>";
 		
@@ -36,7 +36,7 @@ require_once 'includes/config.php';
 		    echo "Eliminar";//hay que hacer esto.
 		}
 		
-		$resp = $ctrl->mostrarRespuestas($id_msg);
+		$resp = $ctrl->mostrarRespuestas($id_mesg);
 		if ($resp) {
 		    while ($fila = mysqli_fetch_assoc($resp)){
 		        echo "<p>'".$fila['autor']."' '".$fila['fecha']."'</p>";
