@@ -66,7 +66,7 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>Preferencias</label> <input class="control" type="text" placeholder="&#128100;Introduce lo que buscas" name="preferencias"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Ubicación</label> <input class="control" type="text" placeholder="&#128100;Introduce tu ubicacion" name="preferencias"/>';
+                $ret .= '<label>Ubicación</label> <input class="control" type="text" placeholder="&#128100;Introduce tu ubicacion" name="ubicacion"/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
@@ -76,8 +76,13 @@ class FormularioRegistro extends Form {
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Vuelve a introducir el Password:</label> <input class="control" type="password" placeholder="&#128272;Repita contraseña" name="contra2" required/>';
             $ret .= '</div>';
+      
+            $ret .= '<div class="grupo-control"> ';
+                $ret .= '<label for="hombre">Hombre</label> <input type="radio" name="sexo" value="H" id="hombre">';
+                $ret .= '<input type="radio" name="sexo" value="M" id="mujer"><label for="mujer">Mujer</label>';
+            $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-            $ret .= '<input type="checkbox" name="tipoUsuario" value="ok"/><label>¿Eres entrenador/a? (Rellena los campos de abajo)</label>';
+            $ret .= '<label>¿Eres entrenador/a? (Rellena los campos de abajo)</label> <input type="checkbox" name="tipoUsuario" value="ok"/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
