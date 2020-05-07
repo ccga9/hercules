@@ -25,24 +25,24 @@
 	<div id="contenido">
 
 		<h2>Entrenamientos</h2>
-		
-		<div class="submenu-perfil">
+		<?php
+		echo '<div class="submenu-perfil">
 			<div class="comidaentrena-all">
 			<img src="includes/img/ver_entrenamientos.png" alt="Histórico de Entrenamientos">
-			<form action="miPerfilEntrenamientos.php?idCliente='.$_GET['id'].'" method="post">
+			<form action="miPerfilEntrenamientos.php" method="post">
 				<button type="submit" name="registro">Ver Entrenamientos</button>
 			</form>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/registrar_entrenamiento.png" alt="Registrar Entrenamiento">
-			<form action="registrarEntrenamiento.php?idCliente='.$_GET['id'].'" method="post">
+			<form action="registrarEntrenamiento.php" method="post">
 				<button type="submit" name="registro">Registrar Entrenamiento</button>
 			</form>
 			</div>
 			
-		</div>
-			
+		</div>';
+			?>
 		
 	</div>
 

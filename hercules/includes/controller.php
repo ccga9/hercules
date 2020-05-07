@@ -472,9 +472,9 @@ class controller{
                         
 
                         $ejercicio = $this->ejercicioDAO->cargarEjercicio($filaEjercicios['idEjercicio']);
-                        $ejercicios['nombreEjercicio'] = "Nombre: ".$ejercicio->getNombre();
-                        $ejercicios['caloriasGastadas'] = " Calorías Gastadas: ". $ejercicio->getCaloriasGastadas();
-                        $ejercicios['descripcion'] = "Descripcion: ".$ejercicio->getDescripcion(); 
+                        $ejercicios['nombreEjercicio'] = $ejercicio->getNombre();
+                        $ejercicios['caloriasGastadas'] = $ejercicio->getCaloriasGastadas();
+                        $ejercicios['descripcion'] = $ejercicio->getDescripcion(); 
                         $ejercicios['multimedia'] = $ejercicio->getMultimedia();
                        $aux[] = $ejercicios;
                                          

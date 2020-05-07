@@ -25,110 +25,67 @@
 			
 			<?php
 			if($_SESSION['usuario']->getTipoUsuario()){
-			    $idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_SESSION['usuario']->getNif(), $_GET['idCliente']);  
+			    $idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_SESSION['usuario']->getNif(), $_GET['idCliente']); 
 
 			    $entrenamientos = $ctrl->listarEntrenamientos($idUsuarioEntrenador);
+					if(count($entrenamientos) > 0){
+						$nombreCliente = $ctrl->selectUsuario('nombre',"nif ='".$_GET['idCliente']."'");
+						echo '<table class="tablaEntrenamientos">';
+						echo '<thead><tr>'.'<th>Cliente</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th></th>'.'<th></th>'.'</tr></thead>';
+							   	foreach ($entrenamientos as $entrenamiento) {
+								echo '<tr>';
+										$aux = serialize($entrenamiento);
+										$aux = urlencode($aux);
 
-				if(count($entrenamientos) > 0){
-				    echo '<table class="tablaEntrenamientos">';
-					
-			
-					foreach ($entrenamientos as $entrenamiento) {
-						echo '<thead><tr>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th>Numero de Repeticiones</th>'.'</tr></thead>';
+										echo '<td>'.$nombreCliente[0]['nombre'].'</td>';
+										echo '<td><a href="verEntrenamiento.php?entrenamiento='.$aux.'">'.$entrenamiento['nombre'].'</a></td>';
+										echo '<td>'.$entrenamiento['fecha'].'</td>';
+										echo '<td><a href="">Editar entrenamiento</a></td>';
+										echo '<td><a href="">Eliminar entrenamiento</a></td>';
 
-						echo '<tr>';
-							echo '<td>'.$entrenamiento['nombre'].'</td>';
-						    echo '<td>'.$entrenamiento['fecha'].'</td>';
-						    echo '<td>'.$entrenamiento['repeticiones'].'</td>';
-						    
-						    
-
-						    if(count($entrenamiento['ejercicios']) > 0){
-								 		echo '<tr>'.'<th>Ejercicios</th>'.'</tr>';
-								 foreach ($entrenamiento['ejercicios'] as $value) {
-								 		echo '<tr>';
-
-										echo '<td>'.$value['nombreEjercicio'].'</td>';
-										echo '<td>'.$value['caloriasGastadas'].'</td>';
-										echo '<td>'.$value['descripcion'].'</td>';
-										echo '<td>'.'<img src='.$value['multimedia'].' alt="foto" class= "fotos" />'.'</td>';
-									    
-									    echo '</tr>';
 										
-						    	}
-						    	
-						    	
-						    }else{
-						    	echo "<p>No tienes ejercicios.</p>";
-						    }
-							
-					}
-					echo '</table>';
-				 }
-				 else {
-				     echo "<p> Todavía no tienes entrenamientos.</p>";
-				 }
+								echo '</tr>';
+							}
+						echo '</table>';
+					}else {
+						echo "<p> Todavía no tienes entrenamientos.</p>";
+			 		}
 
 			}else{ //si es cliente
-				$idUsuarioEntrenadores = $ctrl->selectUs_Ent("id", "usuario='".$_SESSION["usuario"]->getNif()."'");
-				//print_r($idUsuarioEntrenadores);
-				
-				foreach ($idUsuarioEntrenadores as $idUsuarioEntrenadores2) {
-					//print_r($idUsuarioEntrenadores2['id']);
-					$entrenamientos = $ctrl->listarEntrenamientos($idUsuarioEntrenadores2['id']);
-					$idEntrenadores = $ctrl->selectUs_Ent("entrenador", "usuario='".$_SESSION["usuario"]->getNif()."' AND id ='".$idUsuarioEntrenadores2['id']."'");
+				$idUsuarioEntrenadores = $ctrl->selectUs_Ent("id, entrenador", "usuario='".$_SESSION["usuario"]->getNif()."'");
+				print_r($_SESSION["usuario"]->getNif());
 
-				}
-				if(count($entrenamientos) > 0){
-				    echo '<table class="tablaEntrenamientos">';
-					
-			
-					foreach ($entrenamientos as $entrenamiento) {
-						foreach ($idEntrenadores as $idEntrenador) {
-							echo '<thead><tr>'.'<th>Entrenador</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th>Numero de Repeticiones</th>'.'</tr></thead>';
+					if(count($idUsuarioEntrenadores) > 0){
+						echo '<table class="tablaEntrenamientos">';
+							echo '<thead><tr>'.'<th>Entrenador</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'</tr></thead>';
+						foreach ($idUsuarioEntrenadores as $idUsuarioEntrenadores2) {
+							$entrenamientos = $ctrl->listarEntrenamientos($idUsuarioEntrenadores2['id']);
+							$nombreEntrenador = $ctrl->selectUsuario("nombre", "nif='".$idUsuarioEntrenadores2['entrenador']."'");
 
-							echo '<tr>';
-								$nombreEntrenadores = $ctrl->selectUsuario("nombre", "nif='".$idEntrenador["entrenador"]."'");
-								foreach ($nombreEntrenadores as $nombreEntrenador) {
+
+								if(count($entrenamientos) > 0){
+						   	 			foreach ($entrenamientos as $entrenamiento) {
+											echo '<tr>';
+													$aux = serialize($entrenamiento);
+													$aux = urlencode($aux);
+
+													echo '<td>'.$nombreEntrenador[0]['nombre'].'</td>';
+													echo '<td><a href="verEntrenamiento.php?entrenamiento='.$aux.'">'.$entrenamiento['nombre'].'</a></td>';
+												    echo '<td>'.$entrenamiento['fecha'].'</td>';
 									
-									echo '<td>'.$nombreEntrenador['nombre'].'</td>';
-									echo '<td>'.$entrenamiento['nombre'].'</td>';
-								    echo '<td>'.$entrenamiento['fecha'].'</td>';
-								    echo '<td>'.$entrenamiento['repeticiones'].'</td>';
-								    
-								    
-
-								    if(count($entrenamiento['ejercicios']) > 0){
-										 		echo '<tr>'.'<th>Ejercicios</th>'.'</tr>';
-										 foreach ($entrenamiento['ejercicios'] as $value) {
-										 		echo '<tr>';
-
-												echo '<td>'.$value['nombreEjercicio'].'</td>';
-												echo '<td>'.$value['caloriasGastadas'].'</td>';
-												echo '<td>'.$value['descripcion'].'</td>';
-												echo '<td>'.'<img src='.$value['multimedia'].' alt="foto" class= "fotos" />'.'</td>';
-											    
-											    echo '</tr>';
-												
-								    	}
-								    	
-								    	
-								    }else{
-								    	echo "<p>No tienes ejercicios.</p>";
-								    }
-								}
-							echo '</tr>';
-						}
+											echo '</tr>';
+										}
+										
+								}else {
+						    	    echo "<p> Todavía no tienes entrenamientos.</p>";
+						 }
+						echo '</table>';
 					}
-					echo '</table>';
-				 }
-				 else {
-				     echo "<p> Todavía no tienes entrenamientos.</p>";
-				 }
-			}
-				
-				
-			?>
+				}else{
+					echo 'No tiene entrenamientos';
+				}
+			}	
+	?>
 
 
 	</div>
