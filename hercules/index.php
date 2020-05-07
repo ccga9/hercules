@@ -4,9 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloPagPrincipal.css" />
-	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
 	<script src="includes/js/banner.js"></script>
 	<script src="includes/js/buscador.js"></script>
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>

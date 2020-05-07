@@ -77,11 +77,11 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>Vuelve a introducir el Password:</label> <input class="control" type="password" placeholder="&#128272;Repita contraseña" name="contra2" required/>';
             $ret .= '</div>';
       
-            $ret .= '<div class="grupo-control"> ';
+            $ret .= '<div class="radio-check-button"> ';
                 $ret .= '<label for="hombre">Hombre</label> <input type="radio" name="sexo" value="H" id="hombre">';
-                $ret .= '<input type="radio" name="sexo" value="M" id="mujer"><label for="mujer">Mujer</label>';
+                $ret .= '<label for="mujer">Mujer</label><input type="radio" name="sexo" value="M" id="mujer">';
             $ret .= '</div>';
-            $ret .= '<div class="grupo-control">';
+            $ret .= '<div class="radio-check-button">';
             $ret .= '<label>¿Eres entrenador/a? (Rellena los campos de abajo)</label> <input type="checkbox" name="tipoUsuario" value="ok"/>';
             $ret .= '</div>';
 

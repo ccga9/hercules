@@ -4,9 +4,7 @@ require_once 'includes/config.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="includes/estiloPagPrincipal.css" />
-	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>

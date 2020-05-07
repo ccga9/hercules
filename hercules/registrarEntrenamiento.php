@@ -7,8 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="includes/estilo.css"/>
-	<link rel="stylesheet" type="text/css" href="includes/estiloFormularios.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css"/>
+	<link rel="stylesheet" type="text/css" href="includes/css/estiloFormularios.css" />
+	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 	<meta charset="utf-8">
 	<title>Hércules</title>
 </head>

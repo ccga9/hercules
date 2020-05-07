@@ -122,10 +122,21 @@ button[type="reset"]:hover {
 	flex-direction: row;
 }
 
-.radio-button label{
+.radio-button, .radio-check-button label{
 	display: inline;
 	padding: 15px;
 	position: relative;
+}
+
+.radio-check-button {
+	display: flex;
+	flex-direction: row;
+	justify-content:flex-start;
+	width: 30%;
+}
+
+.checkbox-button {
+	/*...*/
 }
 
 /*REVISAR RESPONSIVE*/

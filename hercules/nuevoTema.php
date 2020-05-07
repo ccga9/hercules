@@ -6,9 +6,8 @@ require_once(__DIR__.'/includes/Forms/FormularioNuevoTema.php');
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="includes/estilo.css"/>
-	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
-	<link rel="stylesheet" type="text/css" href="includes/estiloFormularios.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css"/>
+	<link rel="stylesheet" type="text/css" href="includes/css/estiloFormularios.css" />
 	<meta charset="utf-8">
 	<title>Hércules</title>
 </head>
