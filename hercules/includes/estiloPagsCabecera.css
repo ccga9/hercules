@@ -30,7 +30,8 @@ div#contenido .cab h1 {
 	padding: 6px;
 	min-width: max-content;
 	text-align: center;
-	width: 100%;
+	width: 50%;
+	left: 25%;
 }
 
 /*

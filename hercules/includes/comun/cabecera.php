@@ -16,6 +16,10 @@
     		}
     
     		?>
+
+             <div id="icon-search">
+                <i class="fas fa-search" id="search"></i>
+            </div>
     		
     	</div>
  
