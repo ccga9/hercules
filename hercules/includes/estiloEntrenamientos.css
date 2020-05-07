@@ -10,11 +10,19 @@ table{
 }
 
 th, td{
-	border: solid 2px blue;
+	border: solid 2px black;
 	padding: 10px;
 }
 
+thead{
+	background-color: #009999;
+	color: white;
+}
 
+tr:hover td{
+	background-color: #58B8C1;
+	color:white;
+}
 
 .gif{
 	float: right;
@@ -31,4 +39,6 @@ h1{
 	width: 290px;
 	height: 260px;
 }
+
+
  

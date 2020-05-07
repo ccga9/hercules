@@ -29,17 +29,16 @@
 		<div class="submenu-perfil">
 			<div class="comidaentrena-all">
 			<img src="includes/img/ver_entrenamientos.png" alt="Histórico de Entrenamientos">
-			<button type="submit" name="registro">Ver Entrenamientos</button>
+			<form action="miPerfilEntrenamientos.php?idCliente='.$_GET['id'].'" method="post">
+				<button type="submit" name="registro">Ver Entrenamientos</button>
+			</form>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/registrar_entrenamiento.png" alt="Registrar Entrenamiento">
-			<button type="submit" name="registro">Registrar Entrenamiento</button>
-			</div>
-
-			<div class="comidaentrena-all">
-			<img src="includes/img/editar_comida.png" alt="Editar Entrenamiento">
-			<button type="submit" name="registro">Editar Entrenamiento</button>
+			<form action="registrarEntrenamiento.php?idCliente='.$_GET['id'].'" method="post">
+				<button type="submit" name="registro">Registrar Entrenamiento</button>
+			</form>
 			</div>
 			
 		</div>

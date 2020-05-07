@@ -5,6 +5,9 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
+
+	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
+	<link rel="stylesheet" type="text/css" href="includes/estiloPagsMiPerfil.css" />
 	
 	
 	<meta charset="utf-8">
@@ -44,8 +47,23 @@
 		    $arr = $ctrl->selectUs_Ent('', "usuario='".$_GET['id']."' AND entrenador ='".$_SESSION['usuario']->getNif()."'");
 		    if (count($arr) == 1) {
 		        if ($arr[0]['estado'] == "aceptado") {
-		            echo '<br><a href= "registrarEntrenamiento.php?idCliente='.$_GET['id'].'"> Proponer nuevo entrenamiento </a></br> ';
-		            echo '<a href= "miPerfilEntrenamientos.php?idCliente='.$_GET['id'].'"> Ver entrenamientos </a><br>';
+
+		        	echo '<div class="submenu-perfil">
+							<div class="comidaentrena-all">
+							<img src="includes/img/ver_entrenamientos.png" alt="Histórico de Entrenamientos">
+							<form action="miPerfilEntrenamientos.php?idCliente='.$_GET['id'].'" method="post">
+								<button type="submit" name="registro">Ver entrenamientos</button>
+							</form>
+							</div>
+
+							<div class="comidaentrena-all">
+							<img src="includes/img/registrar_entrenamiento.png" alt="Registrar Entrenamiento">
+							<form action="registrarEntrenamiento.php?idCliente='.$_GET['id'].'" method="post">
+								<button type="submit" name="registro">Proponer nuevo entrenamiento</button>
+							</form>
+							</div>
+						</div>';
+
 		            echo "<a href= miPerfilBuzon.php?reciever=".$_GET['id'].">Ir al chat</a>";
 		        }
 		        else {
