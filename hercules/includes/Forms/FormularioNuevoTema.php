@@ -72,7 +72,7 @@ class FormularioNuevoTema extends Form {
         $tema = isset($datos['tema']) ? htmlspecialchars(strip_tags(strtoupper($datos['tema']))) : null;
         $datos['tema'] = $tema;
         
-        if ( empty($tema) || !ctype_alnum($tema) ) {
+        if ( empty($tema)) {
             $erroresFormulario[] = "Tema inválido.";
         }
         

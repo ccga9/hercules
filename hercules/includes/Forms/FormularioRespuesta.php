@@ -60,7 +60,7 @@ class FormularioRespuesta extends Form {
         $text = isset($datos['texto']) ? htmlspecialchars(strip_tags(strtoupper($datos['texto']))) : null;
         $datos['texto'] = $text;
         
-        if ( empty($text) || !ctype_alnum($text) ) {
+        if ( empty($text)) {
             $erroresFormulario[] = "Respuesta inválida.";
         }
         
@@ -68,8 +68,8 @@ class FormularioRespuesta extends Form {
             $erroresFormulario[] = "El texto no puede contener más de 500 caracteres.";
         }
         
-        $datos['autor'] = $_SESSION['usuario'];
-        $datos['fecha'] = date_default_timezone_set();
+        $datos['autor'] = $_SESSION['usuario']->getNombre();
+        $datos['fecha'] = date_default_timezone_set('Europe/Madrid');
         $datos['id_r'] = $this->id_r;
         $datos['resp'] = "0";
         $datos['tema'] = null;
@@ -80,7 +80,7 @@ class FormularioRespuesta extends Form {
         }
         
         if (count($erroresFormulario) === 0) {
-            $erroresFormulario = "mensaje.php?id='".$_GET['id_msg']."'";
+            $erroresFormulario = "mensaje.php?id_msg='".$datos['id_r']."'";
         }
         
         return $erroresFormulario;

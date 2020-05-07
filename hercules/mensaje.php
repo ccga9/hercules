@@ -4,8 +4,10 @@ require_once 'includes/config.php';
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloPagPrincipal.css" />
-	<meta http-equiv=â€�Content-Typeâ€� content=â€�text/html; charset=UTF-8â€³ />
+	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
+	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>
 
@@ -28,10 +30,12 @@ require_once 'includes/config.php';
 		$id_mesg = $_GET['id_msg'];
 		echo "<a href= respuesta.php?id_msg='".$id_mesg."'><button type=button>Responder</button></a>";
 		$msg = $ctrl->mostrarMensaje($id_mesg);
-		echo "<p>'".$msg['tema']."' '".$msg['autor']."' '".$msg['fecha']."'</p>";
-		echo "<p>'".$msg['mensaje']."'</p>";
+		while($fila = mysqli_fetch_assoc($msg)){
+		echo "<p>'".$fila['tema']."' '".$fila['autor']."' '".$fila['fecha']."'</p>";
+		echo "<p>'".$fila['mensaje']."'</p>";
+		}
 		
-		if($msg['autor'] == $_SESSION['usuario']){
+		if($fila['autor'] == $_SESSION['usuario']){
 		    echo "Modificar";//hay que hacer esto.
 		    echo "Eliminar";//hay que hacer esto.
 		}

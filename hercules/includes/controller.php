@@ -540,7 +540,7 @@ class controller{
     {
         $consulta = $this->foroDAO->listarNombresTemas();
         
-        $ret = array();
+       /* $ret = array();
         $tema = array();
         
         if ($consulta) {
@@ -552,9 +552,9 @@ class controller{
                 $tema[] = $fila['respuestas'];
                 $ret[] = $tema;
             }
-        }
+        }*/
         
-        return $ret;
+        return $consulta;
     }
     
     public function mostrarMensaje($id)
@@ -569,7 +569,7 @@ class controller{
     
     public function nuevoMensaje($datos)
     {
-        return $this->foroDAO->inserta($datos['autor'], $datos['texto'], $datos['fecha'], $datos['resp'], $datos['id_r'], $datos['tema']);
+        return $this->foroDAO->inserta($datos['autor'], $datos['texto'], $datos['fecha'], $datos['id_r'], $datos['tema']);
     }
     //FIN FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     public function listarUsuarios()

@@ -7,7 +7,7 @@ require_once 'includes/config.php';
 	<link rel="stylesheet" type="text/css" href="includes/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloPagPrincipal.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloMenu.css" />
-	<meta http-equiv=â€�Content-Typeâ€� content=â€�text/html; charset=UTF-8â€³ />
+	<meta charset="utf-8">
 	<title>HERCULES</title>
 </head>
 
@@ -28,17 +28,22 @@ require_once 'includes/config.php';
 
 	<div id="contenido">
 		<?php 
-		echo "<a href= nuevoTema.php><button type=button>Nuevo tema</button></a>";
-		$temas = $ctrl->listarTemas();
-		
-		if ($temas) {
-		    while ($fila = mysqli_fetch_assoc($temas)){
-		        echo "<pre><a href= mensaje.php?id_msg='".$fila['id']."'>'".$fila['tema']."'</a>  
-                '".$fila['autor']."'  '".$fila['fecha']."'  '".$fila['respuestas']."'</pre> <br>";
-		    }
+		if(!isset($_SESSION['login'])){
+		    echo "Usuario no registrado. Inicia sesi�n o reg�strate para acceder al foro.";
 		}
-		else{
-		    echo "<p>No hay mensajes...</p>";
+		else{		
+    		echo "<a href= nuevoTema.php><button type=button>Nuevo tema</button></a>";
+    		$temas = $ctrl->listarTemas();
+    		
+    		if ($temas) {
+    		    while ($fila = mysqli_fetch_assoc($temas)){
+    		        echo "<pre><a href= mensaje.php?id_msg='".$fila['id']."'>'".$fila['tema']."'</a>  
+                    '".$fila['autor']."'  '".$fila['fecha']."'  '".$fila['respuestas']."'</pre> <br>";
+    		    }
+    		}
+    		else{
+    		    echo "<p>No hay mensajes...</p>";
+    		}
 		}
 		?>
 	</div>

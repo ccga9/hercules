@@ -12,20 +12,22 @@ class foroDAO extends DAO
     public function inserta($autor, $msg, $fecha, $id_r, $tema)
     {
         if($tema != null){
-          $query = "INSERT INTO foro(id, autor, mensaje, fecha, id_r, tema, respuestas) VALUES 
-          ('','".$autor."','".$msg."','".$fecha."', '0', '".$tema."', '0')";
+          $query = "INSERT INTO foro(autor, mensaje, fecha, respuestas, id_r, tema) VALUES 
+          ('".$autor."','".$msg."','".$fecha."', '0', '0', '".$tema."')";
         }
         
         else{
             $query1 = "SELECT id, respuestas FROM foro WHERE '".$id_r."' = id"; 
             $tema = $this->consultar($query1);
-            $id_tema = $tema['id'];
-            $resp_tema = $tema['respuestas'];
+            $fila = mysqli_fetch_assoc($tema);
+            $id_tema = $fila['id'];
+            $resp_tema = $fila['respuestas'];
             
-            $query = "INSERT INTO foro(id, autor, mensaje, fecha, id_r, respuestas) VALUES 
-            ('','".$autor."','".$msg."','".$fecha."', '".$id_tema."', '0')";
+            $query = "INSERT INTO foro(autor, mensaje, fecha, id_r, respuestas) VALUES 
+            ('".$autor."','".$msg."','".$fecha."', '".$id_tema."', '0')";
             
-            $query2 = "UPDATE foro(respuestas, ult_respuesta) VALUES ('".$resp_tema + '1'."', '".$fecha."') WHERE '".$id_tema."' = id";
+            $resp_tema++;
+            $query2 = "UPDATE foro(respuestas, ult_respuesta) VALUES ('".$resp_tema."', '".$fecha."') WHERE '".$id_tema."' = id";
             $this->consultar($query2);
         }
         return $this->consultar($query);
@@ -57,7 +59,7 @@ class foroDAO extends DAO
     
     public function mostrarRespuestasMensaje($id_tema){
         $query = "SELECT autor, fecha, mensaje FROM foro WHERE '".$id_tema."' = id_r";
-        return $this->consulta($query);
+        return $this->consultar($query);
     }
 }
 ?>
