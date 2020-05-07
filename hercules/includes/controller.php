@@ -570,6 +570,23 @@ class controller{
         return $this->foroDAO->inserta($datos['autor'], $datos['texto'], $datos['fecha'], $datos['resp'], $datos['id_r'], $datos['tema']);
     }
     //FIN FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
-    
+    public function listarUsuarios()
+    {
+       
+        $consulta = $this->usuarioDAO->listarUsuarios();
+        
+        $ret = array();
+        $usario = array();
+        
+        if ($consulta) {
+            while ($fila = mysqli_fetch_assoc($consulta)){
+                $usuario[] = $fila['nombre'];
+                $usuario[] = $fila['foto'];
+                $ret[] = $usuario;
+            }
+        }
+        
+        return $ret;
+	}
 }
 

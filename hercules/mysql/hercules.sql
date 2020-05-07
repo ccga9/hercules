@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-05-2020 a las 20:19:38
+-- Tiempo de generación: 07-05-2020 a las 14:34:06
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+-- Versión de PHP: 7.2.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -239,7 +238,7 @@ CREATE TABLE `usuario` (
   `peso` decimal(5,2) DEFAULT NULL,
   `altura` decimal(5,2) DEFAULT NULL,
   `preferencias` varchar(50) DEFAULT NULL,
-  `tipoUsuario` tinyint(1) NOT NULL DEFAULT 0,
+  `tipoUsuario` tinyint(2) NOT NULL DEFAULT 0,
   `titulacion` varchar(30) DEFAULT NULL,
   `especialidad` varchar(50) DEFAULT NULL,
   `experiencia` varchar(30) DEFAULT NULL
@@ -252,7 +251,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`, `titulacion`, `especialidad`, `experiencia`) VALUES
 ('12345678A', 'PETER PARKER', '$2y$10$AVXZMNDY3t0qMnnlDsK2ieHc20jp0elXy3AGUtTTROr29gJwgZ9h6', 'includes/img/usuarios/default.png', 'spidy@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Escalada', '20'),
 ('12345678B', 'TONY STARK', '$2y$10$tatd6qauszToIxFssh7V8uvAn/jdLXu0ttWYQhi3vbc6ZHQ58PCsC', 'includes/img/usuarios/default.png', 't_stark@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Entrenador profesional', 'Apoyo moral', '30'),
-('12345678C', 'MIKE', '$2y$10$WXvI7J3TDkc3K4WdSjuZBebcgpYB8FK0NIfcZmA4S1IY.zvufxsYG', 'includes/img/usuarios/default.png', 'm_tyson@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+('12345678C', 'MIKE', '$2y$10$WXvI7J3TDkc3K4WdSjuZBebcgpYB8FK0NIfcZmA4S1IY.zvufxsYG', 'includes/img/usuarios/default.png', 'm_tyson@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL),
 ('12345678D', 'HUGAN', '$2y$10$L9uPLpdr8gX6ffx.6tBuy.xciEHtyQV7Q9CV4sJXSzp93fPKaZsRu', 'includes/img/usuarios/default.png', 'theHulk@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
 ('12345678E', 'PACO', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', 'includes/img/usuarios/default.png', 'paco@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
 ('26515643R', ' JUAN LIU', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', ' includes/img/usuarios/26515643R.jpg', 'chengliu@ucm.es', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);

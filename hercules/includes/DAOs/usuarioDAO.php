@@ -101,6 +101,10 @@ class UsuarioDAO extends DAO {
         return $this->consultar($query);
 
     }
+    public function listarUsuario(){
+        $query = "SELECT nombre,foto, FROM usuario ORDER BY nombre ASC";
+    	return $this->consultar($query);
+    }
 }
 
 ?>
