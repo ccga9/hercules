@@ -234,7 +234,7 @@ div#contenido .miPerfil img{
 div#contenido .miPerfil h2.nombre {
 	font-family: serif;
 	text-align: center;
-	background-color: white;
+	background-color: yellow;
 	font-size: 40px;
 	margin: auto;
 	color: #3b3b3b;
@@ -242,15 +242,16 @@ div#contenido .miPerfil h2.nombre {
 	position: relative;
 }
 div#contenido .miPerfil p.info {
+	font-size: 22px;
 	font-family: serif;
 	text-align: center;
 	margin: 0;
 }
-div#contenido .miPerfil h3.info {
-{
+div#contenido .miPerfil h3.aviso{
+
 	text-align: center;
-	background-color: red;
-	font-size: 40px;
+	background-color: yellow;
+	font-size: 20px;
 	margin-top:10px;
 	color: #3b3b3b;
 	padding: 10px;
