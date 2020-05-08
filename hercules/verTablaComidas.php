@@ -43,8 +43,10 @@
 		else
 		{
 	    ?>
-		
+	    
+	    <div class="primer_parrafo">
 		<p>A continuación se muestran todas las comidas que has registrado:</p>
+		</div>
 		<div class="tabla_comidas">
 		<p><table>
 		<tr> <th>Fecha de registro</th> <th>Tipo</th> <th>Calorías</th> <th>Proteínas</th>

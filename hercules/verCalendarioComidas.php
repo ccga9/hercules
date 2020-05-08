@@ -47,48 +47,91 @@
 		}
 		else
 		{
-		    $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-		    $max = $comidas[0]['dia'];
-		    foreach ($comidas as $value)
+		    echo'
+		    <div class="centrado_comidas">
+            <p>
+            <form action="verCalendarioComidas.php" method="post"> 
+            <button type="button" name="sem_anterior">Semana anterior</button> /
+		    <button type="button" name="sem_actual">Semana actual</button>
+            </form>
+            </p>
+            </div>';
+		    
+		    //$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+		    //$max = $comidas[0]['dia'];
+		    
+		    $fecha_hoy = getdate();
+		    
+		    $hayComidasEstaSemana = false; $huboComidasSemanaAnterior = false;
+		    foreach ($comidas as $valor)
 		    {
-		        if ($value['dia'] > $max)
-		            $max = $value['dia'];
+		        //if ($value['dia'] > $max)
+		        //    $max = $valor['dia'];
+		        
+		        $fecha_comida = getdate(strtotime($valor['dia']));
+		        $diaSemana_num_comida = $fecha_comida['wday'];
+		        $diferencia_dias_año = $fecha_hoy['yday'] - $fecha_comida['yday'];
+		        
+		        if (($diferencia_dias_año) == ($fecha_hoy['wday'] - $diaSemana_num_comida))
+		        {
+		            $hayComidasEstaSemana = true;
+		        }
+		        elseif (/*($diferencia_dias_año > 7) && ($diferencia_dias_año <= 14) && */
+                    (($diferencia_dias_año) == (($fecha_hoy['wday'] - $diaSemana_num_comida) + 7)))
+	            {
+		            $huboComidasSemanaAnterior = true;
+		        }
 		    }
+		    if ((!isset($_REQUEST['sem_actual'])) || (!isset($_REQUEST['sem_anterior'])))
+		    {
+		        echo "<p>Selecciona una semana para ver las comidas que has registrado</p>";
+		    }
+		    elseif ((!$hayComidasEstaSemana) || ($huboComidasSemanaAnterior))
+		    {
+		        echo "<p>No hay ninguna comida en la semana que has seleccionado.</p>";
+		    }
+		    else
+		    {
 		    //$fecha_array = date("Y-m-d H:i:s", strtotime($max));
-		    //$fecha_array = date("F", strtotime($max));
-		    $mes = $meses[date('n', strtotime($max))-1];
+		    //$mes = $meses[date('n', strtotime($max))-1];
     		?>
-    		
-    		<!-- Párrafo introduciendo lo que se ve a continuación -->
     		
     		<div class="tabla_comidas">
     		<p><table>	
     		<caption> <!-- <h3><?php // echo $mes; ?></h3> --> </caption>
     		<!-- <caption><a href="#">Semana anterior</a> / <a href="#">Semana actual</a></caption> -->
-    		<caption>
+    		<!-- <caption>
     			<button type="button" name="sem_anterior">Semana anterior</button> / 
     			<button type="button" name="sem_actual">Semana actual</button>
-			</caption>
+			</caption> -->
     		
     		<tr> <th>Lunes</th> <th>Martes</th> <th>Miércoles</th> <th>Jueves</th> <th>Viernes</th>
     			<th>Sábado</th> <th>Domingo</th> </tr>
     		
     	  	<?php
     	  	
-    	  	$fecha_hoy = getdate();
-    	  	$hayComidasEstaSemana = false; $huboComidasSemanaAnterior = false;
+    	  	$pulsoBotonEstaSemana = false; $pulsoBotonSemanaAnterior = false;
+    	  	if (isset($_REQUEST['sem_actual']))
+    	  	{
+    	  	    $pulsoBotonEstaSemana = true;
+    	  	}
+    	  	elseif (isset($_REQUEST['sem_anterior']))
+    	  	{
+    	  	    $pulsoBotonSemanaAnterior = true;
+    	  	}
+    	  	
     	  	$hayComidaActualEstaSemana = false; $huboComidaActualSemanaAnterior = false;
     	  	$k = 0;
     	  	foreach ($comidas as $valor)
-    	    {
-    	        $fecha_hoy['yday'];
-    	        
+    	    {   
     	        $fecha_comida = getdate(strtotime($valor['dia']));
     	        $diaSemana_num_comida = $fecha_comida['wday'];
     	        
     	        if (($fecha_hoy['yday'] - $fecha_comida['yday']) < 0) // última semana del año
     	            $fecha_comida['yday'] -= 365;
     	        
+	            $diferencia_dias_año = $fecha_hoy['yday'] - $fecha_comida['yday'];
+    	            
 	            if ($fecha_hoy['wday'] == 0) // domingo
 	                $fecha_hoy['wday'] = 7;
 	            
@@ -96,63 +139,56 @@
                     $diaSemana_num_comida = 7;
     	            
     	        
-    	        if (($fecha_hoy['yday'] - $fecha_comida['yday']) == ($fecha_hoy['wday'] - $diaSemana_num_comida))
+                if (($diferencia_dias_año) == ($fecha_hoy['wday'] - $diaSemana_num_comida))
     	        {
-    	            $hayComidasEstaSemana = true; // esto va en otro sitio
     	            $hayComidaActualEstaSemana = true;
     	        }
-    	        /*elseif ()
+    	        elseif (/*($diferencia_dias_año > 7) && ($diferencia_dias_año <= 14) && */
+                    (($diferencia_dias_año) == (($fecha_hoy['wday'] - $diaSemana_num_comida) + 7)))
     	        {
-    	            $huboComidasSemanaAnterior = true; // esto va en otro sitio
     	            $huboComidaActualSemanaAnterior = true;
-    	        }*/
+    	        }
     	        
-    	        // si no pulso el botón muestro la actual
-    	        if (isset($_REQUEST['sem_actual']) || $hayComidaActualEstaSemana) // &&
+    	        
+    	        if (($pulsoBotonEstaSemana && $hayComidaActualEstaSemana) ||
+    	            ($pulsoBotonSemanaAnterior && $huboComidaActualSemanaAnterior))
     	        {
     	            
-    	        }
-    	        else // esto va en otro sitio
-    	            echo "ERROR";
-    	        
-	            if (isset($_REQUEST['sem_anterior']) && $huboComidaActualSemanaAnterior)
-    	        {
-    	            
-    	        }
-    	        else // esto va en otro sitio
-    	            echo "ERROR";
-    	        
-    	        
-    	        if ((count($comidas) == $k + 1) || ($comidas[$k]['dia'] != $comidas[$k + 1]['dia']))
-    	        {
-    	            echo "<tr>";
-    	            for ($i = 1; $i <= 7; ++$i) // ¿while?
-    	            {
-    	                if ($diaSemana_num_comida == $i)
-    	                {
-    	                    //echo "<td>".$valor['tipo']."</td>";
-    	                    echo "<td>".$valor['dia']." - ".$valor['tipo']."</td>"; // para probar...
-    	                    //break;
-    	                    //salgo y guardo el valor de $i para meter la siguiente comida en la misma fila
-    	                }
-    	                else
-    	                    echo "<td />";
-    	            }
-    	            /*if ($diaSemana_num_comida == 0)
-    	                echo "<td>".$valor['tipo']."</td>";
-    	            else
-    	                echo "<td />";*/
-    	            
-    	            echo "</tr>";
-    	        }
+        	        if ((count($comidas) == $k + 1) || ($comidas[$k]['dia'] != $comidas[$k + 1]['dia']))
+        	        {
+        	            echo "<tr>";
+        	            for ($i = 1; $i <= 7; ++$i) // ¿while?
+        	            {
+        	                if ($diaSemana_num_comida == $i)
+        	                {
+        	                    //echo "<td>".$valor['tipo']."</td>";
+        	                    echo "<td>".$valor['dia']."</td>"; // para probar...
+        	                    //break;
+        	                    //salgo y guardo el valor de $i para meter la siguiente comida en la misma fila
+        	                }
+        	                else
+        	                    echo "<td />";
+        	            }
+        	            /*if ($diaSemana_num_comida == 0)
+        	                echo "<td>".$valor['tipo']."</td>";
+        	            else
+        	                echo "<td />";*/
+        	            
+        	            echo "</tr>";
+        	        }
+        	        
+	            }
     	        $hayComidaActualEstaSemana = false; $huboComidaActualSemanaAnterior = false;
     	        ++$k;
     	    }
-    	  	
-		}
-	       ?>
-        	</table>
-        	</div>
+    	    ?>
+    	    </table>
+    	    </div>
+    	    
+    	<?php   
+		    } // fin else (hay comidas en la semana seleccionada)
+		} // fin else (hay comidas)
+	    ?>
         	
 	</div>
 	
