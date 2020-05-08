@@ -5,6 +5,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
 	<script src="https://code.jquery.com/jquery-3.4.0.js"
   integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
   crossorigin="anonymous"></script>
@@ -119,23 +120,24 @@
 		}
 		else {
 		    echo '<div class="boton-volver"><a href="entrenadores.php">Volver</a></div>';
-
+		    echo '<div class= "miPerfil">';
 		    $us = $ctrl->cargarUsuario($_GET['perfil']);
 		    echo '<h2>'.$us->getNombre().'</h2>';
-		    echo '<img src="'.$us->getFoto().'" width="300" height="300" alt="Foto usuario">';
+		    echo '<img src="'.$us->getFoto().'"  alt="Foto usuario">';
 
 
 		    echo '<br>';
-		    echo $us->getTitulacion().'<br>';
-		    echo $us->getEspecialidad().'<br>';
-		    echo $us->getExperiencia().'<br>';
-		    echo $us->getPreferencias().'<br>';
+		    echo '<p class="info">Titulacion: '.$us->getTitulacion().'</p><br>';
+		    echo '<p class="info">Especialidad: '.$us->getEspecialidad().'</p><br>';
+		    echo '<p class="info">Experiencia: '.$us->getExperiencia().' años</p><br>';
+		    echo '<p class="info">Preferencias: '.$us->getPreferencias().'</p><br>';
 
+		    
 	        if (!isset($_SESSION['login'])) {
-	            echo 'Entra como cliente para mandar solicitudes de entrenamiento.'.'<br>';
+	            echo '<h3 class="aviso"> ¡Entra como cliente para mandar solicitudes de entrenamiento!</h3><br>';
 	        }
 	        else if ($_SESSION['usuario']->getTipoUsuario() == 1) {
-	            echo 'Debes ser cliente para solicitar entrenadores.';
+	            echo '<h3 class="aviso"> ¡Debes ser cliente para solicitar entrenadores!</h3>';
 	        }
 	        else {
 	            $media = $ctrl->selectValor('ROUND(AVG(valor),1) as media', "hacia='".$us->getNif()."'");
@@ -179,6 +181,7 @@
 	                echo '</div>';
 	            }
 	        }
+	        echo '</div>';
 		}
 
 		?>

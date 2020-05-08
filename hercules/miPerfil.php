@@ -39,9 +39,10 @@
 		<?php
 		echo '<div class ="miPerfil">';
 
+		echo '<h2>'.$_SESSION['usuario']->getNombre().'</h2><br>';	
 		echo '<img  src="'.$_SESSION['usuario']->getFoto().'" alt="Foto usuario">';
 	
-		 echo '<h2 class= "nombre">'.$_SESSION['usuario']->getNombre().'</h2><br>';					
+		 				
 		 echo '<label>NIF: </label><p class = "info">'.$_SESSION['usuario']->getNif().'</p><br>';				
 		 echo '<p class = "info">Correo electronico: '.$_SESSION['usuario']->getEmail().'</p><br>';	
 		 echo '<p class = "info">Peso: '.$_SESSION['usuario']->getPeso().'</p><br>';		
@@ -51,7 +52,11 @@
 		 echo '<p class = "info">Ubicacion: '.$_SESSION['usuario']->getUbicacion().'</p><br>';
 		 echo '<p class = "info">Telefono: '.$_SESSION['usuario']->getAltura().'</p><br>';
 		 echo '<p class = "info">Sexo: '.$_SESSION['usuario']->getSexo().'</p><br>';
-
+		 if($_SESSION['usuario']->getTipoUsuario()==1){
+		 	echo '<p class = "info">Experiencia: '.$_SESSION['usuario']->getExperiencia().'</p><br>';
+		 	echo '<p class = "info">Titulacion: '.$_SESSION['usuario']->getTitulacion().'</p><br>';
+		 	echo '<p class = "info">Especialidad: '.$_SESSION['usuario']->getEspecialidad().'</p><br>';
+		 }
 		echo '</div>';
 		}
 
