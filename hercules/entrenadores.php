@@ -118,7 +118,7 @@
 
 		}
 		else {
-		    echo '<div class="boton-volver"><a href="entrenadores.php">🔙Volver</a></div>';
+		    echo '<div class="boton-volver"><a href="entrenadores.php">Volver</a></div>';
 
 		    $us = $ctrl->cargarUsuario($_GET['perfil']);
 		    echo '<h2>'.$us->getNombre().'</h2>';

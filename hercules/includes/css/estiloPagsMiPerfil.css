@@ -207,6 +207,10 @@ div#contenido .tabla_comidas td
 }
 
 /*MI PERFIL*/
+div#contenido .miPerfil {
+	text-align: center;
+	
+}
 div#contenido .miPerfil img{
 	width:200px;
 	height: 250px;   
@@ -214,6 +218,20 @@ div#contenido .miPerfil img{
 	margin: auto;
 }
 
+div#contenido .miPerfil h2.nombre {
+	font-family: serif;
+	text-align: center;
+	background-color: white;
+	font-size: 40px;
+	margin-top:10px;
+	color: #3b3b3b;
+	padding: 10px;
+	position: relative;
+}
+div#contenido .miPerfil p.info {
+	max-width: fit-content;
+	text-align: center;
+}
 h3#nombre{
 	font-family: cursive;
     font-size: 1.5em;
