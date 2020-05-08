@@ -6,20 +6,32 @@
 }
 
 .fotos img {
-        float: left;
-        width :200px ;
-        height:200px;
+    float: left;
+    width :200px ;
+    height:200px;
     }
 
-.foto p{
-
-        padding-bottom: 10px;
-        padding-top: 10px;
+.fotos p{
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
+#listafotos {
+    text-align: center;
+    padding-bottom: 30px;
+}
 
 #listafotos ul {
     list-style-type: none;
     text-align: center;
     display: inline
+    padding-inline-start: 0;
+}
+
+.pnombreQuienesSomos{
+    font-size: 22px;
+    text-align: center;
+    margin: 0;
+    max-width: fit-content;
+    min-width: -webkit-fill-available;
 }

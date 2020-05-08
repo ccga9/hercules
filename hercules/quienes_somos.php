@@ -38,36 +38,36 @@
 		<ul>
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/emilio.jpg" alt="foto de emilio"  /></a>
-			<p>Emilio José Valencia</p>
+			<p class="pnombreQuienesSomos">Emilio José Valencia</p>
 			</li>
 
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/geraldyn.jpg" alt="foto de Geraldyn" /></a>
-			<p>Geraldyn Carrero Azuaje</p>
+			<p class="pnombreQuienesSomos">Geraldyn Carrero Azuaje</p>
 			</li>
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/juan.jpg" alt="foto de Juan"  /></a>
-			<p>Cheng Jun Liu Zheng</p>
+			<p class="pnombreQuienesSomos">Cheng Jun Liu Zheng</p>
 			</li>
 			
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/jaime.jpg" alt="foto de Jaime"  /></a>
-			<p>Jaime Madriñán Fernández</p>
+			<p class="pnombreQuienesSomos">Jaime Madriñán Fernández</p>
 			</li>
 			
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/mingyang.jpg" alt="foto de mingyang"  /></a>
-			<p>Mingyang Chen</p>
+			<p class="pnombreQuienesSomos">Mingyang Chen</p>
 			</li>
 			
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/yomismele.jpg" alt="foto de Manu" /></a>
-			<p>Manuel Espinosa Guerra</p>
+			<p class="pnombreQuienesSomos">Manuel Espinosa Guerra</p>
 			</li>
 
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/miriam.jpg" alt="foto de Miriam" /></a>
-			<p class="fotos">Miriam Elizabeth Cabana Ramírez.</p>
+			<p class="pnombreQuienesSomos" class="fotos">Miriam Elizabeth Cabana Ramírez</p>
 			</li>
 
 		</ul>
