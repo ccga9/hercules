@@ -42,10 +42,15 @@
 		echo '<img  src="'.$_SESSION['usuario']->getFoto().'" alt="Foto usuario">';
 	
 		 echo '<h2 class= "nombre">'.$_SESSION['usuario']->getNombre().'</h2><br>';					
-		 echo '<p class = "info">NIF: '.$_SESSION['usuario']->getNif().'</p><br>';				
+		 echo '<label>NIF: </label><p class = "info">'.$_SESSION['usuario']->getNif().'</p><br>';				
 		 echo '<p class = "info">Correo electronico: '.$_SESSION['usuario']->getEmail().'</p><br>';	
-		 echo '<p>Peso: '.$_SESSION['usuario']->getPeso().'</p><br>';		
-		 echo '<p>Altura: '.$_SESSION['usuario']->getAltura().'</p><br>';
+		 echo '<p class = "info">Peso: '.$_SESSION['usuario']->getPeso().'</p><br>';		
+		 echo '<p class = "info">Altura: '.$_SESSION['usuario']->getAltura().'</p><br>';
+		 echo '<p class = "info">Fecha de nacimiento: '.$_SESSION['usuario']->getFechaNac().'</p><br>';
+		 echo '<p class = "info">Preferencias: '.$_SESSION['usuario']->getPreferencias().'</p><br>';
+		 echo '<p class = "info">Ubicacion: '.$_SESSION['usuario']->getUbicacion().'</p><br>';
+		 echo '<p class = "info">Telefono: '.$_SESSION['usuario']->getAltura().'</p><br>';
+		 echo '<p class = "info">Sexo: '.$_SESSION['usuario']->getSexo().'</p><br>';
 
 		echo '</div>';
 		}

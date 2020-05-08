@@ -223,17 +223,23 @@ div#contenido .miPerfil h2.nombre {
 	text-align: center;
 	background-color: white;
 	font-size: 40px;
-	margin-top:10px;
+	margin: auto;
 	color: #3b3b3b;
 	padding: 10px;
 	position: relative;
 }
 div#contenido .miPerfil p.info {
-	max-width: fit-content;
+	font-family: serif;
 	text-align: center;
+	margin: 0;
 }
-h3#nombre{
-	font-family: cursive;
-    font-size: 1.5em;
-    padding-left: 186px;
+div#contenido .miPerfil h3.info {
+{
+	text-align: center;
+	background-color: red;
+	font-size: 40px;
+	margin-top:10px;
+	color: #3b3b3b;
+	padding: 10px;
+	position: relative;
 }

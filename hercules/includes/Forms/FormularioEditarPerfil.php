@@ -52,6 +52,9 @@ class FormularioEditarPerfil extends Form {
                 $ret .= '<label>Tu nombre:</label> <input type="text" name="nombre" value="'.$_SESSION['usuario']->getNombre().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Sexo:</label> <input type="text" name="nombre" value="'.$_SESSION['sexo']->getSexo().'"/>';
+            $ret .= '</div>';
+            $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Fecha de nacimiento</label> <input class="control" type="date" placeholder="&#128231;Fecha de nacimiento" name="fecha" id = "fecha" onclick="javascript:calcularEdad();" value="'.$_SESSION['usuario']->getFechaNac().'" required/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
