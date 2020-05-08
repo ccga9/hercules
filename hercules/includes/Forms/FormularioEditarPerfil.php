@@ -1,7 +1,7 @@
 <?php  
 
 require_once(__DIR__.'/Form.php');
-require_once(__DIR__.'/../../editarMiPerfil.php');
+require_once(__DIR__.'/../../miPerfilEditar.php');
 require_once(__DIR__.'/../config.php');
 require_once(__DIR__.'/../controller.php');
 
@@ -11,7 +11,7 @@ class FormularioEditarPerfil extends Form {
   
 	public function __construct()
     {
-    	parent::__construct('editarMiPerfil', array());
+    	parent::__construct('miPerfilEditar', array());
     }
 
     /**

@@ -44,11 +44,11 @@
     			echo '<tr><td>Especialidad: '.$entrenador->getEspecialidad().'</td></tr>';
     			echo '<tr><td>Experiencia: '.$entrenador->getExperiencia().'</td></tr>';
     		echo '</table>';
-    		echo '<a href= "miPerfilEntrenamientos.php?idEntrenador='.$_GET['id'].'"> Ver entrenamientos </a>';
+    		echo '<a href= "miPerfilEntrenamientosVer.php?idEntrenador='.$_GET['id'].'"> Ver entrenamientos </a>';
     		echo '<br>';
     		echo "<a href= miPerfilBuzon.php?reciever=".$_GET['id'].">Ir al chat</a>";
     		echo '<br>';
-    		echo '<a href= "eliminarEntrenador.php?idEntrenador='.$_GET['id'].'"> Eliminar de mi lista </a>';
+    		echo '<a href= "PR_eliminarEntrenador.php?idEntrenador='.$_GET['id'].'"> Eliminar de mi lista </a>';
     		echo '<br>';
     		echo '<button id= "abrir"> Dejar mi reseña </button>';
 		}
@@ -65,7 +65,7 @@
 				<?php 
 				$rate = $ctrl->selectValor('', "de='".$_SESSION['usuario']->getNif()."' AND hacia='".$_GET['id']."'");
 				if (count($rate) > 0) {
-				    echo '<form action="procesaValoracion.php" method="post">';
+				    echo '<form action="PR_miPerfilMisEntrenadoresPerfiles_valorar.php" method="post">';
 				    echo '<input type="hidden" name="de" value="'.$_SESSION['usuario']->getNif().'"/>';
 				    echo '<input type="hidden" name="hacia" value="'.$_GET['id'].'"/>';
 				    echo '<textarea name="texto" placeholder="Escribe tu opinion">'.$rate[0]['texto'].'</textarea>';
@@ -93,7 +93,7 @@
 				    echo '</form>';
 				}
 				else {
-				    echo '<form action="procesaValoracion.php" method="post">';
+				    echo '<form action="PR_miPerfilMisEntrenadoresPerfiles_valorar.php" method="post">';
 				    echo '<input type="hidden" name="de" value="'.$_SESSION['usuario']->getNif().'"/>';
 				    echo '<input type="hidden" name="hacia" value="'.$_GET['id'].'"/>';
                     echo '<textarea name="texto" placeholder="Escribe tu opinion"></textarea>';

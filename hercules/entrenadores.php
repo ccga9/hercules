@@ -35,70 +35,21 @@
 
 		if (!isset($_GET['perfil'])) {
 
-			echo '<div class="store-wrapper">
+			/*echo '<div class="store-wrapper">
 			<div class="category-list">
 				<a href="#" class="categoryItem" category="all">Todos</a>
 				<a href="#" class="categoryItem" category="ubic">Ubicación: Madrid</a>
 				<a href="#" class="categoryItem" category="espec">Entrenador Profesional</a>
 				<a href="#" class="categoryItem" category="vari">Varios</a> <!--Todos menos Madrid y Entrenadores Profesionales-->
 			</div>
-			</div>';
-
-
-			$arr = $ctrl->listarEntrenadorVarios((isset($_SESSION['login'])) ? $_SESSION['usuario']->getNif() : 0);
-		    if (count($arr) > 0) {
+			</div>';*/
+			
+			$arr0 = $ctrl->listarEntrenadores((isset($_SESSION['login'])) ? $_SESSION['usuario']->getNif() : 0);
+		    if (count($arr0) > 0) {
 		    	echo '<div class="entrenadores-all">';
 		    	echo '<div class="elem-item" category="vari">';
 		    	echo '<ul>';
-		        foreach ($arr as $key => $valor) {
-		            echo '<li>';
-		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
-		           
-		            echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
-		            
-
-		            echo $valor['titulacion'].'<br>';
-		            echo $valor['especialidad'].'<br>';
-					    echo $valor['experiencia'].'</p>';
-		            echo "<a href= entrenadores.php?perfil=".$valor['nif'].">Ver Perfil</a>";
-
-		            echo '</li>';
-		        }
-		        echo '</ul>';
-		        echo '</div>';
-		        echo '</div>';
-		    }
-
-		    $arr1 = $ctrl->listarEntrenadorMadrid((isset($_SESSION['login'])) ? $_SESSION['usuario']->getNif() : 0);
-		    if (count($arr1) > 0) {
-		    	echo '<div class="entrenadores-all">';
-		    	echo '<div class="elem-item" category="ubic">';
-		    	echo '<ul>';
-		        foreach ($arr1 as $key => $valor) {
-		            echo '<li>';
-		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
-		       
-		                echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
-		           
-
-		            echo $valor['titulacion'].'<br>';
-		            echo $valor['especialidad'].'<br>';
-					    echo $valor['experiencia'].'</p>';
-		            echo "<a href= entrenadores.php?perfil=".$valor['nif'].">Ver Perfil</a>";
-
-		            echo '</li>';
-		        }
-		        echo '</ul>';
-		        echo '</div>';
-		        echo '</div>';
-		    }
-
-		    $arr2 = $ctrl->listarEntrenadorProfesional( (isset($_SESSION['login']))? $_SESSION['usuario']->getNif() : 0);
-		    if (count($arr2) > 0) {
-		    	echo '<div class="entrenadores-all">';
-		    	echo '<div class="elem-item" category="espec">';
-		    	echo '<ul>';
-		        foreach ($arr2 as $key => $valor) {
+		        foreach ($arr0 as $key => $valor) {
 		            echo '<li>';
 		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
 		           
@@ -148,7 +99,7 @@
 	            if (count($sol) == 1) {
 	                if ($sol[0]['estado'] == "aceptado") {
 	                    echo '<p>Solicitud aceptada</p>';
-	                    echo "<a href=perfil_Entrenador.php?id=".$us->getNif().">Ir a Mis Entrenadores</a>";
+	                    echo "<a href=miPerfilMisEntrenadoresPerfiles.php?id=".$us->getNif().">Ir a Mis Entrenadores</a>";
 	                }
 	                else {
 	                    echo '<p>Solicitud Enviada</p>';
@@ -156,7 +107,7 @@
 
 	            }
 	            else {
-	                echo '<form method="POST" action="entrena_check.php">';
+	                echo '<form method="POST" action="PR_entrenadores_check.php">';
 
 	                echo '<input type="hidden" name="cliente" value="'.$_SESSION["usuario"]->getNif().'">';
 	                echo '<input type="hidden" name="entrenador" value="'.$us->getNif().'">';

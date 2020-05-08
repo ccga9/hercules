@@ -18,6 +18,6 @@ else if (isset($_POST['actualizar'])) {
     $ctrl->updateValor($set, $cond);
 }
 
-header("Location: perfil_Entrenador.php?id=".$_POST['hacia']);
+header("Location: miPerfilMisEntrenadoresPerfiles.php?id=".$_POST['hacia']);
 
 ?>

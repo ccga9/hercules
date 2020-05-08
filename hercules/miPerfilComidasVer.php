@@ -39,14 +39,14 @@
         <div class="submenu-perfil">
 			<div class="comidaentrena-all">
 			<img src="includes/img/verTabla_comidas.png" alt="Tabla comidas">
-			<form action="verTablaComidas.php" method="post">
+			<form action="miPerfilComidasVerTablas.php" method="post">
 				<button type="submit" name="tabla">Tabla comidas</button>
 			</form>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/verCalendario_comidas.png" alt="Calendario comidas">
-			<form action="verCalendarioComidas.php" method="post">
+			<form action="miPerfilComidasVerCalendario.php" method="post">
 				<button type="submit" name="calendario">Calendario comidas</button>
 			</form>
 			</div>

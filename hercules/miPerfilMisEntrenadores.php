@@ -38,7 +38,7 @@
 					    echo '<p><strong>Titulación: </strong> '.$valor->getTitulacion().'<br>';
 					    echo '<strong>Especialidad: </strong> '.$valor->getEspecialidad().'<br>';
 					    echo '<strong>Experiencia: </strong> '.$valor->getExperiencia().'</p>';
-					    echo '<a href="perfil_Entrenador.php?id='.$valor->getNif().'">Mostrar Perfil</a>'; 
+					    echo '<a href="miPerfilMisEntrenadoresPerfiles.php?id='.$valor->getNif().'">Mostrar Perfil</a>'; 
 					echo '</li>';
 				}
 				echo '</ul>';

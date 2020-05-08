@@ -36,28 +36,28 @@
 		<div class="submenu-perfil">
 			<div class="comidaentrena-all">
 			<img src="includes/img/ver_comidas.png" alt="Histórico de comidas">
-			<form action="VerComidas.php" method="post">
+			<form action="miPerfilComidasVer.php" method="post">
 				<button type="submit" name="ver">Ver Comidas</button>
 			</form>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/registrar_comida.png" alt="Registrar Comida">
-			<form action="registroComida.php" method="post">
+			<form action="miPerfilComidasRegistrar.php" method="post">
 				<button type="submit" name="registro">Registrar Comida</button>
 			</form>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/editar_comida.png" alt="Editar Comida">
-			<form action="editarComida.php" method="post">
+			<form action="miPerfilComidasEditar.php" method="post">
 				<button type="submit" name="editar">Editar Comida</button>
 			</form>
 			</div>
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/borrar_comida.png" alt="Borrar comida">
-			<form action="eliminarComida.php" method="post">
+			<form action="miPerfilComidasEliminar.php" method="post">
 				<button type="submit" name="eliminar">Eliminar Comida</button>
 			</form>
 			</div>

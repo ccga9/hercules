@@ -31,40 +31,41 @@
 		$nuevo =  $ctrl->listarMisSolicitudes($_SESSION['usuario']->getNif());
 			
 		$arr = $ctrl->listarMisClientes($_SESSION['usuario']->getNif());
-		if( $arr != "" && count($arr) > 0 ){
-		    echo '<div class="entrenadores-all">';
+		echo '<div class="entrenadores-all">';
+		if (count($nuevo) > 0) {
 		    
-		    if ($nuevo != false) {
-		        echo '<ul>';
-		        foreach ($nuevo as $key => $valor) {
-		            echo '<li>';
-		            echo '<h4>'.$valor->getNombre().'</h4>';
-		            echo '<img src="'.$valor->getFoto().'"><br>';
-		            echo '<p><strong>¡Nueva Solicitud!</strong></p>';
-		            echo '<p><strong>Email: </strong> '.$valor->getEmail().'</p>';
-		            echo '<a href="perfil_Cliente.php?id='.$valor->getNif().'">Mostrar Perfil</a>';
-		            echo '</li>';
-		            
-		        }
-		        echo '</ul>';
+		    echo '<ul>';
+		    foreach ($nuevo as $key => $valor) {
+		        echo '<li>';
+		        echo '<h4>'.$valor->getNombre().'</h4>';
+		        echo '<img src="'.$valor->getFoto().'"><br>';
+		        echo '<p><strong>¡Nueva Solicitud!</strong></p>';
+		        echo '<p><strong>Email: </strong> '.$valor->getEmail().'</p>';
+		        echo '<a href="miPerfilMisClientesPerfiles.php?id='.$valor->getNif().'">Mostrar Perfil</a>';
+		        echo '</li>';
+		        
 		    }
-		    
+		    echo '</ul>';
+		}
+		if(count($arr) > 0){
+		   
             echo '<ul>';
 			foreach ($arr as $key => $valor) {
 				echo '<li>';
 					echo '<h4>'.$valor->getNombre().'</h4>';
 					echo '<img src="'.$valor->getFoto().'"><br>';
 				    echo '<p><strong>Email: </strong> '.$valor->getEmail().'</p>';
-				    echo '<a href="perfil_Cliente.php?id='.$valor->getNif().'">Mostrar Perfil</a>';  
+				    echo '<a href="miPerfilMisClientesPerfiles.php?id='.$valor->getNif().'">Mostrar Perfil</a>';  
 				echo '</li>';
 	
 			}
 			echo '</ul>';
-	        echo '</div>';
 		 }
-		 else {
+		 if (count($nuevo) == 0 && count($arr) == 0) {
 		     echo '<p><span class="varios">'. "Todavía no tiene clientes.".'</span></p>';
 		 }
+		 
+		 echo '</div>';
 
 		?>
 

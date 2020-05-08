@@ -24,7 +24,7 @@
 	<div id="contenido">
 	
 		<div class="boton-volver">
-			<a href="verComidas.php"> 🔙Volver </a>
+			<a href="miPerfilComidasVer.php"> 🔙Volver </a>
 		</div>
 		
 		<?php

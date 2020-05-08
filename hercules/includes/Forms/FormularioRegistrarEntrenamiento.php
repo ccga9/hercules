@@ -1,7 +1,7 @@
 <?php  
 
 require_once(__DIR__.'/Form.php');
-require_once(__DIR__.'/../../registrarEntrenamiento.php');
+require_once(__DIR__.'/../../miPerfilEntrenamientosRegistrar.php');
 require_once(__DIR__.'/../config.php');
 require_once(__DIR__.'/../controller.php');
 
@@ -101,9 +101,9 @@ class FormularioRegistrarEntrenamiento extends Form {
 		}
  
 		if (count($erroresFormulario) === 0) {
-			$erroresFormulario = "perfil_Cliente.php?id=".$datos['cliente'];
+			$erroresFormulario = "miPerfilMisClientesPerfiles.php?id=".$datos['cliente'];
 		}else{
-            $erroresFormulario['idCliente'] = "registrarEntrenamiento.php?idCliente=".$datos['cliente'];
+            $erroresFormulario['idCliente'] = "miPerfilEntrenamientosRegistrar.php?idCliente=".$datos['cliente'];
         }
 
         return $erroresFormulario;

@@ -262,16 +262,14 @@ class controller{
         $cond="usuario = '".$nif."' AND estado = 'aceptado'";
        
         $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
- 
-       if ($consulta) {
         $result = array();
+       if ($consulta) {
         foreach ($consulta as $value) {
            $result[] = $this->cargarUsuario($value['entrenador']);
         }
             return $result;
-        }else{
-            return false;
-        }
+       }
+       return $result;
     }
 
     public function listarMisClientes($nif){
@@ -280,16 +278,14 @@ class controller{
         $cond="entrenador = '".$nif."' AND estado = 'aceptado'";
        
         $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
- 
-       if ($consulta) {
         $result = array();
+       if ($consulta) {
         foreach ($consulta as $value) {
            $result[] = $this->cargarUsuario($value['usuario']);
         }
-            return $result;
-        }else{
-            return false;
-        }
+            
+       }
+       return $result;
     }
     
     public function listarMisSolicitudes($nif){
@@ -298,16 +294,15 @@ class controller{
         $cond="entrenador = '".$nif."' AND estado='pendiente'";
         
         $consulta = $this->usuarioDAO->selectUs_Ent($col, $cond);
-        
+        $result = array();
         if ($consulta) {
             $result = array();
             foreach ($consulta as $value) {
                 $result[] = $this->cargarUsuario($value['usuario']);
             }
-            return $result;
-        }else{
-            return false;
+            
         }
+        return $result;
     }
     
     public function selectUs_Ent($col, $cond){

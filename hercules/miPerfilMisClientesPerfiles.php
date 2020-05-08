@@ -49,14 +49,14 @@
 		        	echo '<div class="submenu-perfil">
 							<div class="comidaentrena-all">
 							<img src="includes/img/ver_entrenamientos.png" alt="Histórico de Entrenamientos">
-							<form action="miPerfilEntrenamientos.php?idCliente='.$_GET['id'].'" method="post">
+							<form action="miPerfilEntrenamientosVer.php?idCliente='.$_GET['id'].'" method="post">
 								<button type="submit" name="registro">Ver entrenamientos</button>
 							</form>
 							</div>
 
 							<div class="comidaentrena-all">
 							<img src="includes/img/registrar_entrenamiento.png" alt="Registrar Entrenamiento">
-							<form action="registrarEntrenamiento.php?idCliente='.$_GET['id'].'" method="post">
+							<form action="miPerfilEntrenamientosRegistrar.php?idCliente='.$_GET['id'].'" method="post">
 								<button type="submit" name="registro">Proponer nuevo entrenamiento</button>
 							</form>
 							</div>
@@ -65,9 +65,10 @@
 		            echo "<a href= miPerfilBuzon.php?reciever=".$_GET['id'].">Ir al chat</a>";
 		        }
 		        else {
-		            echo '<form action="buzon.php" method="post">';
-		  		    echo '<button type="submit" name="aceptar" value="'.$arr[0]['usuario'].'">Aceptar</button>';
-		  		    echo '<button type="submit" name="rechazar" value="'.$arr[0]['usuario'].'">Rechazar</button>'.'<br>';
+		            echo '<form action="PR_miPerfilMisClientesPerfiles_buzon.php" method="post">';
+		            echo '<input type="hidden" name="cliente" value="'.$arr[0]['usuario'].'"/>';
+		  		    echo '<button type="submit" name="aceptar" value="acepta">Aceptar</button>';
+		  		    echo '<button type="submit" name="rechazar" value="rechaza">Rechazar</button>'.'<br>';
 		            echo '</form>';
 		        }
 		    }
