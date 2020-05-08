@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 	<meta charset="utf-8">
 	<title>HERCULES</title>
@@ -34,24 +34,33 @@
 		?>
 	
 		<h2>Datos personales</h2>
-		<?php
-
-		echo '<img src="'.$_SESSION['usuario']->getFoto().'" width="300" height="120" alt="Foto usuario">';
-		echo '<table>';
-		
-		echo '<tr>';
-		 echo '<td>'.$_SESSION['usuario']->getNombre().'</td>';					
-		echo'</tr>';
-		echo '<tr>';
-		 echo '<td>'.$_SESSION['usuario']->getNif().'</td>';				
-		echo'</tr>';
-		echo '<tr>';
-		 echo '<td>'.$_SESSION['usuario']->getEmail().'</td>';			
-		echo'</tr>';	
-	
-		echo '</table>';
 			
+
+		<?php
+		echo '<div class ="miPerfil">';
+
+		echo '<h2 class="nombre" >'.$_SESSION['usuario']->getNombre().'</h2><br>';	
+		echo '<img  src="'.$_SESSION['usuario']->getFoto().'" alt="Foto usuario">';
+	
+		 				
+		 echo '<label class = "eti">NIF </label> <p class = "info">'.$_SESSION['usuario']->getNif().'</p><br>';				
+		 echo '<label class = "eti">Correo electronico </label> <p class = "info">'.$_SESSION['usuario']->getEmail().'</p><br>';	
+		 echo '<label class = "eti">Peso </label> <p class = "info"> '.$_SESSION['usuario']->getPeso().' kgs</p><br>';		
+		 echo '<label class = "eti">Altura </label> <p class = "info">'.$_SESSION['usuario']->getAltura().'cm</p><br>';
+		 echo '<label class = "eti">Fecha de nacimiento </label> <p class = "info"> '.$_SESSION['usuario']->getFechaNac().'</p><br>';
+		 echo '<label class = "eti">Preferencias </label> <p class = "info">'.$_SESSION['usuario']->getPreferencias().'</p><br>';
+		 echo '<label class = "eti">Ubicación </label> <p class = "info">'.$_SESSION['usuario']->getUbicacion().'</p><br>';
+		 echo '<label class = "eti">Telefono </label><p class = "info">'.$_SESSION['usuario']->getAltura().'</p><br>';
+		 echo '<label class = "eti">Sexo </label><p class = "info">'.$_SESSION['usuario']->getSexo().'</p><br>';
+		
+		 if($_SESSION['usuario']->getTipoUsuario()==1){
+		 	echo '<label class = "eti">Experiencia </label> <p class = "info">'.$_SESSION['usuario']->getExperiencia().'años</p><br>';
+		 	echo '<label class = "eti">Titulacion </label> <p class = "info">'.$_SESSION['usuario']->getTitulacion().'</p><br>';
+		 	echo '<label class = "eti">Especialidad</label> </p> <p class = "info">'.$_SESSION['usuario']->getEspecialidad().'</p><br>';
+		 }
+		echo '</div>';
 		}
+
 		?>
 
 	</div>

@@ -27,7 +27,7 @@
 				$a = stripcslashes($_GET['entrenamiento']);
 				$entrenamiento = unserialize($a);
 
-				echo '<h1>Ejercicios de tu entrenamiento: '.$entrenamiento['nombre'].' </h1>';
+				echo '<h1 class="tituloEntrenamiento">Ejercicios de: '.$entrenamiento['nombre'].' </h1>';
 				echo '<img src="https://i.pinimg.com/originals/d0/a2/83/d0a2839695fbbf7f760b4aeabee30957.gif" alt="quote" class= "gif" />';
 
 				if(count($entrenamiento['ejercicios']) > 0){

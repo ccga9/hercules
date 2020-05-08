@@ -78,8 +78,8 @@ class FormularioRegistro extends Form {
             $ret .= '</div>';
       
             $ret .= '<div class="radio-check-button"> ';
-                $ret .= '<label for="hombre">Hombre</label> <input type="radio" name="sexo" value="H" id="hombre">';
-                $ret .= '<label for="mujer">Mujer</label><input type="radio" name="sexo" value="M" id="mujer">';
+                $ret .= '<label for="hombre">Hombre</label> <input type="radio" name="sexo" value="Hombre" id="hombre">';
+                $ret .= '<label for="mujer">Mujer</label><input type="radio" name="sexo" value="Mujer" id="mujer">';
             $ret .= '</div>';
             $ret .= '<div class="radio-check-button">';
             $ret .= '<label>¿Eres entrenador/a? (Rellena los campos de abajo)</label> <input type="checkbox" name="tipoUsuario" value="ok"/>';
@@ -174,6 +174,11 @@ class FormularioRegistro extends Form {
         if(!isset($datos['ubicacion'])|| empty($datos['ubicacion']) ){
              $datos['ubicacion'] = "No especificado";
         }
+        //SEXO
+       if(!isset($datos['sexo'])|| empty($datos['sexo']) ){
+             $datos['sexo'] = "No especificado";
+        }
+     
         //CONTRASEÑA
         $password = isset($datos['contrasenna']) ? $datos['contrasenna'] : null;
         if ( empty($password) || mb_strlen($password) < 8 ) {
@@ -206,7 +211,7 @@ class FormularioRegistro extends Form {
 
        
         
-        if (count($erroresFormulario) === 0) {
+       if (count($erroresFormulario) === 0) {
             $ctrl = controller::getInstance();
             $us = $ctrl->registra($datos);
             

@@ -159,7 +159,7 @@ div#pie {
 
 
 p{
-	max-width: fit-content;
+	
 	text-align: left;
     /*padding: 40px;*/
 }
@@ -183,7 +183,7 @@ h1{
 }
 
 /*Boton volver - comun en muchas paginas*/
-/*div#contenido .boton-volver{
+div#contenido .boton-volver a{
 	cursor:pointer;
 	text-decoration:none;
 	border: 0;
@@ -199,9 +199,9 @@ h1{
 	text-align: center;
 }
 
-div#contenido .boton-volver:hover{
+div#contenido .boton-volver a:hover{
 	background: linear-gradient(#e9e174, #e3da0c);
-}*/
+}
 
 /*Menu principal*/
 .menu ul {
@@ -281,7 +281,7 @@ div#contenido .cab {
 	background-color: #fff;
 	overflow: hidden;
 	position: relative;
-	margin: auto;
+	margin-bottom: 15px;
 	padding: 0;
 }
 div#contenido .cab img {

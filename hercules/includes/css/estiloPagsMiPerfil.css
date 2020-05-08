@@ -194,6 +194,7 @@ div#contenido .entrenadores-all a:hover{
 	color: white;
 }
 
+
 div#contenido .tabla_comidas table
 {
 	border: 1px solid black;
@@ -206,3 +207,64 @@ div#contenido .tabla_comidas td
 	border: 1px solid black; 
 }
 
+div#contenido .centrado_comidas
+{
+	margin-left: 30%;
+}
+
+div#contenido .primer_parrafo
+{
+    margin-left: 15%;
+    padding: 5px;
+}
+
+
+/*MI PERFIL*/
+div#contenido .miPerfil {
+	text-align: center;
+	
+}
+div#contenido .miPerfil img{
+	width:200px;
+	height: 250px;   
+	display: block;
+	margin: auto;
+	padding-bottom: 15px;
+}
+
+div#contenido .miPerfil h2.nombre {
+	font-family: serif;
+	text-align: center;
+	background-color: white;
+	font-size: 40px;
+	margin: auto;
+	color: #3b3b3b;
+	padding: 10px;
+	position: relative;
+}
+div#contenido .miPerfil p.info {
+	font-size: 22px;
+	font-family: serif;
+	text-align: center;
+	margin: 0;
+}
+div#contenido .miPerfil label.eti {
+	padding-right: 250px;
+	padding-left: 250px;
+	background-color: #ffff40;
+	font-size: 22px;
+	font-family: serif;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+}
+div#contenido .miPerfil h3.aviso{
+
+	text-align: center;
+	background-color: yellow;
+	font-size: 20px;
+	margin-top:10px;
+	color: #3b3b3b;
+	padding: 10px;
+	position: relative;
+}

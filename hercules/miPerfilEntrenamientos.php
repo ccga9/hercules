@@ -21,7 +21,7 @@
 	?>
 
 	<div id="contenido">
-		<h1>Entrenamientos</h1>
+		<h1 class="tituloEntrenamiento">Entrenamientos</h1>
 		<img src="https://i.pinimg.com/originals/d0/a2/83/d0a2839695fbbf7f760b4aeabee30957.gif" alt="quote" class= "gif" />
 			
 			<?php
@@ -54,7 +54,6 @@
 
 			}else{ //si es cliente
 				$idUsuarioEntrenadores = $ctrl->selectUs_Ent("id, entrenador", "usuario='".$_SESSION["usuario"]->getNif()."'");
-				print_r($_SESSION["usuario"]->getNif());
 
 					if(count($idUsuarioEntrenadores) > 0){
 						echo '<table class="tablaEntrenamientos">';

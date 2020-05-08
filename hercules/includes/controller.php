@@ -206,6 +206,7 @@ class controller{
             $usuario->setEmail($arr["email"]);
             $usuario->setTipoUsuario($arr["tipoUsuario"]);
             $usuario->setFoto($arr["foto"]);
+            $usuario->setSexo($arr["sexo"]);
             $usuario->setTelefono($arr["telefono"]);
             $usuario->setFechaNac($arr["fecha"]);
             $usuario->setPeso($arr["peso"]);

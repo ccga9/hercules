@@ -52,10 +52,16 @@ class FormularioEditarPerfil extends Form {
                 $ret .= '<label>Tu nombre:</label> <input type="text" name="nombre" value="'.$_SESSION['usuario']->getNombre().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Sexo:</label> <input type="text" name="nombre" value="'.$_SESSION['usuario']->getSexo().'"/>readonly';
+            $ret .= '</div>';
+            $ret .= '<div class="grupo-control">';
+                $ret .= '<label>Fecha de nacimiento</label> <input class="control" type="date" placeholder="&#128231;Fecha de nacimiento" name="fecha" id = "fecha" onclick="javascript:calcularEdad();" value="'.$_SESSION['usuario']->getFechaNac().'" required/>';
+            $ret .= '</div>';
+            $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Tu email:</label> <input type="email" name="email" value="'.$_SESSION['usuario']->getEmail().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#128231;(Opcional)" name="telefono" pattern="[0-9]{9} value="'.$_SESSION['usuario']->getTelefono().'"/>';
+                $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#128231;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" value="'.$_SESSION['usuario']->getTelefono().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0" step="0.01" min="40.0" max="150.0" value="'.$_SESSION['usuario']->getPeso().'" >';
@@ -140,11 +146,16 @@ class FormularioEditarPerfil extends Form {
             $erroresFormulario[] = "Debes meter tu contraseña anterior para poder cambiarla.";
         }
 
-        if (!$this->subir_fichero("includes/img/usuarios",'uploadImage', $datos['nif']))
-                 $erroresFormulario[] = "Foto incorrecta. Compruebe el formato del archivo";
+        //FOTO
+        if($_FILES['uploadImage']['name'] != ""){
+             if (!$this->subir_fichero("includes/img/usuarios",'uploadImage', $datos['nif']))
+                $erroresFormulario[] = "Foto incorrecta. Compruebe el formato del archivo";
+             $datos['foto'] = "includes/img/usuarios/".$nif.".jpg";
+        }else{
+             $datos['foto'] = "";
+        }
 
-        $nif = isset($datos['nif']) ? htmlspecialchars(strip_tags(strtoupper($datos['nif']))) : null;
-        $datos['foto'] = "includes/img/usuarios/".$_SESSION['usuario']->getNif().".jpg";
+        
         $ctrl = controller::getInstance();
          
 

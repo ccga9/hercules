@@ -4,6 +4,7 @@ table{
 	text-align: center;
 	border-collapse: collapse;
 	margin-bottom: 100px;
+	margin-top: 22px;
 	clear: both;
 	float:left;
 	min-width: auto;
@@ -31,8 +32,10 @@ tr:hover td{
 
 }
 
-h1{
+h1.tituloEntrenamiento{
 	float: left;
+	width: 80%;
+	text-align: left;
 }
 
 .fotos{
