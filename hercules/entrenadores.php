@@ -52,9 +52,9 @@
 		        foreach ($arr as $key => $valor) {
 		            echo '<li>';
 		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
-		            if (file_exists($valor['foto'])) {
-		                echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
-		            }
+		           
+		            echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
+		            
 
 		            echo $valor['titulacion'].'<br>';
 		            echo $valor['especialidad'].'<br>';
@@ -76,9 +76,9 @@
 		        foreach ($arr1 as $key => $valor) {
 		            echo '<li>';
 		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
-		            if (file_exists($valor['foto'])) {
+		       
 		                echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
-		            }
+		           
 
 		            echo $valor['titulacion'].'<br>';
 		            echo $valor['especialidad'].'<br>';
@@ -100,9 +100,9 @@
 		        foreach ($arr2 as $key => $valor) {
 		            echo '<li>';
 		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
-		            if (file_exists($valor['foto'])) {
-		                echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
-		            }
+		           
+		            echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
+		            
 
 		            echo $valor['titulacion'].'<br>';
 		            echo $valor['especialidad'].'<br>';

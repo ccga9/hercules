@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 	<meta charset="utf-8">
 	<title>HERCULES</title>
@@ -34,24 +34,25 @@
 		?>
 	
 		<h2>Datos personales</h2>
-		<?php
-
-		echo '<img src="'.$_SESSION['usuario']->getFoto().'" width="300" height="120" alt="Foto usuario">';
-		echo '<table>';
-		
-		echo '<tr>';
-		 echo '<td>'.$_SESSION['usuario']->getNombre().'</td>';					
-		echo'</tr>';
-		echo '<tr>';
-		 echo '<td>'.$_SESSION['usuario']->getNif().'</td>';				
-		echo'</tr>';
-		echo '<tr>';
-		 echo '<td>'.$_SESSION['usuario']->getEmail().'</td>';			
-		echo'</tr>';	
-	
-		echo '</table>';
 			
+
+		<?php
+		echo '<div class ="miPerfil">';
+
+		echo '<img  src="'.$_SESSION['usuario']->getFoto().'" alt="Foto usuario">';
+	
+		
+		echo '<ul>';
+		 echo $_SESSION['usuario']->getNombre();					
+
+		 echo $_SESSION['usuario']->getNif();				
+
+		 echo $_SESSION['usuario']->getEmail();			
+		echo '</ul>';
+
+		echo '</div>';
 		}
+
 		?>
 
 	</div>

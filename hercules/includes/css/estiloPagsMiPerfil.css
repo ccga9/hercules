@@ -206,3 +206,16 @@ div#contenido .tabla_comidas td
 	border: 1px solid black; 
 }
 
+/*MI PERFIL*/
+div#contenido .miPerfil img{
+	width:200px;
+	height: 250px;   
+	display: block;
+	margin: auto;
+}
+
+h3#nombre{
+	font-family: cursive;
+    font-size: 1.5em;
+    padding-left: 186px;
+}
