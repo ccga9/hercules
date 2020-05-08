@@ -45,8 +45,6 @@
 			<a href=""><img src="includes/img/nosotros/geraldyn.jpg" alt="foto de Geraldyn" /></a>
 			<p>Geraldyn Carrero Azuaje</p>
 			</li>
-			
-			
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/juan.jpg" alt="foto de Juan"  /></a>
 			<p>Cheng Jun Liu Zheng</p>
@@ -69,7 +67,7 @@
 
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/miriam.jpg" alt="foto de Miriam" /></a>
-			<p>Miriam Elizabeth Cabana Ramírez.</p>
+			<p class="fotos">Miriam Elizabeth Cabana Ramírez.</p>
 			</li>
 
 		</ul>

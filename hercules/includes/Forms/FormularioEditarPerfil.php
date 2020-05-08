@@ -42,7 +42,7 @@ class FormularioEditarPerfil extends Form {
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
-                $ret .= '<img src="'.$_SESSION['usuario']->getFoto().'" width="300" height="120" alt="Foto usuario">';
+                $ret .= '<img src="'.$_SESSION['usuario']->getFoto().'" width="200" height="250" alt="Foto usuario">';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
