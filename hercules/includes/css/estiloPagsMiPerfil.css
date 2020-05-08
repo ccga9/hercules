@@ -229,12 +229,13 @@ div#contenido .miPerfil img{
 	height: 250px;   
 	display: block;
 	margin: auto;
+	padding-bottom: 15px;
 }
 
 div#contenido .miPerfil h2.nombre {
 	font-family: serif;
 	text-align: center;
-	background-color: yellow;
+	background-color: white;
 	font-size: 40px;
 	margin: auto;
 	color: #3b3b3b;
@@ -244,6 +245,16 @@ div#contenido .miPerfil h2.nombre {
 div#contenido .miPerfil p.info {
 	font-size: 22px;
 	font-family: serif;
+	text-align: center;
+	margin: 0;
+}
+div#contenido .miPerfil label.eti {
+	padding-right: 250px;
+	padding-left: 250px;
+	background-color: #ffff40;
+	font-size: 22px;
+	font-family: serif;
+	font-weight: bold;
 	text-align: center;
 	margin: 0;
 }
