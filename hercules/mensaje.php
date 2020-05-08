@@ -26,14 +26,14 @@ require_once 'includes/config.php';
 	<div id="contenido">
 		<?php 
 		$id_mesg = $_GET['id_msg'];
-		echo "<a href= respuesta.php?id_msg='".$id_mesg."'><button type=button>Responder</button></a>";
-		$msg = $ctrl->mostrarMensaje($id_mesg);
-		while($fila = mysqli_fetch_assoc($msg)){
-		echo "<p>'".$fila['tema']."' '".$fila['autor']."' '".$fila['fecha']."'</p>";
-		echo "<p>'".$fila['mensaje']."'</p>";
-		}
+		echo "<a href= respuesta.php?id_msg=".$id_mesg."><button type=button>Responder</button></a>";
+		$fila = $ctrl->mostrarMensaje($id_mesg);
+		$i = 0;
 		
-		if($fila['autor'] == $_SESSION['usuario']){
+		echo "<p>'".$fila[$i]['tema']."' '".$fila[$i]['autor']."' '".$fila[$i]['fecha']."'</p>";
+		echo "<p>'".$fila[$i]['mensaje']."'</p>";
+		
+		if($fila[$i]['autor'] == $_SESSION['usuario']){
 		    echo "Modificar";//hay que hacer esto.
 		    echo "Eliminar";//hay que hacer esto.
 		}

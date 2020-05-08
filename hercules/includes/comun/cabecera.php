@@ -28,6 +28,7 @@
     		<ul>
     		  <li><a href= index.php>Inicio</a></li>
     		  <li><a href= entrenadores.php>Nuestros entrenadores</a></li>
+    		  <li><a href= foro.php>Foro</a></li>
     		  <li class="submenu"><a href= miPerfil.php>Mi Perfil</a>
                 <?php  
                     if (isset($_SESSION['login'])) {

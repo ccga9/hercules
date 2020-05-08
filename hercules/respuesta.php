@@ -25,7 +25,8 @@ require_once(__DIR__.'/includes/Forms/FormularioRespuesta.php');
 	<div id="contenido">
 
 		<?php  
-	   	    $act = new FormularioRespuesta($_GET['id_msg']);
+		  $id_mesg = $_GET['id_msg'];
+	   	    $act = new FormularioRespuesta($id_mesg);
 			$act->gestiona();
 		?>
 

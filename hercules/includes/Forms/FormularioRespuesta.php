@@ -72,7 +72,7 @@ class FormularioRespuesta extends Form {
         $datos['fecha'] = date_default_timezone_set('Europe/Madrid');
         $datos['id_r'] = $this->id_r;
         $datos['resp'] = "0";
-        $datos['tema'] = null;
+        $datos['tema'] = "";
         
         if (count($erroresFormulario) === 0) {
             $ctrl = controller::getInstance();
@@ -80,7 +80,8 @@ class FormularioRespuesta extends Form {
         }
         
         if (count($erroresFormulario) === 0) {
-            $erroresFormulario = "mensaje.php?id_msg='".$datos['id_r']."'";
+           // $erroresFormulario = "mensaje.php?id_msg='".$datos['id_r']."'";
+            $erroresFormulario = "foro.php";
         }
         
         return $erroresFormulario;

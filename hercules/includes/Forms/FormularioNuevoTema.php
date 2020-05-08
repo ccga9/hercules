@@ -91,7 +91,8 @@ class FormularioNuevoTema extends Form {
             $ctrl->nuevoMensaje($datos);
         }
         if (count($erroresFormulario) === 0) {
-            $erroresFormulario = "mensaje.php?id_msg='".$_GET['id_msg']."'";
+          //  $erroresFormulario = "mensaje.php?id_msg='".$_GET['id_msg']."'";
+            $erroresFormulario = "foro.php";
         }
         
         return $erroresFormulario;

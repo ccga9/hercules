@@ -538,23 +538,7 @@ class controller{
     //FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     public function listarTemas()
     {
-        $consulta = $this->foroDAO->listarNombresTemas();
-        
-       /* $ret = array();
-        $tema = array();
-        
-        if ($consulta) {
-            while ($fila = mysqli_fetch_assoc($consulta)){
-                $tema[] = $fila['id'];
-                $tema[] = $fila['tema'];
-                $tema[] = $fila['autor'];
-                $tema[] = $fila['fecha'];
-                $tema[] = $fila['respuestas'];
-                $ret[] = $tema;
-            }
-        }*/
-        
-        return $consulta;
+        return $this->foroDAO->listarNombresTemas();
     }
     
     public function mostrarMensaje($id)
