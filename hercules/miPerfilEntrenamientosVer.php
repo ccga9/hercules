@@ -82,7 +82,7 @@
 						 }
 					}
 				}else{
-					echo 'No tiene entrenamientos';
+					echo '<p> No tiene entrenamientos </p>';
 				}
 			}	
 	?>

@@ -55,7 +55,7 @@ class FormularioEditarPerfil extends Form {
                 $ret .= '<label>Sexo:</label> <input type="text" name="sexo" value="'.$_SESSION['usuario']->getSexo().'"readonly/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Fecha de nacimiento</label> <input class="control" type="date" placeholder="&#128231;Fecha de nacimiento" name="fecha" id = "fecha" onclick="javascript:calcularEdad();" value="'.$_SESSION['usuario']->getFechaNac().'"/>';
+                $ret .= '<label>Fecha de nacimiento</label> <input class="control" type="date" placeholder="&#128231;Fecha de nacimiento" name="fecha" id = "fecha" onclick="javascript:calcularEdad();" value="'.$_SESSION['usuario']->getFechaNac().'" readonly/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Tu email:</label> <input type="email" name="email" value="'.$_SESSION['usuario']->getEmail().'"/>';

@@ -278,7 +278,7 @@ CREATE TABLE `usuarioentrenador` (
 --
 
 INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
-(8, '12345678D', '12345678B', 'aceptado'),
+(8, '12345678G', '12345678B', 'aceptado'),
 (9, '26515643R', '12345678B', 'aceptado');
 
 -- --------------------------------------------------------

@@ -6,10 +6,10 @@
     		<?php  
     
     		if (isset($_SESSION['login'])) {
-    			echo  "<p>Has entrado como " . $_SESSION['usuario']->getNombre() . "</p><a href= logout.php>" . "Logout" . "</a>";
+    			echo  "<p>Has entrado como " . $_SESSION['usuario']->getNombre() . "</p><a href= logout.php>" . "Cerrar sesión" . "</a>";
     		}
     		else {
-    			echo '<a href= login.php>Log in</a>';
+    			echo '<a href= login.php>Iniciar sesión</a>';
     			echo '<br>';
     			echo '<a href= registro.php>Regístrate</a>';
     			echo '<br>';

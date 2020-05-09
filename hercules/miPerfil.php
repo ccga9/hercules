@@ -44,17 +44,17 @@
 	
 		 				
 		 echo '<label class = "eti">NIF </label> <p class = "info">'.$_SESSION['usuario']->getNif().'</p><br>';				
-		 echo '<label class = "eti">Correo electronico </label> <p class = "info">'.$_SESSION['usuario']->getEmail().'</p><br>';	
+		 echo '<label class = "eti">Correo electrónico </label> <p class = "info">'.$_SESSION['usuario']->getEmail().'</p><br>';	
 		 echo '<label class = "eti">Peso </label> <p class = "info"> '.$_SESSION['usuario']->getPeso().' kgs</p><br>';		
-		 echo '<label class = "eti">Altura </label> <p class = "info">'.$_SESSION['usuario']->getAltura().'cm</p><br>';
+		 echo '<label class = "eti">Altura </label> <p class = "info">'.$_SESSION['usuario']->getAltura().' cm</p><br>';
 		 echo '<label class = "eti">Fecha de nacimiento </label> <p class = "info"> '.$_SESSION['usuario']->getFechaNac().'</p><br>';
 		 echo '<label class = "eti">Preferencias </label> <p class = "info">'.$_SESSION['usuario']->getPreferencias().'</p><br>';
 		 echo '<label class = "eti">Ubicación </label> <p class = "info">'.$_SESSION['usuario']->getUbicacion().'</p><br>';
-		 echo '<label class = "eti">Telefono </label><p class = "info">'.$_SESSION['usuario']->getAltura().'</p><br>';
+		 echo '<label class = "eti">Teléfono </label><p class = "info">'.$_SESSION['usuario']->getTelefono().'</p><br>';
 		 echo '<label class = "eti">Sexo </label><p class = "info">'.$_SESSION['usuario']->getSexo().'</p><br>';
 		
 		 if($_SESSION['usuario']->getTipoUsuario()==1){
-		 	echo '<label class = "eti">Experiencia </label> <p class = "info">'.$_SESSION['usuario']->getExperiencia().'años</p><br>';
+		 	echo '<label class = "eti">Experiencia </label> <p class = "info">'.$_SESSION['usuario']->getExperiencia().' años</p><br>';
 		 	echo '<label class = "eti">Titulacion </label> <p class = "info">'.$_SESSION['usuario']->getTitulacion().'</p><br>';
 		 	echo '<label class = "eti">Especialidad</label> <p class = "info">'.$_SESSION['usuario']->getEspecialidad().'</p><br>';
 		 }
