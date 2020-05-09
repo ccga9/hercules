@@ -32,7 +32,7 @@
 					if(count($entrenamientos) > 0){
 						$nombreCliente = $ctrl->selectUsuario('nombre',"nif ='".$_GET['idCliente']."'");
 						echo '<table class="tablaEntrenamientos">';
-						echo '<thead><tr>'.'<th>Cliente</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th></th>'.'<th></th>'.'</tr></thead>';
+						echo '<thead><tr>'.'<th>Cliente</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th></th>'.'</tr></thead>';
 
 							   	foreach ($entrenamientos as $entrenamiento) {
 								echo '<tr>';
