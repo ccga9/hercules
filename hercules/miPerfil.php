@@ -56,7 +56,7 @@
 		 if($_SESSION['usuario']->getTipoUsuario()==1){
 		 	echo '<label class = "eti">Experiencia </label> <p class = "info">'.$_SESSION['usuario']->getExperiencia().'años</p><br>';
 		 	echo '<label class = "eti">Titulacion </label> <p class = "info">'.$_SESSION['usuario']->getTitulacion().'</p><br>';
-		 	echo '<label class = "eti">Especialidad</label> </p> <p class = "info">'.$_SESSION['usuario']->getEspecialidad().'</p><br>';
+		 	echo '<label class = "eti">Especialidad</label> <p class = "info">'.$_SESSION['usuario']->getEspecialidad().'</p><br>';
 		 }
 		echo '</div>';
 		}

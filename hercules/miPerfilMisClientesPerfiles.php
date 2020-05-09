@@ -32,17 +32,17 @@
 		echo '<a href="miPerfilMisClientes.php">ATRAS</a>';
 		
 		if ($_SESSION['login'] && $_SESSION['usuario']->getTipoUsuario()) {
-		    echo '<h1>Perfil de Cliente</h1>';
+
+			  
 		    
-		    echo '<h2>Datos personales</h2>';
-		    
-		    echo '<table>';
-		    echo '<tr><td>'.$cliente->getNombre().'</td></tr>';
-		    echo '<tr><td>'.$cliente->getEmail().'</td></tr>';
-		    echo '</table>';
+		    echo '<h1>Datos personales</h1>';
+		    echo '<h2>Perfil de Cliente</h2>';
+
 		    
 		    $arr = $ctrl->selectUs_Ent('', "usuario='".$_GET['id']."' AND entrenador ='".$_SESSION['usuario']->getNif()."'");
 		    if (count($arr) == 1) {
+		    	
+			
 		        if ($arr[0]['estado'] == "aceptado") {
 
 		        	echo '<div class="submenu-perfil">
@@ -61,6 +61,24 @@
 							</div>
 						</div>';
 
+
+				echo '<div class ="miPerfil">';
+				echo '<h2 class="nombre" >'.$cliente->getNombre().'</h2><br>';	
+				echo '<img  src="'.$cliente->getFoto().'" alt="Foto usuario">';
+				 				
+				 echo '<label class = "eti">NIF </label> <p class = "info">'.$cliente->getNif().'</p><br>';				
+				 echo '<label class = "eti">Correo electronico </label> <p class = "info">'.$cliente->getEmail().'</p><br>';	
+				 echo '<label class = "eti">Peso </label> <p class = "info"> '.$cliente->getPeso().' kgs</p><br>';		
+				 echo '<label class = "eti">Altura </label> <p class = "info">'.$cliente->getAltura().'cm</p><br>';
+				 echo '<label class = "eti">Fecha de nacimiento </label> <p class = "info"> '.$cliente->getFechaNac().'</p><br>';
+				 echo '<label class = "eti">Preferencias </label> <p class = "info">'.$cliente->getPreferencias().'</p><br>';
+				 echo '<label class = "eti">Ubicación </label> <p class = "info">'.$cliente->getUbicacion().'</p><br>';
+				 echo '<label class = "eti">Telefono </label><p class = "info">'.$cliente->getAltura().'</p><br>';
+				 echo '<label class = "eti">Sexo </label><p class = "info">'.$cliente->getSexo().'</p><br>';
+				
+			echo '</div>';
+		
+
 		            echo "<a href= miPerfilBuzon.php?reciever=".$_GET['id'].">Ir al chat</a>";
 		        }
 		        else {
@@ -70,6 +88,8 @@
 		  		    echo '<button type="submit" name="rechazar" value="rechaza">Rechazar</button>'.'<br>';
 		            echo '</form>';
 		        }
+
+
 		    }
 		    else {
 		        echo 'Página no encontrada';

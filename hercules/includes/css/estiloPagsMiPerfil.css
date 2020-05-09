@@ -260,13 +260,11 @@ div#contenido .miPerfil p.info {
 }
 
 div#contenido .miPerfil label.eti {
-	padding-right: 250px;
-	padding-left: 250px;
-	background-color: #ffff40;
-	font-size: 22px;
-	font-weight: bold;
-	text-align: center;
-	margin: 0;
+	display: block;
+    background-color: #eee;
+    color: #444;
+    font-size: 22px;
+    font-weight: bold;
 }
 div#contenido .miPerfil h3.aviso{
 	text-align: center;
