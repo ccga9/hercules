@@ -53,7 +53,7 @@
 		            echo '<li>';
 		            echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
 		           
-		            echo '<img src="'.$valor['foto'].'" width="300" height="120" alt="Foto usuario">';
+		            echo '<img src="'.$valor['foto'].'"  alt="Foto usuario">';
 		            
 
 		            echo $valor['titulacion'].'<br>';
