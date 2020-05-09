@@ -45,7 +45,7 @@
                     }
                 ?>
               </li>
-    		  <li><a href= quienes_somos.php>Quienes Somos</a></li>
+    		  <li><a href= quienes_somos.php>Quiénes Somos</a></li>
     		  <li><a href= faqs.php>FAQs</a></li>
     		  <li><a href= contacto.php>Contacto</a></li>
     		</ul>

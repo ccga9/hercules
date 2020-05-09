@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloFAQs.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-	<meta charset="utf-8">
+	<meta http-equiv=â€Content-Typeâ€ content=â€text/html; charset=UTF-8â€³ />
 	<title>HERCULES</title>
 </head>
 
@@ -30,17 +30,17 @@
 		
 		<h2>Preguntas Frecuentes</h2>
 		<div id= "preguntas">
-		<h3>¿Cuánto cuesta registrarse en Hercules?</h3>
+		<h3>Â¿CuÃ¡nto cuesta registrarse en Hercules?</h3>
 		</div>
 		<p> Es totalmente gratuito. </p>
 		<div id= "preguntas">
-		<h4>¿Están cualificados los entrenadores?</h4>
+		<h4>Â¿EstÃ¡n cualificados los entrenadores?</h4>
 		</div>
-		<p>Nosotros verificamos la homologación de todos y cada uno de los entrenadores.</p>
+		<p>Nosotros verificamos la homologaciÃ³n de todos y cada uno de los entrenadores.</p>
 		<div id= "preguntas">
-		<h5>¿Como puedo contactarme con mi entrenador ?</h5>
+		<h5>Â¿Como puedo contactarme con mi entrenador ?</h5>
 		</div>
-		<p>Una vez registrado y accedido a tu cuenta puedes seleccionar un entrenador y contactar con él de forma privada. </p>
+		<p>Una vez registrado y accedido a tu cuenta puedes seleccionar un entrenador y contactar con Ã©l de forma privada. </p>
 		
 	</div>
 

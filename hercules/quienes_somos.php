@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloQuienessomos.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-	<meta charset="utf-8">
+	<meta http-equiv=‚ÄùContent-Type‚Äù content=‚Äùtext/html; charset=UTF-8‚Ä≥ />
 	<title>HERCULES</title>
 </head>
 
@@ -24,12 +24,12 @@
 
 	<div id="contenido">
 		<div class="cab">
-		<h1>Quienes somos</h1>
+		<h1>Qui√©nes somos</h1>
 		<img src="includes/img/entrenadores.png" alt="entrenadores">
 		</div>
 
 		
-		<p> Somos un grupo de estudiantes de la Universidad Complutense de Madrid ,la idea de esta plataforma nacÌo gracias a 
+		<p> Somos un grupo de estudiantes de la Universidad Complutense de Madrid ,la idea de esta plataforma nac√≠o gracias a 
 		un miembro del equipo cuyo nombre es Emilio, esta plataforma se dedica a facilitar acceso a los usuarios para poder ejercitarse 
 		de una forma monitorizada y sin tener que desplazarse. </p>
 		<h2>Miembros del equipo:</h2>
@@ -38,7 +38,7 @@
 		<ul>
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/emilio.jpg" alt="foto de emilio"  /></a>
-			<p class="pnombreQuienesSomos">Emilio JosÈ Valencia</p>
+			<p class="pnombreQuienesSomos">Emilio Jos√© Valencia</p>
 			</li>
 
 			<li class=fotos>
@@ -52,7 +52,7 @@
 			
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/jaime.jpg" alt="foto de Jaime"  /></a>
-			<p class="pnombreQuienesSomos">Jaime MadriÒ·n Fern·ndez</p>
+			<p class="pnombreQuienesSomos">Jaime Madri√±√°n Fern√°ndez</p>
 			</li>
 			
 			<li class=fotos>
@@ -67,7 +67,7 @@
 
 			<li class=fotos>
 			<a href=""><img src="includes/img/nosotros/miriam.jpg" alt="foto de Miriam" /></a>
-			<p class="pnombreQuienesSomos" class="fotos">Miriam Elizabeth Cabana RamÌrez</p>
+			<p class="pnombreQuienesSomos" class="fotos">Miriam Elizabeth Cabana Ram√≠rez</p>
 			</li>
 
 		</ul>

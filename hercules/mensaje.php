@@ -5,7 +5,7 @@ require_once 'includes/config.php';
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
-	<meta charset="utf-8">
+	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
 </head>
 

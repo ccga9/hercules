@@ -6,7 +6,7 @@ require_once 'includes/config.php';
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloPagPrincipal.css" />
-	<meta charset="utf-8">
+	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
 </head>
 
@@ -28,7 +28,7 @@ require_once 'includes/config.php';
 	<div id="contenido">
 		<?php 
 		if(!isset($_SESSION['login'])){
-		    echo "Usuario no registrado. Inicia sesi�n o reg�strate para acceder al foro.";
+		    echo "Usuario no registrado. Inicia sesión o regístrate para acceder al foro.";
 		}
 		else{		
     		echo "<a href= nuevoTema.php><button type=button>Nuevo tema</button></a>";
