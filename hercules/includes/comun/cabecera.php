@@ -32,9 +32,14 @@
     		  <li class="submenu"><a href= miPerfil.php>Mi Perfil</a>
                 <?php  
                     if (isset($_SESSION['login'])) {
-                        if ($_SESSION['usuario']->getTipoUsuario()) {
+                        if ($_SESSION['usuario']->getTipoUsuario()==1) {
                             echo '<ul><li><a href= miPerfilMisClientes.php>Mis Clientes</a></li>';
                             echo '<li><a href= editarMiPerfil.php>Editar Perfil</a></li></ul>';
+                        }
+                        else if($_SESSION['usuario']->getTipoUsuario()==2){
+                            echo '<ul><li><a href= miPerfilEditar.php>Editar Perfil</a></li>';
+                            echo '<li><a href= gestionarUsuario.php>Gestionar Usuarios</a></li>';
+                            echo '<li><a href= gestionarEjercicios.php>Gestionar Ejercicios</a></li></ul>';
                         }
                         else {
                             echo '<ul><li><a href= miPerfilComidas.php>Comidas</a></li>';
