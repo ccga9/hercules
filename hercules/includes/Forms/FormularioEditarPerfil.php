@@ -151,11 +151,12 @@ class FormularioEditarPerfil extends Form {
         if($_FILES['uploadImage']['name'] != ""){
              if (!$this->subir_fichero("includes/img/usuarios",'uploadImage', $datos['nif']))
                 $erroresFormulario[] = "Foto incorrecta. Compruebe el formato del archivo";
-             $datos['foto'] = "includes/img/usuarios/".$nif.".jpg";
+             $datos['foto'] = "includes/img/usuarios/".$datos['nif'].".jpg";
         }else{
              $datos['foto'] = "";
         }
 
+echo $datos['foto'];
         
         $ctrl = controller::getInstance();
          
