@@ -8,11 +8,9 @@ require_once(__DIR__.'/DAO.php');
 require_once(__DIR__.'/../TOs/entrenamientoTO.php');
 
 class entrenamientoDAO extends DAO{
-    
     public function __construct(){
         parent::__construct();
     }
-    
 
     public function listarEntrenamientos($id){
         $query = "SELECT * FROM entrenamiento WHERE idUsuarioEntrenador = '". $id ."'";
@@ -92,11 +90,11 @@ class entrenamientoDAO extends DAO{
 	}
     
 
-    private static function delete($entrenamiento){
+    public function delete($idEntrenamiento){
 
-        $query= "DELETE entrenamiento where idEntrenamiento = '". $entrenamiento->idEntrenamiento ."'";
-
-        return $this->consultar($query);
+        $query= "DELETE FROM entrenamiento where idEntrenamiento = ". $idEntrenamiento;
+        
+        $this->consultar($query);
     }
 }
 

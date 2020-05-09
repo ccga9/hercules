@@ -442,6 +442,11 @@ class controller{
     //FIN FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
    //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
+    public function eliminarEntrenamiento($idEntrenamiento){
+         $this->entrenamientoDAO->delete($idEntrenamiento);
+    }
+
+
     public function listarEntrenamientos($idUsuarioEntrenador)
     {
 
@@ -478,7 +483,7 @@ class controller{
                                          
                     }
                 
-                 
+                     $row['id'] = $idEntrenamiento;
                      $row['ejercicios'] = $aux;
                      
                 $entrena[] = $row;

@@ -445,12 +445,11 @@ ALTER TABLE `comida`
 --
 ALTER TABLE `entrenamiento`
   ADD CONSTRAINT `entrenamiento_ibfk_1` FOREIGN KEY (`idUsuarioEntrenador`) REFERENCES `usuarioentrenador` (`id`) ON DELETE CASCADE;
-
 --
 -- Filtros para la tabla `entrenamientoejercicio`
 --
 ALTER TABLE `entrenamientoejercicio`
-  ADD CONSTRAINT `entrenamientoejercicio_ibfk_1` FOREIGN KEY (`idEntrenamiento`) REFERENCES `entrenamiento` (`idEntrenamiento`),
+  ADD CONSTRAINT `entrenamientoejercicio_ibfk_1` FOREIGN KEY (`idEntrenamiento`) REFERENCES `entrenamiento` (`idEntrenamiento`) ON DELETE CASCADE,
   ADD CONSTRAINT `entrenamientoejercicio_ibfk_2` FOREIGN KEY (`idEjercicio`) REFERENCES `ejercicio` (`idEjercicio`);
 
 --
