@@ -1,6 +1,6 @@
 <div id="cabecera">
 		
-		<img src="includes/img/Hercules_logo.png" width="300" height="120" alt="Logo de Hercules: la web">
+		<a href="index.php"> <img src="includes/img/Hercules_logo.png" width="300" height="120" alt="Logo de Hercules: la web"></a>
     	<div class="saludo">
     		
     		<?php  
