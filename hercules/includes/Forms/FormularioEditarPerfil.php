@@ -52,10 +52,10 @@ class FormularioEditarPerfil extends Form {
                 $ret .= '<label>Tu nombre:</label> <input type="text" name="nombre" value="'.$_SESSION['usuario']->getNombre().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Sexo:</label> <input type="text" name="nombre" value="'.$_SESSION['usuario']->getSexo().'"/>readonly';
+                $ret .= '<label>Sexo:</label> <input type="text" name="sexo" value="'.$_SESSION['usuario']->getSexo().'"readonly/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Fecha de nacimiento</label> <input class="control" type="date" placeholder="&#128231;Fecha de nacimiento" name="fecha" id = "fecha" onclick="javascript:calcularEdad();" value="'.$_SESSION['usuario']->getFechaNac().'" required/>';
+                $ret .= '<label>Fecha de nacimiento</label> <input class="control" type="date" placeholder="&#128231;Fecha de nacimiento" name="fecha" id = "fecha" onclick="javascript:calcularEdad();" value="'.$_SESSION['usuario']->getFechaNac().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Tu email:</label> <input type="email" name="email" value="'.$_SESSION['usuario']->getEmail().'"/>';
@@ -73,7 +73,7 @@ class FormularioEditarPerfil extends Form {
                 $ret .= '<label>Preferencias</label> <input class="control" type="text" placeholder="&#128100;Introduce lo que buscas" name="preferencias" value="'.$_SESSION['usuario']->getPreferencias().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Ubicación</label> <input class="control" type="text" placeholder="&#128100;Introduce tu ubicacion" name="preferencias" value="'.$_SESSION['usuario']->getUbicacion().'"/>';
+                $ret .= '<label>Ubicación</label> <input class="control" type="text" placeholder="&#128100;Introduce tu ubicacion" name="ubicacion" value="'.$_SESSION['usuario']->getUbicacion().'"/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
@@ -108,6 +108,7 @@ class FormularioEditarPerfil extends Form {
 
         //NOMBRE
         $nombre = isset($datos['nombre']) ? htmlspecialchars(strip_tags(strtoupper($datos['nombre']))) : null;
+
         $datos['nombre'] = $nombre;
 
         if ( empty($nombre) || mb_strlen($nombre) < 3) {

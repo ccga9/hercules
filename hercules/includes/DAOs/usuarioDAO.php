@@ -40,7 +40,7 @@ class UsuarioDAO extends DAO {
         if ($cond != "") {
             $query = "UPDATE usuario SET ".$set." WHERE ".$cond;
         }
-        
+        echo $query;
         return $this->consultarv2($query);
     }
     

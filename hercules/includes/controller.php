@@ -152,6 +152,8 @@ class controller{
                 $set .= "contrasenna='".password_hash($u['password'], PASSWORD_DEFAULT)."', ";
             if($u['email'] !== "")
                 $set .= "email='".$u['email']."',";
+            if($u['sexo'] !== "")
+                $set .= "sexo='".$u['sexo']."',";
              if($u['foto'] !== "")
                 $set .= "foto=' ".$u['foto']."',";
             if($u['fecha'] !== "")

@@ -33,10 +33,12 @@
 						$nombreCliente = $ctrl->selectUsuario('nombre',"nif ='".$_GET['idCliente']."'");
 						echo '<table class="tablaEntrenamientos">';
 						echo '<thead><tr>'.'<th>Cliente</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th></th>'.'<th></th>'.'</tr></thead>';
+
 							   	foreach ($entrenamientos as $entrenamiento) {
 								echo '<tr>';
 										$aux = serialize($entrenamiento);
 										$aux = urlencode($aux);
+										
 
 										echo '<td>'.$nombreCliente[0]['nombre'].'</td>';
 										echo '<td><a href="miPerfilEntrenamientosVerDetalle.php?entrenamiento='.$aux.'">'.$entrenamiento['nombre'].'</a></td>';
@@ -44,7 +46,6 @@
 										
 										echo '<td><a href="">Editar entrenamiento</a></td>';
 										echo '<td><button id= "abrir"> Eliminar entrenamiento </button></td>';
-										
 								echo '</tr>';
 							}
 						echo '</table>';
