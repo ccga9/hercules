@@ -34,11 +34,11 @@
 		</div>
 		<p> Es totalmente gratuito. </p>
 		<div id= "preguntas">
-		<h4>¿Están cualificados los entrenadores?</h4>
+		<h3>¿Están cualificados los entrenadores?</h3>
 		</div>
 		<p>Nosotros verificamos la homologación de todos y cada uno de los entrenadores.</p>
 		<div id= "preguntas">
-		<h5>¿Como puedo contactarme con mi entrenador ?</h5>
+		<h3>¿Como puedo contactarme con mi entrenador ?</h3>
 		</div>
 		<p>Una vez registrado y accedido a tu cuenta puedes seleccionar un entrenador y contactar con él de forma privada. </p>
 		

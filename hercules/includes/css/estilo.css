@@ -21,7 +21,7 @@ div#cabecera {
 	background-color: #303030;
 	color: white;
 	display: flex;
-	flex-direction: column;
+	flex-flow: wrap;
 	min-width: min-content;
 }
 
@@ -37,8 +37,8 @@ div#cabecera a:hover {
 }
 
 div#cabecera .saludo {
-	display: flex;
-	justify-content: flex-end;
+	place-self: flex-end;
+    margin-left: auto;
 }
 
 div#cabecera .saludo a {
@@ -78,6 +78,7 @@ div#cabecera .menu {
 
 div#contenido {
 	padding-top: 30px;
+	padding-bottom: 30px;
 	min-height: 500px;
 	width: 80%;
 	margin-left: 10%;
