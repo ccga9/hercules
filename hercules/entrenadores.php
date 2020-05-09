@@ -58,7 +58,7 @@
 
 		            echo $valor['titulacion'].'<br>';
 		            echo $valor['especialidad'].'<br>';
-					    echo $valor['experiencia'].'</p>';
+					 echo $valor['experiencia'].' años </p>';
 		            echo "<a href= entrenadores.php?perfil=".$valor['nif'].">Ver Perfil</a>";
 
 		            echo '</li>';
