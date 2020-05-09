@@ -6,7 +6,7 @@
     		<?php  
     
     		if (isset($_SESSION['login'])) {
-    			echo  "Has entrado como " . $_SESSION['usuario']->getNombre() . ". ". '<a href= logout.php>' . "Logout" . '</a>';
+    			echo  "<p>Has entrado como " . $_SESSION['usuario']->getNombre() . "</p><a href= logout.php>" . "Logout" . "</a>";
     		}
     		else {
     			echo '<a href= login.php>Log in</a>';

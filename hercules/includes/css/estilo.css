@@ -39,6 +39,7 @@ div#cabecera a:hover {
 div#cabecera .saludo {
 	place-self: flex-end;
     margin-left: auto;
+    display: flex;
 }
 
 div#cabecera .saludo a {
