@@ -6,7 +6,7 @@ class FormRegistroComida extends Form
 {
     public function __construct()
     {
-        parent::__construct('registroComida', array());
+        parent::__construct('miPerfilComidasRegistrar', array());
     }
     
     public function gestiona()
@@ -108,7 +108,7 @@ class FormRegistroComida extends Form
         
         if (count($erroresFormulario) === 0)
         {
-            $erroresFormulario = "verTablaComidas.php";
+            $erroresFormulario = "miPerfilComidasVerTablas.php";
         }
         
         return $erroresFormulario;

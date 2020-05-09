@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2020 a las 14:34:06
+-- Tiempo de generación: 09-05-2020 a las 11:56:24
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.30
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -425,8 +426,8 @@ ALTER TABLE `usuarioentrenador`
 -- Filtros para la tabla `alimentocomida`
 --
 ALTER TABLE `alimentocomida`
-  ADD CONSTRAINT `alimentocomida_ibfk_1` FOREIGN KEY (`idAlimento`) REFERENCES `alimento` (`idAlimento`),
-  ADD CONSTRAINT `alimentocomida_ibfk_2` FOREIGN KEY (`idComida`) REFERENCES `comida` (`idComida`);
+  ADD CONSTRAINT `alimentocomida_ibfk_1` FOREIGN KEY (`idAlimento`) REFERENCES `alimento` (`idAlimento`) ON DELETE CASCADE,
+  ADD CONSTRAINT `alimentocomida_ibfk_2` FOREIGN KEY (`idComida`) REFERENCES `comida` (`idComida`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `comentario`
@@ -445,6 +446,7 @@ ALTER TABLE `comida`
 --
 ALTER TABLE `entrenamiento`
   ADD CONSTRAINT `entrenamiento_ibfk_1` FOREIGN KEY (`idUsuarioEntrenador`) REFERENCES `usuarioentrenador` (`id`) ON DELETE CASCADE;
+
 --
 -- Filtros para la tabla `entrenamientoejercicio`
 --

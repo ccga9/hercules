@@ -6,7 +6,7 @@ class FormEliminarComida extends Form
 {
     public function __construct()
     {
-        parent::__construct('eliminarComida', array());
+        parent::__construct('miPerfilComidasEliminar', array());
     }
     
     public function gestiona()
@@ -75,7 +75,7 @@ class FormEliminarComida extends Form
         
         if (count($erroresFormulario) === 0)
         {
-            $erroresFormulario = "verTablaComidas.php";
+            $erroresFormulario = "miPerfilComidasVerTablas.php";
         }
         
         return $erroresFormulario;
