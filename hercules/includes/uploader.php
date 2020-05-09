@@ -21,8 +21,5 @@ if(move_uploaded_file ($_FILES['uploadedfile']['tmp_name'], $add)){
 }
 
 }else{echo $msg;}
-?>
 
-<?php
   echo "<img src='uploads/$file_name' >";
-?>

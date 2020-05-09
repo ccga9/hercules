@@ -109,5 +109,3 @@ class FormularioRegistrarEntrenamiento extends Form {
         return $erroresFormulario;
     }
 }
-
-?>

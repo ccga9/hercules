@@ -73,4 +73,3 @@ class foroDAO extends DAO
         return $this->consultar($query);
     }
 }
-?>

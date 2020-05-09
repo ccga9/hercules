@@ -230,5 +230,3 @@ class FormularioRegistro extends Form {
         return $erroresFormulario;
     }
 }
-
-?>

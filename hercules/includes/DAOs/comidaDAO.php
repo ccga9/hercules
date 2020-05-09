@@ -98,4 +98,3 @@ class comidaDAO extends DAO
     }
 
 }
-?>

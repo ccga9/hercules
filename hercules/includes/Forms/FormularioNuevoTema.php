@@ -62,22 +62,22 @@ class FormularioNuevoTema extends Form {
         $datos['texto'] = $text;
         
        /* if ( empty($text) || !ctype_alnum($text) ) { PONERRRR
-            $erroresFormulario[] = "Texto inválido.";
+            $erroresFormulario[] = "Texto invï¿½lido.";
         }*/
         
         if ( strlen($text) > 500 ) {
-            $erroresFormulario[] = "El texto no puede contener más de 500 caracteres.";
+            $erroresFormulario[] = "El texto no puede contener mï¿½s de 500 caracteres.";
         }
         
         $tema = isset($datos['tema']) ? htmlspecialchars(strip_tags(strtoupper($datos['tema']))) : null;
         $datos['tema'] = $tema;
         
         if ( empty($tema)) {
-            $erroresFormulario[] = "Tema inválido.";
+            $erroresFormulario[] = "Tema invï¿½lido.";
         }
         
         if ( strlen($tema) > 50 ) {
-            $erroresFormulario[] = "El tema no puede contener más de 50 caracteres.";
+            $erroresFormulario[] = "El tema no puede contener mï¿½s de 50 caracteres.";
         }
         
         $datos['autor'] = $_SESSION['usuario']->getNombre();
@@ -98,5 +98,3 @@ class FormularioNuevoTema extends Form {
         return $erroresFormulario;
     }
 }
-
-?>

@@ -49,4 +49,3 @@ class comida
 		$this->usuario = $u;
 	}
 }
-?>

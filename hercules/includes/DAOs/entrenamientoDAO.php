@@ -97,5 +97,3 @@ class entrenamientoDAO extends DAO{
         $this->consultar($query);
     }
 }
-
-?>

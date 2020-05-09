@@ -106,5 +106,3 @@ class UsuarioDAO extends DAO {
     	return $this->consultar($query);
     }
 }
-
-?>

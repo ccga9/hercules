@@ -45,4 +45,3 @@ class recomendacionesDAO extends DAO
 		// ¿si no quedan usuarios da un error?
 	}
 }
-?>

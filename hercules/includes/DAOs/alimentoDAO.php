@@ -63,4 +63,3 @@ class alimentoDAO extends DAO
     }
 
 }
-?>

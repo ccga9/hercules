@@ -48,4 +48,3 @@ class valoracionDAO extends DAO
         return $this->consultarv2($query);
     }
 }
-?>

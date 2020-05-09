@@ -106,4 +106,3 @@ class entrenamientoTO {
         $this->repeticiones = $repeticiones;
     }
 }
-?>

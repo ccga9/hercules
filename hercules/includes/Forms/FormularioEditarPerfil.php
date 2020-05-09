@@ -173,5 +173,3 @@ class FormularioEditarPerfil extends Form {
         return $erroresFormulario;
     }
 }
-
-?>

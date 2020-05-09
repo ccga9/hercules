@@ -61,11 +61,11 @@ class FormularioRespuesta extends Form {
         $datos['texto'] = $text;
         
         if ( empty($text)) {
-            $erroresFormulario[] = "Respuesta inválida.";
+            $erroresFormulario[] = "Respuesta invï¿½lida.";
         }
         
         if ( strlen($text) > 500 ) {
-            $erroresFormulario[] = "El texto no puede contener más de 500 caracteres.";
+            $erroresFormulario[] = "El texto no puede contener mï¿½s de 500 caracteres.";
         }
         
         $datos['autor'] = $_SESSION['usuario']->getNombre();
@@ -87,5 +87,3 @@ class FormularioRespuesta extends Form {
         return $erroresFormulario;
     }
 }
-
-?>

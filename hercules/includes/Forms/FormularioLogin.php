@@ -89,5 +89,3 @@ class FormularioLogin extends Form {
         return $erroresFormulario;
     }
 }
-
-?>
