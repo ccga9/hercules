@@ -10,7 +10,6 @@ require_once(__DIR__ . '/DAOs/usuarioDAO.php');
 require_once(__DIR__ . '/DAOs/alimentoDAO.php');
 require_once(__DIR__ . '/DAOs/comidaDAO.php');
 require_once(__DIR__ . '/DAOs/entrenamientoDAO.php');
-require_once(__DIR__ . '/DAOs/recomendacionesDAO.php');
 require_once(__DIR__ . '/DAOs/ejercicioDAO.php');
 require_once(__DIR__ . '/DAOs/foroDAO.php');
 require_once(__DIR__ . '/DAOs/mensajesDAO.php');
@@ -22,7 +21,6 @@ class controller{
     private $alimentoDAO;
     private $comidaDAO;
     private $entrenamientoDAO;
-    private $recomendacionesDAO;
     private $ejercicioDAO;
     private $foroDAO;
     private $mensajesDAO;
@@ -34,7 +32,6 @@ class controller{
         $this->alimentoDAO = new alimentoDAO();
         $this->comidaDAO = new comidaDAO();
         $this->entrenamientoDAO = new entrenamientoDAO();
-        $this->recomendacionesDAO = new recomendacionesDAO();
         $this->ejercicioDAO = new ejercicioDAO();
         $this->foroDAO = new foroDAO();
         $this->mensajesDAO = new mensajesDAO();

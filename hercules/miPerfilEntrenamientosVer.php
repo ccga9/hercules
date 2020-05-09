@@ -45,10 +45,11 @@
 										echo '<td>'.$entrenamiento['fecha'].'</td>';
 										
 										echo '<td><a href="">Editar entrenamiento</a></td>';
-										echo '<td><button id= "abrir"> Eliminar entrenamiento </button></td>';
+										
 								echo '</tr>';
 							}
 						echo '</table>';
+						echo '<button id= "abrir"> Eliminar entrenamiento </button>';
 					}else {
 						echo "<p> Todavía no tienes entrenamientos.</p>";
 			 		}
@@ -94,9 +95,14 @@
 				<h2>¿Estas seguro?</h2>
 				<?php 
 				    echo '<form action="PR_eliminarEntrenamiento.php" method="post">';
-				     echo '<input type="hidden" name="id" value="'.$entrenamiento['id'].'"/>';
+				    echo '<select name="id">';
+				    foreach ($entrenamientos as $entrenamiento) {
+				        echo '<option value="'.$entrenamiento['id'].'">'.$entrenamiento['nombre'].'</option>';
+				    }
+				    echo '</select>';
+				    
 				     echo '<input type="hidden" name="idCliente" value="'.$_GET['idCliente'].'"/>';
-				    echo '<td>'.$entrenamiento['id'].'</td>';
+				 
 					echo '<button type="submit" name="enviar" value="si">Si</button><br>';
 				    echo '<button type="submit" name="enviar" value="no">No</button><br>';
 				    echo '</form>';
