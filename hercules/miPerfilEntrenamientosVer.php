@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/estiloEntrenamientos.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="includes/js/scripts.js" ></script>
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
 </head>
@@ -32,24 +33,23 @@
 					if(count($entrenamientos) > 0){
 						$nombreCliente = $ctrl->selectUsuario('nombre',"nif ='".$_GET['idCliente']."'");
 						echo '<table class="tablaEntrenamientos">';
-						echo '<thead><tr>'.'<th>Cliente</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th></th>'.'</tr></thead>';
-
+						echo '<thead><tr>'.'<th>Cliente</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th></th>'.'<th></th>'.'</tr></thead>';
 							   	foreach ($entrenamientos as $entrenamiento) {
 								echo '<tr>';
+
 										$aux = serialize($entrenamiento);
 										$aux = urlencode($aux);
-										
 
 										echo '<td>'.$nombreCliente[0]['nombre'].'</td>';
 										echo '<td><a href="miPerfilEntrenamientosVerDetalle.php?entrenamiento='.$aux.'">'.$entrenamiento['nombre'].'</a></td>';
 										echo '<td>'.$entrenamiento['fecha'].'</td>';
 										
 										echo '<td><a href="">Editar entrenamiento</a></td>';
+										echo '<td><button id= "abrir'.$entrenamiento['id'].'" onclick="eliminarEntrenami('.$entrenamiento['id'].')"> Eliminar entrenamiento </button></td>';
 										
 								echo '</tr>';
 							}
 						echo '</table>';
-						echo '<button id= "abrir"> Eliminar entrenamiento </button>';
 					}else {
 						echo "<p> Todavía no tienes entrenamientos.</p>";
 			 		}
@@ -95,14 +95,9 @@
 				<h2>¿Estas seguro?</h2>
 				<?php 
 				    echo '<form action="PR_eliminarEntrenamiento.php" method="post">';
-				    echo '<select name="id">';
-				    foreach ($entrenamientos as $entrenamiento) {
-				        echo '<option value="'.$entrenamiento['id'].'">'.$entrenamiento['nombre'].'</option>';
-				    }
-				    echo '</select>';
-				    
+				     echo '<input id="idEnt" type="hidden" name="id" />';
 				     echo '<input type="hidden" name="idCliente" value="'.$_GET['idCliente'].'"/>';
-				 
+				    echo '<p id="imprimirID"></p>';
 					echo '<button type="submit" name="enviar" value="si">Si</button><br>';
 				    echo '<button type="submit" name="enviar" value="no">No</button><br>';
 				    echo '</form>';
@@ -118,6 +113,5 @@
 
 	?>
 </div> <!-- Fin del contenedor -->
-<script type="text/javascript" src="includes/js/scripts.js" ></script>
 </body>
 </html>
