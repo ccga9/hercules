@@ -23,9 +23,6 @@ class foroDAO extends DAO
             
             $id_tema = $tema[$i]['id'];
             $resp_tema = $tema[$i]['respuestas'];
-          /*  $fila = mysqli_fetch_array($tema);
-            $id_tema = $fila['id'];
-            $resp_tema = $fila['respuestas'];*/
             
             $query = "INSERT INTO foro(autor, mensaje, fecha, respuestas, id_r) VALUES 
             ('".$autor."','".$msg."','".$fecha."', '0', '".$id_tema."')";

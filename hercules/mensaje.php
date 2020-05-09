@@ -5,7 +5,7 @@ require_once 'includes/config.php';
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
-	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+	<meta http-equiv=â€�Content-Typeâ€� content=â€�text/html; charset=UTF-8â€³ />
 	<title>HERCULES</title>
 </head>
 
@@ -29,25 +29,18 @@ require_once 'includes/config.php';
 		echo "<a href= respuesta.php?id_msg=".$id_mesg."><button type=button>Responder</button></a>";
 		$fila = $ctrl->mostrarMensaje($id_mesg);
 		$i = 0;
+		echo "<ul>";
+		echo "<li>".$fila[$i]['tema']." <pre>Autor: ".$fila[$i]['autor'].", Fecha: ".$fila[$i]['fecha'].".</pre>";
+		echo "<pre>".$fila[$i]['mensaje']."</pre> </li>";
 		
-		echo "<p>'".$fila[$i]['tema']."' '".$fila[$i]['autor']."' '".$fila[$i]['fecha']."'</p>";
-		echo "<p>'".$fila[$i]['mensaje']."'</p>";
-		
-		if($fila[$i]['autor'] == $_SESSION['usuario']){
-		    echo "Modificar";//hay que hacer esto.
-		    echo "Eliminar";//hay que hacer esto.
-		}
 		
 		$resp = $ctrl->mostrarRespuestas($id_mesg);
 		if ($resp) {
 		    while ($fila = mysqli_fetch_assoc($resp)){
-		        echo "<p>'".$fila['autor']."' '".$fila['fecha']."'</p>";
-		        if($fila['autor'] == $_SESSION['usuario']){
-		            echo "Modificar";//hay que hacer esto.
-		            echo "Eliminar";//hay que hacer esto.
-		        }
-		        echo "<p>'".$fila['mensaje']."'</p><br>";
+		        echo "<li><pre>Autor: ".$fila['autor']." Fecha: ".$fila['fecha']."</pre>";
+		        echo "<pre>".$fila['mensaje']."</pre></li>";
 		    }
+		    echo"</ul>";
 		}
 		else{
 		    echo "<p>No hay respuestas...</p>";

@@ -402,3 +402,9 @@ div#contenido .entrenadores-all {
 	background: linear-gradient(#FFBB33, #F8CC76);
 }
 /*FIN NUESTROS ENTRENADORES*/
+
+div#tema{
+}
+div#tema .msg{
+	background-color: #b8baaf;
+}
