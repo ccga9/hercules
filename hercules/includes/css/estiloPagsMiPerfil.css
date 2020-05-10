@@ -143,7 +143,7 @@ div#contenido .chat-all ul li{
 /*FIN ESTILO MENSAJES/CHAT*/
 
 /*COMUNES*/
-div#contenido a, button[type="submit"]{
+div#contenido a, button[type="submit"], button[id="abrir"]{
 	cursor:pointer;
 	text-decoration: none;
 	border: 0;
@@ -159,8 +159,14 @@ div#contenido a, button[type="submit"]{
 	text-align: center;
 }
 
-div#contenido a:hover, button[type="submit"]:hover{
+div#contenido a:hover, button[type="submit"]:hover, button[id="abrir"]:hover{
 	background: linear-gradient(#e9e174, #e3da0c);
+}
+
+div#contenido button[id="abrir"]{
+	width: 100%;
+	margin: 0;
+	padding: auto;
 }
 
 .texto-chat {
@@ -274,4 +280,15 @@ div#contenido .miPerfil h3.aviso{
 	color: #3b3b3b;
 	padding: 10px;
 	position: relative;
+}
+
+/*Para mostrar en fila los botones*/
+div#contenido .miPerfil	ul{
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+}
+
+div .miPerfil li {
+	margin: 20px;
 }

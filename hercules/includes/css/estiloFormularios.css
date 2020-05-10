@@ -33,6 +33,10 @@
 	flex-direction: column;
 }
 
+.form-inicio input{
+	width: 90%;
+}
+
 fieldset {
 	width: 80%;
 	margin: 0 auto;
@@ -59,9 +63,7 @@ legend {
 }
 
 input {
-	display: block;
 	padding: 5px;
-	width: 90%;
 	margin: 20px 0;
 	font-size: 18px;
 }
@@ -120,6 +122,7 @@ button[type="reset"]:hover {
 .radio-button {
 	display: flex;
 	flex-direction: row;
+	width: 80%;
 }
 
 .radio-button, .radio-check-button label{

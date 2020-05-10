@@ -50,9 +50,7 @@ class FormularioRegistrarEntrenamiento extends Form {
             $ctrl = controller::getInstance();
             $datos = $ctrl->listarEjercicios();
             foreach ($datos as $value) {
-                $ret .= '<div class="checkbox-button">';
                     $ret .= '<label>'.$value.'</label> <input type="checkbox" name="ejercicios[]" value="'.$value.'"/>';
-                $ret .= '</div>';
             }
 
             $ret .= '<div class="grupo-control"><button type="submit" name="Enviar">Enviar</button></div>';

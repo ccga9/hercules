@@ -81,9 +81,7 @@ class FormularioRegistro extends Form {
                 $ret .= '<label for="hombre">Hombre</label> <input type="radio" name="sexo" value="Hombre" id="hombre">';
                 $ret .= '<label for="mujer">Mujer</label><input type="radio" name="sexo" value="Mujer" id="mujer">';
             $ret .= '</div>';
-            $ret .= '<div class="radio-check-button">';
             $ret .= '<label>¿Eres entrenador/a? (Rellena los campos de abajo)</label> <input type="checkbox" name="tipoUsuario" value="ok"/>';
-            $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Titulacion</label> <input class="control" type="text" placeholder="&#127891;Titulación" name="titulacion" />';

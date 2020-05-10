@@ -25,18 +25,16 @@ class FormRegistroComida extends Form
 
         $ret .=	
 		'<label> Escoge el tipo de comida que desees:</label>
-        <div class="radio-button">
-            
+		 <div class="radio-button">
             <label for="desayuno">Desayuno</label>
             <input type="radio" name="tipo" value="desayuno" checked/>
-            
+
             <label for="comida">Comida</label>
     		<input type="radio" name="tipo" value="comida"/>
-           
+
             <label for="cena">Cena</label>
     		<input type="radio" name="tipo" value="cena"/>
-        </div>
-
+    	</div>
 		<div class="grupo-control"><label for="instrucciones_alimentos">Selecciona entre 1 y 3 platos, 
 		dependiendo del tipo de comida que hayas escogido y la cantidad que quieras comer:</label></div>
 

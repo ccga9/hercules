@@ -5,6 +5,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
@@ -37,20 +38,23 @@
     		
     		$entrenador = $ctrl->cargarUsuario($_GET['id']);
     		
-    		echo '<table>';
-    			echo '<tr><td>Nombre: '.$entrenador->getNombre().'</td></tr>';
-    			echo '<tr><td>Email: '.$entrenador->getEmail().'</td></tr>';
-    			echo '<tr><td>Titulacion: '.$entrenador->getTitulacion().'</td></tr>';
-    			echo '<tr><td>Especialidad: '.$entrenador->getEspecialidad().'</td></tr>';
-    			echo '<tr><td>Experiencia: '.$entrenador->getExperiencia().'</td></tr>';
-    		echo '</table>';
-    		echo '<a href= "miPerfilEntrenamientosVer.php?idEntrenador='.$_GET['id'].'"> Ver entrenamientos </a>';
-    		echo '<br>';
-    		echo "<a href= miPerfilBuzon.php?reciever=".$_GET['id'].">Ir al chat</a>";
-    		echo '<br>';
-    		echo '<a href= "PR_eliminarEntrenador.php?idEntrenador='.$_GET['id'].'"> Eliminar de mi lista </a>';
-    		echo '<br>';
-    		echo '<button id= "abrir"> Dejar mi reseña </button>';
+    		echo '<div class ="miPerfil">';
+ 
+    			echo '<h2 class="nombre" >'.$entrenador->getNombre().'</h2><br>';
+    			echo '<img  src="'.$entrenador->getFoto().'" alt="Foto usuario">';
+    			echo '<label class = "eti">Correo electrónico </label>Email: '.$entrenador->getEmail().'</p><br>';
+    			echo '<label class = "eti">Titulacion </label>'.$entrenador->getTitulacion().'</p><br>';
+    			echo '<label class = "eti">Especialidad </label>'.$entrenador->getEspecialidad().'</p><br>';
+    			echo '<label class = "eti">Experiencia </label>'.$entrenador->getExperiencia().'</p><br>';
+    		
+    		echo '<ul>';
+    		echo '<li><a href= "miPerfilEntrenamientosVer.php?idEntrenador='.$_GET['id'].'"> Ver entrenamientos </a></li>';
+    		echo "<li><a href= miPerfilBuzon.php?reciever=".$_GET['id'].">Ir al chat</a></li>";
+    		echo '<li><a href= "PR_eliminarEntrenador.php?idEntrenador='.$_GET['id'].'"> Eliminar de mi lista </a></li>';
+    		echo '</ul><ul><li><button id= "abrir"> Dejar mi reseña </button></li>';
+    		echo '</ul>';
+    		echo '</div>';
+    		
 		}
 		else {
 		    header("Location: login.php");
