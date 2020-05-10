@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2020 a las 19:23:40
+-- Tiempo de generación: 10-05-2020 a las 20:36:20
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -246,7 +246,6 @@ CREATE TABLE `mensajes` (
 
 INSERT INTO `mensajes` (`id`, `emisor`, `receptor`, `texto`, `fecha`, `del_1`, `del_2`, `visto`) VALUES
 (1, '26515643R', '12345678A', 'Prueba de mensajes', '2020-04-26 13:27:40', 0, 0, 1),
-(2, '12345678A', '26515643R', 'Que pasa bro', '2020-04-26 14:11:21', 0, 1, 1),
 (3, '26515643R', '12345678A', 'Hola', '2020-04-27 14:21:36', 0, 0, 1),
 (4, '26515643R', '12345678A', 'Hola', '2020-04-27 14:22:53', 0, 0, 1),
 (6, '26515643R', '12345678B', '¡Hola! Soy JUAN LIU.', '2020-04-27 17:11:18', 0, 0, 1),
