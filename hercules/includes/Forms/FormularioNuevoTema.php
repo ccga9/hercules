@@ -81,7 +81,7 @@ class FormularioNuevoTema extends Form {
         }
         
         $datos['autor'] = $_SESSION['usuario']->getNombre();
-        $datos['fecha'] = date_default_timezone_set('Europe/Madrid');
+        
         $datos['resp'] = '0';
         $datos['tema'] = $datos['tema'];
         $datos['id_r'] = '0';

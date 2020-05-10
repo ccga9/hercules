@@ -553,7 +553,7 @@ class controller{
     
     public function nuevoMensaje($datos)
     {
-        return $this->foroDAO->inserta($datos['autor'], $datos['texto'], $datos['fecha'], $datos['id_r'], $datos['tema']);
+        return $this->foroDAO->inserta($datos['autor'], $datos['texto'], $datos['id_r'], $datos['tema']);
     }
     //FIN FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     public function listarUsuarios()

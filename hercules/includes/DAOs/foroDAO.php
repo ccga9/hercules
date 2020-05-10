@@ -9,11 +9,11 @@ class foroDAO extends DAO
         parent::__construct();
     }
     
-    public function inserta($autor, $msg, $fecha, $id_r, $tema)
+    public function inserta($autor, $msg, $id_r, $tema)
     {
         if($tema != ""){
-          $query = "INSERT INTO foro(autor, mensaje, fecha, respuestas, id_r, tema) VALUES 
-          ('".$autor."','".$msg."','".$fecha."', '0', '0', '".$tema."')";
+          $query = "INSERT INTO foro(autor, mensaje, respuestas, id_r, tema) VALUES 
+          ('".$autor."','".$msg."', '0', '0', '".$tema."')";
         }
         
         else{
@@ -24,8 +24,8 @@ class foroDAO extends DAO
             $id_tema = $tema[$i]['id'];
             $resp_tema = $tema[$i]['respuestas'];
             
-            $query = "INSERT INTO foro(autor, mensaje, fecha, respuestas, id_r) VALUES 
-            ('".$autor."','".$msg."','".$fecha."', '0', '".$id_tema."')";
+            $query = "INSERT INTO foro(autor, mensaje, respuestas, id_r) VALUES 
+            ('".$autor."','".$msg."', '0', '".$id_tema."')";
             
             $resp_tema++;
             $query2 = "UPDATE foro(respuestas) VALUES ('".$resp_tema."') WHERE id = '".$id_tema."'";
