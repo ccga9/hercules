@@ -73,14 +73,13 @@
 
 					if(count($idUsuarioEntrenadores) > 0){
 					    echo '<table class="tablaEntrenamientos">';
-					    echo '<thead><tr>'.'<th>Entrenador</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'</tr></thead>';
 						foreach ($idUsuarioEntrenadores as $idUsuarioEntrenadores2) {
 							$entrenamientos = $ctrl->listarEntrenamientos($idUsuarioEntrenadores2['id']);
 							$nombreEntrenador = $ctrl->selectUsuario("nombre", "nif='".$idUsuarioEntrenadores2['entrenador']."'");
                         
 								if(count($entrenamientos) > 0){
-									/*echo '<table class="tablaEntrenamientos">';
-									echo '<thead><tr>'.'<th>Entrenador</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'</tr></thead>';*/
+								    echo '<thead><tr>'.'<th>Entrenador</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'</tr></thead>';
+									//echo '<table class="tablaEntrenamientos">';
 						   	 			foreach ($entrenamientos as $entrenamiento) {
 											echo '<tr>';
 													$aux = serialize($entrenamiento);
@@ -94,10 +93,11 @@
 										}
 									//echo '</table>';	
 								}
+								
 					       }
 					       echo '</table>';	
     				}else{
-    					echo '<p> No tiene entrenamientos </p>';
+    					echo '<p> No tienes entrenadores </p>';
     				}
 			   }	
 	?>	

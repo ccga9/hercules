@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2020 a las 16:06:12
+-- Tiempo de generación: 10-05-2020 a las 17:49:33
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Versión de PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -74,12 +74,18 @@ CREATE TABLE `alimentocomida` (
 
 INSERT INTO `alimentocomida` (`idAlimento`, `idComida`) VALUES
 (1, 1),
-(2, 2),
-(3, 2),
+(1, 3),
 (3, 5),
-(5, 2),
+(6, 1),
 (8, 5),
-(12, 4);
+(8, 7),
+(10, 6),
+(11, 1),
+(12, 2),
+(12, 3),
+(12, 4),
+(13, 6),
+(14, 7);
 
 -- --------------------------------------------------------
 
@@ -99,11 +105,13 @@ CREATE TABLE `comida` (
 --
 
 INSERT INTO `comida` (`idComida`, `dia`, `tipo`, `usuario`) VALUES
-(1, '2020-04-24 18:00:00', 'desayuno', '12345678E'),
-(2, '2020-04-25 16:18:46', 'cena', '12345678E'),
+(1, '2020-05-08 14:31:49', 'comida', '26515643R'),
+(2, '2020-05-01 14:32:38', 'desayuno', '12345678F'),
 (3, '2020-05-03 13:37:56', 'desayuno', '12345678F'),
 (4, '2020-05-10 13:39:11', 'desayuno', '12345678F'),
-(5, '2020-05-10 13:43:32', 'cena', '12345678G');
+(5, '2020-05-10 13:43:32', 'cena', '12345678G'),
+(6, '2020-05-06 14:00:00', 'comida', '12345678H'),
+(7, '2020-05-04 17:38:14', 'cena', '12345678G');
 
 -- --------------------------------------------------------
 
@@ -212,11 +220,8 @@ CREATE TABLE `foro` (
 --
 
 INSERT INTO `foro` (`id`, `autor`, `mensaje`, `fecha`, `respuestas`, `id_r`, `tema`) VALUES
-(0, ' JUAN LIU', 'XD', '0000-00-00', 0, 0, 'SAFFSAD'),
-(0, ' JUAN LIU', 'GRAEGR', '0000-00-00', 0, 0, 'WEFAFAWE'),
-(0, ' JUAN LIU', 'QQW', '2020-05-10', 0, 0, 'SDDSE'),
-(0, 'Hugan', 'ME GUSTARíA QUE LOS PASEOS AL AIRE LIBRE SE PUDIERAN REALIZAR SIN LíMITE DE HORA', '2020-05-10', 0, 0, 'DAR PASEOS AL AIRE LIBRE EN MADRID'),
-(0, 'Hugan', 'HOLA', '2020-05-10', 0, 0, 'TEMA DE PRUEBA');
+(4, 'Hugan', 'ME GUSTARíA QUE LOS PASEOS AL AIRE LIBRE SE PUDIERAN REALIZAR SIN LíMITE DE HORA', '2020-05-10', 0, 0, 'DAR PASEOS AL AIRE LIBRE EN MADRID'),
+(5, 'Hugan', 'HOLA', '2020-05-10', 0, 0, 'TEMA DE PRUEBA');
 
 -- --------------------------------------------------------
 
@@ -244,9 +249,7 @@ INSERT INTO `mensajes` (`id`, `emisor`, `receptor`, `texto`, `fecha`, `del_1`, `
 (2, '12345678A', '26515643R', 'Que pasa bro', '2020-04-26 14:11:21', 0, 1, 1),
 (3, '26515643R', '12345678A', 'Hola', '2020-04-27 14:21:36', 0, 0, 1),
 (4, '26515643R', '12345678A', 'Hola', '2020-04-27 14:22:53', 0, 0, 1),
-(5, '26515643R', '12345678A', 'Fuck', '2020-04-27 14:23:07', 0, 0, 1),
 (6, '26515643R', '12345678B', '¡Hola! Soy JUAN LIU.', '2020-04-27 17:11:18', 0, 0, 1),
-(7, '12345678A', '26515643R', 'afrrfanñjkfanr\r\n', '2020-05-04 14:23:54', 0, 0, 1),
 (8, '12345678F', '12345678G', '¡Hola! Soy Hugan.', '2020-05-10 13:40:38', 0, 0, 1),
 (9, '12345678F', '12345678c', '¡Hola! Soy Hugan.', '2020-05-10 13:40:50', 0, 0, 0),
 (10, '12345678F', '12345678a', 'Hola, buenos dias.', '2020-05-10 13:41:00', 0, 0, 0),
@@ -397,6 +400,12 @@ ALTER TABLE `entrenamientoejercicio`
   ADD KEY `idEjercicio` (`idEjercicio`);
 
 --
+-- Indices de la tabla `foro`
+--
+ALTER TABLE `foro`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
@@ -438,7 +447,7 @@ ALTER TABLE `alimento`
 -- AUTO_INCREMENT de la tabla `comida`
 --
 ALTER TABLE `comida`
-  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio`
@@ -451,6 +460,12 @@ ALTER TABLE `ejercicio`
 --
 ALTER TABLE `entrenamiento`
   MODIFY `idEntrenamiento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `foro`
+--
+ALTER TABLE `foro`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`

@@ -61,7 +61,7 @@ class FormularioEditarPerfil extends Form {
                 $ret .= '<label>Tu email:</label> <input type="email" name="email" value="'.$_SESSION['usuario']->getEmail().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-            $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#128231;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" value="'.$_SESSION['usuario']->getTelefono.'/>';
+            $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#128231;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" value="'.$_SESSION['usuario']->getTelefono().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0" step="0.01" min="40.0" max="150.0" value="'.$_SESSION['usuario']->getPeso().'"/>';
