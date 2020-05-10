@@ -36,8 +36,8 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>NIF/NIE:</label> <input class="control" type="text" placeholder="&#128100;NIF/NIE" name="nif" required autofocus/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<input type="hidden" name="MAX_FILE_SIZE" value="200000" />';
-                $ret .= '<label>Sube foto</label><input name="uploadImage" type="file" value= includes/img/usuarios/default.png placeholder="&#128100';
+                
+                $ret .= '<label>Sube foto</label><input name="uploadImage" type="file" value= "includes/img/usuarios/default.png" placeholder="&#128100/>';
             $ret .= '</div>';
            /* $ret .= '<div class="grupo-control">';
                 $ret .= '  <img id="uploadPreview1" width="150" height="150" " />';
@@ -57,16 +57,16 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#x1f4f1;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" />';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0" step="0.01" min="40.0" max="300.0" >';
+                $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0(Opcional)" step="0.01" min="40.0" max="300.0" >';
             $ret .= '</div>';
              $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Altura (cm)</label>  <input type="number"  name="altura" placeholder="0.0" step="0.01" min="40.0" max="300.0" >';
+                $ret .= '<label>Altura (cm)</label>  <input type="number"  name="altura" placeholder="0.0(Opcional)" step="0.01" min="40.0" max="300.0" >';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Preferencias</label> <input class="control" type="text" placeholder="&#128100;Introduce lo que buscas" name="preferencias"/>';
+                $ret .= '<label>Preferencias</label> <input class="control" type="text" placeholder="&#128100(Opcional);Introduce lo que buscas" name="preferencias"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Ubicación</label> <input class="control" type="text" placeholder="&#128100;Introduce tu ubicacion" name="ubicacion"/>';
+                $ret .= '<label>Ubicación</label> <input class="control" type="text" placeholder="&#128100(Opcional);Introduce tu ubicacion" name="ubicacion"/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
@@ -80,7 +80,7 @@ class FormularioRegistro extends Form {
             $ret .= '<label for="hombre">Hombre</label> <input type="radio" name="sexo" value="Hombre" id="hombre">';
             $ret .= '<label for="mujer">Mujer</label><input type="radio" name="sexo" value="Mujer" id="mujer">';
             
-            $ret .= '<label>¿Eres entrenador/a? (Rellena los campos de abajo)</label> <input type="checkbox" name="tipoUsuario" value="ok"/>';
+            $ret .= '<label>Dale a la casilla si eres entrenador/a (Rellena los campos de abajo)</label> <input type="checkbox" name="tipoUsuario" value="ok"/>';
 
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Titulacion</label> <input class="control" type="text" placeholder="&#127891;Titulación" name="titulacion" />';
