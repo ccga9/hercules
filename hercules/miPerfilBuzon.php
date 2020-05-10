@@ -28,7 +28,7 @@
 		
 		if (!isset($_GET['reciever'])) {
 			echo '<div class="chat-all">';
-		    echo '<form method="POST" action="procesaChat.php">';
+		    echo '<form method="POST" action="PR_miPerfilBuzon_chat.php">';
 		    
 		    echo '<input type="hidden" name="emisor_n" value="'.$_SESSION["usuario"]->getNombre().'">';
 		    echo '<input type="hidden" name="emisor" value="'.$_SESSION["usuario"]->getNif().'">';
