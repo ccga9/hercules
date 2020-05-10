@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2020 a las 16:44:13
+-- Tiempo de generación: 10-05-2020 a las 16:06:12
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -74,18 +74,12 @@ CREATE TABLE `alimentocomida` (
 
 INSERT INTO `alimentocomida` (`idAlimento`, `idComida`) VALUES
 (1, 1),
-(1, 3),
+(2, 2),
+(3, 2),
 (3, 5),
-(6, 1),
+(5, 2),
 (8, 5),
-(8, 7),
-(10, 6),
-(11, 1),
-(12, 2),
-(12, 3),
-(12, 4),
-(13, 6),
-(14, 7);
+(12, 4);
 
 -- --------------------------------------------------------
 
@@ -105,13 +99,11 @@ CREATE TABLE `comida` (
 --
 
 INSERT INTO `comida` (`idComida`, `dia`, `tipo`, `usuario`) VALUES
-(1, '2020-05-08 14:31:49', 'comida', '26515643R'),
-(2, '2020-05-01 14:32:38', 'desayuno', '12345678F'),
+(1, '2020-04-24 18:00:00', 'desayuno', '12345678E'),
+(2, '2020-04-25 16:18:46', 'cena', '12345678E'),
 (3, '2020-05-03 13:37:56', 'desayuno', '12345678F'),
 (4, '2020-05-10 13:39:11', 'desayuno', '12345678F'),
-(5, '2020-05-10 13:43:32', 'cena', '12345678G'),
-(6, '2020-05-06 14:00:00', 'comida', '12345678H'),
-(7, '2020-05-04 17:38:14', 'cena', '12345678G');
+(5, '2020-05-10 13:43:32', 'cena', '12345678G');
 
 -- --------------------------------------------------------
 
@@ -446,7 +438,7 @@ ALTER TABLE `alimento`
 -- AUTO_INCREMENT de la tabla `comida`
 --
 ALTER TABLE `comida`
-  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio`
