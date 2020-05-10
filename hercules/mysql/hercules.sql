@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2020 a las 17:49:33
+-- Tiempo de generación: 10-05-2020 a las 19:23:40
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -301,8 +301,8 @@ INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, 
 ('12345678F', 'Hugan', '$2y$10$L9uPLpdr8gX6ffx.6tBuy.xciEHtyQV7Q9CV4sJXSzp93fPKaZsRu', 'includes/img/usuarios/default.png', 'theHulk@gmail.com', 'hombre', '1999-05-08', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL),
 ('12345678G', 'Paco', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', 'includes/img/usuarios/default.png', 'paco@gmail.com', 'hombre', '1996-08-08', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL),
 ('12345678H', 'Alba Croft', '$2y$10$BpZNFwptPVCLn6LT.dknqe1JvDk3ipbSg5JY5NhI1nLkQsavkRise', 'includes/img/usuarios/default.png', 'alba@gmail.com', 'Mujer', '2020-03-10', 'No especificado', 'Madrid', '55.00', '170', 'Deportes', 0, NULL, NULL, NULL),
-('12345678I', 'Miriam', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', ' includes/img/usuarios/default.png', 'chengliu@ucm.es', 'mujer', '1997-08-05', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL),
-('26515643R', 'Juan Liu', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', 'includes/img/usuarios/default.png', 'chengliu@ucm.es', 'hombre', '1999-05-05', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL);
+('12345678I', 'Miriam', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', ' includes/img/usuarios/default.png', 'chengliu@ucm.es', 'mujer', '1997-08-05', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL),
+('26515643R', 'Juan Liu', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', 'includes/img/usuarios/default.png', 'chengliu@ucm.es', 'hombre', '1999-05-05', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
