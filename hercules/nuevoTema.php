@@ -1,6 +1,9 @@
 <?php
 require_once(__DIR__.'/includes/config.php');
 require_once(__DIR__.'/includes/Forms/FormularioNuevoTema.php');
+
+$act = new FormularioNuevoTema();
+$html=$act->gestiona();
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +28,7 @@ require_once(__DIR__.'/includes/Forms/FormularioNuevoTema.php');
 	<div id="contenido">
 
 		<?php  
-		$act = new FormularioNuevoTema();
-			$act->gestiona();
+		echo $html;
 		?>
 
 	</div>

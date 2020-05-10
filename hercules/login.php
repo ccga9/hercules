@@ -1,6 +1,10 @@
 <?php  
 	require_once(__DIR__.'/includes/config.php');
 	require_once(__DIR__.'/includes/Forms/FormularioLogin.php');
+	
+	$act = new FormularioLogin();
+	$html=$act->gestiona();
+	
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +29,8 @@
 
 	<div id="contenido">
 
-		<?php  
-			$act = new FormularioLogin();
-			$act->gestiona();
+		<?=  
+			$html;
 		?>
 
 	</div>

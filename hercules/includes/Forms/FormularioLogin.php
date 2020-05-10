@@ -16,7 +16,7 @@ class FormularioLogin extends Form {
      */
     public function gestiona()
     {   
-        parent::gestiona();
+        return parent::gestiona();
     }
 
     /**

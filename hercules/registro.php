@@ -1,6 +1,9 @@
 <?php  
 	require_once(__DIR__.'/includes/config.php');
 	require_once(__DIR__.'/includes/Forms/FormularioRegistro.php');
+	
+	$act = new FormularioRegistro();
+	$html=$act->gestiona();
 ?>
 
 <!DOCTYPE html>
@@ -47,8 +50,7 @@
 
 	<div id="contenido">
 		<?php  
-			$act = new FormularioRegistro();
-			$act->gestiona();
+			echo $html;
 		?>
 	</div>
 

@@ -1,6 +1,11 @@
 <?php
 require_once(__DIR__.'/includes/config.php');
 require_once(__DIR__.'/includes/Forms/FormularioRespuesta.php');
+
+$id_mesg = $_GET['id_msg'];
+
+$act = new FormularioRespuesta($id_mesg);
+$html=$act->gestiona();
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +30,7 @@ require_once(__DIR__.'/includes/Forms/FormularioRespuesta.php');
 	<div id="contenido">
 
 		<?php  
-		  $id_mesg = $_GET['id_msg'];
+	
 		  /*echo '<div class="form-inicio">';
 		  echo '<form action="nuevoTema.php">';
 		  echo '<fieldset>';
@@ -37,8 +42,7 @@ require_once(__DIR__.'/includes/Forms/FormularioRespuesta.php');
 		  echo '</fieldset>';
 		  echo '</form>';
 		  echo '</div>';*/
-	   	    $act = new FormularioRespuesta($id_mesg);
-			$act->gestiona();
+	   	    echo $html;
 		?>
 
 	</div>

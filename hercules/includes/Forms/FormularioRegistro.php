@@ -16,7 +16,7 @@ class FormularioRegistro extends Form {
      */
     public function gestiona()
     {   
-        parent::gestiona();
+        return parent::gestiona();
     }
 
     /**

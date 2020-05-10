@@ -1,6 +1,9 @@
 <?php 
     require_once 'includes/config.php';
     require_once(__DIR__.'/includes/Forms/FormEliminarComida.php');
+    
+    $form = new FormEliminarComida();
+    $html=$form->gestiona();
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +31,7 @@
 			</div>
 			
 			<?php
-		    $form = new FormEliminarComida();
-		    $form->gestiona();
+		      echo $html;
 	        ?>
 
 		</div>

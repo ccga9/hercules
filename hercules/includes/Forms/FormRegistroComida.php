@@ -11,7 +11,7 @@ class FormRegistroComida extends Form
     
     public function gestiona()
     {
-        parent::gestiona();
+        return parent::gestiona();
     }
     
     protected function generaCamposFormulario($datosIniciales)
