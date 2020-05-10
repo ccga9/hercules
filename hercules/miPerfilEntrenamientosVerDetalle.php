@@ -32,7 +32,7 @@
 
 				if(count($entrenamiento['ejercicios']) > 0){
 					echo '<table class="tablaEntrenamientos">';
-								echo '<thead><tr>'.'<th>Nombre del ejercicio</th>'.'<th>Calorias gastadas</th>'.'<th>Descripcion</th>'.'<th>Multimedia</th>'.'</tr></thead>';
+								echo '<thead><tr>'.'<th>Nombre del ejercicio</th>'.'<th>Calorías gastadas</th>'.'<th>Descripción</th>'.'<th>Multimedia</th>'.'</tr></thead>';
 								foreach ($entrenamiento['ejercicios'] as $value) {
 									echo '<tr>';
 

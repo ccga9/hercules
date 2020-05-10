@@ -42,7 +42,7 @@ class FormularioRegistrarEntrenamiento extends Form {
                 $ret .= '<label>Nombre:</label> <input type="name" name="nombre"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Fecha:</label> <input type="date" name="fecha"/>';
+                $ret .= '<label>Fecha:</label> <input type="date" name="fecha" min="'.date("Y-m-d",time()).'" />';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Repeticiones de cada ejercicio:</label> <input type="number" name="repeticiones"/>';
