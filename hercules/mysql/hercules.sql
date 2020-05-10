@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2020 a las 11:42:44
+-- Tiempo de generación: 10-05-2020 a las 12:08:40
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -77,21 +77,6 @@ INSERT INTO `alimentocomida` (`idAlimento`, `idComida`) VALUES
 (2, 2),
 (3, 2),
 (5, 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `comentario`
---
-
-CREATE TABLE `comentario` (
-  `idComentario` int(10) NOT NULL,
-  `idUsuarioEntrenador` int(10) NOT NULL,
-  `entrenador` varchar(10) NOT NULL,
-  `fecha` date NOT NULL,
-  `texto` varchar(60) NOT NULL,
-  `valoracion` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -267,7 +252,7 @@ INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, 
 ('12345678F', 'Hugan', '$2y$10$L9uPLpdr8gX6ffx.6tBuy.xciEHtyQV7Q9CV4sJXSzp93fPKaZsRu', 'includes/img/usuarios/default.png', 'theHulk@gmail.com', 'hombre', '1999-05-08', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL),
 ('12345678G', 'Paco', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', 'includes/img/usuarios/default.png', 'paco@gmail.com', 'hombre', '1996-08-08', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL),
 ('12345678I', 'Miriam', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', ' includes/img/usuarios/default.png', 'chengliu@ucm.es', 'mujer', '1997-08-05', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL),
-('26515643R', 'Juan Liu', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', ' includes/img/usuarios/default.png', 'chengliu@ucm.es', 'hombre', '1999-05-05', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL);
+('26515643R', 'Juan Liu', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', 'includes/img/usuarios/default.png', 'chengliu@ucm.es', 'hombre', '1999-05-05', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -321,13 +306,6 @@ ALTER TABLE `alimento`
 ALTER TABLE `alimentocomida`
   ADD PRIMARY KEY (`idAlimento`,`idComida`),
   ADD KEY `idComida` (`idComida`);
-
---
--- Indices de la tabla `comentario`
---
-ALTER TABLE `comentario`
-  ADD PRIMARY KEY (`idComentario`),
-  ADD KEY `idUsuarioEntrenador` (`idUsuarioEntrenador`);
 
 --
 -- Indices de la tabla `comida`
@@ -395,12 +373,6 @@ ALTER TABLE `alimento`
   MODIFY `idAlimento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT de la tabla `comentario`
---
-ALTER TABLE `comentario`
-  MODIFY `idComentario` int(10) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `comida`
 --
 ALTER TABLE `comida`
@@ -440,12 +412,6 @@ ALTER TABLE `usuarioentrenador`
 ALTER TABLE `alimentocomida`
   ADD CONSTRAINT `alimentocomida_ibfk_1` FOREIGN KEY (`idAlimento`) REFERENCES `alimento` (`idAlimento`) ON DELETE CASCADE,
   ADD CONSTRAINT `alimentocomida_ibfk_2` FOREIGN KEY (`idComida`) REFERENCES `comida` (`idComida`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `comentario`
---
-ALTER TABLE `comentario`
-  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`idUsuarioEntrenador`) REFERENCES `usuarioentrenador` (`id`);
 
 --
 -- Filtros para la tabla `comida`
