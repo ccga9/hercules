@@ -34,7 +34,8 @@
                     if (isset($_SESSION['login'])) {
                         if ($_SESSION['usuario']->getTipoUsuario()==1) {
                             echo '<ul><li><a href= miPerfilMisClientes.php>Mis Clientes</a></li>';
-                            echo '<li><a href= miPerfilEditar.php>Editar Perfil</a></li></ul>';
+                            echo '<li><a href= miPerfilEditar.php>Editar Perfil</a></';
+                            echo '<li><a href= miPerfilBuzon.php>Mensajes</a></li></ul>';
                         }
                         else if($_SESSION['usuario']->getTipoUsuario()==2){
                             echo '<ul><li><a href= miPerfilEditar.php>Editar Perfil</a></li>';
@@ -45,7 +46,8 @@
                             echo '<ul><li><a href= miPerfilComidas.php>Comidas</a></li>';
                             echo '<li><a href= miPerfilEntrenamientos.php>Entrenamientos</a></li>';
                             echo '<li><a href= miPerfilMisEntrenadores.php>Mis Entrenadores</a></li>';
-                            echo '<li><a href= miPerfilEditar.php>Editar Perfil</a></li></ul>';
+                            echo '<li><a href= miPerfilEditar.php>Editar Perfil</a></li>';
+                            echo '<li><a href= miPerfilBuzon.php>Mensajes</a></li></ul>';
                         }
                     }
                 ?>
