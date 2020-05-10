@@ -37,8 +37,8 @@ class FormularioEditarPerfil extends Form {
     	$ret .= '<fieldset>';
         $ret .= '<legend>MODIFICA</legend>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<input type="hidden" name="MAX_FILE_SIZE" value="200000" />';
-                $ret .= '<label>Sube foto</label><input name="uploadImage" type="file"  ';
+                
+                $ret .= '<label>Sube foto</label><input name="uploadImage" type="file"/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
@@ -61,13 +61,13 @@ class FormularioEditarPerfil extends Form {
                 $ret .= '<label>Tu email:</label> <input type="email" name="email" value="'.$_SESSION['usuario']->getEmail().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#128231;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" value="'.$_SESSION['usuario']->getTelefono().'"/>';
+            $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#128231;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" value="'.$_SESSION['usuario']->getTelefono.'/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0" step="0.01" min="40.0" max="150.0" value="'.$_SESSION['usuario']->getPeso().'" >';
+                $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0" step="0.01" min="40.0" max="150.0" value="'.$_SESSION['usuario']->getPeso().'"/>';
             $ret .= '</div>';
              $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Altura (cm)</label>  <input type="number"  name="altura" placeholder="0.0" step="0.01" min="100.0" max="250.0" value="'.$_SESSION['usuario']->getAltura().'">';
+                $ret .= '<label>Altura (cm)</label>  <input type="number"  name="altura" placeholder="0.0" step="0.01" min="100.0" max="250.0" value="'.$_SESSION['usuario']->getAltura().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Preferencias</label> <input class="control" type="text" placeholder="&#128100;Introduce lo que buscas" name="preferencias" value="'.$_SESSION['usuario']->getPreferencias().'"/>';
@@ -155,8 +155,6 @@ class FormularioEditarPerfil extends Form {
         }else{
              $datos['foto'] = "";
         }
-
-echo $datos['foto'];
         
         $ctrl = controller::getInstance();
          

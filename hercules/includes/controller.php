@@ -144,27 +144,28 @@ class controller{
         $cond="";
         if ($u['nif'] !== null) {
             if($u['nombre'] != "")
-                $set .= "nombre=' ".$u['nombre']."', ";
+                $set .= "nombre=' ".$u['nombre']."'";
             if($u['password'] !== "")
-                $set .= "contrasenna='".password_hash($u['password'], PASSWORD_DEFAULT)."', ";
+                $set .= ",contrasenna='".password_hash($u['password'], PASSWORD_DEFAULT)."'";
             if($u['email'] !== "")
-                $set .= "email='".$u['email']."',";
+                $set .= ",email='".$u['email']."'";
             if($u['sexo'] !== "")
-                $set .= "sexo='".$u['sexo']."',";
+                $set .= ",sexo='".$u['sexo']."'";
              if($u['foto'] !== "")
-                $set .= "foto=' ".$u['foto']."',";
+                $set .= ",foto=' ".$u['foto']."'";
             if($u['fecha'] !== "")
-                $set .= "fechaNac='".$u['fecha']."',";
+                $set .= ",fechaNac='".$u['fecha']."'";
             if($u['ubicacion'] !== "")
-                $set .= "ubicacion='".$u['ubicacion']."',";
+                $set .= ",ubicacion='".$u['ubicacion']."'";
             if($u['peso'] !== "")
-                $set .= "peso='".$u['peso']."',";
+                $set .= ",peso='".$u['peso']."'";
             if($u['altura'] !== "")
-                $set .= "altura='".$u['altura']."',";
+                $set .= ",altura='".$u['altura']."'";
             if($u['preferencias'] !== "")
-                $set .= "preferencias='".$u['preferencias']."',";
+                $set .= ",preferencias='".$u['preferencias']."'";
             if($u['telefono'] !== "")
-                $set .= "telefono='".$u['telefono']."'";
+                $set .= ",telefono='".$u['telefono']."'";
+            
             
             $cond="nif = '".$u['nif']."'";
             

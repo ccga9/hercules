@@ -6,7 +6,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="includes/estiloContacto.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estiloContacto.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>

@@ -5,7 +5,8 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="includes/estiloEntrenamientos.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estiloEntrenamientos.css" />
+	
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="includes/js/scripts.js" ></script>
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
@@ -22,7 +23,20 @@
 	?>
 
 	<div id="contenido">
+		<div class="boton-volver">
+			<?php
+    		if ($_SESSION['usuario']->getTipoUsuario() == 0) {
+    		    echo '<a href="miPerfilEntrenamientos.php">ATRAS</a>';
+    		}
+    		else {
+    		    echo '<a href="miPerfilMisClientesPerfiles.php?id='.$_GET['idCliente'].'">ATRAS</a>';
+    		}
+    		?>
+		</div>
+		
+		
 		<h1 class="tituloEntrenamiento">Entrenamientos</h1>
+		
 		<img src="https://i.pinimg.com/originals/d0/a2/83/d0a2839695fbbf7f760b4aeabee30957.gif" alt="quote" class= "gif" />
 			
 			<?php
@@ -58,13 +72,15 @@
 				$idUsuarioEntrenadores = $ctrl->selectUs_Ent("id, entrenador", "usuario='".$_SESSION["usuario"]->getNif()."'");
 
 					if(count($idUsuarioEntrenadores) > 0){
+					    echo '<table class="tablaEntrenamientos">';
+					    echo '<thead><tr>'.'<th>Entrenador</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'</tr></thead>';
 						foreach ($idUsuarioEntrenadores as $idUsuarioEntrenadores2) {
 							$entrenamientos = $ctrl->listarEntrenamientos($idUsuarioEntrenadores2['id']);
 							$nombreEntrenador = $ctrl->selectUsuario("nombre", "nif='".$idUsuarioEntrenadores2['entrenador']."'");
-
+                        
 								if(count($entrenamientos) > 0){
-									echo '<table class="tablaEntrenamientos">';
-									echo '<thead><tr>'.'<th>Entrenador</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'</tr></thead>';
+									/*echo '<table class="tablaEntrenamientos">';
+									echo '<thead><tr>'.'<th>Entrenador</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'</tr></thead>';*/
 						   	 			foreach ($entrenamientos as $entrenamiento) {
 											echo '<tr>';
 													$aux = serialize($entrenamiento);
@@ -76,26 +92,26 @@
 									
 											echo '</tr>';
 										}
-									echo '</table>';	
-								}else {
-						    	    echo "<p> Todavía no tienes entrenamientos.</p>";
-						 }
-					}
-				}else{
-					echo '<p> No tiene entrenamientos </p>';
-				}
-			}	
-	?>
+									//echo '</table>';	
+								}
+					       }
+					       echo '</table>';	
+    				}else{
+    					echo '<p> No tiene entrenamientos </p>';
+    				}
+			   }	
+	?>	
 
 	<div class="overlay" id="overlay">
 			<div class = "popup" id="popup">
 				<a class = "cerrar" id="cerrar" href="#bottom">Cerrar</a>
 				<h2>¿Estas seguro?</h2>
+				
 				<?php 
 				    echo '<form action="PR_eliminarEntrenamiento.php" method="post">';
 				     echo '<input id="idEnt" type="hidden" name="id" />';
 				     echo '<input type="hidden" name="idCliente" value="'.$_GET['idCliente'].'"/>';
-				    echo '<p id="imprimirID"></p>';
+				    
 					echo '<button type="submit" name="enviar" value="si">Si</button><br>';
 				    echo '<button type="submit" name="enviar" value="no">No</button><br>';
 				    echo '</form>';

@@ -22,7 +22,6 @@ function eliminarEntrenami(indice){
 												popup = document.getElementById('popup'),
 												btnCerrar = document.getElementById('cerrar');
 												document.getElementById('idEnt').value=indice;
-												document.getElementById('imprimirID').innerHTML=indice;
 
 
 											

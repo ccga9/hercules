@@ -33,11 +33,6 @@
 		
 		if ($_SESSION['login'] && $_SESSION['usuario']->getTipoUsuario()) {
 
-			  
-		    
-		    
-
-		    
 		    $arr = $ctrl->selectUs_Ent('', "usuario='".$_GET['id']."' AND entrenador ='".$_SESSION['usuario']->getNif()."'");
 		    if (count($arr) == 1) {
 

@@ -36,7 +36,7 @@
 
 			<div class="comidaentrena-all">
 			<img src="includes/img/registrar_entrenamiento.png" alt="Registrar Entrenamiento">
-			<form action="miPerfilEntrenamientosRegistrar.php" method="post">
+			<form action="#" method="post">
 				<button type="submit" name="registro">Registrar Entrenamiento</button>
 			</form>
 			</div>
