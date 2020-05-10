@@ -69,7 +69,7 @@ class FormularioRespuesta extends Form {
         }
         
         $datos['autor'] = $_SESSION['usuario']->getNombre();
-        $datos['fecha'] = date_default_timezone_set('Europe/Madrid');
+    
         $datos['id_r'] = $this->id_r;
         $datos['resp'] = "0";
         $datos['tema'] = "";

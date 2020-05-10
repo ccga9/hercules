@@ -26,6 +26,17 @@ require_once(__DIR__.'/includes/Forms/FormularioRespuesta.php');
 
 		<?php  
 		  $id_mesg = $_GET['id_msg'];
+		  /*echo '<div class="form-inicio">';
+		  echo '<form action="nuevoTema.php">';
+		  echo '<fieldset>';
+		  echo '<legend>Responder</legend>';
+		  echo '<div class="grupo-control">';
+		  echo '<input type="text" name="texto"/>';
+		  echo '</div>';
+		  echo '<div class="grupo-control"><button type="submit" name="login">Enviar</button></div>';
+		  echo '</fieldset>';
+		  echo '</form>';
+		  echo '</div>';*/
 	   	    $act = new FormularioRespuesta($id_mesg);
 			$act->gestiona();
 		?>

@@ -26,7 +26,7 @@ require_once 'includes/config.php';
 	<div id="contenido">
 		<?php 
 		$id_mesg = $_GET['id_msg'];
-		echo "<a href= respuesta.php?id_msg=".$id_mesg."><button type=button>Responder</button></a>";
+		//echo "<a href= respuesta.php?id_msg=".$id_mesg."><button type=button>Responder</button></a>";
 		$fila = $ctrl->mostrarMensaje($id_mesg);
 		$i = 0;
 		echo "<ul>";
