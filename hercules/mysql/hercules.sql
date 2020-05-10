@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2020 a las 12:08:40
+-- Tiempo de generación: 10-05-2020 a las 16:06:12
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -76,7 +76,10 @@ INSERT INTO `alimentocomida` (`idAlimento`, `idComida`) VALUES
 (1, 1),
 (2, 2),
 (3, 2),
-(5, 2);
+(3, 5),
+(5, 2),
+(8, 5),
+(12, 4);
 
 -- --------------------------------------------------------
 
@@ -97,7 +100,10 @@ CREATE TABLE `comida` (
 
 INSERT INTO `comida` (`idComida`, `dia`, `tipo`, `usuario`) VALUES
 (1, '2020-04-24 18:00:00', 'desayuno', '12345678E'),
-(2, '2020-04-25 16:18:46', 'cena', '12345678E');
+(2, '2020-04-25 16:18:46', 'cena', '12345678E'),
+(3, '2020-05-03 13:37:56', 'desayuno', '12345678F'),
+(4, '2020-05-10 13:39:11', 'desayuno', '12345678F'),
+(5, '2020-05-10 13:43:32', 'cena', '12345678G');
 
 -- --------------------------------------------------------
 
@@ -124,8 +130,8 @@ INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `d
 (3, 'Planchas', 160, 'Tonificacion', 'Recuéstate boca abajo y apóyate sobre los antebrazos,\r\n   de modo que los codos queden ubicados debajo del pecho. Ahora, eleva tus piernas del piso sosteniéndote con las\r\n   puntas de los pies para formar la plancha.', 'includes/img/planchas.png'),
 (4, 'Remo con banda elástica', 133, 'Fuerza', 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde\r\n  las caderas, la columna vertebral de permanecer neutral. Tiramos desde los omóplatos hacia atrás y levantamos los codos\r\n  tanto como pueda. Baje lentamente y repita.', 'includes/img/remoconbandaelastica.png'),
 (5, 'Zumba Fitness', 200, 'Cardio', 'La zumba es un tipo de actividad física (fitness) basada en ritmos y músicas lationamericanas. Las coreografías de zumba incluyen ritmos como la samba, la salsa, el reggaeton, la cumbia, el merengue y el mambo.', 'includes/img/zumba.png'),
-(6, 'Aeróbic step, con step de 15-20 cm', 193, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aeróbic.', 'includes/img/aerobicsteps.png'),
-(7, 'Aeróbic step, con step de 25-30 cm', 227, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aeróbic.', 'includes/img/aerobicsteps.png'),
+(6, 'Aeróbic step, con step de', 193, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aeróbic.', 'includes/img/aerobicsteps.png'),
+(7, 'Aeróbic step, con step de', 227, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aeróbic.', 'includes/img/aerobicsteps.png'),
 (8, 'Kettlebells', 196, 'Fuerza', 'Colócate de pie con los pies a la anchura de los hombros y deja la kettlebell en el suelo a la altura de los dedos de los pies. Dobla las rodillas, mantén la espalda recta y baja en posición de sentadilla hasta coger del asa al kettle con ambas manos hasta elevarlo hacia atrás mientras estiras las piernas manteniendo tensión en la zona de los abdominales y el glúteo hasta llevarla de nuevo con un impulso a la zona delantera por encima de la cabeza. Cuando éste regresa al centro después del balanceo, lleva la cadera hacia atrás y colócate con las piernas rectas.', 'includes/img/kettlebells.png'),
 (9, 'Saltar a la cuerda', 260, 'Cardio', 'Hay muchas modalidades, salto simple lo más rápido posible, doble salto, etc...', 'includes/img/saltaralacuerda.png'),
 (10, 'Burpees', 286, 'Tonificacion', ' Consiste en agachar el cuerpo y apoyar las manos en el suelo, impulsar los pies hacia atrás hasta quedar en la postura de una plancha, para después realizar una flexión tocando el suelo con el pecho. Trabaja pectorales, bíceps, tríceps, abdominales, glúteos y cuádriceps.', 'includes/img/burpees.png'),
@@ -148,6 +154,17 @@ CREATE TABLE `entrenamiento` (
   `repeticiones` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `entrenamiento`
+--
+
+INSERT INTO `entrenamiento` (`idEntrenamiento`, `idUsuarioEntrenador`, `nombre`, `fecha`, `repeticiones`) VALUES
+(3, 11, 'Rutina 1', '2020-05-10', 10),
+(4, 11, 'Rutina 2', '2020-05-11', 5),
+(5, 11, 'Rutina 3', '2020-05-12', 1),
+(6, 8, 'Rutina correr', '2020-05-15', 4),
+(7, 8, 'Rutina cuerda', '2020-05-16', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -158,6 +175,21 @@ CREATE TABLE `entrenamientoejercicio` (
   `idEntrenamiento` int(10) NOT NULL,
   `idEjercicio` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `entrenamientoejercicio`
+--
+
+INSERT INTO `entrenamientoejercicio` (`idEntrenamiento`, `idEjercicio`) VALUES
+(3, 1),
+(3, 3),
+(3, 14),
+(4, 5),
+(4, 13),
+(5, 4),
+(6, 6),
+(6, 14),
+(7, 8);
 
 -- --------------------------------------------------------
 
@@ -182,7 +214,9 @@ CREATE TABLE `foro` (
 INSERT INTO `foro` (`id`, `autor`, `mensaje`, `fecha`, `respuestas`, `id_r`, `tema`) VALUES
 (0, ' JUAN LIU', 'XD', '0000-00-00', 0, 0, 'SAFFSAD'),
 (0, ' JUAN LIU', 'GRAEGR', '0000-00-00', 0, 0, 'WEFAFAWE'),
-(0, ' JUAN LIU', 'QQW', '2020-05-10', 0, 0, 'SDDSE');
+(0, ' JUAN LIU', 'QQW', '2020-05-10', 0, 0, 'SDDSE'),
+(0, 'Hugan', 'ME GUSTARíA QUE LOS PASEOS AL AIRE LIBRE SE PUDIERAN REALIZAR SIN LíMITE DE HORA', '2020-05-10', 0, 0, 'DAR PASEOS AL AIRE LIBRE EN MADRID'),
+(0, 'Hugan', 'HOLA', '2020-05-10', 0, 0, 'TEMA DE PRUEBA');
 
 -- --------------------------------------------------------
 
@@ -212,7 +246,19 @@ INSERT INTO `mensajes` (`id`, `emisor`, `receptor`, `texto`, `fecha`, `del_1`, `
 (4, '26515643R', '12345678A', 'Hola', '2020-04-27 14:22:53', 0, 0, 1),
 (5, '26515643R', '12345678A', 'Fuck', '2020-04-27 14:23:07', 0, 0, 1),
 (6, '26515643R', '12345678B', '¡Hola! Soy JUAN LIU.', '2020-04-27 17:11:18', 0, 0, 1),
-(7, '12345678A', '26515643R', 'afrrfanñjkfanr\r\n', '2020-05-04 14:23:54', 0, 0, 1);
+(7, '12345678A', '26515643R', 'afrrfanñjkfanr\r\n', '2020-05-04 14:23:54', 0, 0, 1),
+(8, '12345678F', '12345678G', '¡Hola! Soy Hugan.', '2020-05-10 13:40:38', 0, 0, 1),
+(9, '12345678F', '12345678c', '¡Hola! Soy Hugan.', '2020-05-10 13:40:50', 0, 0, 0),
+(10, '12345678F', '12345678a', 'Hola, buenos dias.', '2020-05-10 13:41:00', 0, 0, 0),
+(11, '12345678G', '12345678F', 'que tal estás?', '2020-05-10 13:42:38', 0, 0, 1),
+(12, '12345678G', '12345678a', '¡Hola! Soy Paco.', '2020-05-10 13:42:43', 0, 0, 0),
+(13, '12345678H', '12345678f', '¡Hola! Soy ALBA CROFT.', '2020-05-10 13:52:49', 0, 0, 0),
+(14, '12345678B', '12345678f', '¡Hola! Soy Sergio Peinado.', '2020-05-10 13:55:22', 0, 0, 0),
+(15, '12345678B', '12345678G', '¡Hola! Soy Sergio Peinado.', '2020-05-10 13:55:30', 0, 0, 1),
+(16, '12345678B', '12345678G', 'Que tal vas con las rutinas, Paco?', '2020-05-10 13:55:38', 0, 0, 1),
+(17, '12345678F', '12345678a', 'Hola', '2020-05-10 13:56:26', 0, 0, 0),
+(18, '12345678F', '12345678G', 'Bien Paco, y tú como vas?', '2020-05-10 13:56:42', 0, 0, 0),
+(19, '12345678G', '12345678B', 'Muy bien, Paco', '2020-05-10 13:57:39', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -251,6 +297,7 @@ INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, 
 ('12345678E', 'Fausto Murillo', '$2y$10$AVXZMNDY3t0qMnnlDsK2ieHc20jp0elXy3AGUtTTROr29gJwgZ9h6', 'includes/img/usuarios/12345678E.jpg', 'fausto@gmail.com', 'hombre', '1992-01-01', '699598712', 'Bogotá', '75.00', '182', 'Sin especificar', 1, 'Entrenador personal', 'Pérdida de peso y fuerza', '12'),
 ('12345678F', 'Hugan', '$2y$10$L9uPLpdr8gX6ffx.6tBuy.xciEHtyQV7Q9CV4sJXSzp93fPKaZsRu', 'includes/img/usuarios/default.png', 'theHulk@gmail.com', 'hombre', '1999-05-08', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL),
 ('12345678G', 'Paco', '$2y$10$tzz1gsEjLR0KpjlmpP2aTeWNYnJoQu1rKmNorVy2FI1PGmNqezYMG', 'includes/img/usuarios/default.png', 'paco@gmail.com', 'hombre', '1996-08-08', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL),
+('12345678H', 'Alba Croft', '$2y$10$BpZNFwptPVCLn6LT.dknqe1JvDk3ipbSg5JY5NhI1nLkQsavkRise', 'includes/img/usuarios/default.png', 'alba@gmail.com', 'Mujer', '2020-03-10', 'No especificado', 'Madrid', '55.00', '170', 'Deportes', 0, NULL, NULL, NULL),
 ('12345678I', 'Miriam', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', ' includes/img/usuarios/default.png', 'chengliu@ucm.es', 'mujer', '1997-08-05', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL),
 ('26515643R', 'Juan Liu', '$2y$10$jdDa6gcD88z2T1eZcaBOqOShDc6UjXaHVqUn5n7SpPwiHSg.8IRdW', 'includes/img/usuarios/default.png', 'chengliu@ucm.es', 'hombre', '1999-05-05', 'Sin especificar', 'Sin especificar', '0.00', '0', 'Sin especificar', 0, NULL, NULL, NULL);
 
@@ -273,7 +320,13 @@ CREATE TABLE `usuarioentrenador` (
 
 INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
 (8, '12345678G', '12345678B', 'aceptado'),
-(9, '26515643R', '12345678B', 'aceptado');
+(9, '26515643R', '12345678B', 'aceptado'),
+(10, '12345678G', '12345678C', 'pendiente'),
+(11, '12345678G', '12345678A', 'aceptado'),
+(12, '12345678H', '12345678A', 'pendiente'),
+(13, '12345678H', '12345678C', 'pendiente'),
+(14, '12345678H', '12345678D', 'pendiente'),
+(15, '12345678F', '12345678B', 'aceptado');
 
 -- --------------------------------------------------------
 
@@ -289,6 +342,15 @@ CREATE TABLE `valoracion` (
   `visible` tinyint(1) NOT NULL DEFAULT 0,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `valoracion`
+--
+
+INSERT INTO `valoracion` (`hacia`, `de`, `texto`, `valor`, `visible`, `fecha`) VALUES
+('12345678A', '12345678G', 'Muy bien!!!', 4, 1, '2020-05-10 14:00:14'),
+('12345678B', '12345678F', 'Gran entrenador', 4, 1, '2020-05-10 14:01:58'),
+('12345678B', '12345678G', 'Excelente, gracias', 5, 1, '2020-05-10 13:42:59');
 
 --
 -- Índices para tablas volcadas
@@ -376,7 +438,7 @@ ALTER TABLE `alimento`
 -- AUTO_INCREMENT de la tabla `comida`
 --
 ALTER TABLE `comida`
-  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio`
@@ -388,19 +450,19 @@ ALTER TABLE `ejercicio`
 -- AUTO_INCREMENT de la tabla `entrenamiento`
 --
 ALTER TABLE `entrenamiento`
-  MODIFY `idEntrenamiento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idEntrenamiento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarioentrenador`
 --
 ALTER TABLE `usuarioentrenador`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
