@@ -33,6 +33,10 @@
 	flex-direction: column;
 }
 
+.form-inicio input[type="text"], .form-inicio input[type="password"]{
+	width: 90%;
+}
+
 fieldset {
 	width: 80%;
 	margin: 0 auto;
@@ -59,9 +63,7 @@ legend {
 }
 
 input {
-	display: block;
 	padding: 5px;
-	width: 90%;
 	margin: 20px 0;
 	font-size: 18px;
 }
@@ -115,28 +117,6 @@ button[type="submit"]:hover, .botones a:hover {
 
 button[type="reset"]:hover {
 	opacity: 1;
-}
-
-.radio-button {
-	display: flex;
-	flex-direction: row;
-}
-
-.radio-button, .radio-check-button label{
-	display: inline;
-	padding: 15px;
-	position: relative;
-}
-
-.radio-check-button {
-	display: flex;
-	flex-direction: row;
-	justify-content:flex-start;
-	width: 30%;
-}
-
-.checkbox-button {
-	/*...*/
 }
 
 /*REVISAR RESPONSIVE*/

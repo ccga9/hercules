@@ -54,7 +54,7 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>E-mail:</label> <input class="control" type="text" placeholder="&#128231;Correo electrónico" name="email" required/>';
             $ret .= '</div>';
              $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#128231;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" />';
+                $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#x1f4f1;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" />';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0" step="0.01" min="40.0" max="300.0" >';
@@ -77,13 +77,10 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>Vuelve a introducir el Password:</label> <input class="control" type="password" placeholder="&#128272;Repita contraseña" name="contra2" required/>';
             $ret .= '</div>';
       
-            $ret .= '<div class="radio-check-button"> ';
-                $ret .= '<label for="hombre">Hombre</label> <input type="radio" name="sexo" value="Hombre" id="hombre">';
-                $ret .= '<label for="mujer">Mujer</label><input type="radio" name="sexo" value="Mujer" id="mujer">';
-            $ret .= '</div>';
-            $ret .= '<div class="radio-check-button">';
+            $ret .= '<label for="hombre">Hombre</label> <input type="radio" name="sexo" value="Hombre" id="hombre">';
+            $ret .= '<label for="mujer">Mujer</label><input type="radio" name="sexo" value="Mujer" id="mujer">';
+            
             $ret .= '<label>¿Eres entrenador/a? (Rellena los campos de abajo)</label> <input type="checkbox" name="tipoUsuario" value="ok"/>';
-            $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Titulacion</label> <input class="control" type="text" placeholder="&#127891;Titulación" name="titulacion" />';
