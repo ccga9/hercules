@@ -14,7 +14,7 @@ class ejercicioDAO extends DAO
         
         return $this->consultar($query);
     }
-    
+
     public function listarEjercicios($idEntrenamiento)
     {
         $query = "SELECT idEjercicio from entrenamientoejercicio WHERE idEntrenamiento = '". $idEntrenamiento ."'";
@@ -55,6 +55,13 @@ class ejercicioDAO extends DAO
         $ejercicio->setMultimedia($fila['multimedia']);
 
         return $ejercicio;
+    }
+
+    public function listarTodosEjercicios($col){
+        $query = "";
+        $query = "SELECT ".$col." FROM ejercicio";
+
+        return $this->consultarv2($query);
     }
 
 }
