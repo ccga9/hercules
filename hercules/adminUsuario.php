@@ -6,6 +6,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estiloAdmin.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
@@ -38,6 +39,7 @@
 		    $max_page = ceil($max[0]['c'] / $items_page);
 			
 		    echo"<h2>GestionarUsuarios</h2>";
+		    
 		    if (!isset($_GET['perfil'])) {
 		        
 		        $arr = $ctrl->listarUsuarios("tipoUsuario != 2 ORDER BY nombre LIMIT ".($page - 1) * $items_page. ",".$items_page);
@@ -142,8 +144,8 @@
 	<?php	
 
 	if (!isset($_GET['perfil'])) {
-	    
-	    echo '<div id="admin-marcador">';
+	    echo '<div class="cont-marcador">';
+	    echo '<div class="marcador-pagina">';
 	    
 	    if ($max_page > 0) {
 	        if ($page > 1) {
@@ -156,7 +158,12 @@
 	        $j = 0;
 	        while ($j < 7) {
 	            if ($i >= 1 && $i <= $max_page) {
-	                echo "<a href= adminUsuario.php?p=".$i.">".$i."</a>";
+	                if ($i == $page) {
+	                    echo '<a class="active" href= adminUsuario.php?p='.$i.">".$i."</a>";
+	                }
+	                else {
+	                    echo "<a href= adminUsuario.php?p=".$i.">".$i."</a>";
+	                }
 	            }
 	            $i++;
 	            $j++;
@@ -172,6 +179,7 @@
 	        echo "No se encontraron resultados";
 	    }
 	   
+	    echo '</div>';
 	    echo '</div>';
 	}
 
