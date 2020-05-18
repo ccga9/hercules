@@ -64,4 +64,10 @@ class ejercicioDAO extends DAO
         return $this->consultarv2($query);
     }
 
+    public function buscarEjercicio($col, $cond){
+        $query = "";
+        $query = "SELECT ".$col." FROM ejercicio WHERE ".$col." LIKE '%".$cond."%'";
+        return $this->consultarv2($query);
+    }
+
 }

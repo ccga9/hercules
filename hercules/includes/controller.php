@@ -544,6 +544,11 @@ class controller{
         $col='nombre, caloriasGastadas, tipo, descripcion, multimedia';
         return $consulta = $this->ejercicioDAO->listarTodosEjercicios($col);
     }
+
+    public function buscarEjercicio($ejercicio){
+        $col = "nombre";
+        return $consulta = $this->ejercicioDAO->buscarEjercicio($col, $ejercicio);
+    }
     
     //FIN FUNCIONES EJERCICIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     

@@ -30,10 +30,21 @@
 		</div>
 
 		<div class="buscar-ejercicio">
-			<label for="buscar-ejer">Buscar ejercicio:</label>
-			<input type="search" id="site-search" name="q" aria-label="Busquedas de contenido">
-			<button type="submit" name="solicitud">Enviar Solicitud</button>
+			<label for="buscar-ejer">Buscar ejercicio </label>
+			<form method="POST" action="ejercicios.php">
+				<input type="search" id="site-search" name="busqueda"/>
+				<button type="submit" name="buscar">Buscar</button>
+			</form>
 		</div>
+
+		<?php
+			if (isset($_POST['busqueda'])) {
+				$encontrado=$ctrl->buscarEjercicio($_POST['busqueda']);
+				 foreach ($encontrado as $valor) {
+					echo '<h4>'.$valor['nombre'].'</h4>';
+				}
+			}
+		?>
 
 		<?php
 			$ejercicios= $ctrl->listarTodosEjercicios();
