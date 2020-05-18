@@ -83,7 +83,12 @@ class FormularioLogin extends Form {
 		}
 
 		if (count($erroresFormulario) === 0) {
-			$erroresFormulario = "index.php";
+		    if ($us->getTipoUsuario() == 2) {
+		        $erroresFormulario = "adminUsuario.php";
+		    }
+		    else {
+		        $erroresFormulario = "index.php";
+		    }
 		}
 
         return $erroresFormulario;
