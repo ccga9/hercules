@@ -69,7 +69,6 @@ class FormularioRespuesta extends Form {
         }
         
         $datos['autor'] = $_SESSION['usuario']->getNombre();
-    
         $datos['id_r'] = $this->id_r;
         $datos['resp'] = "0";
         $datos['tema'] = "";

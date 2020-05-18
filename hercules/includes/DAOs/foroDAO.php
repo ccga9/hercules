@@ -14,24 +14,26 @@ class foroDAO extends DAO
         if($tema != ""){
           $query = "INSERT INTO foro(autor, mensaje, respuestas, id_r, tema) VALUES 
           ('".$autor."','".$msg."', '0', '0', '".$tema."')";
+          $this->consultar($query);
+          
+          return true;
         }
         
         else{
-            $query1 = "SELECT id, respuestas FROM foro WHERE id = ".$id_r.""; 
-            $tema = $this->consultarv2($query1);
-            $i = 0;
-            
-            $id_tema = $tema[$i]['id'];
-            $resp_tema = $tema[$i]['respuestas'];
+            $query1 = "SELECT respuestas FROM foro WHERE id = ".$id_r.""; 
+            $resps = $this->consultar($query1);
             
             $query = "INSERT INTO foro(autor, mensaje, respuestas, id_r) VALUES 
-            ('".$autor."','".$msg."', '0', '".$id_tema."')";
+            ('".$autor."','".$msg."', '0', '".$id_r."')";
+            $this->consultar($query);
             
-            $resp_tema++;
-            $query2 = "UPDATE foro(respuestas) VALUES ('".$resp_tema."') WHERE id = '".$id_tema."'";
+            $resps = $resps + 1;
+            $query2 = "UPDATE foro(respuestas) VALUES ('".$resps."') WHERE id = '".$id_r."'";
             $this->consultar($query2);
+            
+            return true;
         }
-        return $this->consultar($query);
+        return false;
     }
     
     public function modifica($msg, $fecha, $id)

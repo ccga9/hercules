@@ -13,8 +13,8 @@ $html=$act->gestiona();
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css"/>
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloFormularios.css" />
-	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
-	<title>Hércules</title>
+	<meta http-equiv=â€�Content-Typeâ€� content=â€�text/html; charset=UTF-8â€³ />
+	<title>HÃ©rcules</title>
 </head>
 
 <body>
@@ -30,18 +30,7 @@ $html=$act->gestiona();
 	<div id="contenido">
 
 		<?php  
-	
-		  /*echo '<div class="form-inicio">';
-		  echo '<form action="nuevoTema.php">';
-		  echo '<fieldset>';
-		  echo '<legend>Responder</legend>';
-		  echo '<div class="grupo-control">';
-		  echo '<input type="text" name="texto"/>';
-		  echo '</div>';
-		  echo '<div class="grupo-control"><button type="submit" name="login">Enviar</button></div>';
-		  echo '</fieldset>';
-		  echo '</form>';
-		  echo '</div>';*/
+		echo $id_mesg;
 	   	    echo $html;
 		?>
 

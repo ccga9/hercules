@@ -61,9 +61,9 @@ class FormularioNuevoTema extends Form {
         $text = isset($datos['texto']) ? htmlspecialchars(strip_tags(strtoupper($datos['texto']))) : null;
         $datos['texto'] = $text;
         
-       /* if ( empty($text) || !ctype_alnum($text) ) { PONERRRR
+        if (empty($text)) {
             $erroresFormulario[] = "Texto inv�lido.";
-        }*/
+        }
         
         if ( strlen($text) > 500 ) {
             $erroresFormulario[] = "El texto no puede contener m�s de 500 caracteres.";
@@ -81,7 +81,6 @@ class FormularioNuevoTema extends Form {
         }
         
         $datos['autor'] = $_SESSION['usuario']->getNombre();
-        
         $datos['resp'] = '0';
         $datos['tema'] = $datos['tema'];
         $datos['id_r'] = '0';
