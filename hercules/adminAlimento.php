@@ -1,5 +1,5 @@
-<?php 
-	require_once 'includes/config.php';
+<?php
+require_once 'includes/config.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,7 @@
 		    
 		    $max_page = ceil($max[0]['c'] / $items_page);
 			
-		    echo"<h2>Gestionar Usuarios</h2>";
+		    echo"<h2>Gestionar Alimentos</h2>";
 		    
 		    if (!isset($_GET['perfil'])) {
 		        

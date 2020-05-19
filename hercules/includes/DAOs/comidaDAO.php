@@ -96,5 +96,14 @@ class comidaDAO extends DAO
         }
         return $comidas;
     }
+    
+    public function deleteComida($cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "DELETE FROM comida WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
 
 }

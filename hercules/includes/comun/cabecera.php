@@ -36,7 +36,7 @@
     		    '<ul>
         		  <li><a href= adminUsuario.php>Usuarios</a></li>
         		  <li><a href= adminAlimento.php>Alimentos</a></li>
-        		  <li><a href= adminEjercicios.php>Ejercicios</a></li>
+        		  <li><a href= adminEjercicio.php>Ejercicios</a></li>
         		  <li><a href= adminNuevaCuenta.php>Crear Admins</a></li>
                 </ul>';
     		}

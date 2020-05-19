@@ -177,8 +177,12 @@ class controller{
     }
     
     public function deleteUsuario($nif){
-        if ($this->cargarUsuario($arr['nif']) !== 0) {
-            return $this->usuarioDAO->deleteUsuario("nif='".$nif);
+        if ($this->cargarUsuario($nif) !== 0) {
+            $this->mensajesDAO->delete("emisor='".$nif."' OR receptor='".$nif."'");
+            $this->comidaDAO->deleteComida("usuario='".$nif."'");
+            $this->usuarioDAO->deleteUs_Ent("usuario='".$nif."' OR entrenador='".$nif."'");
+            $this->valoracionDAO->delete("de='".$nif."'");
+            return $this->usuarioDAO->deleteUsuario("nif='".$nif."'");
         }
         else {
             return 0;
