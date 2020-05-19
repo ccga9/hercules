@@ -422,6 +422,7 @@ class controller{
     //FIN FUNCIONES VALORACIONDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
     //FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+
     public function listarAlimentos()
     {
         return $this->alimentoDAO->listarAlimentos();
@@ -430,6 +431,7 @@ class controller{
     //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
     //FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /    
+
     public function registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
     {
         return $this->comidaDAO->registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif);
@@ -443,6 +445,11 @@ class controller{
     public function eliminarComida($fecha, $nif)
     {
         return $this->comidaDAO->eliminarComida($fecha, $nif);
+    }
+
+    public function editarComida($fecha, $alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
+    {
+        return $this->comidaDAO->editarComida($fecha, $alimento_1, $alimento_2, $alimento_3, $tipo, $nif);
     }
     
     //FIN FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /

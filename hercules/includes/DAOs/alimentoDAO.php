@@ -23,24 +23,6 @@ class alimentoDAO extends DAO
     	return $nombres;
     }
 
-    /*public function consulta($idAlimento) 
-    {   
-        $query = "SELECT * FROM alimento WHERE idAlimento = ".$idAlimento."";
-
-        $res = consultar($query);
-        $fila = $res->fetch_assoc();
-
-        $alimento = new alimento();
-        $alimento->set_idAlimento($fila['idAlimento']);
-        $alimento->set_nombre($fila['nombre']);
-        $alimento->set_caloríasTotales($fila['caloriasTotales']);
-        $alimento->set_carbohidratos($fila['carbohidratos']);
-        $alimento->set_proteínas($fila['proteínas']);
-        $alimento->set_grasas($fila['grasas']);
-
-        return $alimento;
-    }*/
-
     public function inserta(alimentoTO $a)
     {
     	$query = "INSERT into alimento (nombre, caloriasConsumidas, carbohidratos, proteínas, grasas) values ('".$a->get_nombre()."','".$a->get_caloríasConsumidas()."','".$a->get_carbohidratos()."','".$a->get_proteínas()."','".$a->get_grasas()."') where idAlimento = '".$a->get_idAlimento()."'";
