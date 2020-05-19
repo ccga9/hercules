@@ -8,9 +8,13 @@ if (isset($_POST['admin_submit'])) {
             $ctrl->deleteUsuario($_POST['user']);
             header("Location: adminUsuario.php");
             break;
-        case 'elim_ejer': 
+        case 'crear_ejer': 
             break;
-        case 'elim_alim': 
+        case 'crear_alim': 
+            break;
+        case 'elim_alim':
+            break;
+        default:
             break;
     }
     exit();
