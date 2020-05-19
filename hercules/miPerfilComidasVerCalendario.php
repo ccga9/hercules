@@ -90,7 +90,7 @@
             {
                 echo "
                 <div class='primer_parrafo'
-                <p>Selecciona una semana para ver las comidas que has registrado</p>
+                <p>Selecciona una semana para ver las comidas que has añadido</p>
                 </div>";
             }
             elseif (((!$hayComidasEstaSemana) && (isset($_REQUEST['sem_actual']))) ||
@@ -98,14 +98,15 @@
             {
                 echo "
                 <div class='primer_parrafo'
-                <p>No hay ninguna comida registrada en la semana que has seleccionado</p>
+                <p>No hay ninguna comida en la semana que has seleccionado</p>
                 </div>";
             }
             else
             {
             ?>
             
-            <p>A continuación se muestra la hora a la que registraste una comida y el tipo de comida que es</p>
+            <p>A continuación se muestra la hora a la que registraste o cambiaste una comida, 
+            y el tipo de comida que es</p>
             <div class="tabla_comidas">
             <p><table>
             <tr> <th>Lunes</th> <th>Martes</th> <th>Miércoles</th> <th>Jueves</th> <th>Viernes</th>

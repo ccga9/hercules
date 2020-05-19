@@ -49,7 +49,7 @@
 		</div>
 		<div class="tabla_comidas">
 		<p><table>
-		<tr> <th>Fecha de registro</th> <th>Tipo</th> <th>Calorías</th> <th>Proteínas</th>
+		<tr> <th>Fecha</th> <th>Tipo</th> <th>Calorías</th> <th>Proteínas</th>
 		    <th>Grasas</th> <th>Carbohidratos</th> <th>Alimentos</th> </tr>
 		    
 		<?php
