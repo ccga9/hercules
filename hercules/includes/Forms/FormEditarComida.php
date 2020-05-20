@@ -54,6 +54,8 @@ class FormEditarComida extends Form
     		<input type="radio" name="tipo" value="cena"/>
 
 		<p>Selecciona entre 1 y 3 platos, según la cantidad de platos que quieras modificar:</p>
+        <p>Ten en cuenta que los alimentos no seleccionados se quedarán vacíos 
+            aunque hubiese un alimento antes en ese campo.</p>
 
 	  	<div class="grupo-control"><label>Primer plato o plato único</label></div>
 		<select name="alimento_1">
@@ -114,7 +116,8 @@ class FormEditarComida extends Form
         {
             $erroresFormulario[] = "No puede haber dos alimentos iguales. La cantidad de alimentos consumidos no se tiene en cuenta";
         }
-        else
+        
+        if (count($erroresFormulario) === 0)
         {
             $nif_usuario = $_SESSION['usuario']->getNif();
             $fecha_registro = $_REQUEST['fecha'];
@@ -127,17 +130,9 @@ class FormEditarComida extends Form
             $ctrl->editarComida($fecha_registro, $primer_plato, $segundo_plato, $postre, $tipo_comida, $nif_usuario);
         }
         
-        /* Javascript
-         * 
-         * if (hay comidas vacías):
-         * pop up -> ¿Estas seguro? ¡Las comidas no seleccionadas no sustituirán lo que hubiese antes en ese campo! 
-        */
-        
         if (count($erroresFormulario) === 0)
         {
-            //$erroresFormulario = "miPerfilComidasVerTablas.php";
-            // habría que llegar fácilmente a miPerfilComidasVerTablas.php
-            $erroresFormulario = "miPerfilComidasEditar.php";
+            $erroresFormulario = "miPerfilComidasVerTablas.php";
         }
         
         return $erroresFormulario;
