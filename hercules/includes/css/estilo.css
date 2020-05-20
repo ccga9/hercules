@@ -327,12 +327,13 @@ div#contenido .entrenadores-all {
 	list-style: none;
 	float: left;
 	width: 20%;
-	height: 360px;
+	height: auto;
 	background: #F3F3F3;
 	margin: 20px 30px 0px 20px;
 	box-sizing: border-box;
 	border-radius: 8px;
 	border: 1px solid #F3F3F3;
+	padding: 5px;
 }
 
 .entrenadores-all ul li:hover{
@@ -355,6 +356,7 @@ div#contenido .entrenadores-all {
 .entrenadores-all ul li p{
 	margin: auto;
 	padding: 8px;
+	margin: 10px 5px 10px 5px;
 }
 
 .entrenadores-all ul li a{
@@ -413,11 +415,6 @@ div#contenido .entrenadores-all {
 /*FIN NUESTROS ENTRENADORES*/
 
 /*INICIO PAGINA EJERCICIOS*/
-.buscar-ejercicio {
-	/*display: flex;
-	justify-content: flex-end;*/
-}
-
 .buscar-ejercicio form button[type="submit"]{
 	background: linear-gradient(#e9e174, #e3da0c); /*Degradado*/
 	border: 0;
@@ -461,25 +458,25 @@ div#contenido .entrenadores-all {
 	font-size: 18px;
 }
 
-/*Para pagina de ejercicios*/
 .entrenadores-all .busqueda-item{
 	position: relative;
 	overflow: hidden;
+	height: 100%;
 }
 
-.entrenadores-all .busqueda-item .text{
-	position: absolute;
-	padding: 20px;
-	background: rgba(0,0,0,0.7);
-	color: #fff;
+.text {
 	text-align: justify;
-	transform: translateY(100%);
-	transition: all 0.5s ease-out;
-	height: 200px;
+	margin: 10px 5px 10px 5px;
+}
+/*FIN EJERCICIOS*/
+
+/*MARCADOR DE PAGINA*/
+.cont-marcador {
+	text-align : center;
 }
 
-.entrenadores-all .busqueda-item:hover .text{
-	transform: translateY(0%);
+.marcador-pagina {
+  display: inline-block;
 }
 
 .marcador-pagina a {
@@ -495,17 +492,6 @@ div#contenido .entrenadores-all {
 }
 
 .marcador-pagina a:hover:not(.active) {background-color: #ddd;}
-
-.cont-marcador {
-	text-align : center;
-}
-
-.marcador-pagina {
-  display: inline-block;
-}
-
-/*FIN EJERCICIOS*/
-
 
 div#tema{
 }

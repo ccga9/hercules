@@ -39,6 +39,7 @@
 
 		<?php
 			if(isset($_POST['busqueda'])){
+				echo '<div class="boton-volver"><a href="ejercicios.php">Volver</a></div>';
 				$busqueda=trim($_POST['busqueda']);
 
 						if(empty($busqueda)){
@@ -47,23 +48,23 @@
 						else {
 							$encontrado=$ctrl->buscarEjercicio($_POST['busqueda']);
 							if(count($encontrado) > 0){
-								echo '<div class="entrenadores-all">';
+								echo '<div class="entrenadores-all"><div class="busqueda-item">';
 									echo '';
 									echo '<ul>';
 									 foreach ($encontrado as $valor) {
 									 	echo '<li>';
-										echo '<div class="busqueda-item"><h4>'.$valor['nombre'].'</h4>';
+										echo '<h4>'.$valor['nombre'].'</h4>';
 										echo '<div class="ejercicio"><img src='.$valor['multimedia'].' alt="foto" class= "fotos"/></div>';
 										echo 'Calorías Gastadas: '.$valor['caloriasGastadas'].'<br>';
-										echo 'Tipo: '.$valor['tipo'].'<br></div>';
+										echo 'Tipo: '.$valor['tipo'].'<br>';
 										
-											echo '<section class="text">Descripción: '.$valor['descripcion'].'</section>';
+											echo '<section class="text"><strong>Descripción:</strong> '.$valor['descripcion'].'</section>';
 										
 										echo '</li>';
 									}
 									echo '</ul>';
 									echo '';
-								echo '</div>';
+								echo '</div></div>';
 							}
 							else{
 								echo 'No se han encontrado ejercicios. Intenta otro nombre';
