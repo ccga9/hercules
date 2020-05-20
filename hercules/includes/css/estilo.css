@@ -475,12 +475,35 @@ div#contenido .entrenadores-all {
 	text-align: justify;
 	transform: translateY(100%);
 	transition: all 0.5s ease-out;
-	height: 100px;
+	height: 200px;
 }
 
 .entrenadores-all .busqueda-item:hover .text{
 	transform: translateY(0%);
 }
+
+.marcador-pagina a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.marcador-pagina a.active {
+  background: linear-gradient(#e9e174, #e3da0c);
+  color: white;
+}
+
+.marcador-pagina a:hover:not(.active) {background-color: #ddd;}
+
+.cont-marcador {
+	text-align : center;
+}
+
+.marcador-pagina {
+  display: inline-block;
+}
+
 /*FIN EJERCICIOS*/
 
 
