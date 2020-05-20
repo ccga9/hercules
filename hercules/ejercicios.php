@@ -30,7 +30,7 @@
 		</div>
 
 		<div class="buscar-ejercicio">
-			<label for="buscar-ejer">Buscar ejercicio </label>
+			<label>Introduzca el nombre del ejercicio del que le gustaría obtener información</label>
 			<form method="POST" action="ejercicios.php">
 				<input type="search" id="site-search" name="busqueda"/>
 				<button type="submit" name="buscar">Buscar</button>
@@ -38,29 +38,55 @@
 		</div>
 
 		<?php
-			if (isset($_POST['busqueda'])) {
-				$encontrado=$ctrl->buscarEjercicio($_POST['busqueda']);
-				 foreach ($encontrado as $valor) {
-					echo '<h4>'.$valor['nombre'].'</h4>';
-				}
-			}
-		?>
+			if(isset($_POST['busqueda'])){
+				$busqueda=trim($_POST['busqueda']);
 
-		<?php
-			$ejercicios= $ctrl->listarTodosEjercicios();
-			echo '<div class="entrenadores-all">';
-				echo '<ul>';
-					foreach ($ejercicios as $valor) {
-						echo '<li>';
-						echo '<h4>'.$valor['nombre'].'</h4>';
-						echo '<div class="ejercicio"><img src='.$valor['multimedia'].' alt="foto" class= "fotos"/></div>';
-						echo 'Calorías Gastadas: '.$valor['caloriasGastadas'].'<br>';
-						echo 'Tipo: '.$valor['tipo'].'<br>';
-						//echo $valor['descripcion'].'<br>';
-						echo '</li>';						    
-					}
-				echo '</ul>';
-			echo '</div>';
+						if(empty($busqueda)){
+							echo 'Busqueda sin resultados';
+						}
+						else {
+							$encontrado=$ctrl->buscarEjercicio($_POST['busqueda']);
+							if(count($encontrado) > 0){
+								echo '<div class="entrenadores-all">';
+									echo '';
+									echo '<ul>';
+									 foreach ($encontrado as $valor) {
+									 	echo '<li>';
+										echo '<div class="busqueda-item"><h4>'.$valor['nombre'].'</h4>';
+										echo '<div class="ejercicio"><img src='.$valor['multimedia'].' alt="foto" class= "fotos"/></div>';
+										echo 'Calorías Gastadas: '.$valor['caloriasGastadas'].'<br>';
+										echo 'Tipo: '.$valor['tipo'].'<br></div>';
+										
+											echo '<section class="text">Descripción: '.$valor['descripcion'].'</section>';
+										
+										echo '</li>';
+									}
+									echo '</ul>';
+									echo '';
+								echo '</div>';
+							}
+							else{
+								echo 'No se han encontrado ejercicios. Intenta otro nombre';
+							}
+						}
+			}
+
+			else {
+				$ejercicios= $ctrl->listarTodosEjercicios();
+						echo '<div class="entrenadores-all">';
+							echo '<ul>';
+								foreach ($ejercicios as $valor) {
+									echo '<li>';
+									echo '<h4>'.$valor['nombre'].'</h4>';
+									echo '<div class="ejercicio"><img src='.$valor['multimedia'].' alt="foto" class= "fotos"/></div>';
+									echo 'Calorías Gastadas: '.$valor['caloriasGastadas'].'<br>';
+									echo 'Tipo: '.$valor['tipo'].'<br>';
+									//echo $valor['descripcion'].'<br>';
+									echo '</li>';						    
+								}
+							echo '</ul>';
+						echo '</div>';
+			}
 		?>
 
 	</div>

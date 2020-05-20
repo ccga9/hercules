@@ -557,7 +557,7 @@ class controller{
     }
 
     public function buscarEjercicio($ejercicio){
-        $col = "nombre";
+        $col ='nombre, caloriasGastadas, tipo, descripcion, multimedia';
         return $consulta = $this->ejercicioDAO->buscarEjercicio($col, $ejercicio);
     }
     
