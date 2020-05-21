@@ -175,13 +175,14 @@
 				<?php 
 				echo '<form method="POST" action="PR_admin.php">';
 				
-				echo '<input type="hidden" name="user" value="'.$us->getNif().'">';
+				if (isset($_GET['perfil']))
+				    echo '<input type="hidden" name="user" value="'.$_GET['perfil'].'">';
+				
 				
 				echo '<button type="submit" name="admin_submit" value="elim_user">Confirmar</button>';
 				echo '</form>';
 				?>
-				
-			</div>
+			
 		</div>
 	</div>
 	

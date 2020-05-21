@@ -1,5 +1,9 @@
 <?php
 require_once 'includes/config.php';
+require_once(__DIR__.'/includes/Forms/FormNuevoAdmin.php');
+
+$act = new FormularioNuevoAdmin();
+$html=$act->gestiona();
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,8 +44,7 @@ require_once 'includes/config.php';
     		   
     		    echo"<h2>Administradores</h2>";
     		    
-    		    echo '<button id= "abrir">Crear Nuevo Admin</button>';
-    		    //echo "<a href= adminNuevaCuenta.php>Crear Nuevo Admin</a>";
+    		    echo "<a href= adminNuevaCuenta.php>Crear Nuevo Admin</a>";
     		    
     		    echo"<h3>Lista de Administradores</h3>";
     	       
@@ -61,7 +64,7 @@ require_once 'includes/config.php';
     		            echo '</li>';
     		        }
     		        echo '</ul>';
-    		        echo '</div>'; //<!-- Fin de entrenadores-all -->
+    		        echo '</div>';
     		    }
 		    }
 		    else {
@@ -69,13 +72,13 @@ require_once 'includes/config.php';
 		        echo '<div class= "miPerfil">';
 		        $us = $ctrl->cargarUsuario($_GET['perfil']);
 		        echo '<h2>'.$us->getNombre().'</h2>';
-		        echo '<img src="'.$us->getFoto().'"  alt="Foto usuario"/>';
+		        echo '<img src="'.$us->getFoto().'"  alt="Foto usuario">';
 		        
 		        echo '<p class="info">Vas a borrar a este administrador.¿Estás completamente seguro?</p>'; 
 		        
 		        echo '<form method="POST" action="PR_admin.php">';
 		        
-		        echo '<input type="hidden" name="user" value="'.$us->getNif().'"/>';
+		        echo '<input type="hidden" name="user" value="'.$us->getNif().'">';
 		        
 		        echo '<button type="submit" name="admin_submit" value="elim_user">Confirmar</button>';
 		        echo '</form>';
@@ -89,7 +92,8 @@ require_once 'includes/config.php';
 		?>
 			
 
-	</div>	
+	</div>
+	
 	
 	
 	<?php
@@ -98,7 +102,6 @@ require_once 'includes/config.php';
         echo '<div class="marcador-pagina">';
         
         if ($max_page > 0) {
-            
             if ($page > 1) {
                 echo "<a href= adminNuevaCuenta.php><<</a>";
                 $aux=$page - 1;
@@ -126,21 +129,18 @@ require_once 'includes/config.php';
                 echo "<a href= adminNuevaCuenta.php?p=". $max_page .">>></a>";
             }
         }
+        else {
+            echo "No se encontraron resultados";
+        }
        
         echo '</div>';
-        echo '</div>'; //<!-- Fin del cont-marcador -->
+        echo '</div>';
 	}
 	
 	?>
-
-	<?php	
-
-		require('includes/comun/pie.php');
-
-	?>
 	
 	<div class="overlay" id="overlay">
-			<div class ="popup" id="popup">
+			<div class = "popup" id="popup">
 				<a class = "cerrar" id="cerrar" href="#bottom">Volver atras</a>
 				<h2>Estas a punto de eliminar al ADMINISTRADOR</h2>
 				<h2>¿Estas seguro?</h2>
@@ -148,17 +148,23 @@ require_once 'includes/config.php';
 				<?php 
 				echo '<form method="POST" action="PR_admin.php">';
 				
-				if (isset($_GET['perfil']))
-				    echo '<input type="hidden" name="user" value="'.$_GET['perfil'].'">';
+				echo '<input type="hidden" name="user" value="'.$us->getNif().'">';
 				
 				echo '<button type="submit" name="admin_submit" value="elim_user">Confirmar</button>';
 				echo '</form>';
 				?>
 				
+			</div>
 		</div>
-	</div> <!-- Fin del overlay -->
+	</div>
 	
+
+	<?php	
+
+		require('includes/comun/pie.php');
+
+	?>
 </div> <!-- Fin del contenedor -->
-<script type="text/javascript" src="includes/js/scripts.js" ></script>
+
 </body>
 </html>

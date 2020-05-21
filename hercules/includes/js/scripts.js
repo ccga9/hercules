@@ -2,6 +2,7 @@
  * 
  */
 
+
 var btnAbrir = document.getElementById('abrir'),
 	overlay = document.getElementById('overlay'),
 	popup = document.getElementById('popup'),
@@ -14,6 +15,8 @@ btnAbrir.addEventListener('click', function() {
 btnCerrar.addEventListener('click', function() {
 	overlay.classList.remove('active');
 });
+
+  
 
 
 function eliminarEntrenami(indice){

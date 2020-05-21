@@ -17,20 +17,20 @@
 				if ($_SESSION['usuario']->getTipoUsuario()==1) {
 					echo '<li><a href= miPerfilMisClientes.php>Mis Clientes</a></li>';
 					echo '<li><a href= miPerfilEditar.php>Editar Perfil</a></li>';
+					echo '<li><a href= miPerfilBuzon.php>Mensajes</a></li>';
 				}
 				else if($_SESSION['usuario']->getTipoUsuario()==2){
-				    echo '<li><a href= miPerfilEditar.php>Editar Perfil</a></li>';
-				    echo '<li><a href= gestionarUsuario.php>Gestionar Usuarios</a></li>';
-				    echo '<li><a href= gestionarEjercicios.php>Gestionar Ejercicios</a></li>';
+				    echo '<li><a href= adminPerfil.php>Editar Perfil</a></li>';
+				    echo '<li><a href= adminNuevaCuenta.php>Gestionar Admins</a></li>';
 				}
 				else {
 				 	echo '<li><a href= miPerfilComidas.php>Comidas</a></li>';
 				  	echo '<li><a href= miPerfilEntrenamientos.php>Entrenamientos</a></li>';
 					echo '<li><a href= miPerfilMisEntrenadores.php>Mis Entrenadores</a></li>';
 					echo '<li><a href= miPerfilEditar.php>Editar Perfil</a></li>';
+					echo '<li><a href= miPerfilBuzon.php>Mensajes</a></li>';
 				}
 			?>
-			<li><a href= miPerfilBuzon.php>Mensajes</a></li>
 		</ul>
 	</div>
 
