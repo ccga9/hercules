@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2020 a las 20:36:20
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+-- Tiempo de generación: 21-05-2020 a las 20:32:06
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -207,7 +207,7 @@ INSERT INTO `entrenamientoejercicio` (`idEntrenamiento`, `idEjercicio`) VALUES
 
 CREATE TABLE `foro` (
   `id` int(10) NOT NULL,
-  `autor` varchar(10) NOT NULL,
+  `autor` varchar(30) NOT NULL,
   `mensaje` varchar(500) NOT NULL,
   `fecha` date NOT NULL DEFAULT current_timestamp(),
   `respuestas` int(4) NOT NULL,
@@ -220,8 +220,9 @@ CREATE TABLE `foro` (
 --
 
 INSERT INTO `foro` (`id`, `autor`, `mensaje`, `fecha`, `respuestas`, `id_r`, `tema`) VALUES
-(4, 'Hugan', 'ME GUSTARíA QUE LOS PASEOS AL AIRE LIBRE SE PUDIERAN REALIZAR SIN LíMITE DE HORA', '2020-05-10', 0, 0, 'DAR PASEOS AL AIRE LIBRE EN MADRID'),
-(5, 'Hugan', 'HOLA', '2020-05-10', 0, 0, 'TEMA DE PRUEBA');
+(5, 'Hugan', 'HOLA', '2020-05-10', 1, 0, 'TEMA DE PRUEBA'),
+(61, 'Lara Ibarra', 'BIEEEEEEEEEEN', '2020-05-21', 0, 5, ''),
+(65, 'Lara Ibarra', 'ESTA MARAVILLOSA WEB TIENE EL MEJOR FORO DEL MUNDO!!', '2020-05-21', 0, 0, 'HABLANDO DE HéRCULES...');
 
 -- --------------------------------------------------------
 
@@ -464,7 +465,7 @@ ALTER TABLE `entrenamiento`
 -- AUTO_INCREMENT de la tabla `foro`
 --
 ALTER TABLE `foro`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`

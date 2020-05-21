@@ -5,6 +5,7 @@ require_once 'includes/config.php';
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estiloForo.css" />
 	<meta http-equiv=â€�Content-Typeâ€� content=â€�text/html; charset=UTF-8â€³ />
 	<title>HERCULES</title>
 </head>
@@ -19,9 +20,6 @@ require_once 'includes/config.php';
 
 	?>
 
-	<!-- Banner principal -->
-	<div class="main-banner" id="main-banner">
-	</div>
 
 	<div id="contenido">
 		<?php 
@@ -29,18 +27,26 @@ require_once 'includes/config.php';
 		echo "<a href= respuesta.php?id_msg=$id_mesg><button type=button>Responder</button></a>";
 		$fila = $ctrl->mostrarMensaje($id_mesg);
 		$i = 0;
-		echo "<ul>";
-		echo "<li>".$fila[$i]['tema']." <pre>Autor: ".$fila[$i]['autor'].", Fecha: ".$fila[$i]['fecha'].".</pre>";
+		echo "<ol class=mensaje>";
+		echo "<li><p class=tema>".$fila[$i]['tema']."</p> <pre class=datos>Autor: ".$fila[$i]['autor'].", Fecha: ".$fila[$i]['fecha'].".</pre>";
 		echo "<pre>".$fila[$i]['mensaje']."</pre> </li>";
+		if($fila[$i]['autor'] == $_SESSION['usuario']->getNombre()){
+		    echo "<a href= editarMensaje.php?id_msg=$id_mesg><button type=button>Editar</button></a>";
+	       	echo "<a href= borrarMensaje.php?id_msg=$id_mesg><button type=button>Eliminar</button></a>";
+		}
 		
 		
 		$resp = $ctrl->mostrarRespuestas($id_mesg);
 		if ($resp) {
 		    while ($fila = mysqli_fetch_assoc($resp)){
-		        echo "<li><pre>Autor: ".$fila['autor']." Fecha: ".$fila['fecha']."</pre>";
-		        echo "<pre>".$fila['mensaje']."</pre></li>";
+		        echo "<li><pre class=datos>*Respuesta* Autor: ".$fila['autor']." Fecha: ".$fila['fecha']."</pre>";
+		        echo "<pre class=mensaje>".$fila['mensaje']."</pre></li>";
+		        if($fila['autor'] == $_SESSION['usuario']->getNombre()){
+		           echo "<a href= editarMensaje.php?id_msg=$fila[id]><button type=button>Editar</button></a>";
+		           echo "<a href= borrarMensaje.php?id_msg=$fila[id]><button type=button>Eliminar</button></a>";
+		        }
 		    }
-		    echo"</ul>";
+		    echo"</ol>";
 		}
 		else{
 		    echo "<p>No hay respuestas...</p>";

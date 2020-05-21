@@ -583,6 +583,16 @@ class controller{
     {
         return $this->foroDAO->inserta($datos['autor'], $datos['texto'], $datos['id_r'], $datos['tema']);
     }
+    
+    public function borrarMensaje($id)
+    {
+        return $this->foroDAO->elimina($id);
+    }
+    
+    public function editarMensaje($datos)
+    {
+        return $this->foroDAO->modifica($datos['id'], $datos['texto']);
+    }
     //FIN FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
    
 }
