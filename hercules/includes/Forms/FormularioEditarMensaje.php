@@ -70,9 +70,9 @@ class FormularioEditarMensaje extends Form {
             $ctrl->editarMensaje($datos);
         }
         
-        /*if (count($erroresFormulario) === 0) {
+        if (count($erroresFormulario) === 0) {
             $erroresFormulario = "foro.php";
-        }*/
+        }
         return $erroresFormulario;
     }
 }
