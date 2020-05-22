@@ -65,6 +65,7 @@
         		    }
         		    echo
         		    '</li>
+                  <li><a href= usuarios.php>Usuarios</a></li>
                   <li><a href= ejercicios.php>Ejercicios</a></li>
         		  <li><a href= quienes_somos.php>Quiénes Somos</a></li>
         		  <li><a href= faqs.php>FAQs</a></li>
