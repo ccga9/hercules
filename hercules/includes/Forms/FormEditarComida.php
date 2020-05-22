@@ -2,11 +2,11 @@
     require_once(__DIR__.'/Form.php');
     require_once(__DIR__.'/../config.php');
     
-class FormRegistroComida extends Form
+class FormEditarComida extends Form
 {
     public function __construct()
     {
-        parent::__construct('miPerfilComidasRegistrar', array());
+        parent::__construct('miPerfilComidasEditar', array());
     }
     
     public function gestiona()
@@ -17,11 +17,30 @@ class FormRegistroComida extends Form
     protected function generaCamposFormulario($datosIniciales)
     {
         $ctrl = controller::getInstance();
+        $comidas = $ctrl->verComidas($_SESSION['usuario']->getNif());
         $alimentos = $ctrl->listarAlimentos();
 
         $ret = '<div class="form-inicio">';
         $ret .= '<fieldset>';
-           $ret .= '<legend>REGISTRO DE COMIDA</legend>';
+           $ret .= '<legend>EDITAR COMIDA</legend>';
+           
+        $ret.='
+        <p>Selecciona la fecha de la comida que quieras modificar:</p>
+        <p>Recuerda que una vez modifiques la comida, se le asignará la fecha actual a esa comida.</p>
+        <div class="grupo-control"><label>Fecha</label>
+        <select name="fecha">
+            <option value = ""> </option>';
+            
+            $i = 0;
+    		foreach ($comidas as $value)
+    		{
+    		    if ((count($comidas) == $i + 1) || ($comidas[$i]['dia'] != $comidas[$i + 1]['dia']))
+    		        $ret .= '<option value = "'.$value['dia'].'">'.$value['dia'].'</option>';
+    		            
+    		    ++$i;
+    		}
+	    
+		$ret .= '</select></div>';
 
         $ret .=	
 		'<p>Escoge el tipo de comida que desees:</p>
@@ -34,8 +53,9 @@ class FormRegistroComida extends Form
             <label>Cena</label>
     		<input type="radio" name="tipo" value="cena"/>
 
-		<p>Selecciona entre 1 y 3 platos, dependiendo del tipo de comida que hayas escogido
-            y la cantidad que quieras comer:</p>
+		<p>Selecciona entre 1 y 3 platos, según la cantidad de platos que quieras modificar:</p>
+        <p>Ten en cuenta que los alimentos no seleccionados se quedarán vacíos 
+            aunque hubiese un alimento antes en ese campo.</p>
 
 	  	<div class="grupo-control"><label>Primer plato o plato único</label></div>
 		<select name="alimento_1">
@@ -64,7 +84,7 @@ class FormRegistroComida extends Form
 			
 		$ret .= '</select>
 
-	    <div class="botones"><button type="submit" value="Enviar">Registrar</button>
+	    <div class="botones"><button type="submit" value="Enviar">Modificar</button>
         </div>
         ';
         $ret .= '</fieldset>';
@@ -78,7 +98,12 @@ class FormRegistroComida extends Form
         
         if (!isset($_SESSION['login']))
         {
-            $erroresFormulario[] = 'Entra con tu usuario para registrar una comida';
+            $erroresFormulario[] = 'Entra con tu usuario para editar una comida';
+        }
+        
+        if ((!isset($_REQUEST['fecha'])) || (trim($_REQUEST['fecha']) == ''))
+        {
+            $erroresFormulario[] = "El campo 'Fecha de registro' no puede estar vacío";
         }
         
         if ((!isset($_REQUEST['alimento_1'])) || (trim($_REQUEST['alimento_1']) == ''))
@@ -91,16 +116,18 @@ class FormRegistroComida extends Form
         {
             $erroresFormulario[] = "No puede haber dos alimentos iguales. La cantidad de alimentos consumidos no se tiene en cuenta";
         }
-        else
+        
+        if (count($erroresFormulario) === 0)
         {
             $nif_usuario = $_SESSION['usuario']->getNif();
+            $fecha_registro = $_REQUEST['fecha'];
             $tipo_comida = $_REQUEST['tipo'];
             $primer_plato = $_REQUEST['alimento_1'];
             $segundo_plato = $_REQUEST['alimento_2'];
             $postre = $_REQUEST['alimento_3'];
             
             $ctrl = controller::getInstance();
-            $ctrl->registrarComida($primer_plato, $segundo_plato, $postre, $tipo_comida, $nif_usuario);
+            $ctrl->editarComida($fecha_registro, $primer_plato, $segundo_plato, $postre, $tipo_comida, $nif_usuario);
         }
         
         if (count($erroresFormulario) === 0)

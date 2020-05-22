@@ -177,8 +177,12 @@ class controller{
     }
     
     public function deleteUsuario($nif){
-        if ($this->cargarUsuario($arr['nif']) !== 0) {
-            return $this->usuarioDAO->deleteUsuario("nif='".$nif);
+        if ($this->cargarUsuario($nif) !== 0) {
+            $this->mensajesDAO->delete("emisor='".$nif."' OR receptor='".$nif."'");
+            $this->comidaDAO->deleteComida("usuario='".$nif."'");
+            $this->usuarioDAO->deleteUs_Ent("usuario='".$nif."' OR entrenador='".$nif."'");
+            $this->valoracionDAO->delete("de='".$nif."'");
+            return $this->usuarioDAO->deleteUsuario("nif='".$nif."'");
         }
         else {
             return 0;
@@ -422,6 +426,7 @@ class controller{
     //FIN FUNCIONES VALORACIONDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
     //FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+
     public function listarAlimentos()
     {
         return $this->alimentoDAO->listarAlimentos();
@@ -430,6 +435,7 @@ class controller{
     //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
     //FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /    
+
     public function registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
     {
         return $this->comidaDAO->registrarComida($alimento_1, $alimento_2, $alimento_3, $tipo, $nif);
@@ -443,6 +449,11 @@ class controller{
     public function eliminarComida($fecha, $nif)
     {
         return $this->comidaDAO->eliminarComida($fecha, $nif);
+    }
+
+    public function editarComida($fecha, $alimento_1, $alimento_2, $alimento_3, $tipo, $nif)
+    {
+        return $this->comidaDAO->editarComida($fecha, $alimento_1, $alimento_2, $alimento_3, $tipo, $nif);
     }
     
     //FIN FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
@@ -546,7 +557,7 @@ class controller{
     }
 
     public function buscarEjercicio($ejercicio){
-        $col = "nombre";
+        $col ='nombre, caloriasGastadas, tipo, descripcion, multimedia';
         return $consulta = $this->ejercicioDAO->buscarEjercicio($col, $ejercicio);
     }
     
@@ -571,6 +582,16 @@ class controller{
     public function nuevoMensaje($datos)
     {
         return $this->foroDAO->inserta($datos['autor'], $datos['texto'], $datos['id_r'], $datos['tema']);
+    }
+    
+    public function borrarMensaje($id)
+    {
+        return $this->foroDAO->elimina($id);
+    }
+    
+    public function editarMensaje($datos)
+    {
+        return $this->foroDAO->modifica($datos['id'], $datos['texto']);
     }
     //FIN FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
    

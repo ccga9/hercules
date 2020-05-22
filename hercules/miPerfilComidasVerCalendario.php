@@ -90,7 +90,7 @@
             {
                 echo "
                 <div class='primer_parrafo'
-                <p>Selecciona una semana para ver las comidas que has registrado</p>
+                <p>Selecciona una semana para ver las comidas que has añadido</p>
                 </div>";
             }
             elseif (((!$hayComidasEstaSemana) && (isset($_REQUEST['sem_actual']))) ||
@@ -98,18 +98,57 @@
             {
                 echo "
                 <div class='primer_parrafo'
-                <p>No hay ninguna comida registrada en la semana que has seleccionado</p>
+                <p>No hay ninguna comida en la semana que has seleccionado</p>
                 </div>";
             }
             else
             {
             ?>
             
-            <p>A continuación se muestra la hora a la que registraste una comida y el tipo de comida que es</p>
+            <p>A continuación se muestra la hora a la que registraste o cambiaste una comida, 
+            y el tipo de comida que es</p>
             <div class="tabla_comidas">
             <p><table>
-            <tr> <th>Lunes</th> <th>Martes</th> <th>Miércoles</th> <th>Jueves</th> <th>Viernes</th>
-                <th>Sábado</th> <th>Domingo</th> </tr>
+            <?php
+            $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+            
+            if (isset($_REQUEST['sem_actual']))
+            {
+                $mes = $meses[date('n')-1];
+                $j = $fecha_hoy['mday'] - $fecha_hoy['wday'] + 1;
+                
+                if ($j <= 0)
+                    $j += 31;
+            }
+            else if (isset($_REQUEST['sem_anterior']))
+            {
+                $sem_anterior = $fecha_hoy['mday'] - 7;
+                
+                if ($sem_anterior <= 0)
+                    $mes = $meses[date('n')-2];
+                else
+                    $mes = $meses[date('n')-1];
+                
+                $j = $sem_anterior - $fecha_hoy['wday'] + 1;
+                
+                if ($j <= 0)
+                    $j += 31;
+            }
+            
+            echo "<caption>".$mes."</caption";
+            echo"<tr>";
+            
+            echo "<th>Lunes (".$j.")</th>"; ++$j; if ($j > 31) { $j = 1; }
+            echo "<th>Martes (".$j.")</th>"; ++$j; if ($j > 31) { $j = 1; }
+            echo "<th>Miércoles (".$j.")</th>"; ++$j; if ($j > 31) { $j = 1; }
+            echo "<th>Jueves (".$j.")</th>"; ++$j; if ($j > 31) { $j = 1; }
+            echo "<th>Viernes (".$j.")</th>"; ++$j; if ($j > 31) { $j = 1; }
+            echo "<th>Sábado (".$j.")</th>"; ++$j; if ($j > 31) { $j = 1; }
+            echo "<th>Domingo (".$j.")</th>";
+        	
+            echo"</tr>";
+            ?>
+            
             
             <?php
             

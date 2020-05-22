@@ -26,7 +26,7 @@ class FormEliminarComida extends Form
 
         $ret .=	
 		'<p>Selecciona la fecha de aquella comida que quieras borrar.</p>
-         <p>La fecha corresponde al momento en que registraste una comida.</p>
+         <p>La fecha corresponde al momento en que registraste o modificaste una comida.</p>
 
         <div class="grupo-control"><label>Fecha</label>
 		<select name="fecha">

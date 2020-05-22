@@ -1,16 +1,19 @@
 <?php 
 	require_once 'includes/config.php';
+	require_once(__DIR__.'/includes/Forms/FormEditarComida.php');
+	
+	$form = new FormEditarComida();
+	$html=$form->gestiona();
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
-	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
-	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>Mi Perfil - Comidas</title>
+	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estiloFormularios.css" />
+	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -28,7 +31,9 @@
 			<a href="miPerfilComidas.php"> 🔙Volver </a>
 		</div>
 		
-		<p>Disponible próximamente...</p>
+		<?php 
+		  echo $html;
+		?>
 		
 	</div>
 	

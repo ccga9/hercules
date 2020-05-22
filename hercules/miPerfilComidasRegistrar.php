@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>HERCULES</title>
+	<title>Mi Perfil - Comidas</title>
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ /> 
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />

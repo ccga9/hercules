@@ -1,5 +1,5 @@
-<?php 
-	require_once 'includes/config.php';
+<?php
+require_once 'includes/config.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,7 @@
 		    
 		    $max_page = ceil($max[0]['c'] / $items_page);
 			
-		    echo"<h2>Gestionar Usuarios</h2>";
+		    echo"<h2>Gestionar Alimentos</h2>";
 		    
 		    if (!isset($_GET['perfil'])) {
 		        
@@ -175,14 +175,13 @@
 				<?php 
 				echo '<form method="POST" action="PR_admin.php">';
 				
-				if (isset($_GET['perfil']))
-				    echo '<input type="hidden" name="user" value="'.$_GET['perfil'].'">';
-				
+				echo '<input type="hidden" name="user" value="'.$us->getNif().'">';
 				
 				echo '<button type="submit" name="admin_submit" value="elim_user">Confirmar</button>';
 				echo '</form>';
 				?>
-			
+				
+			</div>
 		</div>
 	</div>
 	

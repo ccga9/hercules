@@ -4,12 +4,11 @@ require_once(__DIR__.'/Form.php');
 require_once(__DIR__.'/../DAOs/usuarioDAO.php');
 require_once(__DIR__.'/../controller.php');
 
-class FormularioRespuesta extends Form {
-    
+class FormularioEditarMensaje extends Form {
     
     public function __construct()
     {
-        parent::__construct('respuesta', array());
+        parent::__construct('editar', array());
     }
     
     /**
@@ -32,10 +31,10 @@ class FormularioRespuesta extends Form {
         $ret = '';
         $ret .= '<div class="form-inicio">';
         $ret .= '<fieldset>';
-        $ret .= '<legend>Responder</legend>';
+        $ret .= '<legend>Editar</legend>';
         $ret .= '<div class="grupo-control">';
         $ret .= '<input type="text" name="texto"/>';
-        $ret .= '<input type="hidden" name="id_r" value="'.$_GET['id_msg'].'"/>';
+        $ret .= '<input type="hidden" name="id" value="'.$_GET['id_msg'].'"/>';
         $ret .= '</div>';
         $ret .= '<div class="grupo-control"><button type="submit" name="login">Enviar</button></div>';
         $ret .= '</fieldset>';
@@ -66,18 +65,12 @@ class FormularioRespuesta extends Form {
         if ( strlen($text) > 500 ) {
             $erroresFormulario[] = "El texto no puede contener m�s de 500 caracteres.";
         }
-        
-        $datos['autor'] = $_SESSION['usuario']->getNombre();
-        $datos['resp'] = "0";
-        $datos['tema'] = "";
-        
         if (count($erroresFormulario) === 0) {
             $ctrl = controller::getInstance();
-            $ctrl->nuevoMensaje($datos);
+            $ctrl->editarMensaje($datos);
         }
         
         if (count($erroresFormulario) === 0) {
-           // $erroresFormulario = "mensaje.php?id_msg='".$datos['id_r']."'";
             $erroresFormulario = "foro.php";
         }
         return $erroresFormulario;

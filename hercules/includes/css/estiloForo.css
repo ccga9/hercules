@@ -1,0 +1,42 @@
+ol.listaTemas{
+	list-style-type: decimal;
+	padding-left: 20px;
+}
+
+pre.tema{
+	font-size: 16px;
+}
+
+pre.datos{
+	font-size: 16px;
+	background-color: #e1d80d;
+}
+
+a.tema, p.tema{
+	color: white;
+	text-decoration: none;
+	font-size: 24px;
+	background-color: #303030;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-weight: bold;
+	border: 2px solid #303030;
+	border-radius: 5px;
+	border-width: 3px;
+	margin-right: 50px;
+}
+a.tema:hover{
+	text-decoration:underline;
+}
+
+p.respuesta{
+	color: white;
+	text-decoration: none;
+	font-size: 24px;
+	background-color: #303030;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-weight: bold;
+	border: 2px solid #303030;
+	border-radius: 5px;
+	border-width: 3px;
+	margin-right: 50px;
+}

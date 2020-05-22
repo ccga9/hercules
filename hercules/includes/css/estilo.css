@@ -327,12 +327,13 @@ div#contenido .entrenadores-all {
 	list-style: none;
 	float: left;
 	width: 20%;
-	height: 360px;
+	height: auto;
 	background: #F3F3F3;
 	margin: 20px 30px 0px 20px;
 	box-sizing: border-box;
 	border-radius: 8px;
 	border: 1px solid #F3F3F3;
+	padding: 5px;
 }
 
 .entrenadores-all ul li:hover{
@@ -355,6 +356,7 @@ div#contenido .entrenadores-all {
 .entrenadores-all ul li p{
 	margin: auto;
 	padding: 8px;
+	margin: 10px 5px 10px 5px;
 }
 
 .entrenadores-all ul li a{
@@ -413,14 +415,83 @@ div#contenido .entrenadores-all {
 /*FIN NUESTROS ENTRENADORES*/
 
 /*INICIO PAGINA EJERCICIOS*/
-.buscar-ejercicio {
-	display: flex;
-	justify-content: flex-end;
+.buscar-ejercicio form button[type="submit"]{
+	background: linear-gradient(#e9e174, #e3da0c); /*Degradado*/
+	border: 0;
+	color: black;
+	opacity: 0.8;
+	cursor: pointer;
+	border-radius: 20px;
+	margin-bottom: 0;
+	padding: 10px;
+	width: 50%;
+	margin: 15px 5px;
+	font-size: 18px;
+	font-weight: bold;
+	transition: all 5%;
 }
 
+.buscar-ejercicio button[type="submit"]:hover{
+	opacity: 1;
+}
 
+.buscar-ejercicio form{
+	width: 50%;
+	max-width: 300px;
+	height: 80px;
+	background-color: #F3F3F3;
+	margin: 2% auto;
+	padding-bottom: 1rem;
+	border: 1px solid rgba(0,0,0,0.2);
+	padding: 30px;
+	display: flex;
+	flex-direction: row;
+}
+
+.buscar-ejercicio form input[type="search"]{
+	width: 90%;
+}
+
+.buscar-ejercicio input {
+	padding: 5px;
+	margin: 20px 0;
+	font-size: 18px;
+}
+
+.entrenadores-all .busqueda-item{
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+}
+
+.text {
+	text-align: justify;
+	margin: 10px 5px 10px 5px;
+}
 /*FIN EJERCICIOS*/
 
+/*MARCADOR DE PAGINA*/
+.cont-marcador {
+	text-align : center;
+}
+
+.marcador-pagina {
+  display: inline-block;
+}
+
+.marcador-pagina a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.marcador-pagina a.active {
+  background: linear-gradient(#e9e174, #e3da0c);
+  color: white;
+}
+
+.marcador-pagina a:hover:not(.active) {background-color: #ddd;}
 
 div#tema{
 }

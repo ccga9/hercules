@@ -1,10 +1,10 @@
 <?php
 require_once(__DIR__.'/includes/config.php');
-require_once(__DIR__.'/includes/Forms/FormularioRespuesta.php');
+require_once(__DIR__.'/includes/Forms/FormularioEditarMensaje.php');
 
 //$id_mesg = $_GET['id_msg'];
 
-$act = new FormularioRespuesta();
+$act = new FormularioEditarMensaje();
 $html=$act->gestiona();
 ?>
 
