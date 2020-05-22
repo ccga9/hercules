@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-05-2020 a las 20:32:06
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 22-05-2020 a las 20:23:40
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -86,6 +86,19 @@ INSERT INTO `alimentocomida` (`idAlimento`, `idComida`) VALUES
 (12, 4),
 (13, 6),
 (14, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `amigos`
+--
+
+CREATE TABLE `amigos` (
+  `id` int(10) NOT NULL,
+  `usuario1` varchar(10) NOT NULL,
+  `usuario2` varchar(10) NOT NULL,
+  `estado` enum('aceptado','pendiente','') NOT NULL DEFAULT 'pendiente'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -293,6 +306,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`, `titulacion`, `especialidad`, `experiencia`) VALUES
+('00000000Z', 'HERCULES', '$2y$10$AVXZMNDY3t0qMnnlDsK2ieHc20jp0elXy3AGUtTTROr29gJwgZ9h6', 'includes/img/usuarios/00000000Z.jpg', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL),
 ('12345678A', 'Lara Ibarra', '$2y$10$tatd6qauszToIxFssh7V8uvAn/jdLXu0ttWYQhi3vbc6ZHQ58PCsC', 'includes/img/usuarios/12345678A.jpg', 'lara@gmail.com', 'mujer', '1996-08-05', '673455328', 'Madrid', '50.00', '156', 'Sin especificar', 1, 'Nutrición', 'Dietista', '8'),
 ('12345678B', 'Sergio Peinado', '$2y$10$AVXZMNDY3t0qMnnlDsK2ieHc20jp0elXy3AGUtTTROr29gJwgZ9h6', 'includes/img/usuarios/12345678B.jpg', 'fuertacos@gmail.com', 'hombre', '1993-02-01', '699598712', 'Madrid', '84.00', '177', 'Convertir a toda la sociedad en fuertacos', 1, 'Licenciado en las actividades ', 'Entrenador personal', '10'),
 ('12345678C', 'Vadym Calavera', '$2y$10$WXvI7J3TDkc3K4WdSjuZBebcgpYB8FK0NIfcZmA4S1IY.zvufxsYG', 'includes/img/usuarios/12345678C.jpg', 'vuamos@gmail.com', 'hombre', '1992-05-12', '912554222', 'Bogotá', '82.00', '185', 'Sin espeficar', 1, 'Entrenador personal', 'Fuerza y ganar masa muscular', '10'),
@@ -330,20 +344,6 @@ INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
 (13, '12345678H', '12345678C', 'pendiente'),
 (14, '12345678H', '12345678D', 'pendiente'),
 (15, '12345678F', '12345678B', 'aceptado');
-
-
--- ------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `amigos`
---
-
-CREATE TABLE `amigos` (
-  `id` int(10) NOT NULL,
-  `usuario1` varchar(10) NOT NULL,
-  `usuario2` varchar(10) NOT NULL,
-  `estado` enum('aceptado','pendiente','') NOT NULL DEFAULT 'pendiente'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -385,6 +385,14 @@ ALTER TABLE `alimento`
 ALTER TABLE `alimentocomida`
   ADD PRIMARY KEY (`idAlimento`,`idComida`),
   ADD KEY `idComida` (`idComida`);
+
+--
+-- Indices de la tabla `amigos`
+--
+ALTER TABLE `amigos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario1` (`usuario1`),
+  ADD KEY `usuario2` (`usuario2`);
 
 --
 -- Indices de la tabla `comida`
@@ -442,15 +450,6 @@ ALTER TABLE `usuarioentrenador`
   ADD KEY `entrenador` (`entrenador`);
 
 --
--- Indices de la tabla `amigos`
---
-ALTER TABLE `amigos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario1` (`usuario1`),
-  ADD KEY `usuario2` (`usuario2`);
-
-
---
 -- Indices de la tabla `valoracion`
 --
 ALTER TABLE `valoracion`
@@ -465,6 +464,12 @@ ALTER TABLE `valoracion`
 --
 ALTER TABLE `alimento`
   MODIFY `idAlimento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `amigos`
+--
+ALTER TABLE `amigos`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `comida`
@@ -503,11 +508,6 @@ ALTER TABLE `usuarioentrenador`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de la tabla `usuarioentrenador`
---
-ALTER TABLE `amigos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
 -- Restricciones para tablas volcadas
 --
 
@@ -517,6 +517,13 @@ ALTER TABLE `amigos`
 ALTER TABLE `alimentocomida`
   ADD CONSTRAINT `alimentocomida_ibfk_1` FOREIGN KEY (`idAlimento`) REFERENCES `alimento` (`idAlimento`) ON DELETE CASCADE,
   ADD CONSTRAINT `alimentocomida_ibfk_2` FOREIGN KEY (`idComida`) REFERENCES `comida` (`idComida`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `amigos`
+--
+ALTER TABLE `amigos`
+  ADD CONSTRAINT `amigos_ibfk_1` FOREIGN KEY (`usuario1`) REFERENCES `usuario` (`nif`),
+  ADD CONSTRAINT `amigos_ibfk_2` FOREIGN KEY (`usuario2`) REFERENCES `usuario` (`nif`);
 
 --
 -- Filtros para la tabla `comida`
@@ -550,13 +557,6 @@ ALTER TABLE `mensajes`
 ALTER TABLE `usuarioentrenador`
   ADD CONSTRAINT `usuarioentrenador_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`nif`),
   ADD CONSTRAINT `usuarioentrenador_ibfk_2` FOREIGN KEY (`entrenador`) REFERENCES `usuario` (`nif`);
-
---
--- Filtros para la tabla `amigos`
---
-ALTER TABLE `amigos`
-  ADD CONSTRAINT `amigos_ibfk_1` FOREIGN KEY (`usuario1`) REFERENCES `usuario` (`nif`),
-  ADD CONSTRAINT `amigos_ibfk_2` FOREIGN KEY (`usuario2`) REFERENCES `usuario` (`nif`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
