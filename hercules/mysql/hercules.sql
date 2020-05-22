@@ -331,6 +331,20 @@ INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
 (14, '12345678H', '12345678D', 'pendiente'),
 (15, '12345678F', '12345678B', 'aceptado');
 
+
+--------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `amigos`
+--
+
+CREATE TABLE `amigos` (
+  `id` int(10) NOT NULL,
+  `usuario1` varchar(10) NOT NULL,
+  `usuario2` varchar(10) NOT NULL,
+  `estado` enum('aceptado','pendiente','') NOT NULL DEFAULT 'pendiente'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -428,6 +442,15 @@ ALTER TABLE `usuarioentrenador`
   ADD KEY `entrenador` (`entrenador`);
 
 --
+-- Indices de la tabla `amigos`
+--
+ALTER TABLE `amigos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario1` (`usuario1`),
+  ADD KEY `usuario2` (`usuario2`);
+
+
+--
 -- Indices de la tabla `valoracion`
 --
 ALTER TABLE `valoracion`
@@ -480,6 +503,11 @@ ALTER TABLE `usuarioentrenador`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT de la tabla `usuarioentrenador`
+--
+ALTER TABLE `amigos`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -522,6 +550,13 @@ ALTER TABLE `mensajes`
 ALTER TABLE `usuarioentrenador`
   ADD CONSTRAINT `usuarioentrenador_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`nif`),
   ADD CONSTRAINT `usuarioentrenador_ibfk_2` FOREIGN KEY (`entrenador`) REFERENCES `usuario` (`nif`);
+
+--
+-- Filtros para la tabla `amigos`
+--
+ALTER TABLE `amigos`
+  ADD CONSTRAINT `amigos_ibfk_1` FOREIGN KEY (`usuario1`) REFERENCES `usuario` (`nif`),
+  ADD CONSTRAINT `amigos_ibfk_2` FOREIGN KEY (`usuario2`) REFERENCES `usuario` (`nif`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
