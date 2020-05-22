@@ -105,4 +105,15 @@ class UsuarioDAO extends DAO {
         $query = "SELECT nombre,foto, FROM usuario ORDER BY nombre ASC";
     	return $this->consultar($query);
     }
+    
+    public function verUsuarios()
+    {
+        $query = "SELECT nombre, foto, tipoUsuario, preferencias from usuario
+            where tipoUsuario = 0 or tipoUsuario = 1";
+        
+        // tipoUsuario != 2
+        
+        return $this->consultarv2($query);
+    }
+    
 }
