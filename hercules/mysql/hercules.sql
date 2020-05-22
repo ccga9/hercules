@@ -332,7 +332,7 @@ INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
 (15, '12345678F', '12345678B', 'aceptado');
 
 
---------------------------------------------------------
+-- ------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `amigos`
