@@ -387,6 +387,12 @@ class controller{
         	return false;
         }
     }
+    
+    public function verUsuarios()
+    {
+        return $this->usuarioDAO->verUsuarios();
+    }
+    
     //FIN FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     
     //FUNCIONES MENSAJESDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /

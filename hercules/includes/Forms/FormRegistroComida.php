@@ -81,23 +81,23 @@ class FormRegistroComida extends Form
             $erroresFormulario[] = 'Entra con tu usuario para registrar una comida';
         }
         
-        if ((!isset($_REQUEST['alimento_1'])) || (trim($_REQUEST['alimento_1']) == ''))
+        if ((!isset($datos['alimento_1'])) || (trim($datos['alimento_1']) == ''))
         {
             $erroresFormulario[] = "El campo 'Primer plato o plato único' no puede estar vacío";
         }
-        elseif (($_REQUEST['alimento_1'] == $_REQUEST['alimento_2']) || 
-                ($_REQUEST['alimento_1'] == $_REQUEST['alimento_3']) ||
-                (($_REQUEST['alimento_2'] != null) && ($_REQUEST['alimento_2'] == $_REQUEST['alimento_3'])))
+        elseif (($datos['alimento_1'] == $datos['alimento_2']) || 
+            ($datos['alimento_1'] == $datos['alimento_3']) ||
+            (($datos['alimento_2'] != null) && ($datos['alimento_2'] == $datos['alimento_3'])))
         {
             $erroresFormulario[] = "No puede haber dos alimentos iguales. La cantidad de alimentos consumidos no se tiene en cuenta";
         }
         else
         {
             $nif_usuario = $_SESSION['usuario']->getNif();
-            $tipo_comida = $_REQUEST['tipo'];
-            $primer_plato = $_REQUEST['alimento_1'];
-            $segundo_plato = $_REQUEST['alimento_2'];
-            $postre = $_REQUEST['alimento_3'];
+            $tipo_comida = $datos['tipo'];
+            $primer_plato = $datos['alimento_1'];
+            $segundo_plato = $datos['alimento_2'];
+            $postre = $datos['alimento_3'];
             
             $ctrl = controller::getInstance();
             $ctrl->registrarComida($primer_plato, $segundo_plato, $postre, $tipo_comida, $nif_usuario);

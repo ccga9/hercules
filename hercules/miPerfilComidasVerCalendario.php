@@ -60,15 +60,15 @@
                 $fecha_comida = getdate(strtotime($valor['dia']));
                 $diaSemana_num_comida = $fecha_comida['wday'];
                 
-                if (($fecha_hoy['yday'] - $fecha_comida['yday']) < 0) // última semana del año
+                if (($fecha_hoy['yday'] - $fecha_comida['yday']) < 0)
                     $fecha_comida['yday'] -= 365;
                 
                 $diferencia_dias_año = $fecha_hoy['yday'] - $fecha_comida['yday'];
                 
-                if ($fecha_hoy['wday'] == 0) // domingo
+                if ($fecha_hoy['wday'] == 0)
                     $fecha_hoy['wday'] = 7;
                     
-                if ($diaSemana_num_comida == 0) // domingo
+                if ($diaSemana_num_comida == 0)
                     $diaSemana_num_comida = 7;
                 
                 if (($diferencia_dias_año) == ($fecha_hoy['wday'] - $diaSemana_num_comida))
@@ -169,15 +169,15 @@
                 $fecha_comida = getdate(strtotime($valor['dia']));
                 $diaSemana_num_comida = $fecha_comida['wday'];
                 
-                if (($fecha_hoy['yday'] - $fecha_comida['yday']) < 0) // última semana del año
+                if (($fecha_hoy['yday'] - $fecha_comida['yday']) < 0)
                     $fecha_comida['yday'] -= 365;
                 
                 $diferencia_dias_año = $fecha_hoy['yday'] - $fecha_comida['yday'];
                     
-                if ($fecha_hoy['wday'] == 0) // domingo
+                if ($fecha_hoy['wday'] == 0)
                     $fecha_hoy['wday'] = 7;
                 
-                if ($diaSemana_num_comida == 0) // domingo
+                if ($diaSemana_num_comida == 0)
                     $diaSemana_num_comida = 7;
                     
                 
@@ -197,13 +197,11 @@
                     if ((count($comidas) == $k + 1) || ($comidas[$k]['dia'] != $comidas[$k + 1]['dia']))
                     {
                         echo "<tr>";
-                        for ($i = 1; $i <= 7; ++$i) // ¿while?
+                        for ($i = 1; $i <= 7; ++$i)
                         {
                             if ($diaSemana_num_comida == $i)
                             {
                                 echo "<td>".date("H:i", strtotime($valor['dia']))." - ".$valor['tipo']."</td>";
-                                //break;
-                                //¿salgo y guardo el valor de $i para meter la siguiente comida en la misma fila?
                             }
                             else
                                 echo "<td />";

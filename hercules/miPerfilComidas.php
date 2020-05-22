@@ -19,17 +19,12 @@
 
 	<?php
 		require('includes/comun/cabecera.php');
-		require('miPerfilCabecera.php');
+		if(isset($_SESSION['login'])){
+		    require('miPerfilCabecera.php');
+		}
 	?>
 
 	<div id="contenido">
-		
-		<?php
-		if (!isset($_SESSION['login']))
-		{
-		    echo '<p>Entra con tu usuario para registrar comida</p>';
-		}
-		?>
 		
 		<h2>Comidas</h2>
 				
