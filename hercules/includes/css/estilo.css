@@ -204,6 +204,10 @@ div#contenido .boton-volver a:hover{
 	background: linear-gradient(#e9e174, #e3da0c);
 }
 
+div#contenido .boton-volver .amigos {
+	float: right;
+}
+
 /*Menu principal*/
 .menu ul {
 	list-style-type: none;

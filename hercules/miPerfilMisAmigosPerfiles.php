@@ -40,11 +40,17 @@
 					echo "<a href= miPerfilBuzon.php?reciever=".$_GET['id'].">Chatea con ".$amigo->getNombre()."</a>";	
 					echo '<h2 class="nombre" >'.$amigo->getNombre().' es tu amigo/a</h2><br>';
 					 
-				}else{
+				}else if($_GET['estado'] == "p1"){ //YO ENVIE LA SOLICITUD
 					echo '<h2 class="nombre"> Para chatear con '.$amigo->getNombre().' tienes que esperar a que acepte tu invitación </h2>';
-					echo '<h2 class="nombre" >'.$amigo->getNombre().' todavia no es tu amigo/a</h2><br>';	
-					
+					echo '<h2 class="nombre" >'.$amigo->getNombre().' todavia no es tu amigo/a</h2><br>';
+				
+				}else{//TENGO UNA SOLICITUD PENDIENTE
+					echo '<h2 class="nombre" >'.$amigo->getNombre().' quiere ser tu amigo/a</h2><br>';
+					echo '<button id= "abrir" onclick="btnAbrir">Aceptar amigo </button>';
 				}
+
+
+				
 				echo '<img  src="'.$amigo->getFoto().'" alt="Foto usuario">';
 			
 				 				
@@ -59,8 +65,11 @@
 				 echo '<label class = "eti">Sexo </label><p class = "info">'.$amigo->getSexo().'</p><br>';
 				
 				//eliminarAmigo
+				if ($_GET['estado'] == "a") {
 				echo '<button id= "abrir" onclick="btnAbrir"> Eliminar amigo </button>';
+				}	
 				echo '</div>';
+
 		       
 		       
 	
@@ -72,18 +81,30 @@
 		<div class="overlay" id="overlay">
 			<div class = "popup" id="popup">
 				<a class = "cerrar" id="cerrar" href="#bottom">Cerrar</a>
-				<h2>¿Estas seguro?</h2>
+				
 				
 				<?php 
-				    echo '<form action="PR_eliminarAmigo.php" method="post">';
-				     echo '<input id="idEnt" type="hidden" name="id" />';
-				     echo '<input type="hidden" name="id" value="'.$_GET['id'].'"/>';
-				     echo '<input type="hidden" name="estado" value="'.$_GET['estado'].'"/>';
-				    echo '<input type="hidden" name="relacion" value="'.$_GET['relacion'].'"/>';
-					echo '<button type="submit" name="enviar" value="si">Si</button><br>';
-				    echo '<button type="submit" name="enviar" value="no">No</button><br>';
-				    echo '</form>';
-				
+					if ($_GET['estado'] == "a") {//CUANDO ESTA ACEPTADO PODRÁ ELIMINAR AL USUARIO
+						echo '<h2>¿Estas seguro?</h2>';
+					    echo '<form action="PR_gestionaAmigo.php" method="post">';
+						    echo '<input id="idEnt" type="hidden" name="id" />';
+						    echo '<input type="hidden" name="id" value="'.$_GET['id'].'"/>';
+						    echo '<input type="hidden" name="estado" value="'.$_GET['estado'].'"/>';
+						    echo '<input type="hidden" name="relacion" value="'.$_GET['relacion'].'"/>';
+						echo '<button type="submit" name="enviar" value="si">Si</button><br>';
+					    echo '<button type="submit" name="enviar" value="no">No</button><br>';
+					    echo '</form>';
+					}else if($_GET['estado'] == "p2"){
+						echo '<form action="PR_gestionaAmigo.php" method="post">';
+						    echo '<input id="idEnt" type="hidden" name="id" />';
+						    echo '<input type="hidden" name="id" value="'.$_GET['id'].'"/>';
+						    echo '<input type="hidden" name="estado" value="'.$_GET['estado'].'"/>';
+						    echo '<input type="hidden" name="relacion" value="'.$_GET['relacion'].'"/>';
+						echo '<button type="submit" name="enviar" value="aceptar">Aceptar</button><br>';
+					    echo '<button type="submit" name="enviar" value="rechazar">Rechazar</button><br>';
+					    echo '</form>';
+						
+					}
 				?>
 			</div>
 		</div>
