@@ -128,5 +128,12 @@ class UsuarioDAO extends DAO {
 
           return $this->consultarv2($query);
     }
+     public function eliminarAmigo($id){
+         $query = "DELETE FROM amigos WHERE id = '".$id."'";
+         echo $query;
+
+        $this->consultarv2($query);
+
+    }
     
 }

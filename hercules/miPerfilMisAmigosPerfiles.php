@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
 </head>
@@ -40,7 +41,7 @@
 					echo '<h2 class="nombre" >'.$amigo->getNombre().' es tu amigo/a</h2><br>';
 					 
 				}else{
-					echo '<h2> Para chatear con '.$amigo->getNombre().' tienes que esperar a que acepte tu invitación </h2>';
+					echo '<h2 class="nombre"> Para chatear con '.$amigo->getNombre().' tienes que esperar a que acepte tu invitación </h2>';
 					echo '<h2 class="nombre" >'.$amigo->getNombre().' todavia no es tu amigo/a</h2><br>';	
 					
 				}
@@ -57,17 +58,36 @@
 				 echo '<label class = "eti">Teléfono </label><p class = "info">'.$amigo->getTelefono().'</p><br>';
 				 echo '<label class = "eti">Sexo </label><p class = "info">'.$amigo->getSexo().'</p><br>';
 				
+				//eliminarAmigo
+				echo '<button id= "abrir" onclick="btnAbrir"> Eliminar amigo </button>';
 				echo '</div>';
 		       
 		       
-		
-		
+	
 
 		?>
 
 		
 	</div>
-
+		<div class="overlay" id="overlay">
+			<div class = "popup" id="popup">
+				<a class = "cerrar" id="cerrar" href="#bottom">Cerrar</a>
+				<h2>¿Estas seguro?</h2>
+				
+				<?php 
+				    echo '<form action="PR_eliminarAmigo.php" method="post">';
+				     echo '<input id="idEnt" type="hidden" name="id" />';
+				     echo '<input type="hidden" name="id" value="'.$_GET['id'].'"/>';
+				     echo '<input type="hidden" name="estado" value="'.$_GET['estado'].'"/>';
+				    echo '<input type="hidden" name="relacion" value="'.$_GET['relacion'].'"/>';
+					echo '<button type="submit" name="enviar" value="si">Si</button><br>';
+				    echo '<button type="submit" name="enviar" value="no">No</button><br>';
+				    echo '</form>';
+				
+				?>
+			</div>
+		</div>
+	</div>
 	<?php	
 
 		require('includes/comun/pie.php');
@@ -76,4 +96,5 @@
 </div> <!-- Fin del contenedor -->
 
 </body>
+	<script type="text/javascript" src="includes/js/scripts.js" ></script>
 </html>

@@ -610,6 +610,10 @@ class controller{
         return $this->usuarioDAO->listarMisAmigos($nif);
     }
 
+    public function eliminarAmigo($id){
+        $this->usuarioDAO->eliminarAmigo($id);
+    }
+
      //FIN FUNCIONES AMIGOS    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
    
