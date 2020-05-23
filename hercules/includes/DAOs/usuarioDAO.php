@@ -121,5 +121,12 @@ class UsuarioDAO extends DAO {
         
         return $this->consultarv2($query);
     }
+
+    //AMIGOS
+    public function listarMisAmigos($nif){
+         $query = "SELECT * FROM amigos WHERE usuario1 = '".$nif."' or usuario2 = '".$nif."'";
+
+          return $this->consultarv2($query);
+    }
     
 }

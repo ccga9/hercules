@@ -605,6 +605,13 @@ class controller{
         return $this->foroDAO->modifica($datos['id'], $datos['texto']);
     }
     //FIN FUNCIONES FORO    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+    //FUNCIONES AMIGOS    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+    public function listarMisAmigos($nif){
+        return $this->usuarioDAO->listarMisAmigos($nif);
+    }
+
+     //FIN FUNCIONES AMIGOS    /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
+
    
 }
 

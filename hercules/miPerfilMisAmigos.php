@@ -27,22 +27,31 @@
 
 		<?php  
 			
-			$arr = $ctrl->listarMisEntrenadores($_SESSION['usuario']->getNif());
+			$arr = $ctrl->listarMisAmigos($_SESSION['usuario']->getNif());
 			if(count($arr) > 0){
-				echo '<div class="entrenadores-all">'; /*Estilo de estiloPagsCabecera*/
+				
 				echo '<ul>';
 				foreach ($arr as $key => $valor) {
 					echo '<li>';
-						echo '<h4>'.$valor->getNombre().'</h4>';
-						echo '<img src="'.$valor->getFoto().'" width="300" height="120" alt="Foto usuario">';
-					    echo '<p><strong>Titulación: </strong> '.$valor->getTitulacion().'<br>';
-					    echo '<strong>Especialidad: </strong> '.$valor->getEspecialidad().'<br>';
-					    echo '<strong>Experiencia: </strong> '.$valor->getExperiencia().'</p>';
-					    echo '<a href="miPerfilMisEntrenadoresPerfiles.php?id='.$valor->getNif().'">Mostrar Perfil</a>'; 
+					if($valor['estado']== 'aceptado'){
+						$estado = 'a';
+					}else{
+						$estado = 'p';
+					}
+					if($valor['usuario1'] == $_SESSION['usuario']->getNif()){
+						$amigo = $ctrl->cargarUsuario($valor['usuario2']);
+						echo '<a href="miPerfilMisAmigosPerfiles.php?id='.$amigo->getNif().'estado='.$estado.'">Ver Perfil</a>';
+						echo '<h4>'.$valor['usuario2'].'</h4>';
+					}else{
+						$amigo = $ctrl->cargarUsuario($valor['usuario1']);
+						echo '<a href="miPerfilMisAmigosPerfiles.php?id='.$amigo->getNif().'&estado='.$estado.'">Ver Perfil</a>';
+						echo '<h4>'.$valor['usuario1'].'</h4>';
+					}
+	
 					echo '</li>';
 				}
 				echo '</ul>';
-		        echo '</div>';
+
 			 }
 			 else {
 			     echo '<p><span class="varios">'. "Todavía no tiene entrenadores.".'</span></p>';
