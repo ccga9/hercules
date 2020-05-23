@@ -21,12 +21,9 @@
     		}
     
     		?>
-
-             <div id="icon-search">
-                <i class="fas fa-search" id="search"></i>
-            </div>
     		
     	</div>
+ 
  
     	<div class="menu">
     
@@ -59,6 +56,7 @@
         		            echo '<ul><li><a href= miPerfilComidas.php>Comidas</a></li>';
         		            echo '<li><a href= miPerfilEntrenamientos.php>Entrenamientos</a></li>';
         		            echo '<li><a href= miPerfilMisEntrenadores.php>Mis Entrenadores</a></li>';
+        		            echo '<li><a href= miPerfilMisAmigos.php>Mis Amigos</a></li>';
         		            echo '<li><a href= miPerfilEditar.php>Editar Perfil</a></li>';
         		            echo '<li><a href= miPerfilBuzon.php>Mensajes</a></li></ul>';
         		        }
