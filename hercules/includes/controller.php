@@ -176,6 +176,25 @@ class controller{
         }
     }
     
+    public function updateAdmin($u){
+        $set='';
+        $cond="";
+        if ($u['nif'] !== null) {
+            if($u['password'] !== "")
+                $set .= "contrasenna='".password_hash($u['password'], PASSWORD_DEFAULT)."'";
+                
+            if($u['foto'] !== "")
+                $set .= ",foto=' ".$u['foto']."'";
+                                        
+            $cond="nif = '".$u['nif']."'";
+            
+            return $this->usuarioDAO->updateUsuario($set, $cond);
+        }
+        else {
+            return 0;
+        }
+    }
+    
     public function deleteUsuario($nif){
         if ($this->cargarUsuario($nif) !== 0) {
             $this->mensajesDAO->delete("emisor='".$nif."' OR receptor='".$nif."'");
@@ -222,6 +241,24 @@ class controller{
                 $usuario->setEspecialidad($arr["especialidad"]);
                 $usuario->setExperiencia($arr["experiencia"]);
             }
+            $this->insertarUsuario($usuario);
+            return $usuario;
+        }
+        else {
+            return 0;
+        }
+    }
+    
+    public function registraAdmin($arr = array()){
+        $usuario = $this->cargarUsuario($arr['nif']);
+        if ($usuario === 0) {
+            $usuario = new TOUsuario();
+            $usuario->setNif($arr["nif"]);
+            $usuario->setNombre($arr["nombre"]);
+            $usuario->setPassword(password_hash($arr["contrasenna"], PASSWORD_DEFAULT));
+            $usuario->setTipoUsuario($arr["tipoUsuario"]);
+            $usuario->setFoto($arr["foto"]);
+            
             $this->insertarUsuario($usuario);
             return $usuario;
         }
