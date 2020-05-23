@@ -176,6 +176,38 @@ class controller{
         }
     }
     
+    public function updateAdmin($u){
+        $set='';
+        $cond="";
+        if ($u['nif'] !== null) {
+            if($u['password'] !== "")
+                $set .= "contrasenna='".password_hash($u['password'], PASSWORD_DEFAULT)."'";
+                
+                if($u['foto'] !== "") {
+                    if ($u['password'] !== "") {
+                        $set .= ",foto=' ".$u['foto']."'";
+                    }
+                    else {
+                        $set .= "foto=' ".$u['foto']."'";
+                    }
+                }
+                    
+                    
+                    $cond="nif = '".$u['nif']."'";
+                    
+                    if ($u['password'] !== "" || $u['foto'] !== "") {
+                        return $this->usuarioDAO->updateUsuario($set, $cond);
+                    }
+                    else {
+                        return 0;
+                    }
+                 
+        }
+        else {
+            return 0;
+        }
+    }
+    
     public function deleteUsuario($nif){
         if ($this->cargarUsuario($nif) !== 0) {
             $this->mensajesDAO->delete("emisor='".$nif."' OR receptor='".$nif."'");
@@ -199,6 +231,23 @@ class controller{
         return $usuario;
     }
 
+    public function registraAdmin($arr = array()){
+        $usuario = $this->cargarUsuario($arr['nif']);
+        if ($usuario === 0) {
+            $usuario = new TOUsuario();
+            $usuario->setNif($arr["nif"]);
+            $usuario->setNombre($arr["nombre"]);
+            $usuario->setPassword(password_hash($arr["contrasenna"], PASSWORD_DEFAULT));
+            $usuario->setTipoUsuario($arr["tipoUsuario"]);
+            $usuario->setFoto($arr["foto"]);
+            
+            $this->insertarUsuario($usuario);
+            return $usuario;
+        }
+        else {
+            return 0;
+        }
+    }
 
     public function registra($arr = array()){
         $usuario = $this->cargarUsuario($arr['nif']);
@@ -443,6 +492,21 @@ class controller{
         return $this->alimentoDAO->listarAlimentos();
     }
     
+    public function selectAlimento($col, $cond){
+        return $this->alimentoDAO->select($col, $cond);
+    }
+    
+    public function insertAlimento($col, $values){
+        return $this->alimentoDAO->insert($col, $values);
+    }
+    
+    public function updateAlimento($set, $cond){
+        return $this->alimentoDAO->update($set, $cond);
+    }
+    
+    public function deleteAlimento($cond){
+        return $this->alimentoDAO->delete($cond);
+    }
     //FIN FUNCIONES ALIMENTODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
     //FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /    
@@ -570,6 +634,22 @@ class controller{
     public function buscarEjercicio($ejercicio){
         $col ='nombre, caloriasGastadas, tipo, descripcion, multimedia';
         return $consulta = $this->ejercicioDAO->buscarEjercicio($col, $ejercicio);
+    }
+    
+    public function selectEjercicio($col, $cond){
+        return $this->ejercicioDAO->select($col, $cond);
+    }
+    
+    public function insertEjercicio($col, $values){
+        return $this->ejercicioDAO->insert($col, $values);
+    }
+    
+    public function updateEjercicio($set, $cond){
+        return $this->ejercicioDAO->update($set, $cond);
+    }
+    
+    public function deleteEjercicio($cond){
+        return $this->ejercicioDAO->delete($cond);
     }
     
     //FIN FUNCIONES EJERCICIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /

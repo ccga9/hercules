@@ -69,5 +69,45 @@ class ejercicioDAO extends DAO
         $query = "SELECT ".$col." FROM ejercicio WHERE nombre LIKE '%".$cond."%' OR tipo LIKE '%".$cond."%' ORDER BY nombre ASC";
         return $this->consultarv2($query);
     }
+    
+    public function select($col, $cond){
+        $query = "";
+        if ($col == "") {
+            $col = "*";
+        }
+        if ($cond == "") {
+            $query = "SELECT ".$col." FROM ejercicio";
+        }
+        else {
+            $query = "SELECT ".$col." FROM ejercicio WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
+    
+    public function insert($col, $values){
+        $query = "";
+        $query = "INSERT INTO ejercicio(".$col.") VALUES (".$values.")";
+        
+        return $this->consultarv2($query);
+    }
+    
+    public function update($set, $cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "UPDATE ejercicio SET ".$set." WHERE ".$cond;
+        }
+        echo $query;
+        return $this->consultarv2($query);
+    }
+    
+    public function delete($cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "DELETE FROM ejercicio WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
 
 }
