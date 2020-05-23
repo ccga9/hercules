@@ -123,18 +123,19 @@ class UsuarioDAO extends DAO {
     }
 
     //AMIGOS
+
     public function listarMisAmigos($nif){
          $query = "SELECT * FROM amigos WHERE usuario1 = '".$nif."' or usuario2 = '".$nif."'";
 
           return $this->consultarv2($query);
     }
-    public function añadirAmigo($usuario1, $usuario2){
+    public function enviarSolicitudAmistad($usuario1, $usuario2){
         $query = "INSERT INTO amigos(usuario1, usuario2, estado) VALUES ('".$usuario1."','".$usuario2."', 'pendiente')";
         $this->consultarv2($query);
     }
 
     public function aceptarSolicitudAmistad($id){
-        $query = "UPDATE amigos SET estado = 'aceptado' WHERE id = '".$id."";
+        $query = "UPDATE amigos SET estado = 'aceptado' WHERE id = '".$id."'";
         $this->consultarv2($query);
     }
 

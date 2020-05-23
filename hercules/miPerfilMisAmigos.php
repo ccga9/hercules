@@ -31,30 +31,57 @@
 			if(count($arr) > 0){
 				echo '<div class="entrenadores-all">';
 				echo '<div class="elem-item" category="vari">';
-				echo '<ul>';
-				foreach ($arr as $key => $valor) {
-					
+				
+				$aceptados = array();
+				$pendientes = array();
+				foreach ($arr as $key => $valor) {//SEPARAMOS LOS ACEPTADOS Y LAS NUEVAS SOLICITUDES
+					if($valor['estado'] == "aceptado"){
+						$aceptados[] = $valor;
+					}else if ($valor['usuario2'] == $_SESSION['usuario']->getNif() && $valor['estado'] == "pendiente"){
+						$pendientes[]= $valor;
+					}
+				}
+
+
+				foreach ($aceptados as $key => $valor) {
+					echo '<ul>';
 					echo '<li>';
-					if($valor['estado']== 'aceptado'){
-						$estado = 'a';
-					}else{
-						$estado = 'p';
-					}
-					if($valor['usuario1'] == $_SESSION['usuario']->getNif()){
-						$amigo = $ctrl->cargarUsuario($valor['usuario2']);				
-					}else{
-						$amigo = $ctrl->cargarUsuario($valor['usuario1']);
-					}
+					
+						if($valor['usuario1'] == $_SESSION['usuario']->getNif()){
+							$amigo = $ctrl->cargarUsuario($valor['usuario2']);			
+						}else{
+							$amigo = $ctrl->cargarUsuario($valor['usuario1']);
+						}
 
 					echo '<h4>'.$amigo->getNombre().'</h4><br>';
 					echo '<img src="'.$amigo->getFoto().'" width="300" height="120" alt="Foto usuario">';
 					echo 'Preferencias: '.$amigo->getPreferencias().'<br>';
-					echo '<a href="miPerfilMisAmigosPerfiles.php?id='.$amigo->getNif().'&estado='.$estado.'&relacion='.$valor['id'].'">Ver Perfil</a>';
+					echo '<a href="miPerfilMisAmigosPerfiles.php?id='.$amigo->getNif().'&estado=a&relacion='.$valor['id'].'">Ver Perfil</a>';
 					echo '</li>';
-					echo '</div>';
-					echo '</div>';
+					echo '</ul>';				
 				}
-				echo '</ul>';
+
+				foreach ($pendientes as $key => $valor){
+					echo '<h2>Nuevas solicitudes </h2>';
+					echo '<ul>';
+					echo '<li>';
+					if($valor['usuario1'] == $_SESSION['usuario']->getNif()){
+							$amigo = $ctrl->cargarUsuario($valor['usuario2']);	
+							$estado = 'p1';			
+						}else{
+							$amigo = $ctrl->cargarUsuario($valor['usuario1']);
+							$estado= 'p2';
+						}
+						echo '<h4>'.$amigo->getNombre().'</h4><br>';
+						echo '<img src="'.$amigo->getFoto().'" width="300" height="120" alt="Foto usuario">';
+						echo 'Preferencias: '.$amigo->getPreferencias().'<br>';
+						echo '<a href="miPerfilMisAmigosPerfiles.php?id='.$amigo->getNif().'&estado='.$estado.'&relacion='.$valor['id'].'">Ver Perfil</a>';
+						echo '</li>';
+					echo '</ul>';
+				}
+
+				echo '</div>';
+				echo '</div>';
 
 			 }
 			 else {
