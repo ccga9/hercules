@@ -42,8 +42,10 @@
 					 
 				}else{
 					echo '<h2 class="nombre"> Para chatear con '.$amigo->getNombre().' tienes que esperar a que acepte tu invitación </h2>';
-					echo '<h2 class="nombre" >'.$amigo->getNombre().' todavia no es tu amigo/a</h2><br>';	
-					
+					echo '<h2 class="nombre" >'.$amigo->getNombre().' todavia no es tu amigo/a</h2><br>';
+
+					echo '<button id= "abrir" onclick="btnAbrir">Aceptar amigo </button>';
+				echo '</div>';
 				}
 				echo '<img  src="'.$amigo->getFoto().'" alt="Foto usuario">';
 			
