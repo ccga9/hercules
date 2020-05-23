@@ -345,10 +345,6 @@ CREATE TABLE `amigos` (
   `estado` enum('aceptado','pendiente','') NOT NULL DEFAULT 'pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-INSERT INTO `amigos` (`id`, `usuario1`, `usuario2`, `estado`) VALUES
-(1, '12345678F', '12345678H', 'aceptado'),
-(2, '12345678G', '12345678I', 'pendiente');
 -- --------------------------------------------------------
 
 --
