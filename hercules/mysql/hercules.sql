@@ -274,7 +274,7 @@ CREATE TABLE `usuario` (
   `nombre` varchar(30) NOT NULL,
   `contrasenna` varchar(255) NOT NULL,
   `foto` varchar(255) DEFAULT 'includes/img/usuarios/default.png',
-  `email` varchar(30) NOT NULL,
+  `email` varchar(30) DEFAULT NULL,
   `sexo` varchar(6) DEFAULT NULL,
   `fechaNac` date DEFAULT NULL,
   `telefono` varchar(15) DEFAULT NULL,
