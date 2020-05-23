@@ -29,7 +29,7 @@
 		</div>
 		
 		<div class="buscar-ejercicio">
-			<label>Introduzca el nombre del usuario del que le gustaría obtener información</label>
+			<!-- <label>Introduzca el nombre del usuario para encontrarlo más fácilmente</label> -->
 			<form method="POST" action="usuarios.php">
 				<input type="search" id="site-search" name="busqueda"/>
 				<button type="submit" name="buscar">Buscar</button>
@@ -38,10 +38,70 @@
 		
 		<?php
 		
+		$usuarios = $ctrl->verUsuarios();
 		
+		if (count($usuarios) == 0)
+		{
+		    echo '<p>Todavía no hay ningún usuario registrado, ¡Tú puedes ser el primero!</p>';
+		    exit();
+		}
+		if (isset($_POST['busqueda']))
+		{
+		    echo '<div class="boton-volver"><a href="usuarios.php">🔙Volver</a></div>';
+		    
+		    $busqueda = trim($_POST['busqueda']);
+		    
+		    if(empty($busqueda))
+		    {
+		        echo '<p>Introduce texto para buscar a un usuario</p>';
+		        exit();
+		    }
+		    else
+		    {
+		        $usuarios = $ctrl->buscarUsuario($busqueda);
+		        
+		        if (count($usuarios) == 0)
+		        {
+		            echo '<p>No se han encontrado usuarios, intenta otro nombre</p>';
+		            exit();
+		        }
+		    }
+		}
+
+        echo '<div class="entrenadores-all">';//<div class="busqueda-item">
+        //echo '';
+        echo '<ul>';
+        foreach ($usuarios as $valor)
+        {
+            echo '<li>';
+            echo '<h4>'.$valor['nombre'].'</h4>';
+            echo '<img src='.$valor['foto'].' alt="Foto usuario"/>';
+            
+            if ($valor['tipoUsuario'] == 0)
+                echo 'Tipo: cliente <br>';
+            else
+                echo 'Tipo: entrenador <br>';
+            
+            //if ($valor['ubicacion'] != "Sin especificar")
+                echo 'Ubicación: '.$valor['ubicacion'].'<br>';
+                
+            //if ($valor['preferencias'] != "Sin especificar")
+            //    echo 'Preferencias: '.$valor['preferencias'].'<br>';
+            
+            
+            // ¿telefono?, ¿email?, ¿fechaNac?
+            
+            
+            echo '</li>';
+        }
+        echo '</ul>';
+        //echo '';
+        echo '</div>';//</div>
 		
+        
+		// PÁGINAS
 		
-		
+        
 		?>
 		
 	</div>

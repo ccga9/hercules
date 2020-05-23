@@ -392,6 +392,11 @@ class controller{
     {
         return $this->usuarioDAO->verUsuarios();
     }
+
+    public function buscarUsuario($nombre)
+    {
+        return $this->usuarioDAO->buscarUsuario($nombre);
+    }
     
     //FIN FUNCIONES USUARIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
     
