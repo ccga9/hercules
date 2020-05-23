@@ -37,10 +37,10 @@
 		    $max = $ctrl->selectUsuario("count(*) as c", '');
 		    
 		    $max_page = ceil($max[0]['c'] / $items_page);
+			
+		    echo"<h2>Gestionar Usuarios</h2>";
 		    
 		    if (!isset($_GET['perfil'])) {
-		        
-		        echo"<h2>Gestionar Usuarios</h2>";
 		        
 		        $arr = $ctrl->listarUsuarios("tipoUsuario != 2 ORDER BY nombre LIMIT ".($page - 1) * $items_page. ",".$items_page);
 		        if (count($arr) > 0) {
@@ -165,12 +165,6 @@
 	    echo '</div>';
 	}
 	?>
-
-	<?php	
-
-		require('includes/comun/pie.php');
-
-	?>
 	
 	<div class="overlay" id="overlay">
 			<div class = "popup" id="popup">
@@ -192,6 +186,12 @@
 		</div>
 	</div>
 	
+
+	<?php	
+
+		require('includes/comun/pie.php');
+
+	?>
 </div> <!-- Fin del contenedor -->
 <script type="text/javascript" src="includes/js/scripts.js" ></script>
 </body>
