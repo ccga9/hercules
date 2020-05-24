@@ -34,7 +34,7 @@
 		        $page = 1;
 		    }
 		    
-		    $max = $ctrl->selectUsuario("count(*) as c", '');
+		    $max = $ctrl->selectUsuario("count(*) as c", 'tipoUsuario != 2');
 		    
 		    $max_page = ceil($max[0]['c'] / $items_page);
 			

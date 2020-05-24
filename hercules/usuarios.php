@@ -50,10 +50,10 @@
 		    {
 		        echo
 		        '<div class="boton-volver">
-                <div class="enlace-amigos">
-                    <a href="miPerfilMisAmigos.php">ver Mis Amigos</a>
-                </div>
-            </div>';
+                    <div class="enlace-amigos">
+                        <a href="miPerfilMisAmigos.php">ver Mis Amigos</a>
+                    </div>
+                </div>';
 		    }
 		}
 		if (isset($_POST['busqueda']))
@@ -79,14 +79,12 @@
 		    }
 		}
 		
-		//echo '<p />';
 		
         echo '<div class="entrenadores-all">';
         echo '<ul>';
         
-        $solicitudEnviada = false;
         foreach ($usuarios as $valor)
-        {
+        {                
             echo '<li>';
             echo '<h4>'.$valor['nombre'].'</h4>';
             echo '<img src='.$valor['foto'].' alt="Foto usuario"/>';
@@ -97,21 +95,14 @@
                 echo 'Tipo: entrenador <br>';
             
             echo 'Sexo: '.$valor['sexo'].'<br>';
-            
-            //if ($valor['ubicacion'] != "Sin especificar")
-                echo 'Ubicación: '.$valor['ubicacion'].'<br>';
-                
-            //if ($valor['preferencias'] != "Sin especificar")
-            //    echo 'Preferencias: '.$valor['preferencias'].'<br>';
-            
-            // ¿telefono?, ¿email?, ¿fechaNac?
+            echo 'Ubicación: '.$valor['ubicacion'].'<br>';
             
             echo '<p />';
             
             if ((isset($_SESSION['usuario']))
                 && ($_SESSION['usuario']->getTipoUsuario() == 0) && ($valor['tipoUsuario'] == 0)
                 && ($valor['nif'] != $_SESSION['usuario']->getNif()))
-            {
+            {   
                 $amigos = $ctrl->listarMisAmigos($_SESSION['usuario']->getNif());
                 $ok = true;
                 
@@ -124,7 +115,7 @@
                             && ($value['estado'] == 'aceptado'))
                         {
                             echo '<div class="texto-amigos">
-                                    Este usuario ya es amigo tuyo <br>
+                                    Ver más en Mis Amigos <br>
                                  </div>';
                             $ok = false;
                             break;
@@ -133,7 +124,7 @@
                             && ($value['estado'] == 'pendiente'))
                         {
                             echo '<div class="texto-amigos">
-                                    Este usuario te ha enviado una solicitud de amistad <br>
+                                    Solicitud recibida <br>
                                  </div>';
                             $ok = false;
                             break;
@@ -142,49 +133,31 @@
                             && ($value['estado'] == 'pendiente'))
                         {
                             echo '<div class="texto-amigos">
-                                    Ya has enviado una solicitud de amistad a este usuario <br>
+                                    Solicitud enviada <br>
                                  </div>';
                             $ok = false;
                             break;
                         }
                     }
                 }
-
+                
                 if ($ok)
-                {
-                    $nif_form = $valor['nif'];
-                    
-                    echo '<form action="usuarios.php" method="post">';
-                    echo '<button type="submit" name="'.$nif_form.'">Enviar solicitud de amistad</button>';
+                {   
+                    echo '<form action="PR_usuarios.php" method="post">';
+                    echo '<input type="hidden" name="id" value="'.$valor['nif'].'">';
+                    echo '<button type="submit" name="confirmar">Enviar solicitud</button>';
                     echo '</form>';
-                    
-                    // para mostrar inmediatamente después de la solicitud un mensaje de que
-                    // no se puede mandar una solicitud
-                    // ¿ HIDE()->JS ?
-                    // ¿ UNSET[] ?
-                    
                 }
+            }
+            else
+            {
+                echo '<p />';
             }
             
             echo '</li>';
         }
         echo '</ul>';
         echo '</div>';
-		
-        
-        if ((isset($_SESSION['usuario'])) && (isset($_REQUEST[$nif_form])))
-        {
-            $ctrl->enviarSolicitudAmistad($_SESSION['usuario']->getNif(), $nif_form);
-            
-            /*echo
-            '<script type="text/javascript">
-                alert("¡Tu solicitud se ha enviado con éxito!");
-            </script>';*/
-        }
-        
-        
-		// PÁGINAS
-		
         
 		?>
 		
