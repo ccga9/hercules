@@ -204,8 +204,14 @@ div#contenido .boton-volver a:hover{
 	background: linear-gradient(#e9e174, #e3da0c);
 }
 
-div#contenido .boton-volver .amigos {
+div#contenido .boton-volver .enlace-amigos {
 	float: right;
+}
+
+div#contenido .texto-amigos
+{
+	font-weight: bold;
+	color: salmon;
 }
 
 /*Menu principal*/
@@ -383,6 +389,21 @@ div#contenido .entrenadores-all {
 	height: 150px;
 	display:block;
 	margin:auto;
+}
+
+div#contenido .entrenadores-all button[type="submit"]
+{
+	display: block;
+	width: 93%;
+	background: linear-gradient(#FFBB33, #F8CC76);
+	padding: 8px;
+	margin: auto;
+	border-radius: 0;
+	font-weight: bold;
+}
+
+div#contenido .entrenadores-all button[type="submit"]:hover{
+	color: white;
 }
 
 .ejercicio img{

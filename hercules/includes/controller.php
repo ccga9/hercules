@@ -690,7 +690,7 @@ class controller{
         return $this->usuarioDAO->listarMisAmigos($nif);
     }
     public function enviarSolicitudAmistad($usuario1, $usuario2){
-        $this->usuarioDAO->añadirAmigo($usuario1, $usuario2);
+        $this->usuarioDAO->enviarSolicitudAmistad($usuario1, $usuario2);
     }
     public function aceptarSolicitudAmistad($id){
         $this->usuarioDAO->aceptarSolicitudAmistad($id);

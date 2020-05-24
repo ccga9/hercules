@@ -85,7 +85,7 @@
 
 			 }
 			 else {
-			     echo '<p><span class="varios">'. "Todavía no tiens amigos.".'</span></p>';
+			     echo '<p><span class="varios">'. "Todavía no tienes amigos.".'</span></p>';
 			 }
 
 		?>
