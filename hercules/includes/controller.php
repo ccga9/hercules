@@ -531,6 +531,22 @@ class controller{
         return $this->comidaDAO->editarComida($fecha, $alimento_1, $alimento_2, $alimento_3, $tipo, $nif);
     }
     
+    public function selectComida($col, $cond){
+        return $this->comidaDAO->select($col, $cond);
+    }
+    
+    public function insertComida($col, $values){
+        return $this->comidaDAO->insert($col, $values);
+    }
+    
+    public function updateComida($set, $cond){
+        return $this->comidaDAO->update($set, $cond);
+    }
+    
+    public function deleteComida($cond){
+        return $this->comidaDAO->delete($cond);
+    }
+    
     //FIN FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
    //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
@@ -628,8 +644,22 @@ class controller{
     
         
     }
-
     
+    public function selectEntrena($col, $cond){
+        return $this->entrenamientoDAO->selectEntrena($col, $cond);
+    }
+    
+    public function insertEntrena($col, $values){
+        return $this->entrenamientoDAO->insertEntrena($col, $values);
+    }
+    
+    public function updateEntrena($set, $cond){
+        return $this->entrenamientoDAO->updateEntrena($set, $cond);
+    }
+    
+    public function deleteEntrena($cond){
+        return $this->entrenamientoDAO->deleteEntrena($cond);
+    }
     //FIN FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
      //FUNCIONES EJERCICIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
