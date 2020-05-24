@@ -10,7 +10,7 @@ function subir_fichero($directorio_destino, $nombre_fichero, $nif)
     if (is_dir($directorio_destino) && is_uploaded_file($tmp_name))
     {
         
-        $img_file = $nif.".jpg";
+        $img_file = trim($nif).".jpg";
         $img_type = $_FILES[$nombre_fichero]['type'];
         
         // Si se trata de una imagen
@@ -42,7 +42,7 @@ if (isset($_POST['admin_submit'])) {
                 if (!subir_fichero("includes/img",'uploadImage', $_POST['nombre']))
                     $erroresFormulario[] = "Foto incorrecta. Compruebe el formato del archivo";
                     
-                    $datos['foto'] = "includes/img/".$_POST['nombre'].".jpg";
+                    $datos['foto'] = "includes/img/".trim($_POST['nombre']).".jpg";
             }
             
             //NOMBRE
