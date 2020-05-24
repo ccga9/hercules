@@ -9,7 +9,7 @@ require_once 'includes/config.php';
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloAdmin.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloFormularios.css" />
-	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+	
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
 </head>
@@ -49,65 +49,64 @@ require_once 'includes/config.php';
 		        
 		        echo"<h3>Lista de Ejercicios</h3>";
 		        
-		        $arr = $ctrl->selectAlimento('', "1=1 ORDER BY nombre LIMIT ".($page - 1) * $items_page. ",".$items_page);
-		        
+		        $arr = $ctrl->selectEjercicio("","1=1 ORDER BY nombre LIMIT ".($page - 1) * $items_page. ",".$items_page);
 		        if (count($arr) > 0) {
 		            echo '<div class="entrenadores-all">';
 		            
-		            echo '<table>
-		            <tr> <th>Nombre</th> <th>Calorías</th> <th>Carbohidratos</th> <th>Proteínas</th> <th>Grasas</th> <th></th> </tr>';
-		           
+		            echo '<ul>';
 		            foreach ($arr as $key => $valor) {
-		                echo '<tr>';
+		                echo '<li>';
+		                echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
 		                
-		                echo '<td>'.$valor['nombre'].'</td>';
-		                echo '<td>'.$valor['caloriasConsumidas'].'</td>';
-		                echo '<td>'.$valor['carbohidratos'].'</td>';
-		                echo '<td>'.$valor['proteinas'].'</td>';
-		                echo '<td>'.$valor['grasas'].'</td>';
-		                echo '<td>'."<a href= adminAlimento.php?perfil=".$valor['idAlimento'].">Editar</a>".'</td>';
+		                echo '<img src="'.$valor['multimedia'].'"  alt="Foto usuario">';
 		                
-		                echo '</tr>';
+		                echo "<a href= adminEjercicio.php?perfil=".$valor['idEjercicio'].">Editar</a>";
+		                
+		                echo '</li>';
 		            }
-		            echo '</table>';
-		            echo '</div>';  
-		            
+		            echo '</ul>';
+		            echo '</div>';
 		        }
 		    }
 		    else {
-		        echo '<div class="boton-volver"><a href="adminAlimento.php">Volver</a></div>';
+		        echo '<div class="boton-volver"><a href="adminEjericio.php">Volver</a></div>';
 		        
-		        $alim = $ctrl->selectAlimento('', "idAlimento='".$_GET['perfil']."'");
+		        $ejer = $ctrl->selectEjercicio('', "idEjercicio='".$_GET['perfil']."'");
 		        
-		        if (count($alim) == 1) {
+		        if (count($ejer) == 1) {
 		            echo '<div class= "miPerfil">';
 		            
+		            echo '<img src="'.$ejer[0]['multimedia'].'"  alt="Foto ejercicio">';
+		            
 		            echo '<div class="form-registro">';
-		            echo '<form method="POST" action="PR_admin.php">';
+		            echo '<form method="POST" action="PR_admin.php" enctype="multipart/form-data">';
 		            
-		            echo '<input class="control" type="hidden" name="idalim" value="'.$alim[0]['idAlimento'].'"/>';
-		           
+		            echo '<input class="control" type="hidden" name="idEjer" value="'.$ejer[0]['idEjercicio'].'"/>';
+		            
 		            echo '<div class="grupo-control">
-		                  <label>Nombre:</label> <input class="control" type="text" name="nombre" value="'.$alim[0]['nombre'].'" required/>
+		                  <label>Nombre:</label> <input class="control" type="text" name="nombre" value="'.$ejer[0]['nombre'].'" required/>
 		              </div>
-    		        <div class="grupo-control">
-    		              <label>Calorias:</label> <input type="number" name="cal" value="'.$alim[0]['caloriasConsumidas'].'" step="10" min="0" required>
+                    <div class="grupo-control">
+    		              <label>Sube foto:</label><input name="uploadImage" type="file"/>
     		        </div>
     		        <div class="grupo-control">
-    		              <label>Carbohidratos:</label> <input type="number" name="car" value="'.$alim[0]['carbohidratos'].'" step="10" min="0" required>
+    		              <label>Calorias que gasta:</label> <input type="number" name="cal" value="'.$ejer[0]['caloriasGastadas'].'" step="any" min="0" required>
     		        </div>
     		        <div class="grupo-control">
-    		              <label>Proteinas</label> <input type="number" name="prot" value="'.$alim[0]['proteinas'].'" step="10" min="0" required>
+    		              <label>Tipo:</label> <input class="control" type="text" name="tipo" value="'.$ejer[0]['tipo'].'" required/>
     		        </div>
     		        <div class="grupo-control">
-    		              <label>Grasas</label> <input type="number" name="gras" value="'.$alim[0]['grasas'].'" step="10" min="0" required>
-    		        </div>';
+    		              <label>Descripción:</label>
+    		        </div>
+		            <div class="grupo-control">
+		                  <textarea name="desc" rows="10" cols="100" required>'.$ejer[0]['descripcion'].'</textarea>
+		            </div>';
 		            
-		            echo '<div class="botones"><button type="submit" name="admin_submit" value="edit_alim">Confirmar Cambios</button></div>';
+		            echo '<div class="botones"><button type="submit" name="admin_submit" value="edit_ejer">Confirmar Cambios</button></div>';
 		            echo '</form>';
-		           
+		            
 		            echo '</div>';
-		            echo '<button id="abrir">Eliminar Alimento</button>';
+		            echo '<button id="abrir">Eliminar Ejercicio</button>';
 		            echo '</div>';
 		        }
 		    }
@@ -128,9 +127,9 @@ require_once 'includes/config.php';
 	    
 	    if ($max_page > 0) {
 	        if ($page > 1) {
-	            echo "<a href= adminAlimento.php><<</a>";
+	            echo "<a href= adminEjercicio.php><<</a>";
 	            $aux=$page - 1;
-	            echo "<a href= adminAlimento.php?p=". $aux ."><</a>";
+	            echo "<a href= adminEjercicio.php?p=". $aux ."><</a>";
 	        }
 
 	        $i = $page - 3;
@@ -138,10 +137,10 @@ require_once 'includes/config.php';
 	        while ($j < 7) {
 	            if ($i >= 1 && $i <= $max_page) {
 	                if ($i == $page) {
-	                    echo '<a class="active" href= adminAlimento.php?p='.$i.">".$i."</a>";
+	                    echo '<a class="active" href= adminEjercicio.php?p='.$i.">".$i."</a>";
 	                }
 	                else {
-	                    echo "<a href= adminAlimento.php?p=".$i.">".$i."</a>";
+	                    echo "<a href= adminEjercicio.php?p=".$i.">".$i."</a>";
 	                }
 	            }
 	            $i++;
@@ -150,8 +149,8 @@ require_once 'includes/config.php';
 	        
 	        if ($page < $max_page) {
 	            $aux=$page + 1;
-	            echo "<a href= adminAlimento.php?p=". $aux .">></a>";
-	            echo "<a href= adminAlimento.php?p=". $max_page .">>></a>";
+	            echo "<a href= adminEjercicio.php?p=". $aux .">></a>";
+	            echo "<a href= adminEjercicio.php?p=". $max_page .">>></a>";
 	        }
 	    }
 	    else {
@@ -166,16 +165,16 @@ require_once 'includes/config.php';
 	<div class="overlay" id="overlay">
 			<div class = "popup" id="popup">
 				<a class = "cerrar" id="cerrar" href="#bottom">Volver atras</a>
-				<h2>Estas a punto de eliminar el alimento</h2>
+				<h2>Estas a punto de eliminar el ejercicio</h2>
 				<h2>¿Estas seguro?</h2>
 				
 				<?php 
 				echo '<form method="POST" action="PR_admin.php">';
 				
-				if (isset($_GET['perfil']) && count($alim) == 1)
+				if (isset($_GET['perfil']) && count($ejer) == 1)
 				    echo '<input type="hidden" name="user" value="'.$_GET['perfil'].'">';
 				
-				echo '<button type="submit" name="admin_submit" value="elim_alim">Confirmar</button>';
+				echo '<button type="submit" name="admin_submit" value="elim_ejer">Confirmar</button>';
 				echo '</form>';
 				?>
 				

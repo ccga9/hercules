@@ -36,16 +36,16 @@ class FormNuevoAlimento extends Form {
                 $ret .= '<label>Nombre:</label> <input class="control" type="text" placeholder="Nombre del alimento" name="nombre" required/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Calorias:</label> <input type="number" name="cal" value="0.0" step="10" min="0" required>';
+                $ret .= '<label>Calorias:</label> <input type="number" name="cal" value="0.0" step="any" min="0" required>';
             $ret .= '</div>';
              $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Carbohidratos:</label> <input type="number" name="car" value="0.0" step="10" min="0" required>';
+                $ret .= '<label>Carbohidratos:</label> <input type="number" name="car" value="0.0" step="any" min="0" required>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Proteinas</label> <input type="number" name="prot" value="0.0" step="10" min="0" required>';
+                $ret .= '<label>Proteinas</label> <input type="number" name="prot" value="0.0" step="any" min="0" required>';
             $ret .= '</div>';
              $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Grasas</label> <input type="number" name="gras" value="0.0" step="10" min="0" required>';
+                $ret .= '<label>Grasas</label> <input type="number" name="gras" value="0.0" step="any" min="0" required>';
             $ret .= '</div>';
 
             $ret .= '<div class="botones"><button type="submit" name="registro">Registrar</button>';

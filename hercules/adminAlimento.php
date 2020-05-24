@@ -91,16 +91,16 @@ require_once 'includes/config.php';
 		                  <label>Nombre:</label> <input class="control" type="text" name="nombre" value="'.$alim[0]['nombre'].'" required/>
 		              </div>
     		        <div class="grupo-control">
-    		              <label>Calorias:</label> <input type="number" name="cal" value="'.$alim[0]['caloriasConsumidas'].'" step="10" min="0" required>
+    		              <label>Calorias:</label> <input type="number" name="cal" value="'.$alim[0]['caloriasConsumidas'].'" step="any" min="0" required>
     		        </div>
     		        <div class="grupo-control">
-    		              <label>Carbohidratos:</label> <input type="number" name="car" value="'.$alim[0]['carbohidratos'].'" step="10" min="0" required>
+    		              <label>Carbohidratos:</label> <input type="number" name="car" value="'.$alim[0]['carbohidratos'].'" step="any" min="0" required>
     		        </div>
     		        <div class="grupo-control">
-    		              <label>Proteinas</label> <input type="number" name="prot" value="'.$alim[0]['proteinas'].'" step="10" min="0" required>
+    		              <label>Proteinas</label> <input type="number" name="prot" value="'.$alim[0]['proteinas'].'" step="any" min="0" required>
     		        </div>
     		        <div class="grupo-control">
-    		              <label>Grasas</label> <input type="number" name="gras" value="'.$alim[0]['grasas'].'" step="10" min="0" required>
+    		              <label>Grasas</label> <input type="number" name="gras" value="'.$alim[0]['grasas'].'" step="any" min="0" required>
     		        </div>';
 		            
 		            echo '<div class="botones"><button type="submit" name="admin_submit" value="edit_alim">Confirmar Cambios</button></div>';
