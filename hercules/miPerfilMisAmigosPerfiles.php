@@ -37,7 +37,7 @@
 				echo '<div class ="miPerfil">';
 
 				if ($_GET['estado'] == "a") {
-					echo "<a href= miPerfilBuzon.php?reciever=".$_GET['id'].">Chatea con ".$amigo->getNombre()."</a>";	
+					echo "<a href= miPerfilBuzon.php?reciever=".$_GET['id']."&perfil=1>Chatea con ".$amigo->getNombre()."</a>";	
 					echo '<h2 class="nombre" >'.$amigo->getNombre().' es tu amigo/a</h2><br>';
 					 
 				}else if($_GET['estado'] == "p1"){ //YO ENVIE LA SOLICITUD

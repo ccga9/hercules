@@ -113,7 +113,7 @@
 		            $el_otro = $ctrl->cargarUsuario($men_arr[0]['emisor'])->getNombre();
 		        }
 		        echo '<div id="chat">';
-		        echo '<h4>Estas hablando con '.$el_otro.'</h4>';
+		        echo '<h4>Estás hablando con '.$el_otro.'</h4>';
 		            
 	            foreach ($men_arr as $value) {
 	                if ($value['emisor'] == $_SESSION["usuario"]->getNif()) {
@@ -146,11 +146,32 @@
     		    echo '<input type="hidden" name="emisor" value="'.$_SESSION["usuario"]->getNif().'">';
     		    echo '<input type="hidden" name="receptor" value="'.$_GET['reciever'].'">';
     		    
-    		    echo '<button type="submit" name="borrar">Borrar toda la conversacion</button>';
+    		    echo '<button type="submit" name="borrar">Borrar toda la conversación</button>';
     		    
     		    echo '</form>';
     		    echo '</div>';
-		    }
+		    }else{
+		    	 echo '<h4>Inicia la conversación</h4>';
+			    	 echo '<form method="POST" action="PR_miPerfilBuzon_chat.php">';
+	        		        echo '<input type="hidden" name="emisor" value="'.$_SESSION["usuario"]->getNif().'">';
+	        		        echo '<input type="hidden" name="receptor" value="'.$_GET['reciever'].'">';
+	            		    echo '<textarea name="men" rows="5" cols="40" placeholder="Escribe algo para mandar"></textarea>';
+	            		    
+	            		    echo '<div class="grupo-control"><button type="submit" name="send">Enviar</button></div>';
+	    		    echo '</form>';
+
+	    		    
+	    		    echo '<br>';
+	    		    
+	    		    echo '<form method="POST" action="PR_miPerfilBuzon_chat.php">';
+	    		    
+	    		    echo '<input type="hidden" name="emisor" value="'.$_SESSION["usuario"]->getNif().'">';
+	    		    echo '<input type="hidden" name="receptor" value="'.$_GET['reciever'].'">';
+	    		    
+	    		    echo '<button type="submit" name="borrar">Borrar toda la conversación</button>';
+	    		    
+	    		    echo '</form>';
+		    }		    
 		    echo '</div>';
 		}
 		
