@@ -108,12 +108,41 @@ class UsuarioDAO extends DAO {
     
     public function verUsuarios()
     {
-        $query = "SELECT nombre, foto, tipoUsuario, preferencias from usuario
-            where tipoUsuario = 0 or tipoUsuario = 1";
-        
-        // tipoUsuario != 2
+        $query = "SELECT nif, sexo, nombre, foto, tipoUsuario, ubicacion from usuario
+            where tipoUsuario = 0 or tipoUsuario = 1 order by nombre";
         
         return $this->consultarv2($query);
+    }
+    
+    public function buscarUsuario($nombre)
+    {
+        $query = "SELECT nif, sexo, nombre, foto, tipoUsuario, ubicacion from usuario
+            where tipoUsuario != 2 and nombre LIKE '%".$nombre."%' order by nombre";
+        
+        return $this->consultarv2($query);
+    }
+
+    //AMIGOS
+
+    public function listarMisAmigos($nif){
+         $query = "SELECT * FROM amigos WHERE usuario1 = '".$nif."' or usuario2 = '".$nif."'";
+
+          return $this->consultarv2($query);
+    }
+    public function enviarSolicitudAmistad($usuario1, $usuario2){
+        $query = "INSERT INTO amigos(usuario1, usuario2, estado) VALUES ('".$usuario1."','".$usuario2."', 'pendiente')";
+        $this->consultarv2($query);
+    }
+
+    public function aceptarSolicitudAmistad($id){
+        $query = "UPDATE amigos SET estado = 'aceptado' WHERE id = '".$id."'";
+        $this->consultarv2($query);
+    }
+
+     public function eliminarAmigo($id){
+         $query = "DELETE FROM amigos WHERE id = '".$id."'";
+        $this->consultarv2($query);
+
     }
     
 }

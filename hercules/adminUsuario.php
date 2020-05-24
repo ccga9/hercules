@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloAdmin.css" />
-	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+	
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
 </head>
@@ -73,45 +73,48 @@
 		        echo '<div class="boton-volver"><a href="adminUsuario.php">Volver</a></div>';
 		        echo '<div class= "miPerfil">';
 		        $us = $ctrl->cargarUsuario($_GET['perfil']);
-		        echo '<h2>'.$us->getNombre().'</h2>';
-		        echo '<img src="'.$us->getFoto().'"  alt="Foto usuario">';
 		        
-		        echo '<p class="info">E-mail: '.$us->getEmail().'</p><br>';
-		        echo '<p class="info">Telefono: '.$us->getTelefono().'</p><br>';
-		        echo '<p class="info">Fecha Nacimiento: '.$us->getFechaNac().'</p><br>';
-		        echo '<p class="info">Ubicacion: '.$us->getUbicacion().'</p><br>';
-		        echo '<p class="info">Preferencias: '.$us->getPreferencias().'</p><br>';
-		        
-		        if ($us->getTipoUsuario() == 1) {
-		            echo '<br>';
-		            echo '<p class="info"><strong>Informacion profesional</strong></p><br>';
-		            echo '<p class="info">Titulacion: '.$us->getTitulacion().'</p><br>';
-		            echo '<p class="info">Especialidad: '.$us->getEspecialidad().'</p><br>';
-		            echo '<p class="info">Experiencia: '.$us->getExperiencia().' años</p><br>';
+		        if ($us !== 0) {
+		            echo '<h2>'.$us->getNombre().'</h2>';
+		            echo '<img src="'.$us->getFoto().'"  alt="Foto usuario">';
+		            
+		            echo '<p class="info">E-mail: '.$us->getEmail().'</p><br>';
+		            echo '<p class="info">Telefono: '.$us->getTelefono().'</p><br>';
+		            echo '<p class="info">Fecha Nacimiento: '.$us->getFechaNac().'</p><br>';
+		            echo '<p class="info">Ubicacion: '.$us->getUbicacion().'</p><br>';
+		            echo '<p class="info">Preferencias: '.$us->getPreferencias().'</p><br>';
+		            
+		            if ($us->getTipoUsuario() == 1) {
+		                echo '<br>';
+		                echo '<p class="info"><strong>Informacion profesional</strong></p><br>';
+		                echo '<p class="info">Titulacion: '.$us->getTitulacion().'</p><br>';
+		                echo '<p class="info">Especialidad: '.$us->getEspecialidad().'</p><br>';
+		                echo '<p class="info">Experiencia: '.$us->getExperiencia().' años</p><br>';
+		            }
+		            
+		            echo '<button id= "abrir">Eliminar Usuario</button>';
+		            
+		            $media = $ctrl->selectValor('ROUND(AVG(valor),1) as media', "hacia='".$us->getNif()."'");
+		            $rating = $ctrl->selectValor('', "hacia='".$us->getNif()."' ORDER BY fecha DESC");
+		            $c = count($rating);
+		            
+		            echo '<h2>Puntuación: '.$media[0]['media'].' ('.$c.')</h2>';
+		            
+		            if ($c > 0) {
+		                echo '<div class="valoraciones">';
+		                foreach ($rating as $valor) {
+		                    if ($valor['visible']) {
+		                        echo '<p>---'.$valor['fecha'].'---</p>';
+		                        echo '<p class="valor">'.$valor['valor'].' estrellas</p>';
+		                        echo '<p> <label>De: </label>'.$valor['de'].'</p>';
+		                        echo '<p>'.$valor['texto'].'</p>';
+		                    }
+		                }
+		                echo '</div>';
+		            }
+		            
+		            echo '</div>';
 		        }
-	            
-		        echo '<button id= "abrir">Eliminar Usuario</button>';
-	            
-                $media = $ctrl->selectValor('ROUND(AVG(valor),1) as media', "hacia='".$us->getNif()."'");
-                $rating = $ctrl->selectValor('', "hacia='".$us->getNif()."' ORDER BY fecha DESC");
-	            $c = count($rating);
-	            
-	            echo '<h2>Puntuación: '.$media[0]['media'].' ('.$c.')</h2>';
-	            
-	            if ($c > 0) {
-	                echo '<div class="valoraciones">';
-	                foreach ($rating as $valor) {
-	                    if ($valor['visible']) {
-	                        echo '<p>---'.$valor['fecha'].'---</p>';
-	                        echo '<p class="valor">'.$valor['valor'].' estrellas</p>';
-	                        echo '<p> <label>De: </label>'.$valor['de'].'</p>';
-	                        echo '<p>'.$valor['texto'].'</p>';
-	                    }
-	                }
-	                echo '</div>';
-	            }
-		        
-		        echo '</div>';
 		    }
 		}
 		else { //Usuario registrado
@@ -175,7 +178,7 @@
 				<?php 
 				echo '<form method="POST" action="PR_admin.php">';
 				
-				if (isset($_GET['perfil']))
+				if (isset($_GET['perfil']) && $us !== 0)
 				    echo '<input type="hidden" name="user" value="'.$_GET['perfil'].'">';
 				
 				

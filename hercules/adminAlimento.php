@@ -1,5 +1,6 @@
 <?php
 require_once 'includes/config.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,6 +8,7 @@ require_once 'includes/config.php';
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloAdmin.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/estiloFormularios.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
@@ -23,8 +25,9 @@ require_once 'includes/config.php';
 	?>
 
 	<div id="contenido">
-
+		
 		<?php
+
 		if(isset($_SESSION['login']) && $_SESSION['usuario']->getTipoUsuario()==2){
 		    
 		    $items_page = 8;
@@ -34,84 +37,79 @@ require_once 'includes/config.php';
 		        $page = 1;
 		    }
 		    
-		    $max = $ctrl->selectUsuario("count(*) as c", '');
+		    $max = $ctrl->selectAlimento("count(*) as c", '');
 		    
 		    $max_page = ceil($max[0]['c'] / $items_page);
-			
+		    
 		    echo"<h2>Gestionar Alimentos</h2>";
 		    
 		    if (!isset($_GET['perfil'])) {
 		        
-		        $arr = $ctrl->listarUsuarios("tipoUsuario != 2 ORDER BY nombre LIMIT ".($page - 1) * $items_page. ",".$items_page);
+		        echo '<a href= adminNuevoAlimento.php>Añadir Alimento</a>';
+		        
+		        echo"<h3>Lista de Alimentos</h3>";
+		        
+		        $arr = $ctrl->selectAlimento('', "1=1 ORDER BY nombre LIMIT ".($page - 1) * $items_page. ",".$items_page);
+		        
 		        if (count($arr) > 0) {
 		            echo '<div class="entrenadores-all">';
-		          
-		            echo '<ul>';
+		            
+		            echo '<table>
+		            <tr> <th>Nombre</th> <th>Calorías</th> <th>Carbohidratos</th> <th>Proteínas</th> <th>Grasas</th> <th></th> </tr>';
+		           
 		            foreach ($arr as $key => $valor) {
-		                echo '<li>';
-		                echo '<h4>'.$valor['nombre'].'</h4>'.'<br>';
+		                echo '<tr>';
 		                
-		                echo '<img src="'.$valor['foto'].'"  alt="Foto usuario">';
-		               
-		                if ($valor['tipoUsuario'] == 0) {
-		                    echo '<p>Cliente</p>';
-		                }
-		                else {
-		                    echo '<p>Entrenador</p>';
-		                }
+		                echo '<td>'.$valor['nombre'].'</td>';
+		                echo '<td>'.$valor['caloriasConsumidas'].'</td>';
+		                echo '<td>'.$valor['carbohidratos'].'</td>';
+		                echo '<td>'.$valor['proteinas'].'</td>';
+		                echo '<td>'.$valor['grasas'].'</td>';
+		                echo '<td>'."<a href= adminAlimento.php?perfil=".$valor['idAlimento'].">Editar</a>".'</td>';
 		                
-		                echo "<a href= adminUsuario.php?perfil=".$valor['nif'].">Ver Perfil</a>";
-		                
-		                echo '</li>';
+		                echo '</tr>';
 		            }
-		            echo '</ul>';
-		            echo '</div>';
+		            echo '</table>';
+		            echo '</div>';  
 		            
 		        }
 		    }
 		    else {
-		        echo '<div class="boton-volver"><a href="adminUsuario.php">Volver</a></div>';
-		        echo '<div class= "miPerfil">';
-		        $us = $ctrl->cargarUsuario($_GET['perfil']);
-		        echo '<h2>'.$us->getNombre().'</h2>';
-		        echo '<img src="'.$us->getFoto().'"  alt="Foto usuario">';
+		        echo '<div class="boton-volver"><a href="adminAlimento.php">Volver</a></div>';
 		        
-		        echo '<p class="info">E-mail: '.$us->getEmail().'</p><br>';
-		        echo '<p class="info">Telefono: '.$us->getTelefono().'</p><br>';
-		        echo '<p class="info">Fecha Nacimiento: '.$us->getFechaNac().'</p><br>';
-		        echo '<p class="info">Ubicacion: '.$us->getUbicacion().'</p><br>';
-		        echo '<p class="info">Preferencias: '.$us->getPreferencias().'</p><br>';
+		        $alim = $ctrl->selectAlimento('', "idAlimento='".$_GET['perfil']."'");
 		        
-		        if ($us->getTipoUsuario() == 1) {
-		            echo '<br>';
-		            echo '<p class="info"><strong>Informacion profesional</strong></p><br>';
-		            echo '<p class="info">Titulacion: '.$us->getTitulacion().'</p><br>';
-		            echo '<p class="info">Especialidad: '.$us->getEspecialidad().'</p><br>';
-		            echo '<p class="info">Experiencia: '.$us->getExperiencia().' años</p><br>';
+		        if (count($alim) == 1) {
+		            echo '<div class= "miPerfil">';
+		            
+		            echo '<div class="form-registro">';
+		            echo '<form method="POST" action="PR_admin.php">';
+		            
+		            echo '<input class="control" type="hidden" name="idalim" value="'.$alim[0]['idAlimento'].'"/>';
+		           
+		            echo '<div class="grupo-control">
+		                  <label>Nombre:</label> <input class="control" type="text" name="nombre" value="'.$alim[0]['nombre'].'" required/>
+		              </div>
+    		        <div class="grupo-control">
+    		              <label>Calorias:</label> <input type="number" name="cal" value="'.$alim[0]['caloriasConsumidas'].'" step="any" min="0" required>
+    		        </div>
+    		        <div class="grupo-control">
+    		              <label>Carbohidratos:</label> <input type="number" name="car" value="'.$alim[0]['carbohidratos'].'" step="any" min="0" required>
+    		        </div>
+    		        <div class="grupo-control">
+    		              <label>Proteinas</label> <input type="number" name="prot" value="'.$alim[0]['proteinas'].'" step="any" min="0" required>
+    		        </div>
+    		        <div class="grupo-control">
+    		              <label>Grasas</label> <input type="number" name="gras" value="'.$alim[0]['grasas'].'" step="any" min="0" required>
+    		        </div>';
+		            
+		            echo '<div class="botones"><button type="submit" name="admin_submit" value="edit_alim">Confirmar Cambios</button></div>';
+		            echo '</form>';
+		           
+		            echo '</div>';
+		            echo '<button id="abrir">Eliminar Alimento</button>';
+		            echo '</div>';
 		        }
-	            
-		        echo '<button id= "abrir">Eliminar Usuario</button>';
-	            
-                $media = $ctrl->selectValor('ROUND(AVG(valor),1) as media', "hacia='".$us->getNif()."'");
-                $rating = $ctrl->selectValor('', "hacia='".$us->getNif()."' ORDER BY fecha DESC");
-	            $c = count($rating);
-	            
-	            echo '<h2>Puntuación: '.$media[0]['media'].' ('.$c.')</h2>';
-	            
-	            if ($c > 0) {
-	                echo '<div class="valoraciones">';
-	                foreach ($rating as $valor) {
-	                    if ($valor['visible']) {
-	                        echo '<p>---'.$valor['fecha'].'---</p>';
-	                        echo '<p class="valor">'.$valor['valor'].' estrellas</p>';
-	                        echo '<p> <label>De: </label>'.$valor['de'].'</p>';
-	                        echo '<p>'.$valor['texto'].'</p>';
-	                    }
-	                }
-	                echo '</div>';
-	            }
-		        
-		        echo '</div>';
 		    }
 		}
 		else { //Usuario registrado
@@ -119,8 +117,7 @@ require_once 'includes/config.php';
 		    echo "<p>Debes iniciar sesión para ver el contenido.</p>";
 		}
 		?>
-			
-
+	
 	</div>
 	
 	<?php	
@@ -131,9 +128,9 @@ require_once 'includes/config.php';
 	    
 	    if ($max_page > 0) {
 	        if ($page > 1) {
-	            echo "<a href= adminUsuario.php><<</a>";
+	            echo "<a href= adminAlimento.php><<</a>";
 	            $aux=$page - 1;
-	            echo "<a href= adminUsuario.php?p=". $aux ."><</a>";
+	            echo "<a href= adminAlimento.php?p=". $aux ."><</a>";
 	        }
 
 	        $i = $page - 3;
@@ -141,10 +138,10 @@ require_once 'includes/config.php';
 	        while ($j < 7) {
 	            if ($i >= 1 && $i <= $max_page) {
 	                if ($i == $page) {
-	                    echo '<a class="active" href= adminUsuario.php?p='.$i.">".$i."</a>";
+	                    echo '<a class="active" href= adminAlimento.php?p='.$i.">".$i."</a>";
 	                }
 	                else {
-	                    echo "<a href= adminUsuario.php?p=".$i.">".$i."</a>";
+	                    echo "<a href= adminAlimento.php?p=".$i.">".$i."</a>";
 	                }
 	            }
 	            $i++;
@@ -153,8 +150,8 @@ require_once 'includes/config.php';
 	        
 	        if ($page < $max_page) {
 	            $aux=$page + 1;
-	            echo "<a href= adminUsuario.php?p=". $aux .">></a>";
-	            echo "<a href= adminUsuario.php?p=". $max_page .">>></a>";
+	            echo "<a href= adminAlimento.php?p=". $aux .">></a>";
+	            echo "<a href= adminAlimento.php?p=". $max_page .">>></a>";
 	        }
 	    }
 	    else {
@@ -169,15 +166,16 @@ require_once 'includes/config.php';
 	<div class="overlay" id="overlay">
 			<div class = "popup" id="popup">
 				<a class = "cerrar" id="cerrar" href="#bottom">Volver atras</a>
-				<h2>Estas a punto de eliminar al usuario</h2>
+				<h2>Estas a punto de eliminar el alimento</h2>
 				<h2>¿Estas seguro?</h2>
 				
 				<?php 
 				echo '<form method="POST" action="PR_admin.php">';
 				
-				echo '<input type="hidden" name="user" value="'.$us->getNif().'">';
+				if (isset($_GET['perfil']) && count($alim) == 1)
+				    echo '<input type="hidden" name="user" value="'.$_GET['perfil'].'">';
 				
-				echo '<button type="submit" name="admin_submit" value="elim_user">Confirmar</button>';
+				echo '<button type="submit" name="admin_submit" value="elim_alim">Confirmar</button>';
 				echo '</form>';
 				?>
 				

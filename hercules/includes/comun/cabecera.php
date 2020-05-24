@@ -21,12 +21,9 @@
     		}
     
     		?>
-
-             <div id="icon-search">
-                <i class="fas fa-search" id="search"></i>
-            </div>
     		
     	</div>
+ 
  
     	<div class="menu">
     
@@ -37,7 +34,7 @@
         		  <li><a href= adminUsuario.php>Usuarios</a></li>
         		  <li><a href= adminAlimento.php>Alimentos</a></li>
         		  <li><a href= adminEjercicio.php>Ejercicios</a></li>
-        		  <li><a href= adminNuevaCuenta.php>Administradores</a></li>
+        		  <li><a href= adminLista.php>Administradores</a></li>
                   <li><a href= adminEditar.php>Editar Perfil</a></li>
                 </ul>';
     		}
@@ -59,6 +56,7 @@
         		            echo '<ul><li><a href= miPerfilComidas.php>Comidas</a></li>';
         		            echo '<li><a href= miPerfilEntrenamientos.php>Entrenamientos</a></li>';
         		            echo '<li><a href= miPerfilMisEntrenadores.php>Mis Entrenadores</a></li>';
+        		            echo '<li><a href= miPerfilMisAmigos.php>Mis Amigos</a></li>';
         		            echo '<li><a href= miPerfilEditar.php>Editar Perfil</a></li>';
         		            echo '<li><a href= miPerfilBuzon.php>Mensajes</a></li></ul>';
         		        }

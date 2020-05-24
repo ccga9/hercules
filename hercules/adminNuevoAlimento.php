@@ -1,8 +1,8 @@
 <?php
 require_once 'includes/config.php';
-require_once(__DIR__.'/includes/Forms/FormNuevoAdmin.php');
+require_once(__DIR__.'/includes/Forms/FormNuevoAlimento.php');
 
-$act = new FormNuevoAdmin();
+$act = new FormNuevoAlimento();
 $html=$act->gestiona();
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ $html=$act->gestiona();
 	<div id="contenido">
 
 		<?php
-		echo '<div class="boton-volver"><a href="adminLista.php">Volver</a></div>';
+		echo '<div class="boton-volver"><a href="adminAlimento.php">Volver</a></div>';
 		echo $html;
 		?>
 			

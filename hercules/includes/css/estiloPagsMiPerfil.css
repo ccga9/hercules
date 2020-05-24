@@ -264,7 +264,7 @@ div#contenido .miPerfil h2.nombre {
 	margin: auto;
 	color: #3b3b3b;
 	padding: 10px;
-	position: relative;
+	position: unset;
 }
 div#contenido .miPerfil p.info {
 	font-size: 22px;

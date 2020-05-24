@@ -274,7 +274,7 @@ CREATE TABLE `usuario` (
   `nombre` varchar(30) NOT NULL,
   `contrasenna` varchar(255) NOT NULL,
   `foto` varchar(255) DEFAULT 'includes/img/usuarios/default.png',
-  `email` varchar(30) NOT NULL,
+  `email` varchar(30) DEFAULT NULL,
   `sexo` varchar(6) DEFAULT NULL,
   `fechaNac` date DEFAULT NULL,
   `telefono` varchar(15) DEFAULT NULL,
@@ -293,6 +293,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`nif`, `nombre`, `contrasenna`, `foto`, `email`, `sexo`, `fechaNac`, `telefono`, `ubicacion`, `peso`, `altura`, `preferencias`, `tipoUsuario`, `titulacion`, `especialidad`, `experiencia`) VALUES
+('00000000Z', 'HERCULES', '$2y$10$AVXZMNDY3t0qMnnlDsK2ieHc20jp0elXy3AGUtTTROr29gJwgZ9h6', 'includes/img/usuarios/00000000Z.jpg', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL),
 ('12345678A', 'Lara Ibarra', '$2y$10$tatd6qauszToIxFssh7V8uvAn/jdLXu0ttWYQhi3vbc6ZHQ58PCsC', 'includes/img/usuarios/12345678A.jpg', 'lara@gmail.com', 'mujer', '1996-08-05', '673455328', 'Madrid', '50.00', '156', 'Sin especificar', 1, 'Nutrición', 'Dietista', '8'),
 ('12345678B', 'Sergio Peinado', '$2y$10$AVXZMNDY3t0qMnnlDsK2ieHc20jp0elXy3AGUtTTROr29gJwgZ9h6', 'includes/img/usuarios/12345678B.jpg', 'fuertacos@gmail.com', 'hombre', '1993-02-01', '699598712', 'Madrid', '84.00', '177', 'Convertir a toda la sociedad en fuertacos', 1, 'Licenciado en las actividades ', 'Entrenador personal', '10'),
 ('12345678C', 'Vadym Calavera', '$2y$10$WXvI7J3TDkc3K4WdSjuZBebcgpYB8FK0NIfcZmA4S1IY.zvufxsYG', 'includes/img/usuarios/12345678C.jpg', 'vuamos@gmail.com', 'hombre', '1992-05-12', '912554222', 'Bogotá', '82.00', '185', 'Sin espeficar', 1, 'Entrenador personal', 'Fuerza y ganar masa muscular', '10'),
@@ -345,6 +346,9 @@ CREATE TABLE `amigos` (
   `estado` enum('aceptado','pendiente','') NOT NULL DEFAULT 'pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `amigos` (`id`, `usuario1`, `usuario2`, `estado`) VALUES
+(1, '12345678F', '12345678H', 'aceptado'),
+(2, '12345678G', '12345678I', 'pendiente');
 -- --------------------------------------------------------
 
 --
