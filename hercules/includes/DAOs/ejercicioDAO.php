@@ -39,6 +39,16 @@ class ejercicioDAO extends DAO
         $this->consultar($query);
 
     }
+
+    public function eliminarEntrenamientoEjercicio($idEntrenamiento)
+    {
+
+        $query= "DELETE FROM entrenamientoejercicio where idEntrenamiento = '".$idEntrenamiento."'";
+        
+        $this->consultar($query);
+
+    }
+
     public function cargarEjercicio($idEjercicio) 
     {   
         $query = "SELECT * FROM ejercicio WHERE idEjercicio = '". $idEjercicio ."'";

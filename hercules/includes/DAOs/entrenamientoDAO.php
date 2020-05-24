@@ -81,10 +81,10 @@ class entrenamientoDAO extends DAO{
     
     }
     
-    private static function update(entrenamientoTO $entrenamiento){
- 
-       $query= "UPDATE entrenamiento set nombre = '".$entrenamiento->getNombre()."', fecha = '".$entrenamiento->getFecha()."', repeticiones = '".$entrenamiento->getRepeticiones()."' where idEntrenamiento = '".$entrenamiento->getIdEntrenamiento()."'";
-        
+   public function updateEntrenamiento($datos){
+       $query= "UPDATE entrenamiento set nombre = '".$datos['nombre']."', fecha = '".$datos['fecha']."', repeticiones = '".$datos['repeticiones']."' where idEntrenamiento = '".$datos['idEntrenamiento']."'";
+
+        print_r($query);
        return $this->consultar($query);
     
 	}

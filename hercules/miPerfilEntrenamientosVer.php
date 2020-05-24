@@ -58,7 +58,8 @@
 										echo '<td><a href="miPerfilEntrenamientosVerDetalle.php?entrenamiento='.$aux.'">'.$entrenamiento['nombre'].'</a></td>';
 										echo '<td>'.$entrenamiento['fecha'].'</td>';
 										
-										echo '<td><a href="">Editar entrenamiento</a></td>';
+
+										echo '<td><a href="editarEntrenamiento.php?id='.$aux.'&cliente='.$_GET['idCliente'].'"><button>Editar entrenamiento</button></a></td>';
 										echo '<td><button id= "abrir'.$entrenamiento['id'].'" onclick="eliminarEntrenami('.$entrenamiento['id'].')"> Eliminar entrenamiento </button></td>';
 										
 								echo '</tr>';

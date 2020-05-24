@@ -538,6 +538,28 @@ class controller{
     
         
     }
+
+    public function editarEntrenamiento($datos)
+    {   
+       $entrenamiento = $this->entrenamientoDAO->updateEntrenamiento($datos);
+       $this->ejercicioDAO->eliminarEntrenamientoEjercicio($datos['idEntrenamiento']);
+
+       foreach ($datos['ejercicios'] as $nombre) {
+    
+            $consulta = $this->ejercicioDAO->buscarIdEjercicio($nombre);
+
+            if($consulta){
+                 $fila = mysqli_fetch_assoc($consulta);
+
+                $id = $fila['idEjercicio'];
+            }
+            $this->ejercicioDAO->agregarEjercicioaEntrenamiento($datos['idEntrenamiento'], $id);
+
+       }
+    
+        
+    }
+
     
     //FIN FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
