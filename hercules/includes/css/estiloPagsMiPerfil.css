@@ -3,6 +3,10 @@
 *Comidas, entrenamientos, mis entrenadores, editar perfil, mensajes, mis clientes, mis valoraciones...
 *
 **/
+
+div#contenido .amigos{
+	display: grid;
+}
 /*INICIO MENU PERFIL CLIENTE*/
 div#contenido .submenu-perfil {
 	

@@ -27,6 +27,14 @@ class ejercicioDAO extends DAO
         return $this->consultar($query);
     }
 
+    public function listarEntrenamientoEjercicio($idEntrenamiento)
+    {
+
+        $query= "SELECT idEjercicio FROM entrenamientoejercicio where idEntrenamiento = '".$idEntrenamiento."'";
+        return $this->consultarv2($query);
+
+    }
+
     public function agregarEjercicioaEntrenamiento($idEntrenamiento, $idEjercicio){
         //echo 'idEntrenamiento'.$idEntrenamiento."<br>";
         //echo 'idEjercicio'.$idEjercicio."<br>";
@@ -107,7 +115,6 @@ class ejercicioDAO extends DAO
         if ($cond != "") {
             $query = "UPDATE ejercicio SET ".$set." WHERE ".$cond;
         }
-        echo $query;
         return $this->consultarv2($query);
     }
     
