@@ -89,6 +89,7 @@ div#contenido {
 }
 
 div#contenido h2 {
+	margin-bottom: 20px;
 	text-align: center;
 	font-size: 40px;
 	margin-top:10px;

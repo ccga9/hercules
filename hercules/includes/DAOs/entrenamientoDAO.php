@@ -96,4 +96,53 @@ class entrenamientoDAO extends DAO{
         
         $this->consultar($query);
     }
+    
+    public function selectEntrena($col, $cond){
+        $query = "";
+        if ($col == "") {
+            $col = "*";
+        }
+        if ($cond == "") {
+            $query = "SELECT ".$col." FROM entrenamiento";
+        }
+        else {
+            $query = "SELECT ".$col." FROM entrenamiento WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
+    
+    public function insertEntrena($col, $values){
+        $query = "";
+        $query = "INSERT INTO entrenamiento(".$col.") VALUES (".$values.")";
+        
+        return $this->consultarv2($query);
+    }
+    
+    public function updateEntrena($set, $cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "UPDATE entrenamiento SET ".$set." WHERE ".$cond;
+        }
+        echo $query;
+        return $this->consultarv2($query);
+    }
+    
+    public function deleteEntrena($cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "DELETE FROM entrenamiento WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
+    
+    public function deleteEjer_Entrena($cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "DELETE FROM entrenamientoejercicio WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
 }

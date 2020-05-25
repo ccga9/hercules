@@ -6,7 +6,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloPagsMiPerfil.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
-	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+	
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>HERCULES</title>
 </head>
@@ -23,16 +23,151 @@
 		}
 	?>
 
-	<div id="contenido">
-
-		<?php
+	<?php
 		if(!isset($_SESSION['login'])){
 			echo "<h1>Usuario no registrado!</h1>";
 			echo "<p>Debes iniciar sesión para ver el contenido.</p>";
 		}
 		else { //Usuario registrado
-		?>
+	?>
 	
+	<?php
+		
+	echo '<div class="cont-marcador">
+	<div class="marcador-pagina">
+	   
+        <a href= miPerfil.php?p=-2>Anteayer</a>
+        <a href= miPerfil.php?p=-1>Ayer</a>
+        <a href= miPerfil.php>Hoy</a>
+        <a href= miPerfil.php?p=1>Mañana</a>
+        <a href= miPerfil.php?p=2>Pasado Mañana</a>
+
+	</div>
+	</div>';
+	
+	?>
+	    
+	<div id="contenido">
+	
+		<?php
+		if ($_SESSION['usuario']->getTipoUsuario() == 0) {
+		    echo '<h2>Tareas de hoy</h2>';
+		    if (isset($_GET['p']) && $_GET['p'] >= -2 && $_GET['p'] <= 2) {
+		        $la_fecha=date('Y-m-d',strtotime($_GET['p']." days"));
+		    }
+		    else {
+		        $la_fecha=date('Y-m-d');
+		    }
+		    
+		    echo "<p>Viendo comidas y entrenamientos para ".$la_fecha."</p>";
+		    
+		    $nif_usuario = $_SESSION['usuario']->getNif();
+		    
+		    //Mostrar Comidas
+		    $comidas_aux = $ctrl->verComidas($nif_usuario);
+		    $comidas = array();
+		    foreach ($comidas_aux as $valor) {
+		        if (substr($valor['dia'], 0, 10) == $la_fecha) {
+		            $comidas[] = $valor;
+		        }
+		    }
+		    
+		    //mostrar entrenamientos
+		    $ids = $ctrl->selectUs_Ent('id', "usuario='".$_SESSION['usuario']->getNif()."'");
+		    $entrena_final = array();
+		    $entrena = array();
+		    foreach ($ids as $valor) {
+		        $aux = $ctrl->selectEntrena('', "idUsuarioEntrenador='".$valor['id']."'");
+		        foreach ($aux as $valorj) {
+		            $entrena[] = $valorj;
+		        }
+		    }
+		    foreach ($entrena as $valor) {
+		        if ($valor['fecha'] == $la_fecha) {
+		            $entrena_final[] = $valor;
+		        }
+		    }
+		    
+		    
+		    //Loop de comidas
+		    if (count($comidas) == 0)
+		    {
+		        echo "<p>Ningún plan para comer hoy.</p>";
+		    }
+		    else
+		    {
+		        echo '<div class="tabla_comidas">
+            	<p><table>
+            	<tr> <th>Fecha</th> <th>Tipo</th> <th>Calorías</th> <th>Proteínas</th>
+        	    <th>Grasas</th> <th>Carbohidratos</th> <th>Alimentos</th> </tr>';
+		        
+		        $i = 0; $j = 0; $aux = 0;
+		        $sumaCalorias = 0; $sumaProteinas = 0; $sumaGrasas = 0; $sumaHidratos = 0;
+		        foreach ($comidas as $valor)
+		        {
+		            
+		            echo "<tr>";
+		            if ($i == $j)
+		            {
+		                while ((count($comidas) != $i + 1) && ($comidas[$i]['dia'] == $comidas[$i + 1]['dia']))
+		                {
+		                    $sumaCalorias += $comidas[$i]['caloriasConsumidas'];
+		                    $sumaProteinas += $comidas[$i]['proteinas'];
+		                    $sumaGrasas += $comidas[$i]['grasas'];
+		                    $sumaHidratos += $comidas[$i]['carbohidratos'];
+		                    ++$i;
+		                    ++$aux;
+		                }
+		                $sumaCalorias += $comidas[$i]['caloriasConsumidas'];
+		                $sumaProteinas += $comidas[$i]['proteinas'];
+		                $sumaGrasas += $comidas[$i]['grasas'];
+		                $sumaHidratos += $comidas[$i]['carbohidratos'];
+		                ++$i;
+		                ++$aux;
+		                
+		                echo "<td rowspan = ".$aux.">".$valor['dia']."</td>";
+		                echo "<td rowspan = ".$aux.">".$valor['tipo']."</td>";
+		                echo "<td rowspan = ".$aux.">".$sumaCalorias."</td>";
+		                echo "<td rowspan = ".$aux.">".$sumaProteinas."</td>";
+		                echo "<td rowspan = ".$aux.">".$sumaGrasas."</td>";
+		                echo "<td rowspan = ".$aux.">".$sumaHidratos."</td>";
+		                
+		                $aux = 0;
+		                $sumaCalorias = 0; $sumaProteinas = 0; $sumaGrasas = 0; $sumaHidratos = 0;
+		            }
+		            ++$j;
+		            
+		            echo "<td>".$valor['nombre']."</td>";
+		            echo "</tr>";
+		            
+		        }
+		        echo '</table></p>';
+		        echo '</div>';
+		    }
+		    
+		    //Loop eNTRENAMIENTOS
+		    if (count($entrena_final) == 0) {
+		        echo "<p>Ningún entrenamiento hoy.</p>";
+		    }
+		    else {
+		        echo '<div class="tabla_comidas">';
+		        echo '<p><table>';
+		        echo '<tr>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th>Reps</th>'.'</tr>';
+		        //echo '<table class="tablaEntrenamientos">';
+		        foreach ($entrena_final as $entrenamiento) {
+		            echo '<tr>';
+		            
+		            echo '<td>'.$entrenamiento['nombre'].'</td>';
+		            echo '<td>'.$entrenamiento['fecha'].'</td>';
+		            echo '<td>'.$entrenamiento['repeticiones'].'</td>';
+		            echo '</tr>';
+		        }
+		        echo '</table></p>';
+		        echo '</div>';
+		    }
+		}
+        ?>
+        
 		<h2>Datos personales</h2>
 			
 

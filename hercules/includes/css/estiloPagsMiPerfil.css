@@ -3,6 +3,10 @@
 *Comidas, entrenamientos, mis entrenadores, editar perfil, mensajes, mis clientes, mis valoraciones...
 *
 **/
+
+div#contenido .amigos{
+	display: grid;
+}
 /*INICIO MENU PERFIL CLIENTE*/
 div#contenido .submenu-perfil {
 	
@@ -59,6 +63,7 @@ div#contenido .submenu-perfil .comidaentrena-all button[type="submit"]:hover{
 
 /*INICIO ESTILO MENSAJE/CHAT*/
 div#contenido .chat-all {
+	margin-top: 15px;
 	width: 50%;
 	background-color:rgba(34,34,34,0.75);
 	margin: 0 auto;
@@ -258,10 +263,10 @@ div#contenido .miPerfil img{
 }
 
 div#contenido .miPerfil h2.nombre {
+	margin-top: 20px;
 	text-align: center;
 	background-color: white;
 	font-size: 40px;
-	margin: auto;
 	color: #3b3b3b;
 	padding: 10px;
 	position: unset;

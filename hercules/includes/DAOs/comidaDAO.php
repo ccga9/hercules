@@ -121,6 +121,37 @@ class comidaDAO extends DAO
         return $comidas;
     }
     
+    public function selectComida($col, $cond){
+        $query = "";
+        if ($col == "") {
+            $col = "*";
+        }
+        if ($cond == "") {
+            $query = "SELECT ".$col." FROM comida";
+        }
+        else {
+            $query = "SELECT ".$col." FROM comida WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
+    
+    public function insertComida($col, $values){
+        $query = "";
+        $query = "INSERT INTO comida(".$col.") VALUES (".$values.")";
+        
+        return $this->consultarv2($query);
+    }
+    
+    public function updateComida($set, $cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "UPDATE comida SET ".$set." WHERE ".$cond;
+        }
+        echo $query;
+        return $this->consultarv2($query);
+    }
+    
     public function deleteComida($cond){
         $query = "";
         if ($cond != "") {
@@ -130,4 +161,12 @@ class comidaDAO extends DAO
         return $this->consultarv2($query);
     }
 
+    public function deleteAli_Com($cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "DELETE FROM alimentocomida WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
 }

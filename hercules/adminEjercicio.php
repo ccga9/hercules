@@ -69,7 +69,7 @@ require_once 'includes/config.php';
 		        }
 		    }
 		    else {
-		        echo '<div class="boton-volver"><a href="adminEjericio.php">Volver</a></div>';
+		        echo '<div class="boton-volver"><a href="adminEjercicio.php">Volver</a></div>';
 		        
 		        $ejer = $ctrl->selectEjercicio('', "idEjercicio='".$_GET['perfil']."'");
 		        

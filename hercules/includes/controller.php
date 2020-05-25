@@ -531,6 +531,26 @@ class controller{
         return $this->comidaDAO->editarComida($fecha, $alimento_1, $alimento_2, $alimento_3, $tipo, $nif);
     }
     
+    public function selectComida($col, $cond){
+        return $this->comidaDAO->select($col, $cond);
+    }
+    
+    public function insertComida($col, $values){
+        return $this->comidaDAO->insert($col, $values);
+    }
+    
+    public function updateComida($set, $cond){
+        return $this->comidaDAO->update($set, $cond);
+    }
+    
+    public function deleteComida($cond){
+        return $this->comidaDAO->delete($cond);
+    }
+    
+    public function deleteAli_Com($cond){
+        return $this->comidaDAO->deleteAli_Com($cond);
+    }
+    
     //FIN FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
    //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
@@ -538,6 +558,9 @@ class controller{
          $this->entrenamientoDAO->delete($idEntrenamiento);
     }
 
+    public function cargarEntrenamiento($idEntrenamiento){
+        return $consulta = $this->entrenamientoDAO->cargarEntrenamiento($idEntrenamiento);
+    }
 
     public function listarEntrenamientos($idUsuarioEntrenador)
     {
@@ -628,8 +651,26 @@ class controller{
     
         
     }
-
     
+    public function selectEntrena($col, $cond){
+        return $this->entrenamientoDAO->selectEntrena($col, $cond);
+    }
+    
+    public function insertEntrena($col, $values){
+        return $this->entrenamientoDAO->insertEntrena($col, $values);
+    }
+    
+    public function updateEntrena($set, $cond){
+        return $this->entrenamientoDAO->updateEntrena($set, $cond);
+    }
+    
+    public function deleteEntrena($cond){
+        return $this->entrenamientoDAO->deleteEntrena($cond);
+    }
+    
+    public function deleteEjer_Entrena($cond){
+        return $this->entrenamientoDAO->deleteEjer_Entrena($cond);
+    }
     //FIN FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
      //FUNCIONES EJERCICIODAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
@@ -653,6 +694,10 @@ class controller{
         return $consulta = $this->ejercicioDAO->listarTodosEjercicios($col);
     }
 
+    public function listarEntrenamientoEjercicio($idEntrenamiento){
+        return $this->ejercicioDAO->listarEntrenamientoEjercicio($idEntrenamiento);
+    }
+
     public function buscarEjercicio($ejercicio){
         $col ='nombre, caloriasGastadas, tipo, descripcion, multimedia';
         return $consulta = $this->ejercicioDAO->buscarEjercicio($col, $ejercicio);
@@ -662,6 +707,10 @@ class controller{
         return $this->ejercicioDAO->select($col, $cond);
     }
     
+    public function cargarEjercicio($idEjercicio){
+        return $this->ejercicioDAO->cargarEjercicio($idEjercicio);
+    }
+
     public function insertEjercicio($col, $values){
         return $this->ejercicioDAO->insert($col, $values);
     }

@@ -71,6 +71,7 @@ if (isset($_POST['admin_submit'])) {
            
             break;
         case 'elim_ejer':
+            $ctrl->deleteEjer_Entrena("idEjercicio='".$_POST['user']."'");
             $ctrl->deleteEjercicio("idEjercicio='".$_POST['user']."'");
             header("Location: adminEjercicio.php");
             exit();
@@ -90,6 +91,7 @@ if (isset($_POST['admin_submit'])) {
         
             break;
         case 'elim_alim':
+            $ctrl->deleteAli_Com("idAlimento='".$_POST['user']."'");
             $ctrl->deleteAlimento("idAlimento='".$_POST['user']."'");
             header("Location: adminAlimento.php");
             exit();

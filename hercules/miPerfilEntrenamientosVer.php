@@ -51,15 +51,13 @@
 							   	foreach ($entrenamientos as $entrenamiento) {
 								echo '<tr>';
 
-										$aux = serialize($entrenamiento);
-										$aux = urlencode($aux);
-
+								
 										echo '<td>'.$nombreCliente[0]['nombre'].'</td>';
-										echo '<td><a href="miPerfilEntrenamientosVerDetalle.php?entrenamiento='.$aux.'">'.$entrenamiento['nombre'].'</a></td>';
+										echo '<td><a href="miPerfilEntrenamientosVerDetalle.php?entrenamiento='.$entrenamiento['id'].'">'.$entrenamiento['nombre'].'</a></td>';
 										echo '<td>'.$entrenamiento['fecha'].'</td>';
 										
 
-										echo '<td><a href="editarEntrenamiento.php?id='.$aux.'&cliente='.$_GET['idCliente'].'"><button>Editar entrenamiento</button></a></td>';
+										echo '<td><a href="editarEntrenamiento.php?id='.$entrenamiento['id'].'&cliente='.$_GET['idCliente'].'"><button>Editar entrenamiento</button></a></td>';
 										echo '<td><button id= "abrir'.$entrenamiento['id'].'" onclick="eliminarEntrenami('.$entrenamiento['id'].')"> Eliminar entrenamiento </button></td>';
 										
 								echo '</tr>';
@@ -83,11 +81,9 @@
 									//echo '<table class="tablaEntrenamientos">';
 						   	 			foreach ($entrenamientos as $entrenamiento) {
 											echo '<tr>';
-													$aux = serialize($entrenamiento);
-													$aux = urlencode($aux);
 
 													echo '<td>'.$nombreEntrenador[0]['nombre'].'</td>';
-													echo '<td><a href="miPerfilEntrenamientosVerDetalle.php?entrenamiento='.$aux.'">'.$entrenamiento['nombre'].'</a></td>';
+													echo '<td><a href="miPerfilEntrenamientosVerDetalle.php?entrenamiento='.$entrenamiento['id'].'">'.$entrenamiento['nombre'].'</a></td>';
 												    echo '<td>'.$entrenamiento['fecha'].'</td>';
 									
 											echo '</tr>';
