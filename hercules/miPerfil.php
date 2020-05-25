@@ -22,7 +22,24 @@
 			require('miPerfilCabecera.php');
 		}
 	?>
-	    
+
+	<?php
+	if(isset($_SESSION['login']))
+	{
+		echo '<div class="cont-marcador">
+			<div class="marcador-pagina">
+			   
+		        <a href= miPerfil.php?p=-2>Anteayer</a>
+		        <a href= miPerfil.php?p=-1>Ayer</a>
+		        <a href= miPerfil.php>Hoy</a>
+		        <a href= miPerfil.php?p=1>Mañana</a>
+		        <a href= miPerfil.php?p=2>Pasado Mañana</a>
+
+			</div>
+			</div>';
+	}
+	?>
+
 	<div id="contenido">
 	
 		<?php
@@ -32,19 +49,6 @@
 			echo "<p>Debes iniciar sesión para ver el contenido.</p>";
 		}
 		else { //Usuario registrado
-		
-		echo '<div class="cont-marcador">
-		<div class="marcador-pagina">
-		   
-	        <a href= miPerfil.php?p=-2>Anteayer</a>
-	        <a href= miPerfil.php?p=-1>Ayer</a>
-	        <a href= miPerfil.php>Hoy</a>
-	        <a href= miPerfil.php?p=1>Mañana</a>
-	        <a href= miPerfil.php?p=2>Pasado Mañana</a>
-
-		</div>
-		</div>';
-
 
 		if ($_SESSION['usuario']->getTipoUsuario() == 0) {
 		    echo '<h2>Tareas de hoy</h2>';
