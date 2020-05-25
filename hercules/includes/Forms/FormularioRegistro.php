@@ -33,7 +33,7 @@ class FormularioRegistro extends Form {
     	$ret .= '<fieldset>';
            $ret .= '<legend>REGISTRO DE USUARIO</legend>';
            $ret .= '<div class="grupo-control">';
-                $ret .= '<label>NIF/NIE:</label> <input class="control" type="text" placeholder="&#128100;NIF/NIE" name="nif" required autofocus/>';
+            $ret .= '<label>NIF/NIE:</label> <input class="control" type="text" placeholder="&#128100;NIF/NIE" name="nif" id="campoUser" required autofocus/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 
@@ -51,7 +51,9 @@ class FormularioRegistro extends Form {
             $ret .= '</div>';
            
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>E-mail:</label> <input class="control" type="text" placeholder="&#128231;Correo electrónico" name="email" required/>';
+                $ret .= '<label>E-mail:</label> <input class="control" type="text" placeholder="&#128231;Correo electrónico" name="email" id="campoEmail" required/>';
+            $ret .= '<img id="correoOK" src="includes/img/ok.png" />';
+            $ret .= '<img id="correoMal" src="includes/img/no.png" />';
             $ret .= '</div>';
              $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#x1f4f1;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" />';
@@ -94,7 +96,7 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>Experiencia</label> <input class="control" type="text" placeholder="&#9874;Experiencia" name="experiencia" />';
             $ret .= '</div>';
 
-            $ret .= '<div class="botones"><button type="submit" name="registro">Registrar</button>';
+            $ret .= '<div class="botones"><button type="submit" name="registro" onclick="document.getElementById(campoEmail).value">Registrar</button>';
             $ret .= '<button type="reset" name="limpiar">Limpiar</button></div>';
 		$ret .= '</fieldset>';
          $ret .= '</div>';
