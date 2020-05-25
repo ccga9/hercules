@@ -554,6 +554,9 @@ class controller{
          $this->entrenamientoDAO->delete($idEntrenamiento);
     }
 
+    public function cargarEntrenamiento($idEntrenamiento){
+        return $consulta = $this->entrenamientoDAO->cargarEntrenamiento($idEntrenamiento);
+    }
 
     public function listarEntrenamientos($idUsuarioEntrenador)
     {
@@ -683,6 +686,10 @@ class controller{
         return $consulta = $this->ejercicioDAO->listarTodosEjercicios($col);
     }
 
+    public function listarEntrenamientoEjercicio($idEntrenamiento){
+        return $this->ejercicioDAO->listarEntrenamientoEjercicio($idEntrenamiento);
+    }
+
     public function buscarEjercicio($ejercicio){
         $col ='nombre, caloriasGastadas, tipo, descripcion, multimedia';
         return $consulta = $this->ejercicioDAO->buscarEjercicio($col, $ejercicio);
@@ -692,6 +699,10 @@ class controller{
         return $this->ejercicioDAO->select($col, $cond);
     }
     
+    public function cargarEjercicio($idEjercicio){
+        return $this->ejercicioDAO->cargarEjercicio($idEjercicio);
+    }
+
     public function insertEjercicio($col, $values){
         return $this->ejercicioDAO->insert($col, $values);
     }

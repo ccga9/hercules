@@ -30,37 +30,35 @@ class FormularioEditarEntrenamiento extends Form {
      */
     protected function generaCamposFormulario($datosIniciales)
     {
-
-        $a = stripcslashes($_GET['id']);
-        $entrenamiento = unserialize($a);
-    
+        $ctrl = controller::getInstance();
+        $a = $ctrl->cargarEntrenamiento($_GET['id']);
     	$ret = '<div class="form-registro">';
     	$ret .= '<fieldset>';
            $ret .= '<legend>EDITAR ENTRENAMIENTO</legend>';
-            $ret .= '<div class="grupo-control">';
-                $ret .= '<input type="hidden" name="datosEntrenamiento" value="'.$a.'"/>';
-            $ret .= '</div>';
            $ret .= '<div class="grupo-control">';
-                $ret .= '<input type="hidden" name="idEntrenamiento" value="'.$entrenamiento['id'].'"/>';
+                $ret .= '<input type="hidden" name="idEntrenamiento" value="'.$a->getIdEntrenamiento().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 $ret .= '<input type="hidden" name="idCliente" value="'.$_GET['cliente'].'"/>';
             $ret .= '</div>';
            $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Nombre:</label> <input type="name" name="nombre" value="'.$entrenamiento['nombre'].'"/>';
+                $ret .= '<label>Nombre:</label> <input type="name" name="nombre" value="'.$a->getNombre().'"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Fecha:</label> <input type="date" name="fecha" min="'.date("Y-m-d",time()).'" value="'.$entrenamiento['fecha'].'" />';
+                $ret .= '<label>Fecha:</label> <input type="date" name="fecha" min="'.date("Y-m-d",time()).'" value="'.$a->getFecha().'" />';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Repeticiones de cada ejercicio:</label> <input type="number" name="repeticiones" value="'.$entrenamiento['repeticiones'].'"/>';
+                $ret .= '<label>Repeticiones de cada ejercicio:</label> <input type="number" name="repeticiones" value="'.$a->getRepeticiones().'"/>';
             $ret .= '</div>';
-            $ctrl = controller::getInstance();
+            
             $datos = $ctrl->listarEjercicios();
+            $ejercicios = $ctrl->listarEntrenamientoEjercicio($_GET['id']);
             foreach ($datos as $value) {
                 $esta=false;
-                foreach($entrenamiento['ejercicios'] as $ent){
-                    if ($ent['nombreEjercicio'] == $value){
+                foreach($ejercicios as $ent){
+                    $ejercicio = $ctrl->cargarEjercicio($ent['idEjercicio']);
+                   // print_r($ejercicio[1]['idEjercicio']);
+                    if ($ejercicio->getNombre() == $value){
                          $ret .= '<label>'.$value.'</label> <input type="checkbox" name="ejercicios[]" value="'.$value.'" checked/>';
                          $esta=true;
                     }  
@@ -107,10 +105,6 @@ class FormularioEditarEntrenamiento extends Form {
 
          
 		if (count($erroresFormulario) === 0) {
-            //echo 'UserActual'.$_SESSION['usuario']->getNif()."<br>";
-            //echo 'Cliente'.$datos['cliente']."<br>";
-           // $idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_SESSION['usuario']->getNif(), $datos['cliente']);
-            //echo 'UsuEntr'.$idUsuarioEntrenador."<br>";
             $ctrl->editarEntrenamiento($datos);
 
 		}
@@ -119,7 +113,8 @@ class FormularioEditarEntrenamiento extends Form {
 			$erroresFormulario = "miPerfilEntrenamientosVer.php?idCliente=".$datos['idCliente'];
 
 		}else{
-            $erroresFormulario[] = "editarEntrenamiento.php?id=".$datos['datosEntrenamiento']. "&cliente=".$datos['idCliente'];
+            header("Location:editarEntrenamiento.php?id=".$datos['idEntrenamiento']. "&cliente=".$datos['idCliente']."");
+         
         }
 
         return $erroresFormulario;
