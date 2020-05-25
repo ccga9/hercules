@@ -34,7 +34,7 @@
 	
 		<?php  
 		
-		echo '<a href="miPerfilMisClientesPerfiles.php?id='.$_GET['idCliente'].'">ATRAS</a>';
+		echo '<a href="miPerfilMisClientesPerfiles.php?idCliente='.$_GET['idCliente'].'">ATRAS</a>';
 		
 			echo $html;
 		?>

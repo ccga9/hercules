@@ -85,17 +85,11 @@ class FormularioEditarEntrenamiento extends Form {
     protected function procesaFormulario($datos)
     {
     	$erroresFormulario = array();
-       /* $hoy = date("Y-m-d");
-
-        if ( $hoy < $datos['fecha'] ) {
-            $erroresFormulario[] = "Fecha Incorrecta";
-        }*/
-
 
         if ( $datos['repeticiones'] <= 0 ) {
             $erroresFormulario[] = "Numero de repeticiones incorrectas";
-
         }
+
         if(empty($datos['ejercicios']) ){
             $erroresFormulario[] = "Debes seleccionar al menos un ejercicio";
         }
@@ -106,15 +100,12 @@ class FormularioEditarEntrenamiento extends Form {
          
 		if (count($erroresFormulario) === 0) {
             $ctrl->editarEntrenamiento($datos);
-
 		}
  
 		if (count($erroresFormulario) === 0) {
 			$erroresFormulario = "miPerfilEntrenamientosVer.php?idCliente=".$datos['idCliente'];
-
 		}else{
             header("Location:editarEntrenamiento.php?id=".$datos['idEntrenamiento']. "&cliente=".$datos['idCliente']."");
-         
         }
 
         return $erroresFormulario;

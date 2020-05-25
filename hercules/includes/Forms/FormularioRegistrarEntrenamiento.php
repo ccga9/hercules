@@ -70,16 +70,9 @@ class FormularioRegistrarEntrenamiento extends Form {
     protected function procesaFormulario($datos)
     {
     	$erroresFormulario = array();
-       /* $hoy = date("Y-m-d");
-
-        if ( $hoy < $datos['fecha'] ) {
-            $erroresFormulario[] = "Fecha Incorrecta";
-        }*/
-
 
         if ( $datos['repeticiones'] <= 0 ) {
             $erroresFormulario[] = "Numero de repeticiones incorrectas";
-
         }
         if(empty($datos['ejercicios']) ){
             $erroresFormulario[] = "Debes seleccionar al menos un ejercicio";
@@ -90,18 +83,14 @@ class FormularioRegistrarEntrenamiento extends Form {
 
          
 		if (count($erroresFormulario) === 0) {
-            //echo 'UserActual'.$_SESSION['usuario']->getNif()."<br>";
-            //echo 'Cliente'.$datos['cliente']."<br>";
             $idUsuarioEntrenador = $ctrl->idUsuarioEntrenador($_SESSION['usuario']->getNif(), $datos['cliente']);
-            //echo 'UsuEntr'.$idUsuarioEntrenador."<br>";
             $ctrl->nuevoEntrenamiento($datos, $idUsuarioEntrenador);
-
 		}
  
 		if (count($erroresFormulario) === 0) {
 			$erroresFormulario = "miPerfilMisClientesPerfiles.php?id=".$datos['cliente'];
 		}else{
-            $erroresFormulario['idCliente'] = "miPerfilEntrenamientosRegistrar.php?idCliente=".$datos['cliente'];
+            header("Location:miPerfilEntrenamientosRegistrar.php?idCliente=".$datos['cliente']."");
         }
 
         return $erroresFormulario;
