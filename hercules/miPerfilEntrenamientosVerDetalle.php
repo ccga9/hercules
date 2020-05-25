@@ -21,7 +21,12 @@
 	?>
 
 	<div id="contenido">
-		
+		<div class="boton-volver">
+			<?php
+    		    echo '<a href="miPerfilEntrenamientosVer.php?idCliente='.$_GET['cliente'].'">ATRAS</a>';
+    		?>
+		</div>
+
 			<?php
 			if(isset($_GET['entrenamiento'])){
 				$entrenamiento = $ctrl->cargarEntrenamiento($_GET['entrenamiento']);

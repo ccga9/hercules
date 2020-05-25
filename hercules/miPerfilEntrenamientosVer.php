@@ -52,7 +52,7 @@
 								echo '<tr>';
 								
 										echo '<td>'.$nombreCliente[0]['nombre'].'</td>';
-										echo '<td><a href="miPerfilEntrenamientosVerDetalle.php?entrenamiento='.$entrenamiento['id'].'">'.$entrenamiento['nombre'].'</a></td>';
+										echo '<td><a href="miPerfilEntrenamientosVerDetalle.php?entrenamiento='.$entrenamiento['id'].'&cliente='.$_GET['idCliente'].'">'.$entrenamiento['nombre'].'</a></td>';
 										echo '<td>'.$entrenamiento['fecha'].'</td>';
 										
 
