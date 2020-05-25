@@ -88,7 +88,7 @@ class FormularioRegistrarEntrenamiento extends Form {
 		}
  
 		if (count($erroresFormulario) === 0) {
-			$erroresFormulario = "miPerfilMisClientesPerfiles.php?id=".$datos['cliente'];
+			$erroresFormulario = "miPerfilEntrenamientosVer.php?idCliente=".$datos['cliente'];
 		}else{
             header("Location:miPerfilEntrenamientosRegistrar.php?idCliente=".$datos['cliente']."");
         }
