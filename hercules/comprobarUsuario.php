@@ -1,11 +1,12 @@
 <?php
 	$ctrl = controller::getInstance();
-	$col=`nif`;
-	$cond=$_REQUEST["user"];
+	$col='nif';
+	$user=$_REQUEST["user"];
+	$cond="nif = '".$user."'";
     $us = $ctrl->selectUsuario($col,$cond);
     if ($us) {
-        echo "disponible";
-    } else {
         echo "duplicado";
+    } else {
+        echo "disponible";
     }
 ?>

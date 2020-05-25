@@ -40,11 +40,11 @@
 		    <script>
 		    		$(document).ready(function(){
 					$("#correoOK").hide();
-					//$("#userOK").hide();
-					/*$("#campoUser").change(function(){
+					$("#userOK").hide();
+					$("#campoUser").change(function(){
 						var url = "comprobarUsuario.php?user=" + $("#campoUser").val();
 						$.get(url,usuarioExiste);
-					});*/
+					});
 					$("#campoEmail").change(function(){
 						if(correoValido($("#campoEmail").val())){
 							$("#correoMal").hide();
@@ -65,7 +65,7 @@
 					}
 					/*Data: contendra la respuesta del servidor
 					Status: contendra el tipo de respuesta*/
-					/*function usuarioExiste(data, status){
+					function usuarioExiste(data, status){
 						if(data == "duplicado"){
 							$("#userMal").show();
 							$("#userOK").hide();
@@ -76,7 +76,7 @@
 							$("#userOK").show();
 							$("#userMal").hide();
 						}
-					}*/
+					}
 				});
 				
 			</script>
