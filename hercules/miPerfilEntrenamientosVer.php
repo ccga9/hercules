@@ -50,7 +50,6 @@
 						echo '<thead><tr>'.'<th>Cliente</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'<th></th>'.'<th></th>'.'</tr></thead>';
 							   	foreach ($entrenamientos as $entrenamiento) {
 								echo '<tr>';
-
 								
 										echo '<td>'.$nombreCliente[0]['nombre'].'</td>';
 										echo '<td><a href="miPerfilEntrenamientosVerDetalle.php?entrenamiento='.$entrenamiento['id'].'">'.$entrenamiento['nombre'].'</a></td>';
@@ -78,7 +77,6 @@
                         
 								if(count($entrenamientos) > 0){
 								    echo '<thead><tr>'.'<th>Entrenador</th>'.'<th>Nombre</th>'.'<th>Fecha</th>'.'</tr></thead>';
-									//echo '<table class="tablaEntrenamientos">';
 						   	 			foreach ($entrenamientos as $entrenamiento) {
 											echo '<tr>';
 
@@ -87,8 +85,7 @@
 												    echo '<td>'.$entrenamiento['fecha'].'</td>';
 									
 											echo '</tr>';
-										}
-									//echo '</table>';	
+										}	
 								}
 								
 					       }

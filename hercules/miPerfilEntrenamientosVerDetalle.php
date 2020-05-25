@@ -24,22 +24,23 @@
 		
 			<?php
 			if(isset($_GET['entrenamiento'])){
-				$a = stripcslashes($_GET['entrenamiento']);
-				$entrenamiento = unserialize($a);
+				$entrenamiento = $ctrl->cargarEntrenamiento($_GET['entrenamiento']);
+				$idEjercicio = $ctrl->listarEntrenamientoEjercicio($_GET['entrenamiento']);
+				//$ejercicio = $ctrl->cargarEjercicio($idEjercicio);
 
-				echo '<h1 class="tituloEntrenamiento">Ejercicios de: '.$entrenamiento['nombre'].' </h1>';
+				echo '<h1 class="tituloEntrenamiento">Ejercicios de: '.$entrenamiento->getNombre().' </h1>';
 				echo '<img src="https://i.pinimg.com/originals/d0/a2/83/d0a2839695fbbf7f760b4aeabee30957.gif" alt="quote" class= "gif" />';
 
-				if(count($entrenamiento['ejercicios']) > 0){
+				if(count($idEjercicio) > 0){
 					echo '<table class="tablaEntrenamientos">';
 								echo '<thead><tr>'.'<th>Nombre del ejercicio</th>'.'<th>Calorías gastadas</th>'.'<th>Descripción</th>'.'<th>Multimedia</th>'.'</tr></thead>';
-								foreach ($entrenamiento['ejercicios'] as $value) {
+								foreach ($idEjercicio as $value) {
 									echo '<tr>';
-
-										echo '<td>'.$value['nombreEjercicio'].'</td>';
-										echo '<td>'.$value['caloriasGastadas'].'</td>';
-										echo '<td>'.$value['descripcion'].'</td>';
-										echo '<td>'.'<img src='.$value['multimedia'].' alt="foto" class= "fotos" />'.'</td>';
+										$ejercicio = $ctrl->cargarEjercicio($value['idEjercicio']);
+										echo '<td>'.$ejercicio->getNombre().'</td>';
+										echo '<td>'.$ejercicio->getCaloriasGastadas().'</td>';
+										echo '<td>'.$ejercicio->getDescripcion().'</td>';
+										echo '<td>'.'<img src='.$ejercicio->getMultimedia().' alt="foto" class= "fotos" />'.'</td>';
 																				    
 									echo '</tr>';
 								}	
