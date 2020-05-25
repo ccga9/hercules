@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="includes/css/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="includes/css/estiloFormularios.css" />
 	<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 	<title>Hércules</title>
 <script type="text/javascript">
@@ -35,6 +36,50 @@
 }
 
 </script>
+
+		    <script>
+		    		$(document).ready(function(){
+					$("#correoOK").hide();
+					//$("#userOK").hide();
+					/*$("#campoUser").change(function(){
+						var url = "comprobarUsuario.php?user=" + $("#campoUser").val();
+						$.get(url,usuarioExiste);
+					});*/
+					$("#campoEmail").change(function(){
+						if(correoValido($("#campoEmail").val())){
+							$("#correoMal").hide();
+							$("#correoOK").show();
+						}
+						else{
+							$("#correoMal").show();
+							$("#correoOK").hide();
+						}
+					});
+
+					function correoValido(correo){
+						var arroba = correo.indexOf("@");
+						correo = correo.substring(arroba, correo.length);
+						var punto = correo.indexOf(".");
+						correo = correo.substring(punto + 1, correo.length);
+						return (arroba > 0 && punto > 1 && correo.length > 0);
+					}
+					/*Data: contendra la respuesta del servidor
+					Status: contendra el tipo de respuesta*/
+					/*function usuarioExiste(data, status){
+						if(data == "duplicado"){
+							$("#userMal").show();
+							$("#userOK").hide();
+							$("#campoUser").focus(); //Devuelvo el foco
+							alert("El usuario ya existe, escoge otro");
+						}
+						else if(data == "disponible"){
+							$("#userOK").show();
+							$("#userMal").hide();
+						}
+					}*/
+				});
+				
+			</script>
 	
 </head>
 

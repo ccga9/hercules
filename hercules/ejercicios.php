@@ -107,28 +107,8 @@
 				}
 				echo '</ul>';
 				echo '</div>';
-				
-				/*for($page=1;$page<=$number_of_pages;$page++){
-					echo '<a href="ejercicios.php?page='. $page .  '">' . $page . '</a>';
-				}*/
-		}
 
-
-
-						//NO BORRAR
-						/*echo '<div class="entrenadores-all">';
-							echo '<ul>';
-								foreach ($ejercicios as $valor) {
-									echo '<li>';
-									echo '<h4>'.$valor['nombre'].'</h4>';
-									echo '<div class="ejercicio"><img src='.$valor['multimedia'].' alt="foto" class= "fotos"/></div>';
-									echo 'Calorías Gastadas: '.$valor['caloriasGastadas'].'<br>';
-									echo 'Tipo: '.$valor['tipo'].'<br>';
-									//echo $valor['descripcion'].'<br>';
-									echo '</li>';						    
-								}
-							echo '</ul>';
-						echo '</div>';*/
+				}
 			}
 		?>
 
@@ -136,7 +116,7 @@
 
 	<?php
 
-	 	echo '<div class="cont-marcador">';
+	 	/*echo '<div class="cont-marcador">';
 	    echo '<div class="marcador-pagina">';
 		if($number_of_pages > 0){
 			if($page > 1){
@@ -167,7 +147,7 @@
 		    }
 		}
    		echo '</div>';
-	    echo '</div>';
+	    echo '</div>';*/
 		require('includes/comun/pie.php');
 
 	?>
