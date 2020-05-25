@@ -161,4 +161,12 @@ class comidaDAO extends DAO
         return $this->consultarv2($query);
     }
 
+    public function deleteAli_Com($cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "DELETE FROM alimentocomida WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
 }

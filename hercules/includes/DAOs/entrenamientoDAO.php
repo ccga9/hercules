@@ -136,4 +136,13 @@ class entrenamientoDAO extends DAO{
         
         return $this->consultarv2($query);
     }
+    
+    public function deleteEjer_Entrena($cond){
+        $query = "";
+        if ($cond != "") {
+            $query = "DELETE FROM entrenamientoejercicio WHERE ".$cond;
+        }
+        
+        return $this->consultarv2($query);
+    }
 }

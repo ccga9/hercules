@@ -547,6 +547,10 @@ class controller{
         return $this->comidaDAO->delete($cond);
     }
     
+    public function deleteAli_Com($cond){
+        return $this->comidaDAO->deleteAli_Com($cond);
+    }
+    
     //FIN FUNCIONES COMIDADAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
 
    //FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /  
@@ -659,6 +663,10 @@ class controller{
     
     public function deleteEntrena($cond){
         return $this->entrenamientoDAO->deleteEntrena($cond);
+    }
+    
+    public function deleteEjer_Entrena($cond){
+        return $this->entrenamientoDAO->deleteEjer_Entrena($cond);
     }
     //FIN FUNCIONES ENTRENAMIENTOSDAO     /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /
     
