@@ -27,13 +27,7 @@
     		<h1>Los miembros de Hércules</h1>
     		<img src="includes/img/usuarios.png" alt="usuarios">
 		</div>
-		
-		<div class="buscar-ejercicio">
-			<form method="POST" action="usuarios.php">
-				<input type="search" id="site-search" name="busqueda"/>
-				<button type="submit" name="buscar">Buscar</button>
-			</form>
-		</div>
+        
 		
 		<?php
 		
@@ -46,6 +40,14 @@
 		}
 		else
 		{
+            echo
+            '<div class="buscar-ejercicio">
+                <form method="POST" action="usuarios.php">
+                    <input type="search" id="site-search" name="busqueda"/>
+                    <button type="submit" name="buscar">Buscar</button>
+                </form>
+            </div>';
+
 		    if ((isset($_SESSION['usuario'])) && ($_SESSION['usuario']->getTipoUsuario() == 0))
 		    {
 		        echo
