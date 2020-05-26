@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-05-2020 a las 20:32:06
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 26-05-2020 a las 18:06:44
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -75,17 +75,52 @@ CREATE TABLE `alimentocomida` (
 INSERT INTO `alimentocomida` (`idAlimento`, `idComida`) VALUES
 (1, 1),
 (1, 3),
+(1, 8),
+(2, 11),
 (3, 5),
+(4, 11),
+(5, 9),
+(5, 11),
 (6, 1),
 (8, 5),
 (8, 7),
+(9, 12),
 (10, 6),
+(10, 8),
 (11, 1),
+(11, 9),
+(11, 12),
 (12, 2),
 (12, 3),
 (12, 4),
+(12, 10),
 (13, 6),
+(13, 8),
 (14, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `amigos`
+--
+
+CREATE TABLE `amigos` (
+  `id` int(10) NOT NULL,
+  `usuario1` varchar(10) NOT NULL,
+  `usuario2` varchar(10) NOT NULL,
+  `estado` enum('aceptado','pendiente','') NOT NULL DEFAULT 'pendiente'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `amigos`
+--
+
+INSERT INTO `amigos` (`id`, `usuario1`, `usuario2`, `estado`) VALUES
+(1, '12345678F', '12345678H', 'aceptado'),
+(2, '12345678G', '12345678I', 'aceptado'),
+(3, '12345678G', '26515643R', 'pendiente'),
+(4, '12345678I', '12345678H', 'pendiente'),
+(5, '12345678I', '12345678F', 'pendiente');
 
 -- --------------------------------------------------------
 
@@ -111,7 +146,12 @@ INSERT INTO `comida` (`idComida`, `dia`, `tipo`, `usuario`) VALUES
 (4, '2020-05-10 13:39:11', 'desayuno', '12345678F'),
 (5, '2020-05-10 13:43:32', 'cena', '12345678G'),
 (6, '2020-05-06 14:00:00', 'comida', '12345678H'),
-(7, '2020-05-04 17:38:14', 'cena', '12345678G');
+(7, '2020-05-04 17:38:14', 'cena', '12345678G'),
+(8, '2020-05-26 15:55:06', 'comida', '12345678G'),
+(9, '2020-05-29 16:00:00', 'cena', '12345678G'),
+(10, '2020-05-25 15:59:10', 'desayuno', '12345678G'),
+(11, '2020-05-20 16:00:32', 'comida', '12345678H'),
+(12, '2020-05-28 16:01:19', 'comida', '12345678H');
 
 -- --------------------------------------------------------
 
@@ -260,7 +300,7 @@ INSERT INTO `mensajes` (`id`, `emisor`, `receptor`, `texto`, `fecha`, `del_1`, `
 (15, '12345678B', '12345678G', '¡Hola! Soy Sergio Peinado.', '2020-05-10 13:55:30', 0, 0, 1),
 (16, '12345678B', '12345678G', 'Que tal vas con las rutinas, Paco?', '2020-05-10 13:55:38', 0, 0, 1),
 (17, '12345678F', '12345678a', 'Hola', '2020-05-10 13:56:26', 0, 0, 0),
-(18, '12345678F', '12345678G', 'Bien Paco, y tú como vas?', '2020-05-10 13:56:42', 0, 0, 0),
+(18, '12345678F', '12345678G', 'Bien Paco, y tú como vas?', '2020-05-10 13:56:42', 0, 0, 1),
 (19, '12345678G', '12345678B', 'Muy bien, Paco', '2020-05-10 13:57:39', 0, 0, 0);
 
 -- --------------------------------------------------------
@@ -332,23 +372,6 @@ INSERT INTO `usuarioentrenador` (`id`, `usuario`, `entrenador`, `estado`) VALUES
 (14, '12345678H', '12345678D', 'pendiente'),
 (15, '12345678F', '12345678B', 'aceptado');
 
-
--- ------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `amigos`
---
-
-CREATE TABLE `amigos` (
-  `id` int(10) NOT NULL,
-  `usuario1` varchar(10) NOT NULL,
-  `usuario2` varchar(10) NOT NULL,
-  `estado` enum('aceptado','pendiente','') NOT NULL DEFAULT 'pendiente'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `amigos` (`id`, `usuario1`, `usuario2`, `estado`) VALUES
-(1, '12345678F', '12345678H', 'aceptado'),
-(2, '12345678G', '12345678I', 'pendiente');
 -- --------------------------------------------------------
 
 --
@@ -389,6 +412,14 @@ ALTER TABLE `alimento`
 ALTER TABLE `alimentocomida`
   ADD PRIMARY KEY (`idAlimento`,`idComida`),
   ADD KEY `idComida` (`idComida`);
+
+--
+-- Indices de la tabla `amigos`
+--
+ALTER TABLE `amigos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario1` (`usuario1`),
+  ADD KEY `usuario2` (`usuario2`);
 
 --
 -- Indices de la tabla `comida`
@@ -446,15 +477,6 @@ ALTER TABLE `usuarioentrenador`
   ADD KEY `entrenador` (`entrenador`);
 
 --
--- Indices de la tabla `amigos`
---
-ALTER TABLE `amigos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario1` (`usuario1`),
-  ADD KEY `usuario2` (`usuario2`);
-
-
---
 -- Indices de la tabla `valoracion`
 --
 ALTER TABLE `valoracion`
@@ -471,10 +493,16 @@ ALTER TABLE `alimento`
   MODIFY `idAlimento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT de la tabla `amigos`
+--
+ALTER TABLE `amigos`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `comida`
 --
 ALTER TABLE `comida`
-  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idComida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio`
@@ -507,11 +535,6 @@ ALTER TABLE `usuarioentrenador`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de la tabla `usuarioentrenador`
---
-ALTER TABLE `amigos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
 -- Restricciones para tablas volcadas
 --
 
@@ -521,6 +544,13 @@ ALTER TABLE `amigos`
 ALTER TABLE `alimentocomida`
   ADD CONSTRAINT `alimentocomida_ibfk_1` FOREIGN KEY (`idAlimento`) REFERENCES `alimento` (`idAlimento`) ON DELETE CASCADE,
   ADD CONSTRAINT `alimentocomida_ibfk_2` FOREIGN KEY (`idComida`) REFERENCES `comida` (`idComida`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `amigos`
+--
+ALTER TABLE `amigos`
+  ADD CONSTRAINT `amigos_ibfk_1` FOREIGN KEY (`usuario1`) REFERENCES `usuario` (`nif`),
+  ADD CONSTRAINT `amigos_ibfk_2` FOREIGN KEY (`usuario2`) REFERENCES `usuario` (`nif`);
 
 --
 -- Filtros para la tabla `comida`
@@ -554,13 +584,6 @@ ALTER TABLE `mensajes`
 ALTER TABLE `usuarioentrenador`
   ADD CONSTRAINT `usuarioentrenador_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`nif`),
   ADD CONSTRAINT `usuarioentrenador_ibfk_2` FOREIGN KEY (`entrenador`) REFERENCES `usuario` (`nif`);
-
---
--- Filtros para la tabla `amigos`
---
-ALTER TABLE `amigos`
-  ADD CONSTRAINT `amigos_ibfk_1` FOREIGN KEY (`usuario1`) REFERENCES `usuario` (`nif`),
-  ADD CONSTRAINT `amigos_ibfk_2` FOREIGN KEY (`usuario2`) REFERENCES `usuario` (`nif`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
