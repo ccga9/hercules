@@ -394,16 +394,24 @@ div#contenido .entrenadores-all {
 
 div#contenido .entrenadores-all button[type="submit"]
 {
+	cursor:pointer;
+	text-decoration: none;
+	border: 0;
+	color: black;
+	opacity: 1.5;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
 	display: block;
 	width: 93%;
 	background: linear-gradient(#FFBB33, #F8CC76);
 	padding: 8px;
 	margin: auto;
 	border-radius: 0;
-	font-weight: bold;
 }
 
-div#contenido .entrenadores-all button[type="submit"]:hover{
+div#contenido .entrenadores-all button[type="submit"]:hover
+{
 	color: white;
 }
 
