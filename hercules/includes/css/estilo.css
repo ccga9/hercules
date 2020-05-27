@@ -524,3 +524,53 @@ div#tema{
 div#tema .msg{
 	background-color: #b8baaf;
 }
+
+/*Pagina de Quienes Somos*/
+.fotosQ {
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+    display: inline-table;
+}
+
+.fotosQ img {
+    float: left;
+    width :200px ;
+    height:200px;
+    }
+
+.fotosQ p{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+#listafotos {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+#listafotos ul {
+    list-style-type: none;
+    text-align: center;
+    display: inline
+    padding-inline-start: 0;
+}
+
+.pnombreQuienesSomos{
+    font-size: 22px;
+    text-align: center;
+    margin: 0;
+    max-width: fit-content;
+    min-width: -webkit-fill-available;
+}
+/*Fin de página quienes somos*/
+
+/*Inicio página FAQs*/
+#preguntas {
+	background-color: #eee;
+	color: #444;
+	padding: 5px;
+	min-width: 99%;
+}
+
+/*Fin página FAQs*/
