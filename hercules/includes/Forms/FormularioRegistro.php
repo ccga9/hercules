@@ -33,9 +33,7 @@ class FormularioRegistro extends Form {
     	$ret .= '<fieldset>';
            $ret .= '<legend>REGISTRO DE USUARIO</legend>';
            $ret .= '<div class="grupo-control">';
-            $ret .= '<label>NIF/NIE:</label> <input class="control" type="text" placeholder="&#128100;NIF/NIE" name="nif" id="campoUser" required autofocus/>';
-            $ret .= '<img id="userOK" src="includes/img/ok.png" />';
-            $ret .= '<img id="userMal" src="includes/img/no.png" />';
+            $ret .= '<label>NIF/NIE:</label> <input class="control" type="text" placeholder="&#128100;NIF/NIE" name="nif" required autofocus/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 
@@ -98,7 +96,7 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>Experiencia</label> <input class="control" type="text" placeholder="&#9874;Experiencia" name="experiencia" />';
             $ret .= '</div>';
 
-            $ret .= '<div class="botones"><button type="submit" name="registro" onclick="document.getElementById(campoEmail, campoUser).value">Registrar</button>';
+            $ret .= '<div class="botones"><button type="submit" name="registro" onclick="document.getElementById(campoEmail).value">Registrar</button>';
             $ret .= '<button type="reset" name="limpiar">Limpiar</button></div>';
 		$ret .= '</fieldset>';
          $ret .= '</div>';

@@ -40,11 +40,6 @@
 		    <script>
 		    		$(document).ready(function(){
 					$("#correoOK").hide();
-					$("#userOK").hide();
-					$("#campoUser").change(function(){
-						var url = "comprobarUsuario.php?user=" + $("#campoUser").val();
-						$.get(url,usuarioExiste);
-					});
 					$("#campoEmail").change(function(){
 						if(correoValido($("#campoEmail").val())){
 							$("#correoMal").hide();
@@ -62,20 +57,6 @@
 						var punto = correo.indexOf(".");
 						correo = correo.substring(punto + 1, correo.length);
 						return (arroba > 0 && punto > 1 && correo.length > 0);
-					}
-					/*Data: contendra la respuesta del servidor
-					Status: contendra el tipo de respuesta*/
-					function usuarioExiste(data, status){
-						if(data == "duplicado"){
-							$("#userMal").show();
-							$("#userOK").hide();
-							$("#campoUser").focus(); //Devuelvo el foco
-							alert("El usuario ya existe, escoge otro");
-						}
-						else if(data == "disponible"){
-							$("#userOK").show();
-							$("#userMal").hide();
-						}
 					}
 				});
 				
