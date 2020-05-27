@@ -24,15 +24,15 @@ require_once 'includes/config.php';
 	<div id="contenido">
 		<?php 
 		$id_mesg = $_GET['id_msg'];
-		echo "<a href= respuesta.php?id_msg=$id_mesg><button type=button>Responder</button></a>";
+		echo "<a class=temaf href= respuesta.php?id_msg=$id_mesg>Responder</a>";
 		$fila = $ctrl->mostrarMensaje($id_mesg);
 		$i = 0;
 		echo "<ol class=mensaje>";
 		echo "<li><p class=tema>".$fila[$i]['tema']."</p> <pre class=datos>Autor: ".$fila[$i]['autor'].", Fecha: ".$fila[$i]['fecha'].".</pre>";
 		echo "<pre>".$fila[$i]['mensaje']."</pre> </li>";
 		if($fila[$i]['autor'] == $_SESSION['usuario']->getNombre()){
-		    echo "<a href= editarMensaje.php?id_msg=$id_mesg><button type=button>Editar</button></a>";
-	       	echo "<a href= borrarMensaje.php?id_msg=$id_mesg><button type=button>Eliminar</button></a>";
+		    echo "<a class=temaf href= editarMensaje.php?id_msg=$id_mesg>Editar</a>";
+	       	echo "<a class=temaf href= borrarMensaje.php?id_msg=$id_mesg>Eliminar</a>";
 		}
 		
 		
@@ -42,8 +42,8 @@ require_once 'includes/config.php';
 		        echo "<li><pre class=datos>*Respuesta* Autor: ".$fila['autor']." Fecha: ".$fila['fecha']."</pre>";
 		        echo "<pre class=mensaje>".$fila['mensaje']."</pre></li>";
 		        if($fila['autor'] == $_SESSION['usuario']->getNombre()){
-		           echo "<a href= editarMensaje.php?id_msg=$fila[id]><button type=button>Editar</button></a>";
-		           echo "<a href= borrarMensaje.php?id_msg=$fila[id]><button type=button>Eliminar</button></a>";
+		           echo "<a class=temaf href= editarMensaje.php?id_msg=$fila[id]>Editar</a>";
+		           echo "<a class=temaf href= borrarMensaje.php?id_msg=$fila[id]>Eliminar</a>";
 		        }
 		    }
 		    echo"</ol>";

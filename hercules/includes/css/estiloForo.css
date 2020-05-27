@@ -12,6 +12,21 @@ pre.datos{
 	background-color: #e1d80d;
 }
 
+a.temaf{
+		color: white;
+	text-decoration: none;
+	font-size: 24px;
+	background-color: #e1d80d;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-weight: bold;
+	border: 2px solid #e1d80d;
+	border-radius: 5px;
+	border-width: 3px;
+	margin-right: 50px;
+}
+
+
+
 a.tema, p.tema{
 	color: white;
 	text-decoration: none;
@@ -24,7 +39,8 @@ a.tema, p.tema{
 	border-width: 3px;
 	margin-right: 50px;
 }
-a.tema:hover{
+
+a.tema:hover, a.temaf:hover{
 	text-decoration:underline;
 }
 
