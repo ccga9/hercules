@@ -59,10 +59,10 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#x1f4f1;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" />';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0(Opcional)" step="0.01" min="40.0" max="300.0" >';
+                $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0(Opcional)" step="0.01" min="40.0" value="0.0" max="300.0" >';
             $ret .= '</div>';
              $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Altura (cm)</label>  <input type="number"  name="altura" placeholder="0.0(Opcional)" step="0.01" min="40.0" max="300.0" >';
+                $ret .= '<label>Altura (cm)</label>  <input type="number"  name="altura" placeholder="0.0(Opcional)" step="0.01" min="40.0" value="0.0" max="300.0" >';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Preferencias</label> <input class="control" type="text" placeholder="&#128100(Opcional);Introduce lo que buscas" name="preferencias"/>';
