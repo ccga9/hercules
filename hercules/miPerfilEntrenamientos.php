@@ -33,13 +33,6 @@
 				<button type="submit" name="registro">Ver Entrenamientos</button>
 			</form>
 			</div>
-
-			<div class="comidaentrena-all">
-			<img src="includes/img/registrar_entrenamiento.png" alt="Registrar Entrenamiento">
-			<form action="#" method="post">
-				<button type="submit" name="registro">Registrar Entrenamiento</button>
-			</form>
-			</div>
 			
 		</div>';
 			?>

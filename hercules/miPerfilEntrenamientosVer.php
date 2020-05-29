@@ -63,11 +63,11 @@
 							}
 						echo '</table>';
 					}else {
-						echo "<p> Todavía no tienes entrenamientos.</p>";
+						echo "<p> Todavía no tiene entrenamientos.</p>";
 			 		}
 
 			}else{ //si es cliente
-				$idUsuarioEntrenadores = $ctrl->selectUs_Ent("id, entrenador", "usuario='".$_SESSION["usuario"]->getNif()."'");
+				$idUsuarioEntrenadores = $ctrl->selectUs_Ent("id, entrenador", "usuario='".$_SESSION["usuario"]->getNif()."' and estado='aceptado'");
 
 					if(count($idUsuarioEntrenadores) > 0){
 					    echo '<table class="tablaEntrenamientos">';
@@ -86,9 +86,12 @@
 									
 											echo '</tr>';
 										}	
+								}else{
+									echo "<p> Todavía no tienes entrenamientos con " .$nombreEntrenador[0]['nombre']. ".</p>";
 								}
 								
 					       }
+					       
 					       echo '</table>';	
     				}else{
     					echo '<p> No tienes entrenadores </p>';
@@ -102,9 +105,9 @@
 				<h2>¿Estas seguro?</h2>
 				
 				<?php 
-				    echo '<form action="PR_eliminarAmigo.php" method="post">';
+				    echo '<form action="PR_eliminarEntrenamiento.php" method="post">';
 				     echo '<input id="idEnt" type="hidden" name="id" />';
-				     echo '<input type="hidden" name="idAmigo" value="'.$_GET['idCliente'].'"/>';
+				     echo '<input type="hidden" name="idCliente" value="'.$_GET['idCliente'].'"/>';
 				    
 					echo '<button type="submit" name="enviar" value="si">Si</button><br>';
 				    echo '<button type="submit" name="enviar" value="no">No</button><br>';
