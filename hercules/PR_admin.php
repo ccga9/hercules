@@ -32,7 +32,7 @@ if (isset($_POST['admin_submit'])) {
     switch ($_POST['admin_submit']) {
         case 'elim_user':   
             $ctrl->deleteUsuario($_POST['user']);
-            header("Location: adminUsuario.php");
+            header("Location: adminLista.php");
             exit();
             break;
         case 'edit_ejer': 
@@ -78,8 +78,8 @@ if (isset($_POST['admin_submit'])) {
             break;
         case 'edit_alim': 
             
-            $nombre = isset($datos['nombre']) ? htmlspecialchars(strip_tags($datos['nombre'])) : null;
-            $datos['nombre'] = $nombre;
+            $nombre = isset($_POST['nombre']) ? htmlspecialchars(strip_tags($_POST['nombre'])) : null;
+            $_POST['nombre'] = $nombre;
             
             if ( !empty($nombre) ) {
                 $set = "nombre='".$_POST['nombre']."', caloriasConsumidas='".$_POST['cal']."', carbohidratos='".$_POST['car'].
