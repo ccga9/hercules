@@ -30,6 +30,10 @@ $html=$act->gestiona();
 	<div id="contenido">
 
 		<?php  
+    		echo '<div class="boton-volver">';
+    		      echo '<a href="mensaje.php?id_msg='.$_GET['id_msg'].'">Atrás</a>';
+    		echo '</div>';
+		
 	   	    echo $html;
 		?>
 

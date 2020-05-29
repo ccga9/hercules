@@ -22,6 +22,10 @@ require_once 'includes/config.php';
 
 
 	<div id="contenido">
+	<div class="boton-volver">
+            <a href="foro.php">Atrás</a>
+            <br><br><br>
+    </div>
 		<?php 
 		$id_mesg = $_GET['id_msg'];
 		echo "<a class=temaf href= respuesta.php?id_msg=$id_mesg>Responder</a>";

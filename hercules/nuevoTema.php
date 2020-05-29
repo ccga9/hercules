@@ -18,7 +18,7 @@ $html=$act->gestiona();
 <body>
 
 <div id="contenedor">
-
+    
 	<?php	
 
 		require('./includes/comun/cabecera.php');
@@ -27,6 +27,9 @@ $html=$act->gestiona();
 
 	<div id="contenido">
 
+	<div class="boton-volver">
+            <a href="foro.php">Atrás</a>
+    </div>
 		<?php  
 		echo $html;
 		?>
