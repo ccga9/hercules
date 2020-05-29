@@ -37,12 +37,9 @@ class FormularioRegistro extends Form {
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
                 
-                $ret .= '<label>Sube foto</label><input name="uploadImage" type="file" value= "includes/img/usuarios/default.png" placeholder="&#128100/>';
+                $ret .= '<label>Sube foto</label><input name="uploadImage" type="file" value= "includes/img/usuarios/default.png"/>';
             $ret .= '</div>';
-           /* $ret .= '<div class="grupo-control">';
-                $ret .= '  <img id="uploadPreview1" width="150" height="150" " />';
-            $ret .= '</div>';
-          */
+           
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Nombre completo:</label> <input class="control" type="text" placeholder="&#128100;Nombre y apellidos" name="nombre" required/>';
             $ret .= '</div>';
@@ -59,16 +56,16 @@ class FormularioRegistro extends Form {
                 $ret .= '<label>Número de telefono</label> <input class="control" type="tel" placeholder="&#x1f4f1;(Opcional)" name="telefono" pattern="^[9|8|7|6]\d{8}$" />';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Peso (Kgs)</label>  <input type="number"  name="peso" placeholder="0.0(Opcional)" step="0.01" min="40.0" value="0.0" max="300.0" >';
+                $ret .= '<label>Peso (Kgs)(Opcional)</label>  <input type="number"  name="peso" placeholder="0.0(Opcional)" step="0.01" min="40.0" max="300.0" >';
             $ret .= '</div>';
              $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Altura (cm)</label>  <input type="number"  name="altura" placeholder="0.0(Opcional)" step="0.01" min="40.0" value="0.0" max="300.0" >';
+                $ret .= '<label>Altura (cm)(Opcional)</label>  <input type="number"  name="altura" placeholder="0.0(Opcional)" step="0.01" min="40.0" max="300.0" >';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Preferencias</label> <input class="control" type="text" placeholder="&#128100(Opcional);Introduce lo que buscas" name="preferencias"/>';
+                $ret .= '<label>Preferencias</label> <input class="control" type="text" placeholder="&#128100(Opcional)Introduce lo que buscas" name="preferencias"/>';
             $ret .= '</div>';
             $ret .= '<div class="grupo-control">';
-                $ret .= '<label>Ubicación</label> <input class="control" type="text" placeholder="&#128100(Opcional);Introduce tu ubicacion" name="ubicacion"/>';
+                $ret .= '<label>Ubicación</label> <input class="control" type="text" placeholder="&#128100(Opcional)Introduce tu ubicacion" name="ubicacion"/>';
             $ret .= '</div>';
 
             $ret .= '<div class="grupo-control">';
@@ -78,10 +75,10 @@ class FormularioRegistro extends Form {
             $ret .= '<div class="grupo-control">';
                 $ret .= '<label>Vuelve a introducir el Password:</label> <input class="control" type="password" placeholder="&#128272;Repita contraseña" name="contra2" required/>';
             $ret .= '</div>';
-      
+            $ret .= '<label>Género(Opcional):</label><br>';
             $ret .= '<label for="hombre">Hombre</label> <input type="radio" name="sexo" value="Hombre" id="hombre">';
             $ret .= '<label for="mujer">Mujer</label><input type="radio" name="sexo" value="Mujer" id="mujer">';
-            
+            $ret .= '<br>';
             $ret .= '<label>Dale a la casilla si eres entrenador/a (Rellena los campos de abajo)</label> <input type="checkbox" name="tipoUsuario" value="ok"/>';
 
             $ret .= '<div class="grupo-control">';
@@ -159,11 +156,11 @@ class FormularioRegistro extends Form {
         }
         //PESO
         if(!isset($datos['peso']) || empty($datos['peso'])){
-             $datos['peso'] = "No especificado";
+             $datos['peso'] = "0.0";
         }
         //ALTURA
         if(!isset($datos['altura']) || empty($datos['altura']) ){
-             $datos['altura'] = "No especificado";
+             $datos['altura'] = "0.0";
         }
         //PREFERENCIAS
         if(!isset($datos['preferencias'])|| empty($datos['preferencias']) ){
@@ -200,10 +197,8 @@ class FormularioRegistro extends Form {
             if ( !isset($datos['especialidad']) || empty($datos['especialidad']) ) {
                 $erroresFormulario[] = "Como entrenador/a debes poner tu especialidad.";
             }
-            if ($datos['experiencia'] == 0) {
-                $datos['experiencia'] == "Ninguna";
-            }
-            else if ( !isset($datos['experiencia']) || empty($datos['experiencia']) ) {
+            
+            if ( !isset($datos['experiencia']) || empty($datos['experiencia']) ) {
                 $erroresFormulario[] = "Como entrenador/a debes poner tu experiencia.";
             }
         }
