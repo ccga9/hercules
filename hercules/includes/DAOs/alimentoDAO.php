@@ -64,7 +64,7 @@ class alimentoDAO extends DAO
         if ($cond != "") {
             $query = "UPDATE alimento SET ".$set." WHERE ".$cond;
         }
-        echo $query;
+        
         return $this->consultarv2($query);
     }
 

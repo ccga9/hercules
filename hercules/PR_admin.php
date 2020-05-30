@@ -88,7 +88,6 @@ if (isset($_POST['admin_submit'])) {
                 header("Location: adminAlimento.php");
                 exit();
             }
-        
             break;
         case 'elim_alim':
             $ctrl->deleteAli_Com("idAlimento='".$_POST['user']."'");
@@ -98,7 +97,6 @@ if (isset($_POST['admin_submit'])) {
             break;
         default:
             echo '<h2>ERROR</h2>';
-            break;
     }
 }
 else {
