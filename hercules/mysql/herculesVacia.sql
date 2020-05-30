@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2020 a las 17:22:49
+-- Tiempo de generación: 30-05-2020 a las 18:19:32
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Versión de PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -82,7 +82,7 @@ CREATE TABLE `comida` (
 
 CREATE TABLE `ejercicio` (
   `idEjercicio` int(10) NOT NULL,
-  `nombre` varchar(25) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
   `caloriasGastadas` int(4) UNSIGNED NOT NULL,
   `tipo` varchar(25) NOT NULL,
   `descripcion` text NOT NULL,
