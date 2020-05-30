@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2020 a las 18:06:44
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Servidor: vm17.db.swarm.test
+-- Tiempo de generación: 30-05-2020 a las 19:28:37
+-- Versión del servidor: 10.4.12-MariaDB-1:10.4.12+maria~bionic
+-- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,7 +43,7 @@ CREATE TABLE `alimento` (
 
 INSERT INTO `alimento` (`idAlimento`, `nombre`, `caloriasConsumidas`, `carbohidratos`, `proteinas`, `grasas`) VALUES
 (1, 'manzana', 55, 12, 0, 0),
-(2, 'ensalada mediterránea', 57, 9, 1.9, 1.5),
+(2, 'ensalada mediterránea', 100, 9, 1.9, 1.5),
 (3, 'merluza', 64, 0, 12, 1.8),
 (4, 'pollo', 166, 0, 19.8, 9.6),
 (5, 'tarta de queso', 233, 22, 7.3, 11.8),
@@ -53,7 +53,7 @@ INSERT INTO `alimento` (`idAlimento`, `nombre`, `caloriasConsumidas`, `carbohidr
 (9, 'tortilla de patatas', 217, 24, 3.9, 11.8),
 (10, 'pulpo', 84, 0, 18, 1.5),
 (11, 'macarrones boloñesa', 136, 17, 3.3, 6),
-(12, 'cereales frosties', 355, 88.6, 5.3, 0.2),
+(12, 'cereales frosties', 355, 88.6, 5.3, 5),
 (13, 'solomillo de cerdo', 158, 0, 22.3, 7.6),
 (14, 'lasaña boloñesa', 156, 12, 7.9, 8.4);
 
@@ -120,7 +120,8 @@ INSERT INTO `amigos` (`id`, `usuario1`, `usuario2`, `estado`) VALUES
 (2, '12345678G', '12345678I', 'aceptado'),
 (3, '12345678G', '26515643R', 'pendiente'),
 (4, '12345678I', '12345678H', 'pendiente'),
-(5, '12345678I', '12345678F', 'pendiente');
+(5, '12345678I', '12345678F', 'pendiente'),
+(6, '26515643R', '12345678F', 'pendiente');
 
 -- --------------------------------------------------------
 
@@ -161,7 +162,7 @@ INSERT INTO `comida` (`idComida`, `dia`, `tipo`, `usuario`) VALUES
 
 CREATE TABLE `ejercicio` (
   `idEjercicio` int(10) NOT NULL,
-  `nombre` varchar(25) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
   `caloriasGastadas` int(4) UNSIGNED NOT NULL,
   `tipo` varchar(25) NOT NULL,
   `descripcion` text NOT NULL,
@@ -174,12 +175,12 @@ CREATE TABLE `ejercicio` (
 
 INSERT INTO `ejercicio` (`idEjercicio`, `nombre`, `caloriasGastadas`, `tipo`, `descripcion`, `multimedia`) VALUES
 (1, 'Sentadillas(Squats)', 220, 'Tonificacion', 'Consiste en flexionar las rodillas y bajar el cuerpo manteniendo la verticalidad,\r\n  para luego regresar a una posición erguida.', 'includes/img/sentadillas.png'),
-(2, 'Jumping jacks', 188, 'Cardio', ' En la posición de inicio, abre las piernas a la anchura de los hombros, a continuación\r\n   júntalas con un leve salto mientras levantas los brazos a la vez para que las manos se toquen detrás de la cabeza.\r\n   Asegúrate de mantener la cabeza recta y la vista al frente.', 'includes/img/jumpingjacks.png'),
+(2, 'Jumping jacks', 187, 'Cardio', ' En la posición de inicio, abre las piernas a la anchura de los hombros, a continuación\r\n   júntalas con un leve salto mientras levantas los brazos a la vez para que las manos se toquen detrás de la cabeza.\r\n   Asegúrate de mantener la cabeza recta y la vista al frente.', 'includes/img/jumpingjacks.png'),
 (3, 'Planchas', 160, 'Tonificacion', 'Recuéstate boca abajo y apóyate sobre los antebrazos,\r\n   de modo que los codos queden ubicados debajo del pecho. Ahora, eleva tus piernas del piso sosteniéndote con las\r\n   puntas de los pies para formar la plancha.', 'includes/img/planchas.png'),
 (4, 'Remo con banda elástica', 133, 'Fuerza', 'Con una ligera flexión de rodillas, nos inclinamos hacia delante desde\r\n  las caderas, la columna vertebral de permanecer neutral. Tiramos desde los omóplatos hacia atrás y levantamos los codos\r\n  tanto como pueda. Baje lentamente y repita.', 'includes/img/remoconbandaelastica.png'),
 (5, 'Zumba Fitness', 200, 'Cardio', 'La zumba es un tipo de actividad física (fitness) basada en ritmos y músicas lationamericanas. Las coreografías de zumba incluyen ritmos como la samba, la salsa, el reggaeton, la cumbia, el merengue y el mambo.', 'includes/img/zumba.png'),
-(6, 'Aeróbic step, con step de', 193, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aeróbic.', 'includes/img/aerobicsteps.png'),
-(7, 'Aeróbic step, con step de', 227, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aeróbic.', 'includes/img/aerobicsteps.png'),
+(6, 'Aeróbic step, con step de 15-20 cm', 193, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aeróbic.', 'includes/img/aerobicsteps.png'),
+(7, 'Aeróbic step, con step de 25-30 cm', 227, 'Cardio', 'Consiste subir y bajar de un plataforma combinando pasos al ritmo de la música de aeróbic.', 'includes/img/aerobicsteps.png'),
 (8, 'Kettlebells', 196, 'Fuerza', 'Colócate de pie con los pies a la anchura de los hombros y deja la kettlebell en el suelo a la altura de los dedos de los pies. Dobla las rodillas, mantén la espalda recta y baja en posición de sentadilla hasta coger del asa al kettle con ambas manos hasta elevarlo hacia atrás mientras estiras las piernas manteniendo tensión en la zona de los abdominales y el glúteo hasta llevarla de nuevo con un impulso a la zona delantera por encima de la cabeza. Cuando éste regresa al centro después del balanceo, lleva la cadera hacia atrás y colócate con las piernas rectas.', 'includes/img/kettlebells.png'),
 (9, 'Saltar a la cuerda', 260, 'Cardio', 'Hay muchas modalidades, salto simple lo más rápido posible, doble salto, etc...', 'includes/img/saltaralacuerda.png'),
 (10, 'Burpees', 286, 'Tonificacion', ' Consiste en agachar el cuerpo y apoyar las manos en el suelo, impulsar los pies hacia atrás hasta quedar en la postura de una plancha, para después realizar una flexión tocando el suelo con el pecho. Trabaja pectorales, bíceps, tríceps, abdominales, glúteos y cuádriceps.', 'includes/img/burpees.png'),
@@ -490,13 +491,13 @@ ALTER TABLE `valoracion`
 -- AUTO_INCREMENT de la tabla `alimento`
 --
 ALTER TABLE `alimento`
-  MODIFY `idAlimento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idAlimento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `amigos`
 --
 ALTER TABLE `amigos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `comida`
@@ -508,7 +509,7 @@ ALTER TABLE `comida`
 -- AUTO_INCREMENT de la tabla `ejercicio`
 --
 ALTER TABLE `ejercicio`
-  MODIFY `idEjercicio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idEjercicio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `entrenamiento`
@@ -549,8 +550,8 @@ ALTER TABLE `alimentocomida`
 -- Filtros para la tabla `amigos`
 --
 ALTER TABLE `amigos`
-  ADD CONSTRAINT `amigos_ibfk_1` FOREIGN KEY (`usuario1`) REFERENCES `usuario` (`nif`),
-  ADD CONSTRAINT `amigos_ibfk_2` FOREIGN KEY (`usuario2`) REFERENCES `usuario` (`nif`);
+  ADD CONSTRAINT `amigos_ibfk_1` FOREIGN KEY (`usuario1`) REFERENCES `usuario` (`nif`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `amigos_ibfk_2` FOREIGN KEY (`usuario2`) REFERENCES `usuario` (`nif`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `comida`
